@@ -1,5 +1,6 @@
 package utilitary;
 
+import quoridor.Game;
 import quoridor.Quoridor;
 
 import java.io.*;
@@ -15,11 +16,11 @@ public class RWFile {
      * @param fileName The file name.
      * @author Aymeric Bizouarn
      */
-    public Quoridor readFile(String fileName) {
+    public static Game readFile(String fileName) {
         try {
             FileInputStream fin = new FileInputStream(fileName);
             ObjectInputStream ois = new ObjectInputStream(fin);
-            return (Quoridor) ois.readObject();
+            return (Game) ois.readObject();
         } catch (Exception e) {
             System.err.println(e);
             return null;
@@ -32,11 +33,11 @@ public class RWFile {
      * @param fileName The file name.
      * @author Aymeric Bizouarn
      */
-    public void writeFile(String fileName, Quoridor quoridor) {
+    public static void writeFile(String fileName, Game game) {
         try {
             FileOutputStream fin = new FileOutputStream(fileName);
             ObjectOutputStream ois = new ObjectOutputStream(fin);
-            ois.writeObject(quoridor);
+            ois.writeObject(game);
         } catch (Exception e) {
             System.err.println(e);
         }

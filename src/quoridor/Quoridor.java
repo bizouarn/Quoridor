@@ -5,6 +5,7 @@ import quoridor.Game;
 import utilitary.RWFile;
 
 // java import
+import java.util.Scanner;
 
 /**
 * Permits to launch a session from which can be launch and saved games
@@ -23,8 +24,19 @@ public class Quoridor {
 	 * @author
 	 */
 	public Quoridor(String fileName) {
-		// TODO - implement Quoridor.Quoridor
-		throw new UnsupportedOperationException();
+		this.fileName = fileName;
+		Scanner scanner = new Scanner(System.in);
+		int seizure = -1;
+		while (seizure>2 || seizure<1){
+			System.out.println("Write : \n1 - For new game\n2 - For load old game");
+			seizure =scanner.nextInt();
+		}
+		if(seizure == 1){
+			this.game = new Game();
+			this.launchGame(this.game);
+		} else if(seizure == 2){
+			this.loadOldGame();
+		}
 	}
 
 	/**
@@ -40,8 +52,8 @@ public class Quoridor {
 	 * @author
 	 */
 	public Game loadOldGame() {
-		// TODO - implement Quoridor.loadOldGame
-		throw new UnsupportedOperationException();
+		Game game = RWFile.readFile(this.fileName);
+		return game;
 	}
 
 	/**
@@ -50,8 +62,7 @@ public class Quoridor {
 	 * @author
 	 */
 	public void launchGame(Game game) {
-		// TODO - implement Quoridor.launchGame
-		throw new UnsupportedOperationException();
+		this.game.start();
 	}
 
 	/**
@@ -60,8 +71,7 @@ public class Quoridor {
 	 * @author
 	 */
 	public void saveGame(Game game) {
-		// TODO - implement Quoridor.saveGame
-		throw new UnsupportedOperationException();
+		RWFile.writeFile(this.fileName,this.game);
 	}
 
 }

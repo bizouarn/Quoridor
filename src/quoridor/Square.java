@@ -166,6 +166,6 @@ public class Square {
 	}
 
 	public String toString() {
-
+		return this.statusFence.toString();
 	}
 }

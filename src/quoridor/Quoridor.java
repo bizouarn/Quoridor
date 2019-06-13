@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
 * Permits to launch a session from which can be launch and saved games
-* @author
+* @author Aymeric Bizouarn , Pierre-Galaad 'P(x)' Naquet
 */
 public class Quoridor {
 
@@ -21,7 +21,7 @@ public class Quoridor {
 	 * Create an object Quoridor
 	 * Serve as a platform to load and launch games
 	 * @param fileName path to the file where the current game will be saved in
-	 * @author
+	 * @author Aymeric Bizouarn
 	 */
 	public Quoridor(String fileName) {
 		this.fileName = fileName;
@@ -33,15 +33,16 @@ public class Quoridor {
 		}
 		if(seizure == 1){
 			this.game = new Game();
-			this.launchGame(this.game);
 		} else if(seizure == 2){
 			this.loadOldGame();
 		}
+		this.launchGame(this.game);
 	}
 
 	/**
+	 * Get Quoridor Game.
 	 * @return the Game of the current Quoridor.
-	 * @author
+	 * @author Aymeric Bizouarn
 	 */
 	public Game getGame() {
 		return this.game;
@@ -49,7 +50,7 @@ public class Quoridor {
 
 	/**
 	 * @return The previously saved game
-	 * @author
+	 * @author Aymeric Bizouarn
 	 */
 	public Game loadOldGame() {
 		Game game = RWFile.readFile(this.fileName);
@@ -57,9 +58,9 @@ public class Quoridor {
 	}
 
 	/**
-	 * Launch the choosen game
+	 * Launch the chosen game
 	 * @param game the desired game to launch
-	 * @author
+	 * @author Aymeric Bizouarn
 	 */
 	public void launchGame(Game game) {
 		this.game.start();
@@ -68,7 +69,7 @@ public class Quoridor {
 	/**
 	 * Save the desired game into the saving file of the current Quoridor object
 	 * @param game The desired game to save
-	 * @author
+	 * @author Aymeric Bizouarn
 	 */
 	public void saveGame(Game game) {
 		RWFile.writeFile(this.fileName,this.game);

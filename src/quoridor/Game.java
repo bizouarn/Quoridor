@@ -9,7 +9,7 @@ import quoridor.Player;
 import java.util.Scanner;
 
 /**
- * This class contains the methods to intiliaze the game
+ * This class contains the methods to initialize the game
  * @author
  */
 public class Game {
@@ -25,7 +25,7 @@ public class Game {
 	 * Game constructor
 	 * intiliaze the board, the two players and the mode
 	 * The mode is choosen by the players with a scanner
-	 * @author
+	 * @author Aymeric Bizouarn , Pierre-Galaad 'P(x)' Naquet
 	 */
 	public Game() {
 		// TODO - implement Game.Game
@@ -45,6 +45,7 @@ public class Game {
 	}
 
 	/**
+	 * Set the Game Board.
 	 * @param board the desired board to play the game with.
 	 */
 	public void setBoard(Board board) {
@@ -52,11 +53,25 @@ public class Game {
 	}
 
 	/**
-	 *
+	 * Initialize the game.
 	 */
 	public void initializeGame() {
-		// TODO - implement Game.initializeGame
-		throw new UnsupportedOperationException();
+		this.board = new Board();
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Name Player 1 : ");
+		String name = scanner.nextLine();
+		if(name.indexOf("auto")!=-1){
+			this.player1 = new AutoPlayer(name,this.board);
+		} else {
+			this.player1 = new HumanPlayer(name,this.board);
+		}
+		System.out.println("Name Player 2 : ");
+		name = scanner.nextLine();
+		if(name.indexOf("auto")!=-1){
+			this.player1 = new AutoPlayer(name,this.board);
+		} else {
+			this.player1 = new HumanPlayer(name,this.board);
+		}
 	}
 
 	/**
@@ -64,8 +79,14 @@ public class Game {
 	 * @return the starting player
 	 */
 	public Player whoStarts() {
-		// TODO - implement Game.whoStarts
-		throw new UnsupportedOperationException();
+		int random = (int)(Math.random()*100);
+		Player ret;
+		if(random<=50){
+			ret = this.player1;
+		} else {
+			ret = this.player2;
+		}
+		return ret;
 	}
 
 	/**

@@ -17,7 +17,6 @@ public class Square {
 
 	private Status status; // if it contains player 1 / player 2 or none
 
-
 	private StatusFence statusFence; // gets it from the enumeration statusFence
 
 	// true if there is a fence, false otherwise

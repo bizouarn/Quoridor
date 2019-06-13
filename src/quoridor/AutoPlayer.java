@@ -1,14 +1,13 @@
 package quoridor;
 
 public class AutoPlayer extends Player {
-
 	/**
 	 * AutoPlayer constructor
 	 * @param name
 	 * @author
 	 */
-	public AutoPlayer(String name) {
-		super(name);
+	public AutoPlayer(String name,Board board) {
+		super(name,board);
 	}
 
 	/**

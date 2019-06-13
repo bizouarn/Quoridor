@@ -34,10 +34,10 @@ public class TestAutoPlayer {
         Game game = new Game();
         assertTrue(game.getPlayer1().checkExistingPath());
         game.getPlayer1().getPawn().setPosition(0,0);
-        game.getBoard().getGrid().get(0).setFenceN();
-        game.getBoard().getGrid().get(0).setFenceE();
-        game.getBoard().getGrid().get(0).setFenceS();
-        game.getBoard().getGrid().get(0).setFenceW();
+        game.getBoard().getGrid().get(0).setFenceN(true);
+        game.getBoard().getGrid().get(0).setFenceE(true);
+        game.getBoard().getGrid().get(0).setFenceS(true);
+        game.getBoard().getGrid().get(0).setFenceW(true);
         assertFalse(game.getPlayer1().checkExistingPath());
     }
 }

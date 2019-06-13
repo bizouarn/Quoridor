@@ -6,14 +6,16 @@ import quoridor.Status;
 
 //import java
 
-
+/**
+* Permits to launch a session from which can be launch and saved games
+* @author Pierre-Galaad 'P(x)' Naquet, Aymeric Bizouarn
+*/
 public class Square {
 
 	private int x;
 	private int y;
 
 	private Status status; // if it contains player 1 / player 2 or none
-
 
 	private StatusFence statusFence; // gets it from the enumeration statusFence
 
@@ -28,15 +30,33 @@ public class Square {
 	 * Square constructor
 	 * Square object which is a square on the board.
 	 * It knows its coordinates, if there is a player or not and if their is fences around him
-	 * @author
+	 * @author Pierre-Galaad 'P(x)' Naquet
 	 */
-	public Square() {
-		// TODO - implement Square.Square
-		throw new UnsupportedOperationException();
+	public Square(int x, int y) {
+		this.x = x;
+		this.y = y;
+
+		this.fenceN = false;
+		this.fenceS = false;
+		this.fenceW = false;
+		this.fenceE = false;
+
+		if (x == 0) {
+			this.fenceN = true;
+		}
+		if (x == 8) {
+			this.fenceS = true;
+		}
+		if (y == 0) {
+			this.fenceE = false;
+		}
+		if (y == 8) {
+			this.fenceW = false;
+		}
 	}
 
 	public StatusFence getStatusFence() {
-		return statusFence;
+		return this.statusFence;
 	}
 
 	public Status getStatus() {
@@ -52,18 +72,19 @@ public class Square {
 	}
 
 	public boolean getFenceN() {
-		// TODO - implement Square.getFenceStatusN
-		throw new UnsupportedOperationException();
+		return this.fenceN;
 	}
 
 	public boolean getFenceE() {
-		// TODO - implement Square.getFenceStatusE
-		throw new UnsupportedOperationException();
+		return this.fenceE;
 	}
 
 	public boolean getFenceS() {
-		// TODO - implement Square.getFenceStatusS
-		throw new UnsupportedOperationException();
+		return this.fenceS;
+	}
+
+	public boolean getFenceW() {
+		return this.fenceW;
 	}
 
 	public void setFenceE(boolean fenceE) {

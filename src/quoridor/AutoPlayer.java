@@ -1,17 +1,13 @@
 package quoridor;
 
 public class AutoPlayer extends Player {
-
-	private String name;
-
 	/**
 	 * AutoPlayer constructor
 	 * @param name
 	 * @author
 	 */
-	public AutoPlayer(String name) {
-		// TODO - implement AutoPlayer.AutoPlayer
-		throw new UnsupportedOperationException();
+	public AutoPlayer(String name,Board board) {
+		super(name,board);
 	}
 
 	/**
@@ -43,26 +39,6 @@ public class AutoPlayer extends Player {
 	 */
 	private void playPawn() {
 		// TODO - implement AutoPlayer.playPawn
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Check if the player has finished his turn
-	 * @return true if the player has finished his turn, false otherwise
-	 * @author
-	 */
-	public boolean checkHasFinished(Player player) {
-		// TODO - implement Board.checkHasFinished
-		throw new UnsupportedOperationException();
-	}
-
-
-	/**
-	 * @return true if there is an existing path to the end, false otherwise
-	 * @author
-	 */
-	public boolean checkExistingPath() {
-		// TODO - implement Board.checkExistingPath
 		throw new UnsupportedOperationException();
 	}
 }

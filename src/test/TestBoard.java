@@ -22,7 +22,7 @@ public class TestBoard {
     @Test
     public void testListOfPossibilitiesPawn(){
         Board board = new Board();
-        Player player = new AutoPlayer("joueur");
+        Player player = new AutoPlayer("joueur",board);
         ArrayList<Square> arrayPossibilitiesPawn = board.listOfPossibilitiesPawn(player);
         assertNotNull(arrayPossibilitiesPawn);
         assertNull(board.listOfPossibilitiesPawn(null));

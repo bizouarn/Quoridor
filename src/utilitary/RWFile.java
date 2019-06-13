@@ -4,12 +4,16 @@ import quoridor.Quoridor;
 
 import java.io.*;
 
+/**
+ * @author Aymeric Bizouarn
+ */
 public class RWFile {
 
     /**
      * Read Quoridor object into a file.
      *
      * @param fileName The file name.
+     * @author Aymeric Bizouarn
      */
     public Quoridor readFile(String fileName) {
         try {
@@ -23,9 +27,10 @@ public class RWFile {
     }
 
     /**
-     * Read Quoridor object into a file.
+     * Write Quoridor object into a file.
      *
      * @param fileName The file name.
+     * @author Aymeric Bizouarn
      */
     public void writeFile(String fileName, Quoridor quoridor) {
         try {

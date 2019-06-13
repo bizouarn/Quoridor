@@ -117,6 +117,10 @@ public class Square {
 		return this.statusFence;
 	}
 
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
 	public Status getStatus() {
 		return this.status;
 	}
@@ -159,5 +163,9 @@ public class Square {
 
 	public void setFenceW(boolean fenceW) {
 		this.fenceW = fenceW;
+	}
+
+	public String toString() {
+
 	}
 }

@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class Board {
 
-	private int SIZE = 9;
+	private final int SIZE = 9;
 	private ArrayList<Square> grid;
 
 	/**
@@ -24,6 +24,26 @@ public class Board {
 	 * @author Pierre-Galaad 'P(x)' Naquet
 	 */
 	public Board() {
+		initializeBoard();
+		initializePlayers();
+	}
+
+	public int getSIZE() {
+		return this.SIZE;
+	}
+
+	public ArrayList<Square> getGrid() {
+		return this.grid;
+	}
+
+	/**
+	 * Board Initializer
+	 * intiliaze a 81 squares board (9*9)
+	 * Initialize walls and statuses
+	 * @author Pierre-Galaad 'P(x)' Naquet
+	 */
+	public void initializeBoard() {
+
 		for (int x = 0; x < 9; x++) {
 			for (int y = 0; y < 9; y++) {
 				grid.add(x, y);
@@ -32,21 +52,24 @@ public class Board {
 		for (Square sqr : grid) {
 			sqr.refreshStatusFence();
 		}
+
 	}
 
-	public int getSIZE() {
-		// TODO - implement Board.getSIZE
-		throw new UnsupportedOperationException();
-	}
-
-	public ArrayList<Square> getGrid() {
-		// TODO - implement Board.getGrid
-		throw new UnsupportedOperationException();
-	}
-
-	public void initializeBoard() {
-		// TODO - implement Board.initializeBoard
-		throw new UnsupportedOperationException();
+	/**
+	 * Board Initializer
+	 * intiliaze a 81 squares board (9*9)
+	 * Initialize players
+	 * @author Pierre-Galaad 'P(x)' Naquet
+	 */
+	public void initializePlayers() {
+		for (Square sqr : this.grid) {
+			if ((sqr.getX() == 0) && (sqr.getY() == 4)) {
+				sqr.setStatus(Status.Player1);
+			}
+			if ((sqr.getX() == 8) && (sqr.getY() == 4)) {
+				sqr.setStatus(Status.Player2);
+			}
+		}
 	}
 
 	public ArrayList<Square> listOfPossibilitiesFence() {
@@ -64,8 +87,11 @@ public class Board {
 	}
 
 	public String toString() {
-		// TODO - implement Board.toString
-		throw new UnsupportedOperationException();
+		String str = "";
+		for (Square sqr : grid) {
+			str = str + sqr.toString();
+		}
+		return str;
 	}
 
 }

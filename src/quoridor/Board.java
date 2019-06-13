@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Class for the initializing of the board.
  * Contains the grid and calls the GUI package to show the game
- * @author
+ * @author Pierre-Galaad 'P(x)' Naquet, Aymeric Bizouarn
  */
 public class Board {
 
@@ -21,10 +21,17 @@ public class Board {
 	 * Board constructor
 	 * intiliaze a 81 squares board (9*9)
 	 * Initialize walls and positionates players on their starting positions
+	 * @author Pierre-Galaad 'P(x)' Naquet
 	 */
 	public Board() {
-		// TODO - implement Board.Board
-		throw new UnsupportedOperationException();
+		for (int x = 0; x < 9; x++) {
+			for (int y = 0; y < 9; y++) {
+				grid.add(x, y);
+			}
+		}
+		for (Square sqr : grid) {
+			sqr.refreshStatusFence();
+		}
 	}
 
 	public int getSIZE() {

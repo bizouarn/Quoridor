@@ -28,6 +28,16 @@ public class Board {
 		initializePlayers();
 	}
 
+	public Square getSquare(int x, int y) {
+		Square ret = null;
+		for (Square sqr : this.grid) {
+			if ((sqr.getX() == x) && (sqr.getY() == y)) {
+				ret = getSquare(x, y);
+			}
+		}
+		return ret;
+	}
+
 	public int getSIZE() {
 		return this.SIZE;
 	}
@@ -46,7 +56,7 @@ public class Board {
 
 		for (int x = 0; x < 9; x++) {
 			for (int y = 0; y < 9; y++) {
-				grid.add(x, y);
+				grid.add(new Square(x, y));
 			}
 		}
 		for (Square sqr : grid) {
@@ -88,8 +98,10 @@ public class Board {
 
 	public String toString() {
 		String str = "";
-		for (Square sqr : grid) {
-			str = str + sqr.toString();
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+
+			}
 		}
 		return str;
 	}

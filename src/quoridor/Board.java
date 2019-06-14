@@ -94,7 +94,10 @@ public class Board {
 				Square sqr2 = this.grid.getSquare(x+1, y);
 				Square sqr3 = this.grid.getSquare(x, y+1);
 				Square sqr4 = this.grid.getSquare(x+1, y+1);
-				sqrArray[0] 
+				sqrArray[0] = sqr1;
+				sqrArray[1] = sqr2;
+				sqrArray[2] = sqr3;
+				sqrArray[3] = sqr4;
 			}
 		}
 	}

@@ -164,9 +164,9 @@ public class Square {
 
 	public String toString() {
 		String ret = this.statusFence.toString();
-	 	if (this.status != Status.NONE) {
+	 	if ((this.status == Status.Player1) || (this.status == Status.Player2)) {
 			ret += "Player";
 		}
-		return ;
+		return ret;
 	}
 }

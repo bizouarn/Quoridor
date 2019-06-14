@@ -91,6 +91,10 @@ public class Board {
 		for (int x = 0; x < 8; x++) {
 			for (int y = 0; y < 8; y++) {
 				Square sqr1 = this.grid.getSquare(x, y);
+				Square sqr2 = this.grid.getSquare(x+1, y);
+				Square sqr3 = this.grid.getSquare(x, y+1);
+				Square sqr4 = this.grid.getSquare(x+1, y+1);
+				sqrArray[0] 
 			}
 		}
 	}

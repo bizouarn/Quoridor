@@ -27,6 +27,7 @@ public class Board {
 	public Board() {
 		initializeBoard();
 		initializePlayers();
+		initializeSubBoards();
 	}
 
 	public Square getSquare(int x, int y) {
@@ -87,12 +88,16 @@ public class Board {
 
 	public void initializeSubBoards() {
 		Square[] sqrArray = new Square[4];
+		Square sqr1;
+		Square sqr2;
+		Square sqr3;
+		Square sqr4;
 		for (int x = 0; x < 8; x++) {
 			for (int y = 0; y < 8; y++) {
-				Square sqr1 = this.grid.getSquare(x, y);
-				Square sqr2 = this.grid.getSquare(x+1, y);
-				Square sqr3 = this.grid.getSquare(x, y+1);
-				Square sqr4 = this.grid.getSquare(x+1, y+1);
+				sqr1 = this.grid.getSquare(x, y);
+				sqr2 = this.grid.getSquare(x+1, y);
+				sqr3 = this.grid.getSquare(x, y+1);
+				sqr4 = this.grid.getSquare(x+1, y+1);
 				sqrArray[0] = sqr1;
 				sqrArray[1] = sqr2;
 				sqrArray[2] = sqr3;

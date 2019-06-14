@@ -7,9 +7,9 @@ package quoridor;
  */
 public abstract class Player {
     /**
-     * The Game Board
+     * The Game
      */
-    private Board board;
+    private Game game;
     /**
      * The player Name.
      */
@@ -25,10 +25,10 @@ public abstract class Player {
      * it has a dedidcated pawn and a number of fences left.
      * @author Aymeric Bizouarn
      */
-    public Player(String name,Board board) {
+    public Player(String name,Game game) {
         this.name = name;
         this.nbFences = 10;
-        this.board = board;
+        this.game = game;
     }
 
     public abstract void play();
@@ -55,7 +55,7 @@ public abstract class Player {
         this.nbFences = nbFences;
     }
 
-    public Board getBoard() {
-        return board;
+    public Game getGame() {
+        return game;
     }
 }

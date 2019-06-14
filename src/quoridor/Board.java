@@ -16,7 +16,7 @@ public class Board {
 
 	private final int SIZE = 9;
 	private ArrayList<Square> grid;
-	private ArrayList<Square[]> subBoards = new ArrayList<Square[]>();
+	private ArrayList<SubBoard> subBoards = new ArrayList<SubBoard>();
 
 	/**
 	 * Board constructor
@@ -126,8 +126,11 @@ public class Board {
 
 
 	public ArrayList<SubBoard> listOfPossibilitiesFenceVertical() {
-		// TODO - implement HumanPlayer.play
-		throw new UnsupportedOperationException();
+	/*	for (SubBoard subBoard : subBoards) {
+
+	} */
+	// TODO - implement HumanPlayer.play
+	throw new UnsupportedOperationException();
 	}
 
 	public ArrayList<SubBoard> listOfPossibilitiesFenceHorizontal() {

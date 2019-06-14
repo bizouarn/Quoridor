@@ -126,11 +126,11 @@ public class Board {
 
 
 	public ArrayList<SubBoard> listOfPossibilitiesFenceVertical() {
-	/*	for (SubBoard subBoard : subBoards) {
-
-	} */
-	// TODO - implement HumanPlayer.play
-	throw new UnsupportedOperationException();
+/*		for (SubBoard subBoard : subBoards) {
+			if ()
+		} */
+		// TODO - implement HumanPlayer.play
+		throw new UnsupportedOperationException();
 	}
 
 	public ArrayList<SubBoard> listOfPossibilitiesFenceHorizontal() {

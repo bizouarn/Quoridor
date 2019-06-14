@@ -7,23 +7,28 @@ import quoridor.Square;
 
 public class subBoard {
 
-  Square sqr1; //upper left
-  Square sqr2; //upper right
-  Square sqr3; //lower left
-  Square sqr4; //lower right
+  final Square SQR1; //upper left
+  final Square SQR2; //upper right
+  final Square SQR3; //lower left
+  final Square SQR4; //lower right
 
-  Square[] sqrArray;
+  final Square[] SQRARRAY;
+
+  final int X;
+  final int Y;
 
   boolean verticalFence;
   boolean horizontalFence;
 
   public SubBoard(Square sqr1, Square sqr2, Square sqr3, Square sqr4) {
     if ((sqr1 != null) && (sqr2 != null) && (sqr3 != null) && (sqr4 != null)) {
-      this.sqr1 = sqr1;
-      this.sqr2 = sqr2;
-      this.sqr3 = sqr3;
-      this.sqr4 = sqr4;
-      this.sqrArray = {sqr1, sqr2, sqr3, sqr4};
+      this.SQR1 = sqr1;
+      this.SQR2 = sqr2;
+      this.SQR3 = sqr3;
+      this.SQR4 = sqr4;
+      this.SQRARRAY = {sqr1, sqr2, sqr3, sqr4};
+      this.X = this.SQR1.getX();
+      this.Y = this.SQR1.getY();
     }
   }
 
@@ -44,6 +49,14 @@ public class subBoard {
   }
 
   public Square[] getSqrArray() {
-    return this.sqrArray;
+    return this.SQRARRAY;
+  }
+
+  public int getX() {
+    return this.X;
+  }
+
+  public int getY() {
+    return this.Y;
   }
 }

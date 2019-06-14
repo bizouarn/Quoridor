@@ -48,10 +48,10 @@ public class Square {
 			this.fenceS = true;
 		}
 		if (y == 0) {
-			this.fenceW = false;
+			this.fenceW = true;
 		}
 		if (y == 8) {
-			this.fenceE = false;
+			this.fenceE = true;
 		}
 	}
 
@@ -163,6 +163,10 @@ public class Square {
 	}
 
 	public String toString() {
-		return this.statusFence.toString();
+		String ret = this.statusFence.toString();
+	 	if (this.status != Status.NONE) {
+			ret += "Player";
+		}
+		return ;
 	}
 }

@@ -2,6 +2,7 @@ package quoridor;
 
 // import project
 import quoridor.Square;
+import quoridor.PossibilitiesFence;
 //import GUI.MainGUI;
 
 // import java
@@ -16,6 +17,7 @@ public class Board {
 
 	private final int SIZE = 9;
 	private ArrayList<Square> grid;
+	private ArrayList<Square[]> subBoards = new ArrayList<Square[]>();
 
 	/**
 	 * Board constructor
@@ -82,7 +84,15 @@ public class Board {
 		for (Square sqr : grid) {
 			sqr.refreshStatusFence();
 		}
+	}
 
+	public void initializeSubBoards() {
+		Square[] sqrArray = new Square[4];
+		for (int x = 0; x < 8; x++) {
+			for (int y = 0; y < 8; y++) {
+				Square sqr1 = this.grid.getSquare(x, y);
+			}
+		}
 	}
 
 	/**
@@ -103,7 +113,12 @@ public class Board {
 	}
 
 
-	public ArrayList<Square> listOfPossibilitiesFence() {
+	public ArrayList<Square> listOfPossibilitiesFenceVertical() {
+		// TODO - implement HumanPlayer.play
+		throw new UnsupportedOperationException();
+	}
+
+	public ArrayList<Square> listOfPossibilitiesFenceHorizontal() {
 		// TODO - implement HumanPlayer.play
 		throw new UnsupportedOperationException();
 	}
@@ -136,16 +151,16 @@ public class Board {
 		if (player == game.getPlayer2()) {
 			currSqr = getPlayer2Square();
 			if (currSqr.getFenceN() == false) {
-				ret.add(this.getSquare(currSqr.getX(), currSqr.getY() - 1);
+				ret.add(this.getSquare(currSqr.getX(), currSqr.getY() - 1));
 			}
 			if (currSqr.getFenceE() == false) {
-				ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY());
+				ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY()));
 			}
 			if (currSqr.getFenceS() == false) {
-				ret.add(this.getSquare(currSqr.getX(), currSqr.getY() + 1);
+				ret.add(this.getSquare(currSqr.getX(), currSqr.getY() + 1));
 			}
 			if (currSqr.getFenceW() == false) {
-				ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY());
+				ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY()));
 			}
 		}
 		return ret;

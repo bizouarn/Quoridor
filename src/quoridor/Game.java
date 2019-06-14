@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /**
  * This class contains the methods to initialize the game
- * @author
+ * @author Aymeric Bizouarn , Pierre-Galaad 'P(x)' Naquet
  */
 public class Game {
 
@@ -19,8 +19,6 @@ public class Game {
 	private Player player2;
 	private Mode mode;
 
-	private Scanner scan;
-
 	/**
 	 * Game constructor
 	 * intiliaze the board, the two players and the mode
@@ -28,8 +26,9 @@ public class Game {
 	 * @author Aymeric Bizouarn , Pierre-Galaad 'P(x)' Naquet
 	 */
 	public Game() {
-		// TODO - implement Game.Game
-		throw new UnsupportedOperationException();
+		initializeGame();
+		start();
+		endOfGame();
 	}
 
 	public Board getBoard() {
@@ -93,10 +92,35 @@ public class Game {
 	 * Launch the game
 	 */
 	public void start() {
-		// TODO - implement Game.start
-		throw new UnsupportedOperationException();
+		Player playerWhoStart = this.whoStarts();
+		int playerPlay = 1; //1 = for player1 play & 2 = for player2
+		if(playerWhoStart == this.player1){
+            playerPlay = 1;
+        }else if(playerWhoStart == this.player2){
+            playerPlay = 2;
+        }
+		while (!checkEndOfGame()){
+		    Player playerActual = null;
+		    if(playerPlay == 1){
+		        playerActual = this.player1;
+            } else if(playerPlay == 2) {
+                playerActual = this.player1;
+            }
+		    playerActual.play();
+		    playerPlay ++;
+		    if(playerPlay > 2){playerPlay = 1;}
+        }
 	}
 
+    /**
+     * Check if the game was finish.
+     * @return True if the game was finish.
+     */
+	public boolean checkEndOfGame(){
+        boolean ret = false;
+
+        return ret;
+    }
 	/**
 	 * End the game and launch the results procedure
 	 */

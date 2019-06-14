@@ -31,6 +31,8 @@ public abstract class Player {
         this.board = board;
     }
 
+    public abstract void play();
+
     public String getName() {
         return this.name;
     }

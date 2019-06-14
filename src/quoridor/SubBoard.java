@@ -5,17 +5,14 @@ import quoridor.Square;
 
 // import java
 
-/**
- *
- */
-public class SubBoard {
+public class subBoard {
 
   final Square SQR1; //upper left
   final Square SQR2; //upper right
   final Square SQR3; //lower left
   final Square SQR4; //lower right
 
-  final Square[] SQRARRAY;
+  Square[] sqrArray = new Square[4];
 
   final int X;
   final int Y;
@@ -29,7 +26,10 @@ public class SubBoard {
       this.SQR2 = sqr2;
       this.SQR3 = sqr3;
       this.SQR4 = sqr4;
-      this.SQRARRAY = {sqr1, sqr2, sqr3, sqr4};
+      this.sqrArray[0] = this.SQR1;
+      this.sqrArray[1] = this.SQR2;
+      this.sqrArray[2] = this.SQR3;
+      this.sqrArray[3] = this.SQR4;
       this.X = this.SQR1.getX();
       this.Y = this.SQR1.getY();
     }

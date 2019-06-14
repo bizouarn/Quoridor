@@ -64,7 +64,7 @@ public class HumanPlayer extends Player {
                     int x2 = Integer.parseInt(sc.nextLine());
                     System.out.print(" y : ");
                     int y2 = Integer.parseInt(sc.nextLine());
-                    System.out.print(" 1- vertical ; 2 - horizontal :");
+                    System.out.print(" 1- Horizontal ; 2 - Vertical :");
                     int pos = Integer.parseInt(sc.nextLine());
                     ArrayList<SubBoard> possibilitiesFence = null;
                     if(pos == 1){
@@ -73,9 +73,15 @@ public class HumanPlayer extends Player {
                         possibilitiesFence = possibilitiesFenceV;
                     }
                     for(SubBoard sb : possibilitiesFence){
-                        if(false){ //TODO
-                            playFence();
-                            validPlay = true;
+                        Square[] sqrArray= sb.getSqrArray();
+                        if(sqrArray[0].getX()==x1 && sqrArray[0].getY()==y1 && sqrArray[3].getX()==x2 && sqrArray[3].getY()==y2){
+                            if(pos == 1 && !sb.getHorizontalFence()) {
+                                playFence(x1,y1,x2,y2,pos);
+                                validPlay = true;
+                            } else if(pos == 2 && !sb.getVerticalFence()){
+                                playFence(x1,y1,x2,y2,pos);
+                                validPlay = true;
+                            }
                         }
                     }
                 }
@@ -93,8 +99,34 @@ public class HumanPlayer extends Player {
      *
      * @author
      */
-    private void playFence() {
-        //Todo
+    private void playFence(int x1, int y1, int x2,int y2, int pos) {
+        ArrayList<SubBoard> possibilitiesFence = null;
+        if(pos == 1){
+            possibilitiesFence = this.getGame().getBoard().listOfPossibilitiesFenceHorizontal();
+        } else if(pos == 2) {
+            possibilitiesFence = this.getGame().getBoard().listOfPossibilitiesFenceVertical();
+        }
+        for(SubBoard sb : possibilitiesFence){
+            Square[] sqrArray= sb.getSqrArray();
+            if(sqrArray[0].getX()==x1 && sqrArray[0].getY()==y1 && sqrArray[3].getX()==x2 && sqrArray[3].getY()==y2){
+                if(pos == 1 && !sb.getHorizontalFence()) {
+                    sb.setHorizontalFence(true);
+                    sqrArray[0].setFenceS(true);
+                    sqrArray[1].setFenceS(true);
+                    sqrArray[2].setFenceN(true);
+                    sqrArray[3].setFenceN(true);
+                } else if(pos == 2 && !sb.getVerticalFence()){
+                    sb.setVerticalFence(true);
+                    sqrArray[0].setFenceE(true);
+                    sqrArray[1].setFenceW(true);
+                    sqrArray[2].setFenceE(true);
+                    sqrArray[3].setFenceW(true);
+                }
+                for(int k = 0;k<sqrArray.length;k++) {
+                    sqrArray[k].refreshStatusFence();
+                }
+            }
+        }
     }
 
     /**

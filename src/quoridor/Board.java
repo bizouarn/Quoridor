@@ -88,7 +88,9 @@ public class Board {
 		this.grid = new ArrayList<Square>();
 		for (int x = 0; x < 9; x++) {
 			for (int y = 0; y < 9; y++) {
-				this.grid.add(new Square(x, y));
+				Square sqr = new Square(x,y);
+				sqr.setStatus(Status.NONE);
+				this.grid.add(sqr);
 			}
 		}
 		for (Square sqr : grid) {
@@ -222,7 +224,7 @@ public class Board {
 		String str = "";
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
-				str += getSquare(i, j).toString() + "\t";
+				str += getSquare(i, j).getStatusFence()+"|"+getSquare(i,j).getStatus()+"|"+ "\t";
 			}
 			str += "\n";
 		}

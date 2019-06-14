@@ -13,7 +13,13 @@ import java.util.Scanner;
 */
 public class Quoridor {
 
+	/**
+	 * The Game.
+	 */
 	private Game game;
+	/**
+	 * The save file name.
+	 */
 	private String fileName;
 
 	/**

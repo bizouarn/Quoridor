@@ -220,16 +220,32 @@ public class Board {
 		    currSqr = null;
         }
 		if (currSqr.getFenceN() == false) {
-			ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY()));
+			if(currSqr.getStatus()==Status.Player1 || currSqr.getStatus()==Status.Player2){
+
+			} else {
+				ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY()));
+			}
 		}
 		if (currSqr.getFenceE() == false) {
-			ret.add(this.getSquare(currSqr.getX(), currSqr.getY() - 1));
+			if(currSqr.getStatus()==Status.Player1 || currSqr.getStatus()==Status.Player2){
+
+			} else {
+				ret.add(this.getSquare(currSqr.getX(), currSqr.getY() - 1));
+			}
 		}
 		if (currSqr.getFenceS() == false) {
-			ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY()));
+			if(currSqr.getStatus()==Status.Player1 || currSqr.getStatus()==Status.Player2){
+
+			} else {
+				ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY()));
+			}
 		}
 		if (currSqr.getFenceW() == false) {
-			ret.add(this.getSquare(currSqr.getX(), currSqr.getY() + 1));
+			if(currSqr.getStatus()==Status.Player1 || currSqr.getStatus()==Status.Player2){
+
+			} else {
+				ret.add(this.getSquare(currSqr.getX(), currSqr.getY() + 1));
+			}
 		}
 		return ret;
 	}

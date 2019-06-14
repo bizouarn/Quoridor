@@ -1,9 +1,6 @@
 package quoridor;
 
 // import project
-import quoridor.Board;
-import quoridor.Mode;
-import quoridor.Player;
 
 // import java
 import java.util.Scanner;

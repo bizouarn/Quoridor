@@ -21,10 +21,11 @@ public class TestBoard {
     }
     @Test
     public void testListOfPossibilitiesPawn(){
+        Game game = new Game();
         Board board = new Board();
         Player player = new AutoPlayer("joueur",board);
-        ArrayList<Square> arrayPossibilitiesPawn = board.listOfPossibilitiesPawn(player);
+        ArrayList<Square> arrayPossibilitiesPawn = board.listOfPossibilitiesPawn(player,game);
         assertNotNull(arrayPossibilitiesPawn);
-        assertNull(board.listOfPossibilitiesPawn(null));
+        assertNull(board.listOfPossibilitiesPawn(null,null));
     }
 }

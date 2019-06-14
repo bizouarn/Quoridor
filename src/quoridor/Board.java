@@ -49,21 +49,21 @@ public class Board {
 	public Square getPlayer1Square() {
 		Square ret = null;
 		for (Square sqr : this.grid) {
-			if (sqr.getStatus == Status.Player1) {
+			if (sqr.getStatus() == Status.Player1) {
 				ret = sqr;
 			}
 		}
-		return sqr;
+		return ret;
 	}
 
 	public Square getPlayer2Square() {
 		Square ret = null;
 		for (Square sqr : this.grid) {
-			if (sqr.getStatus == Status.Player2) {
+			if (sqr.getStatus() == Status.Player2) {
 				ret = sqr;
 			}
 		}
-		return sqr;
+		return ret;
 	}
 
 	/**
@@ -102,12 +102,10 @@ public class Board {
 		}
 	}
 
-	/**
-	 *
-	 * @param game
-	 */
-	public ArrayList<Square> listOfPossibilitiesFence() {
 
+	public ArrayList<Square> listOfPossibilitiesFence() {
+		// TODO - implement HumanPlayer.play
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -122,12 +120,13 @@ public class Board {
 		ArrayList<Square> ret = new ArrayList<Square>();
 		if (player == game.getPlayer1()) {
 			currSqr = getPlayer1Square();
-			if (currSqr.getFenceN == false) {
+			if (currSqr.getFenceN() == false) {
 			}
 		}
 		if (player == game.getPlayer2()) {
 
 		}
+		return ret;
 	}
 
 	public String toString() {

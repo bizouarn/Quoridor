@@ -16,7 +16,7 @@ public class Board {
 
 	private final int SIZE = 9;
 	private ArrayList<Square> grid;
-	private ArrayList<SubBoard> subBoards = new ArrayList<SubBoard>();
+	private ArrayList<Square[]> subBoards = new ArrayList<Square[]>();
 
 	/**
 	 * Board constructor
@@ -112,7 +112,7 @@ public class Board {
 				sqrArray[1] = sqr2;
 				sqrArray[2] = sqr3;
 				sqrArray[3] = sqr4;
-				this.subBoard.add(sqrArray);
+				this.subBoards.add(sqrArray);
 			}
 		}
 	}
@@ -200,7 +200,9 @@ public class Board {
 		}
 		else if (player == game.getPlayer2()) {
 			currSqr = getPlayer2Square();
-		}
+		} else {
+		    currSqr = null;
+        }
 		if (currSqr.getFenceN() == false) {
 			ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY()));
 		}

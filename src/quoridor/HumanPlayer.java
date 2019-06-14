@@ -28,6 +28,8 @@ public class HumanPlayer extends Player {
      */
     public void play() {
         ArrayList<Square> possibilitiesPawn = this.getGame().getBoard().listOfPossibilitiesPawn(this, this.getGame());
+        ArrayList<SubBoard> possibilitiesFenceH = this.getGame().getBoard().listOfPossibilitiesFenceHorizontal();
+        ArrayList<SubBoard> possibilitiesFenceV = this.getGame().getBoard().listOfPossibilitiesFenceVertical();
         Scanner sc = new Scanner(System.in);
         boolean validPlay = false;
         while (!validPlay) {
@@ -53,7 +55,33 @@ public class HumanPlayer extends Player {
                     }
                 } catch (Exception e) { }
             } else if (choix.equals("2")) {
+                try{
+                    System.out.print(" x : ");
+                    int x1 = Integer.parseInt(sc.nextLine());
+                    System.out.print(" y : ");
+                    int y1 = Integer.parseInt(sc.nextLine());
+                    System.out.print(" x : ");
+                    int x2 = Integer.parseInt(sc.nextLine());
+                    System.out.print(" y : ");
+                    int y2 = Integer.parseInt(sc.nextLine());
+                    System.out.print(" 1- vertical ; 2 - horizontal :");
+                    int pos = Integer.parseInt(sc.nextLine());
+                    ArrayList<SubBoard> possibilitiesFence = null;
+                    if(pos == 1){
+                        possibilitiesFence = possibilitiesFenceH;
+                    } else if(pos == 2) {
+                        possibilitiesFence = possibilitiesFenceV;
+                    }
+                    for(SubBoard sb : possibilitiesFence){
+                        if(false){ //TODO
+                            playFence();
+                            validPlay = true;
+                        }
+                    }
+                }
+                catch (Exception e){
 
+                }
             }
         }
     }
@@ -66,8 +94,7 @@ public class HumanPlayer extends Player {
      * @author
      */
     private void playFence() {
-        // TODO - implement AutoPlayer.playFence
-        throw new UnsupportedOperationException();
+        //Todo
     }
 
     /**

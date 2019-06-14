@@ -32,7 +32,7 @@ public class Board {
 		Square ret = null;
 		for (Square sqr : this.grid) {
 			if ((sqr.getX() == x) && (sqr.getY() == y)) {
-				ret = getSquare(x, y);
+				ret = sqr;
 			}
 		}
 		return ret;
@@ -73,10 +73,10 @@ public class Board {
 	 * @author Pierre-Galaad 'P(x)' Naquet
 	 */
 	public void initializeBoard() {
-
+		this.grid = new ArrayList<Square>();
 		for (int x = 0; x < 9; x++) {
 			for (int y = 0; y < 9; y++) {
-				grid.add(new Square(x, y));
+				this.grid.add(new Square(x, y));
 			}
 		}
 		for (Square sqr : grid) {
@@ -121,6 +121,7 @@ public class Board {
 		if (player == game.getPlayer1()) {
 			currSqr = getPlayer1Square();
 			if (currSqr.getFenceN() == false) {
+				ret.add(grid.getSquare)
 			}
 		}
 		if (player == game.getPlayer2()) {
@@ -133,8 +134,9 @@ public class Board {
 		String str = "";
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
-				str = str + getSquare(i, j).toString();
+				str =+ getSquare(i, j).toString() + "\t";
 			}
+			str =+ "\n";
 		}
 		return str;
 	}

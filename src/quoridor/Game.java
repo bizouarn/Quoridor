@@ -106,6 +106,8 @@ public class Game {
             } else if(playerPlay == 2) {
                 playerActual = this.player1;
             }
+		    System.out.println(playerActual.getName()+" : ");
+		    System.out.println(this.board);
 		    playerActual.play();
 		    playerPlay ++;
 		    if(playerPlay > 2){playerPlay = 1;}
@@ -118,7 +120,11 @@ public class Game {
      */
 	public boolean checkEndOfGame(){
         boolean ret = false;
-
+		if(this.board.getPlayer1Square().getY()==8){
+			ret = true;
+		} else if(this.board.getPlayer1Square().getY()==0){
+			ret = true;
+		}
         return ret;
     }
 	/**

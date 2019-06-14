@@ -2,7 +2,6 @@ package quoridor;
 
 // import project
 import quoridor.Square;
-import quoridor.PossibilitiesFence;
 //import GUI.MainGUI;
 
 // import java

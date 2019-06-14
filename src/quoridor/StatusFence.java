@@ -1,5 +1,9 @@
 package quoridor;
 
+/**
+ * Enumeration containing the StatusFence of the squares, Uses the cardinal points.
+ * @author Pierre-Galaad 'P(x)' Naquet, Aymeric Bizouarn
+ */
 public enum StatusFence {
 	NONE("   "),
 	N(" N "),

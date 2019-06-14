@@ -98,6 +98,11 @@ public class Board {
 		}
 	}
 
+	/**
+	 * SubBoards Initializer
+	 * intiliaze every subBoard of the board
+	 * @author Pierre-Galaad 'P(x)' Naquet
+	 */
 	public void initializeSubBoards() {
 		Square[] sqrArray = new Square[4];
 		Square sqr1;
@@ -121,8 +126,7 @@ public class Board {
 
 	/**
 	 * Board Initializer
-	 * intiliaze a 81 squares board (9*9)
-	 * Initialize players
+	 * Initialize players' pawns on the Board
 	 * @author Pierre-Galaad 'P(x)' Naquet
 	 */
 	public void initializePlayers() {
@@ -137,6 +141,11 @@ public class Board {
 	}
 
 
+	/**
+	 * Find and return all the SubBoards containing a playable vertical fence this turn.
+	 * @return The arayList containing SubBoards
+	 * @author Pierre-Galaad 'P(x)' Naquet
+	 */
 	public ArrayList<SubBoard> listOfPossibilitiesFenceVertical() {
 		ArrayList<SubBoard> ret = new ArrayList<SubBoard>();
 		boolean bool;
@@ -162,6 +171,11 @@ public class Board {
 		return ret;
 	}
 
+	/**
+	 * Find and return all the SubBoards containing a playable horizontal fence this turn.
+	 * @return The arayList containing SubBoards
+	 * @author Pierre-Galaad 'P(x)' Naquet
+	 */
 	public ArrayList<SubBoard> listOfPossibilitiesFenceHorizontal() {
 		ArrayList<SubBoard> ret = new ArrayList<SubBoard>();
 		boolean bool;

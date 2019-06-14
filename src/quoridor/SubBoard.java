@@ -5,6 +5,12 @@ import quoridor.Square;
 
 // import java
 
+/**
+ * Class containing the subBoard object.
+ * Each subBoard contains four squares and the two possible fences between them.
+ * Each square may be in up to four subBoard.
+ * @author Pierre-Galaad 'P(x)' Naquet, Aymeric Bizouarn
+ */
 public class SubBoard {
 
   Square SQR1; //upper left
@@ -20,6 +26,13 @@ public class SubBoard {
   boolean verticalFence;
   boolean horizontalFence;
 
+  /**
+   * SubBoard constructor
+   * Creates the SubBoard containing the four squares, from them, creates an array,
+   * and get coordinates (X, Y) which are the upper left square's one.
+   * It also containes the fences status.
+   * @author Pierre-Galaad 'P(x)' Naquet
+   */
   public SubBoard(Square sqr1, Square sqr2, Square sqr3, Square sqr4) {
     if ((sqr1 != null) && (sqr2 != null) && (sqr3 != null) && (sqr4 != null)) {
       this.SQR1 = sqr1;

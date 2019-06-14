@@ -17,13 +17,12 @@ public class Game {
 	private Board board;
 	private Player player1;
 	private Player player2;
-	private Mode mode;
 
 	/**
 	 * Game constructor
 	 * intiliaze the board, the two players and the mode
 	 * The mode is choosen by the players with a scanner
-	 * @author Aymeric Bizouarn , Pierre-Galaad 'P(x)' Naquet
+	 * @author Aymeric Bizouarn
 	 */
 	public Game() {
 		initializeGame();
@@ -51,7 +50,8 @@ public class Game {
 	}
 
 	/**
-	 * Initialize the game.
+	 * Initialize the game by creating a new board and by asking for players name.
+	 * @author Aymeric Bizouarn
 	 */
 	public void initializeGame() {
 		this.board = new Board();
@@ -88,7 +88,8 @@ public class Game {
 	}
 
 	/**
-	 * Launch the game
+	 * Launch the game with the attributes as parameters.
+	 * @author Aymeric Bizouarn
 	 */
 	public void start() {
 		Player playerWhoStart = this.whoStarts();
@@ -116,6 +117,7 @@ public class Game {
     /**
      * Check if the game was finish.
      * @return True if the game was finish.
+		 * @author Aymeric Bizouarn
      */
 	public boolean checkEndOfGame(){
         boolean ret = false;
@@ -128,6 +130,7 @@ public class Game {
     }
 	/**
 	 * End the game and launch the results procedure
+	 * @author Pierre-Galaad 'P(x)' Naquet
 	 */
 	public void endOfGame(Player player) {
 

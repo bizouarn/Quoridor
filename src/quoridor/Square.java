@@ -56,7 +56,7 @@ public class Square {
 	}
 
 	/**
-	 * refreshes the status fence
+	 * refreshes the fence status
 	 * @author Pierre-Galaad 'P(x)' Naquet
 	 */
 	public void refreshStatusFence() {

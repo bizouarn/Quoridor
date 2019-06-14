@@ -16,7 +16,7 @@ public class Board {
 
 	private final int SIZE = 9;
 	private ArrayList<Square> grid;
-	private ArrayList<Square[]> subBoards = new ArrayList<Square[]>();
+	private ArrayList<SubBoard> subBoards = new ArrayList<SubBoard>();
 
 	/**
 	 * Board constructor
@@ -112,7 +112,7 @@ public class Board {
 				sqrArray[1] = sqr2;
 				sqrArray[2] = sqr3;
 				sqrArray[3] = sqr4;
-				this.subBoards.add(sqrArray);
+				this.subBoards.add(new SubBoard(sqr1,sqr2,sqr3,sqr4));
 			}
 		}
 	}
@@ -140,7 +140,7 @@ public class Board {
 		boolean bool;
 		for (SubBoard subBoard : subBoards) {
 			bool = true;
-			if ((subBoard.getHorizontalFence() == true) || (subBoard.getVerticalFence() == true)  {
+			if ((subBoard.getHorizontalFence() == true) || (subBoard.getVerticalFence() == true)) {
 				bool = false;
 			}
 			if (getSubBoard(subBoard.getX() + 1, subBoard.getY()) != null) {
@@ -165,7 +165,7 @@ public class Board {
 		boolean bool;
 		for (SubBoard subBoard : subBoards) {
 			bool = true;
-			if ((subBoard.getVerticalFence() == true) || (subBoard.getHorizontalFence() == true)  {
+			if ((subBoard.getVerticalFence() == true) || (subBoard.getHorizontalFence() == true)) {
 				bool = false;
 			}
 			if (getSubBoard(subBoard.getX(), subBoard.getY() + 1) != null) {

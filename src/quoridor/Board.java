@@ -121,11 +121,32 @@ public class Board {
 		if (player == game.getPlayer1()) {
 			currSqr = getPlayer1Square();
 			if (currSqr.getFenceN() == false) {
-				ret.add(grid.getSquare)
+				ret.add(grid.getSquare(currSqr.getX(), currSqr.getY() - 1);
+			}
+			if (currSqr.getFenceE() == false) {
+				ret.add(grid.getSquare(currSqr.getX() + 1, currSqr.getY());
+			}
+			if (currSqr.getFenceS() == false) {
+				ret.add(grid.getSquare(currSqr.getX(), currSqr.getY() + 1);
+			}
+			if (currSqr.getFenceW() == false) {
+				ret.add(grid.getSquare(currSqr.getX() - 1, currSqr.getY());
 			}
 		}
 		if (player == game.getPlayer2()) {
-
+			currSqr = getPlayer2Square();
+			if (currSqr.getFenceN() == false) {
+				ret.add(grid.getSquare(currSqr.getX(), currSqr.getY() - 1);
+			}
+			if (currSqr.getFenceE() == false) {
+				ret.add(grid.getSquare(currSqr.getX() + 1, currSqr.getY());
+			}
+			if (currSqr.getFenceS() == false) {
+				ret.add(grid.getSquare(currSqr.getX(), currSqr.getY() + 1);
+			}
+			if (currSqr.getFenceW() == false) {
+				ret.add(grid.getSquare(currSqr.getX() - 1, currSqr.getY());
+			}
 		}
 		return ret;
 	}
@@ -134,9 +155,9 @@ public class Board {
 		String str = "";
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
-				str =+ getSquare(i, j).toString() + "\t";
+				str += getSquare(i, j).toString() + "\t";
 			}
-			str =+ "\n";
+			str += "\n";
 		}
 		return str;
 	}

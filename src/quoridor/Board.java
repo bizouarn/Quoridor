@@ -94,10 +94,10 @@ public class Board {
 		Square sqr4;
 		for (int x = 0; x < 8; x++) {
 			for (int y = 0; y < 8; y++) {
-				sqr1 = this.grid.getSquare(x, y);
-				sqr2 = this.grid.getSquare(x+1, y);
-				sqr3 = this.grid.getSquare(x, y+1);
-				sqr4 = this.grid.getSquare(x+1, y+1);
+				sqr1 = this.getSquare(x, y);
+				sqr2 = this.getSquare(x+1, y);
+				sqr3 = this.getSquare(x, y+1);
+				sqr4 = this.getSquare(x+1, y+1);
 				sqrArray[0] = sqr1;
 				sqrArray[1] = sqr2;
 				sqrArray[2] = sqr3;
@@ -148,31 +148,31 @@ public class Board {
 		if (player == game.getPlayer1()) {
 			currSqr = getPlayer1Square();
 			if (currSqr.getFenceN() == false) {
-				ret.add(this.getSquare(currSqr.getX(), currSqr.getY() - 1));
+				ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY()));
 			}
 			if (currSqr.getFenceE() == false) {
-				ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY()));
+				ret.add(this.getSquare(currSqr.getX(), currSqr.getY() - 1));
 			}
 			if (currSqr.getFenceS() == false) {
-				ret.add(this.getSquare(currSqr.getX(), currSqr.getY() + 1));
+				ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY()));
 			}
 			if (currSqr.getFenceW() == false) {
-				ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY()));
+				ret.add(this.getSquare(currSqr.getX(), currSqr.getY() + 1));
 			}
 		}
 		if (player == game.getPlayer2()) {
 			currSqr = getPlayer2Square();
 			if (currSqr.getFenceN() == false) {
-				ret.add(this.getSquare(currSqr.getX(), currSqr.getY() - 1));
+				ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY()));
 			}
 			if (currSqr.getFenceE() == false) {
-				ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY()));
+				ret.add(this.getSquare(currSqr.getX(), currSqr.getY() - 1));
 			}
 			if (currSqr.getFenceS() == false) {
-				ret.add(this.getSquare(currSqr.getX(), currSqr.getY() + 1));
+				ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY()));
 			}
 			if (currSqr.getFenceW() == false) {
-				ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY()));
+				ret.add(this.getSquare(currSqr.getX(), currSqr.getY() + 1));
 			}
 		}
 		return ret;

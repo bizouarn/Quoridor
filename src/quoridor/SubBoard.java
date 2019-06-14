@@ -5,20 +5,17 @@ import quoridor.Square;
 
 // import java
 
-/**
- *
- */
-public class SubBoard {
+public class subBoard {
 
-  Square SQR1; //upper left
-  Square SQR2; //upper right
-  Square SQR3; //lower left
-  Square SQR4; //lower right
+  final Square SQR1; //upper left
+  final Square SQR2; //upper right
+  final Square SQR3; //lower left
+  final Square SQR4; //lower right
 
   Square[] sqrArray = new Square[4];
 
-  int X;
-  int Y;
+  final int X;
+  final int Y;
 
   boolean verticalFence;
   boolean horizontalFence;
@@ -46,16 +43,16 @@ public class SubBoard {
     this.horizontalFence = bool;
   }
 
-  public boolean getVerticalFence(boolean bool) {
+  public boolean getVerticalFence() {
     return this.verticalFence;
   }
 
-  public boolean getHorizontalFence(boolean bool) {
+  public boolean getHorizontalFence() {
     return this.horizontalFence;
   }
 
   public Square[] getSqrArray() {
-    return this.sqrArray;
+    return this.SQRARRAY;
   }
 
   public int getX() {

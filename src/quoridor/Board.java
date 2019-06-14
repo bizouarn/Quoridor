@@ -153,7 +153,7 @@ public class Board {
 					bool = false;
 				}
 			}
-			if (bool = true) {
+			if (bool == true) {
 				ret.add(subBoard);
 			}
 		}
@@ -161,8 +161,28 @@ public class Board {
 	}
 
 	public ArrayList<SubBoard> listOfPossibilitiesFenceHorizontal() {
-		// TODO - implement HumanPlayer.play
-		throw new UnsupportedOperationException();
+		ArrayList<SubBoard> ret = new ArrayList<SubBoard>();
+		boolean bool;
+		for (SubBoard subBoard : subBoards) {
+			bool = true;
+			if ((subBoard.getVerticalFence() == true) || (subBoard.getHorizontalFence() == true)  {
+				bool = false;
+			}
+			if (getSubBoard(subBoard.getX(), subBoard.getY() + 1) != null) {
+				if (getSubBoard(subBoard.getX(), subBoard.getY() + 1).getHorizontalFence() == true) {
+					bool = false;
+				}
+			}
+			if (getSubBoard(subBoard.getX(), subBoard.getY() - 1) != null) {
+				if (getSubBoard(subBoard.getX(), subBoard.getY() - 1).getHorizontalFence() == true) {
+					bool = false;
+				}
+			}
+			if (bool == true) {
+				ret.add(subBoard);
+			}
+		}
+		return ret;
 	}
 
 	/**

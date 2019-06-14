@@ -59,20 +59,18 @@ public class Game {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Name Player 1 : ");
 		String name = scanner.nextLine();
-		if(name.indexOf("auto")!=-1){
+		if(name.contains("auto")){
 			this.player1 = new AutoPlayer(name,this);
 		} else {
 			this.player1 = new HumanPlayer(name,this);
 		}
 		System.out.println("Name Player 2 : ");
 		name = scanner.nextLine();
-		if(name.indexOf("auto")!=-1){
-			this.player1 = new AutoPlayer(name,this);
+		if(name.contains("auto")){
+			this.player2 = new AutoPlayer(name,this);
 		} else {
-			this.player1 = new HumanPlayer(name,this);
+			this.player2 = new HumanPlayer(name,this);
 		}
-		this.board.getSquare(0,4).setStatus(Status.Player1);
-		this.board.getSquare(8,4).setStatus(Status.Player2);
 	}
 
 	/**
@@ -106,10 +104,10 @@ public class Game {
 		    if(playerPlay == 1){
 		        playerActual = this.player1;
             } else if(playerPlay == 2) {
-                playerActual = this.player1;
+                playerActual = this.player2;
             }
-		    System.out.println(playerActual.getName()+" : ");
 		    System.out.println(this.board);
+			System.out.println(playerActual.getName()+" : ");
 		    playerActual.play();
 		    playerPlay ++;
 		    if(playerPlay > 2){playerPlay = 1;}

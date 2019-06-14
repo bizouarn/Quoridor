@@ -17,6 +17,7 @@ public class AutoPlayer extends Player {
 	 * @author
 	 */
 	public void play() {
+		// TODO - implement AutoPlayer.play
 		this.getGame().getBoard().listOfPossibilitiesPawn(this,this.getGame());
 	}
 

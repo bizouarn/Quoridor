@@ -32,7 +32,14 @@ public class HumanPlayer extends Player {
         boolean validPlay = false;
         while (!validPlay) {
             System.out.println("Write : \n1 - For play pawn\n2 - For play fence");
-            if (sc.nextLine().equals("1")) {
+            String choix = sc.nextLine()+"";
+            if (choix.equals("1")) {
+                for (Square sqr : possibilitiesPawn) {
+                    System.out.print(sqr);
+                    if(sqr != null) {
+                        System.out.print("(" + sqr.getX() + ";" + sqr.getY() + ")");
+                    }
+                }
                 try {
                     System.out.print(" x : ");
                     int x = Integer.parseInt(sc.nextLine());
@@ -45,7 +52,7 @@ public class HumanPlayer extends Player {
                         }
                     }
                 } catch (Exception e) { }
-            } else if (sc.nextLine().equals("2")) {
+            } else if (choix.equals("2")) {
 
             }
         }
@@ -73,7 +80,7 @@ public class HumanPlayer extends Player {
         if (this.getGame().getPlayer1() == this) {
             this.getGame().getBoard().getPlayer1Square().setStatus(Status.NONE);
             this.getGame().getBoard().getSquare(x,y).setStatus(Status.Player1);
-        } else if (this.getGame().getPlayer1() == this) {
+        } else if (this.getGame().getPlayer2() == this) {
             this.getGame().getBoard().getPlayer1Square().setStatus(Status.NONE);
             this.getGame().getBoard().getSquare(x,y).setStatus(Status.Player2);
         }

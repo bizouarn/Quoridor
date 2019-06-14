@@ -1,9 +1,9 @@
 package quoridor;
 
 public enum Status {
-	NONE("NONE"),
-	Player1("Player1"),
-	Player2("Player2");
+	NONE("--"),
+	Player1("P1"),
+	Player2("P2");
 
 	private String text;
 

@@ -1,15 +1,14 @@
 package quoridor;
 
 // import project
-import quoridor.Board;
-import quoridor.Mode;
-import quoridor.Player;
 
 // import java
+
 import java.util.Scanner;
 
 /**
  * This class contains the methods to initialize the game
+ *
  * @author Aymeric Bizouarn , Pierre-Galaad 'P(x)' Naquet
  */
 public class Game {
@@ -108,74 +107,84 @@ public class Game {
 		int playerPlay = 1; //1 = for player1 play & 2 = for player2
 		if(playerWhoStart == this.player1){
             playerPlay = 1;
-        }else if(playerWhoStart == this.player2){
+        } else if (playerWhoStart == this.player2) {
             playerPlay = 2;
         }
-		while (!checkEndOfGame()){
-		    Player playerActual = null;
-		    if(playerPlay == 1){
-		        playerActual = this.player1;
-            } else if(playerPlay == 2) {
+        while (!checkEndOfGame()) {
+            Player playerActual = null;
+            if (playerPlay == 1) {
+                playerActual = this.player1;
+            } else if (playerPlay == 2) {
                 playerActual = this.player2;
             }
-		    System.out.println(this.board);
-			System.out.println(playerActual.getName()+" : ");
-		    playerActual.play();
-		    playerPlay ++;
-		    if(playerPlay > 2){playerPlay = 1;}
+            System.out.println(this.board);
+            System.out.println(playerActual.getName() + " : ");
+            playerActual.play();
+            playerPlay++;
+            if (playerPlay > 2) {
+                playerPlay = 1;
+            }
         }
-	}
+    }
 
     /**
      * Check if the game was finish.
+     *
      * @return True if the game was finish.
-		 * @author Aymeric Bizouarn
+     * @author Aymeric Bizouarn
      */
-	public boolean checkEndOfGame(){
+    public boolean checkEndOfGame() {
         boolean ret = false;
-		if(this.board.getPlayer1Square().getY()==8){
-			ret = true;
-		} else if(this.board.getPlayer1Square().getY()==0){
-			ret = true;
-		}
+        if (this.board.getPlayer1Square().getY() == 8) {
+            ret = true;
+        } else if (this.board.getPlayer1Square().getY() == 0) {
+            ret = true;
+        }
         return ret;
     }
-	/**
-	 * End the game and launch the results procedure
-	 * @author Pierre-Galaad 'P(x)' Naquet
-	 */
-	public void endOfGame(Player player) {
 
-		Scanner scan;
-		boolean bool = false;
+    /**
+     * End the game and launch the results procedure
+     *
+     * @author Pierre-Galaad 'P(x)' Naquet
+     */
+    public void endOfGame(Player player) {
 
-		System.out.println("The player : " + player.getName() + "has won !");
-		System.out.println();
-		System.out.println("What do you want to do ?");
-		System.out.println("1 - Rematch");
-		System.out.println("2 - Change Players");
-		System.out.println("3 - Leave the program");
+        Scanner scan;
+        boolean bool = false;
 
-		while (!bool) {
-			scan = new Scanner(getNextInt(System.in));
-			if (scan > 0 && scan < 4) {
-				bool = true;
-			}
-			else {
-				System.out.println("Please, select a valid option");
-			}
-		}
+        System.out.println("The player : " + player.getName() + "has won !");
+        System.out.println();
+        System.out.println("What do you want to do ?");
+        System.out.println("1 - Rematch");
+        System.out.println("2 - Change Players");
+        System.out.println("3 - Leave the program");
 
-		if (scan == 1) {
-			this.board = new Board();
-			this.start();
-		}
-		if (scan == 2) {
-			new Game();
-		}
-		if (scan == 3) {
-			System.exit(0);
-		}
-	}
+        int choice = -1;
+        while (!bool) {
+            try {
+                scan = new Scanner(System.in);
+                choice = scan.nextInt();
+                if (choice > 0 && choice < 4) {
+                    bool = true;
+                } else {
+                    System.out.println("Please, select a valid option");
+                }
+            } catch (Exception e) {
+				System.out.println("Invalid Input !");
+            }
+        }
+
+        if (choice == 1) {
+            this.board = new Board();
+            this.start();
+        }
+        if (choice == 2) {
+            new Game();
+        }
+        if (choice == 3) {
+            System.exit(0);
+        }
+    }
 
 }

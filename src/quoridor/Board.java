@@ -206,7 +206,7 @@ public class Board {
 	 * @param player current turn player
 	 * @param game current game played
 	 * @return The ArrayList containing all the possibilities
-	 * @author Pierre-Galaad 'P(x)' Naquet
+	 * @author Pierre-Galaad 'P(x)' Naquet, Aymeric Bizouarn
 	 */
 	public ArrayList<Square> listOfPossibilitiesPawn(Player player, Game game) {
 		Square currSqr;
@@ -220,29 +220,69 @@ public class Board {
 		    currSqr = null;
         }
 		if (currSqr.getFenceN() == false) {
-			if(currSqr.getStatus()==Status.Player1 || currSqr.getStatus()==Status.Player2){
-
+			Square currSqr2 = this.getSquare(currSqr.getX() - 2, currSqr.getY());
+			if(currSqr2.getStatus()==Status.Player1 || currSqr2.getStatus()==Status.Player2){
+				if(currSqr2.getFenceN()){
+					if(!currSqr2.getFenceW()){
+						ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY() - 1));
+					}
+					if(!currSqr2.getFenceE()){
+						ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY() + 1));
+					}
+				} else {
+					ret.add(this.getSquare(currSqr.getX() - 2, currSqr.getY()));
+				}
 			} else {
 				ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY()));
 			}
 		}
 		if (currSqr.getFenceE() == false) {
-			if(currSqr.getStatus()==Status.Player1 || currSqr.getStatus()==Status.Player2){
-
+			Square currSqr2 = this.getSquare(currSqr.getX(), currSqr.getY() - 1);
+			if(currSqr2.getStatus()==Status.Player1 || currSqr2.getStatus()==Status.Player2){
+				if(currSqr2.getFenceE()){
+					if(!currSqr2.getFenceN()){
+						ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY() - 1));
+					}
+					if(!currSqr2.getFenceS()){
+						ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY() - 1));
+					}
+				} else {
+					ret.add(this.getSquare(currSqr.getX(), currSqr.getY() - 2));
+				}
 			} else {
 				ret.add(this.getSquare(currSqr.getX(), currSqr.getY() - 1));
 			}
 		}
 		if (currSqr.getFenceS() == false) {
-			if(currSqr.getStatus()==Status.Player1 || currSqr.getStatus()==Status.Player2){
-
+			Square currSqr2 = this.getSquare(currSqr.getX() + 1, currSqr.getY());
+			if(currSqr2.getStatus()==Status.Player1 || currSqr2.getStatus()==Status.Player2){
+				if(currSqr2.getFenceS()){
+					if(!currSqr2.getFenceW()){
+						ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY() - 1));
+					}
+					if(!currSqr2.getFenceE()){
+						ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY() + 1));
+					}
+				} else {
+					ret.add(this.getSquare(currSqr.getX() + 2, currSqr.getY()));
+				}
 			} else {
 				ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY()));
 			}
 		}
 		if (currSqr.getFenceW() == false) {
-			if(currSqr.getStatus()==Status.Player1 || currSqr.getStatus()==Status.Player2){
-
+			Square currSqr2 = this.getSquare(currSqr.getX(), currSqr.getY() + 1);
+			if(currSqr2.getStatus()==Status.Player1 || currSqr2.getStatus()==Status.Player2){
+				if(currSqr2.getFenceW()){
+					if(!currSqr2.getFenceN()){
+						ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY() + 1));
+					}
+					if(!currSqr2.getFenceS()){
+						ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY() + 1));
+					}
+				} else {
+					ret.add(this.getSquare(currSqr.getX(), currSqr.getY() + 2));
+				}
 			} else {
 				ret.add(this.getSquare(currSqr.getX(), currSqr.getY() + 1));
 			}

@@ -7,7 +7,7 @@ import quoridor.Status;
 //import java
 
 /**
-* Permits to launch a session from which can be launch and saved games
+* Tile of the board. Contains its coordinates, if there is a player on it, and the fences around it.
 * @author Pierre-Galaad 'P(x)' Naquet, Aymeric Bizouarn
 */
 public class Square {
@@ -110,58 +110,113 @@ public class Square {
 		}
 	}
 
+	/**
+	 * Get the status fence of the square
+	 * @return statusFence of the square.
+	 */
 	public StatusFence getStatusFence() {
 		return this.statusFence;
 	}
 
+	/**
+	 * Set the square status.
+	 * @param status the new status of the square.
+	 */
 	public void setStatus(Status status) {
 		this.status = status;
 	}
 
+	/**
+	 * Get the status of the square
+	 * @return status of the square.
+	 */
 	public Status getStatus() {
 		return this.status;
 	}
 
+	/**
+	 * Get the coordinates x of the square on the board
+	 * @return the coordinate x
+	 */
 	public int getX() {
 		return this.x;
 	}
 
+	/**
+	 * Get the coordinates y of the square on the board
+	 * @return the coordinate y
+	 */
 	public int getY() {
 		return this.y;
 	}
 
+		/**
+		 * Get the status of the northen fence of the square
+		 * @return The square's northen fence status.
+		 */
 	public boolean getFenceN() {
 		return this.fenceN;
 	}
 
+	/**
+	 * Get the status of the eastern fence of the square
+	 * @return The square's eastern fence status.
+	 */
 	public boolean getFenceE() {
 		return this.fenceE;
 	}
 
+	/**
+	 * Get the status of the southern fence of the square
+	 * @return The square's southern fence status.
+	 */
 	public boolean getFenceS() {
 		return this.fenceS;
 	}
 
+	/**
+	 * Get the status of the western fence of the square
+	 * @return The square's west fence status.
+	 */
 	public boolean getFenceW() {
 		return this.fenceW;
 	}
 
+	/**
+	 * Set the square East fence.
+	 * @param fenceE Boolean, true if there is a fence, false otherwise.
+	 */
 	public void setFenceE(boolean fenceE) {
 		this.fenceE = fenceE;
 	}
 
+	/**
+	 * Set the square North fence.
+	 * @param fenceN Boolean, true if there is a fence, false otherwise.
+	 */
 	public void setFenceN(boolean fenceN) {
 		this.fenceN = fenceN;
 	}
 
+	/**
+	 * Set the square South fence.
+	 * @param fenceS Boolean, true if there is a fence, false otherwise.
+	 */
 	public void setFenceS(boolean fenceS) {
 		this.fenceS = fenceS;
 	}
 
+	/**
+	 * Set the square West fence.
+	 * @param fenceW Boolean, true if there is a fence, false otherwise.
+	 */
 	public void setFenceW(boolean fenceW) {
 		this.fenceW = fenceW;
 	}
 
+	/**
+	 * @return the String containing the data about the square.
+	 */
 	public String toString() {
 		String ret = this.statusFence.toString();
 	 	if ((this.status == Status.Player1) || (this.status == Status.Player2)) {

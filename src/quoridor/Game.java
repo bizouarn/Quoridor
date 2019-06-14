@@ -29,14 +29,26 @@ public class Game {
 		start();
 	}
 
+	/**
+	 * Get the board
+	 * @return the current board
+	 */
 	public Board getBoard() {
 		return this.board;
 	}
 
+	/**
+	 * Get the player1
+	 * @return the player1
+	 */
 	public Player getPlayer1() {
 		return this.player1;
 	}
 
+	/**
+	 * Get the player2
+	 * @return the player2
+	 */
 	public Player getPlayer2() {
 		return this.player2;
 	}

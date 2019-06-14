@@ -99,7 +99,7 @@ public class HumanPlayer extends Player {
      * The overlapping validity is checked by the square object by fenceStatus
      * The path validity is checked by the checkExistingPath method
      *
-     * @author
+     * @author Aymeric Bizouarn
      */
     private void playFence(int x1, int y1, int x2,int y2, int pos) {
         ArrayList<SubBoard> possibilitiesFence = null;
@@ -135,7 +135,7 @@ public class HumanPlayer extends Player {
      * Moves the pawns to the desired direction.
      * The validity is checked by the current square fenceStatus
      *
-     * @author
+     * @author Aymeric Bizouarn
      */
     private void playPawn(int x,int y) {
         if (this.getGame().getPlayer1() == this) {

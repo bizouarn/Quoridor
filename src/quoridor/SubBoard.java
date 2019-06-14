@@ -48,10 +48,18 @@ public class SubBoard {
     }
   }
 
+  /**
+   * Set the SubBoard verticalFence.
+   * @param bool True if the fence is set, false if it is pulled off .
+   */
   public void setVerticalFence(boolean bool) {
     this.verticalFence = bool;
   }
 
+  /**
+   * Set the SubBoard horizontalFence.
+   * @param bool True if the fence is set, false if it is pulled off .
+   */
   public void setHorizontalFence(boolean bool) {
     this.horizontalFence = bool;
   }

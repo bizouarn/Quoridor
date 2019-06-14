@@ -22,7 +22,7 @@ public class AutoPlayer extends Player {
 
 	/**
 	 * Places a fence on the desired emplacement
-	 * The overlaping validity is checked by the square object by fenceStatus
+	 * The overlapping validity is checked by the square object by fenceStatus
 	 * The path validity is checked by the checkExistingPath method
 	 * @author
 	 */

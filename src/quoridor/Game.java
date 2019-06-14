@@ -71,6 +71,8 @@ public class Game {
 		} else {
 			this.player1 = new HumanPlayer(name,this);
 		}
+		this.board.getSquare(0,4).setStatus(Status.Player1);
+		this.board.getSquare(8,4).setStatus(Status.Player2);
 	}
 
 	/**

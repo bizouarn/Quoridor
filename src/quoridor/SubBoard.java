@@ -5,7 +5,7 @@ import quoridor.Square;
 
 // import java
 
-public class subBoard {
+public class SubBoard {
 
   final Square SQR1; //upper left
   final Square SQR2; //upper right
@@ -52,7 +52,7 @@ public class subBoard {
   }
 
   public Square[] getSqrArray() {
-    return this.SQRARRAY;
+    return this.sqrArray;
   }
 
   public int getX() {

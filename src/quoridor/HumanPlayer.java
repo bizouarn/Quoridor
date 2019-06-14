@@ -14,8 +14,8 @@ public class HumanPlayer extends Player {
 	 * @param name The player name.
 	 * @author Aymeric Bizouarn
 	 */
-	public HumanPlayer(String name,Board board) {
-		super(name,board);
+	public HumanPlayer(String name,Game game) {
+		super(name,game);
 	}
 
 	/**

@@ -6,8 +6,8 @@ public class AutoPlayer extends Player {
 	 * @param name
 	 * @author
 	 */
-	public AutoPlayer(String name,Board board) {
-		super(name,board);
+	public AutoPlayer(String name,Game game) {
+		super(name,game);
 	}
 
 	/**
@@ -17,8 +17,7 @@ public class AutoPlayer extends Player {
 	 * @author
 	 */
 	public void play() {
-		// TODO - implement AutoPlayer.play
-		throw new UnsupportedOperationException();
+		this.getGame().getBoard().listOfPossibilitiesPawn(this,this.getGame());
 	}
 
 	/**

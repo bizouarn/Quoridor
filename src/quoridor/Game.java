@@ -60,16 +60,16 @@ public class Game {
 		System.out.println("Name Player 1 : ");
 		String name = scanner.nextLine();
 		if(name.indexOf("auto")!=-1){
-			this.player1 = new AutoPlayer(name,this.board);
+			this.player1 = new AutoPlayer(name,this);
 		} else {
-			this.player1 = new HumanPlayer(name,this.board);
+			this.player1 = new HumanPlayer(name,this);
 		}
 		System.out.println("Name Player 2 : ");
 		name = scanner.nextLine();
 		if(name.indexOf("auto")!=-1){
-			this.player1 = new AutoPlayer(name,this.board);
+			this.player1 = new AutoPlayer(name,this);
 		} else {
-			this.player1 = new HumanPlayer(name,this.board);
+			this.player1 = new HumanPlayer(name,this);
 		}
 	}
 

@@ -98,6 +98,7 @@ public class Board {
 				sqrArray[1] = sqr2;
 				sqrArray[2] = sqr3;
 				sqrArray[3] = sqr4;
+				this.subBoard.add(sqrArray);
 			}
 		}
 	}

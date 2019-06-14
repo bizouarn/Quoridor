@@ -125,12 +125,12 @@ public class Board {
 	}
 
 
-	public ArrayList<Square> listOfPossibilitiesFenceVertical() {
+	public ArrayList<SubBoard> listOfPossibilitiesFenceVertical() {
 		// TODO - implement HumanPlayer.play
 		throw new UnsupportedOperationException();
 	}
 
-	public ArrayList<Square> listOfPossibilitiesFenceHorizontal() {
+	public ArrayList<SubBoard> listOfPossibilitiesFenceHorizontal() {
 		// TODO - implement HumanPlayer.play
 		throw new UnsupportedOperationException();
 	}

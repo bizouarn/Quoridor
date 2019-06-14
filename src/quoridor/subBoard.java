@@ -17,7 +17,7 @@ public class subBoard {
   boolean verticalFence;
   boolean horizontalFence;
 
-  public subBoard(Square sqr1, Square sqr2, Square sqr3, Square sqr4) {
+  public SubBoard(Square sqr1, Square sqr2, Square sqr3, Square sqr4) {
     if ((sqr1 != null) && (sqr2 != null) && (sqr3 != null) && (sqr4 != null)) {
       this.sqr1 = sqr1;
       this.sqr2 = sqr2;

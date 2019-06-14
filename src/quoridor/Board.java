@@ -121,31 +121,31 @@ public class Board {
 		if (player == game.getPlayer1()) {
 			currSqr = getPlayer1Square();
 			if (currSqr.getFenceN() == false) {
-				ret.add(grid.getSquare(currSqr.getX(), currSqr.getY() - 1);
+				ret.add(this.getSquare(currSqr.getX(), currSqr.getY() - 1));
 			}
 			if (currSqr.getFenceE() == false) {
-				ret.add(grid.getSquare(currSqr.getX() + 1, currSqr.getY());
+				ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY()));
 			}
 			if (currSqr.getFenceS() == false) {
-				ret.add(grid.getSquare(currSqr.getX(), currSqr.getY() + 1);
+				ret.add(this.getSquare(currSqr.getX(), currSqr.getY() + 1));
 			}
 			if (currSqr.getFenceW() == false) {
-				ret.add(grid.getSquare(currSqr.getX() - 1, currSqr.getY());
+				ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY()));
 			}
 		}
 		if (player == game.getPlayer2()) {
 			currSqr = getPlayer2Square();
 			if (currSqr.getFenceN() == false) {
-				ret.add(grid.getSquare(currSqr.getX(), currSqr.getY() - 1);
+				ret.add(this.getSquare(currSqr.getX(), currSqr.getY() - 1);
 			}
 			if (currSqr.getFenceE() == false) {
-				ret.add(grid.getSquare(currSqr.getX() + 1, currSqr.getY());
+				ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY());
 			}
 			if (currSqr.getFenceS() == false) {
-				ret.add(grid.getSquare(currSqr.getX(), currSqr.getY() + 1);
+				ret.add(this.getSquare(currSqr.getX(), currSqr.getY() + 1);
 			}
 			if (currSqr.getFenceW() == false) {
-				ret.add(grid.getSquare(currSqr.getX() - 1, currSqr.getY());
+				ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY());
 			}
 		}
 		return ret;

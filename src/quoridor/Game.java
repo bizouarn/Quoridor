@@ -28,7 +28,6 @@ public class Game {
 	public Game() {
 		initializeGame();
 		start();
-		endOfGame();
 	}
 
 	public Board getBoard() {
@@ -131,7 +130,37 @@ public class Game {
 	 * End the game and launch the results procedure
 	 */
 	public void endOfGame(Player player) {
+
+		Scanner scan;
+		boolean bool = false;
+
+		System.out.println("The player : " + player.getName() + "has won !");
 		System.out.println();
+		System.out.println("What do you want to do ?");
+		System.out.println("1 - Rematch");
+		System.out.println("2 - Change Players");
+		System.out.println("3 - Leave the program");
+
+		while (!bool) {
+			scan = new Scanner(getNextInt(System.in));
+			if (scan > 0 && scan < 4) {
+				bool = true;
+			}
+			else {
+				System.out.println("Please, select a valid option");
+			}
+		}
+
+		if (scan == 1) {
+			this.board = new Board();
+			this.start();
+		}
+		if (scan == 2) {
+			new Game();
+		}
+		if (scan == 3) {
+			System.exit(0);
+		}
 	}
 
 }

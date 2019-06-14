@@ -95,8 +95,8 @@ public class Board {
 		for (int x = 0; x < 8; x++) {
 			for (int y = 0; y < 8; y++) {
 				sqr1 = this.getSquare(x, y);
-				sqr2 = this.getSquare(x+1, y);
-				sqr3 = this.getSquare(x, y+1);
+				sqr2 = this.getSquare(x, y+1);
+				sqr3 = this.getSquare(x+1, y);
 				sqr4 = this.getSquare(x+1, y+1);
 				sqrArray[0] = sqr1;
 				sqrArray[1] = sqr2;

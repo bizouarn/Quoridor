@@ -147,33 +147,21 @@ public class Board {
 		ArrayList<Square> ret = new ArrayList<Square>();
 		if (player == game.getPlayer1()) {
 			currSqr = getPlayer1Square();
-			if (currSqr.getFenceN() == false) {
-				ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY()));
-			}
-			if (currSqr.getFenceE() == false) {
-				ret.add(this.getSquare(currSqr.getX(), currSqr.getY() - 1));
-			}
-			if (currSqr.getFenceS() == false) {
-				ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY()));
-			}
-			if (currSqr.getFenceW() == false) {
-				ret.add(this.getSquare(currSqr.getX(), currSqr.getY() + 1));
-			}
 		}
-		if (player == game.getPlayer2()) {
+		else if (player == game.getPlayer2()) {
 			currSqr = getPlayer2Square();
-			if (currSqr.getFenceN() == false) {
-				ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY()));
-			}
-			if (currSqr.getFenceE() == false) {
-				ret.add(this.getSquare(currSqr.getX(), currSqr.getY() - 1));
-			}
-			if (currSqr.getFenceS() == false) {
-				ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY()));
-			}
-			if (currSqr.getFenceW() == false) {
-				ret.add(this.getSquare(currSqr.getX(), currSqr.getY() + 1));
-			}
+		}
+		if (currSqr.getFenceN() == false) {
+			ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY()));
+		}
+		if (currSqr.getFenceE() == false) {
+			ret.add(this.getSquare(currSqr.getX(), currSqr.getY() - 1));
+		}
+		if (currSqr.getFenceS() == false) {
+			ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY()));
+		}
+		if (currSqr.getFenceW() == false) {
+			ret.add(this.getSquare(currSqr.getX(), currSqr.getY() + 1));
 		}
 		return ret;
 	}

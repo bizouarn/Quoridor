@@ -48,10 +48,10 @@ public class Square {
 			this.fenceS = true;
 		}
 		if (y == 0) {
-			this.fenceE = false;
+			this.fenceW = false;
 		}
 		if (y == 8) {
-			this.fenceW = false;
+			this.fenceE = false;
 		}
 	}
 
@@ -63,52 +63,49 @@ public class Square {
 		if ((this.fenceN == false) && (this.fenceS == false) && (this.fenceW == false) && (this.fenceE == false)) {
 			this.statusFence = StatusFence.NONE;
 		}
-		if ((this.fenceN == true) && (this.fenceS == false) && (this.fenceW == false) && (this.fenceE == false)) {
+		else if ((this.fenceN == true) && (this.fenceS == false) && (this.fenceW == false) && (this.fenceE == false)) {
 			this.statusFence = StatusFence.N;
 		}
-		if ((this.fenceN == true) && (this.fenceS == false) && (this.fenceW == false) && (this.fenceE == true)) {
+		else if ((this.fenceN == true) && (this.fenceS == false) && (this.fenceW == false) && (this.fenceE == true)) {
 			this.statusFence = StatusFence.NE;
 		}
-		if ((this.fenceN == true) && (this.fenceS == true) && (this.fenceW == false) && (this.fenceE == false)) {
+		else if ((this.fenceN == true) && (this.fenceS == true) && (this.fenceW == false) && (this.fenceE == false)) {
 			this.statusFence = StatusFence.NS;
 		}
-		if ((this.fenceN == true) && (this.fenceS == false) && (this.fenceW == true) && (this.fenceE == false)) {
+		else if ((this.fenceN == true) && (this.fenceS == false) && (this.fenceW == true) && (this.fenceE == false)) {
 			this.statusFence = StatusFence.NW;
 		}
-		if ((this.fenceN == true) && (this.fenceS == false) && (this.fenceW == false) && (this.fenceE == false)) {
-			this.statusFence = StatusFence.N;
-		}
-		if ((this.fenceN == false) && (this.fenceS == false) && (this.fenceW == false) && (this.fenceE == true)) {
+		else if ((this.fenceN == false) && (this.fenceS == false) && (this.fenceW == false) && (this.fenceE == true)) {
 			this.statusFence = StatusFence.E;
 		}
-		if ((this.fenceN == false) && (this.fenceS == true) && (this.fenceW == false) && (this.fenceE == true)) {
+		else if ((this.fenceN == false) && (this.fenceS == true) && (this.fenceW == false) && (this.fenceE == true)) {
 			this.statusFence = StatusFence.ES;
 		}
-		if ((this.fenceN == false) && (this.fenceS == false) && (this.fenceW == true) && (this.fenceE == true)) {
+		else if ((this.fenceN == false) && (this.fenceS == false) && (this.fenceW == true) && (this.fenceE == true)) {
 			this.statusFence = StatusFence.EW;
 		}
-		if ((this.fenceN == false) && (this.fenceS == true) && (this.fenceW == false) && (this.fenceE == false)) {
+		else if ((this.fenceN == false) && (this.fenceS == true) && (this.fenceW == false) && (this.fenceE == false)) {
 			this.statusFence = StatusFence.S;
 		}
-		if ((this.fenceN == false) && (this.fenceS == true) && (this.fenceW == true) && (this.fenceE == false)) {
+		else if ((this.fenceN == false) && (this.fenceS == true) && (this.fenceW == true) && (this.fenceE == false)) {
 			this.statusFence = StatusFence.SW;
 		}
-		if ((this.fenceN == false) && (this.fenceS == false) && (this.fenceW == true) && (this.fenceE == false)) {
+		else if ((this.fenceN == false) && (this.fenceS == false) && (this.fenceW == true) && (this.fenceE == false)) {
 			this.statusFence = StatusFence.W;
 		}
-		if ((this.fenceN == true) && (this.fenceS == true) && (this.fenceW == false) && (this.fenceE == true)) {
+		else if ((this.fenceN == true) && (this.fenceS == true) && (this.fenceW == false) && (this.fenceE == true)) {
 			this.statusFence = StatusFence.NES;
 		}
-		if ((this.fenceN == true) && (this.fenceS == true) && (this.fenceW == true) && (this.fenceE == false)) {
+		else if ((this.fenceN == true) && (this.fenceS == true) && (this.fenceW == true) && (this.fenceE == false)) {
 			this.statusFence = StatusFence.NSW;
 		}
-		if ((this.fenceN == false) && (this.fenceS == true) && (this.fenceW == true) && (this.fenceE == true)) {
+		else if ((this.fenceN == false) && (this.fenceS == true) && (this.fenceW == true) && (this.fenceE == true)) {
 			this.statusFence = StatusFence.ESW;
 		}
-		if ((this.fenceN == true) && (this.fenceS == false) && (this.fenceW == true) && (this.fenceE == true)) {
+		else if ((this.fenceN == true) && (this.fenceS == false) && (this.fenceW == true) && (this.fenceE == true)) {
 			this.statusFence = StatusFence.NEW;
 		}
-		if ((this.fenceN == true) && (this.fenceS == true) && (this.fenceW == true) && (this.fenceE == true)) {
+		else if ((this.fenceN == true) && (this.fenceS == true) && (this.fenceW == true) && (this.fenceE == true)) {
 			this.statusFence = StatusFence.NESW;
 		}
 	}

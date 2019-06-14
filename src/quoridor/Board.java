@@ -46,6 +46,26 @@ public class Board {
 		return this.grid;
 	}
 
+	public Square getPlayer1Square() {
+		Square ret = null;
+		for (Square sqr : this.grid) {
+			if (sqr.getStatus == Status.Player1) {
+				ret = sqr;
+			}
+		}
+		return sqr;
+	}
+
+	public Square getPlayer2Square() {
+		Square ret = null;
+		for (Square sqr : this.grid) {
+			if (sqr.getStatus == Status.Player2) {
+				ret = sqr;
+			}
+		}
+		return sqr;
+	}
+
 	/**
 	 * Board Initializer
 	 * intiliaze a 81 squares board (9*9)
@@ -84,20 +104,30 @@ public class Board {
 
 	/**
 	 *
-	 * @param player
+	 * @param game
 	 */
 	public ArrayList<Square> listOfPossibilitiesFence() {
-		// TODO - implement Board.listOfPossibilitiesFence
-		throw new UnsupportedOperationException();
+
 	}
 
 	/**
-	 *
-	 * @param player
+	 * When called return an array list of square containing all of pawns deplacement possibilities.
+	 * @param player current turn player
+	 * @param game current game played
+	 * @return The ArrayList containing all the possibilities
+	 * @author Pierre-Galaad 'P(x)' Naquet
 	 */
-	public ArrayList<Square> listOfPossibilitiesPawn(Player player) {
-		// TODO - implement Board.listOfPossibilitiesPawn
-		throw new UnsupportedOperationException();
+	public ArrayList<Square> listOfPossibilitiesPawn(Player player, Game game) {
+		Square currSqr;
+		ArrayList<Square> ret = new ArrayList<Square>();
+		if (player == game.getPlayer1()) {
+			currSqr = getPlayer1Square();
+			if (currSqr.getFenceN == false) {
+			}
+		}
+		if (player == game.getPlayer2()) {
+
+		}
 	}
 
 	public String toString() {

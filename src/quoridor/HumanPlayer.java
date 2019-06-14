@@ -53,7 +53,9 @@ public class HumanPlayer extends Player {
                             validPlay = true;
                         }
                     }
-                } catch (Exception e) { }
+                } catch (Exception e) {
+                    System.out.println("Invalid input !");
+                }
             } else if (choix.equals("2")) {
                 try{
                     System.out.print(" x : ");
@@ -86,7 +88,7 @@ public class HumanPlayer extends Player {
                     }
                 }
                 catch (Exception e){
-
+                    System.out.println("Invalid input !");
                 }
             }
         }

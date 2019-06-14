@@ -130,14 +130,8 @@ public class Game {
 	/**
 	 * End the game and launch the results procedure
 	 */
-	public void endOfGame() {
-		// TODO - implement Game.endOfGame
-		throw new UnsupportedOperationException();
-	}
-
-	public String toString() {
-		// TODO - implement Game.toString
-		throw new UnsupportedOperationException();
+	public void endOfGame(Player player) {
+		System.out.println();
 	}
 
 }

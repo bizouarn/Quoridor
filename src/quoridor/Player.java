@@ -115,7 +115,7 @@ public abstract class Player {
             this.getGame().getBoard().getPlayer1Square().setStatus(Status.NONE);
             this.getGame().getBoard().getSquare(x,y).setStatus(Status.Player1);
         } else if (this.getGame().getPlayer2() == this) {
-            this.getGame().getBoard().getPlayer1Square().setStatus(Status.NONE);
+            this.getGame().getBoard().getPlayer2Square().setStatus(Status.NONE);
             this.getGame().getBoard().getSquare(x,y).setStatus(Status.Player2);
         }
     }

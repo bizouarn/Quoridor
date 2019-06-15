@@ -135,11 +135,13 @@ public class Game {
      */
     public boolean checkEndOfGame() {
         boolean ret = false;
-        if (this.board.getPlayer1Square().getY() == 8) {
-            ret = true;
-        } else if (this.board.getPlayer1Square().getY() == 0) {
-            ret = true;
-        }
+        if(this.board.getPlayer1Square()!=null && this.board.getPlayer1Square()!=null) {
+			if (this.board.getPlayer1Square().getY() == 8) {
+				ret = true;
+			} else if (this.board.getPlayer2Square().getY() == 0) {
+				ret = true;
+			}
+		}
         return ret;
     }
 

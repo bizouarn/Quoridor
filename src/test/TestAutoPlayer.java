@@ -9,7 +9,7 @@ public class TestAutoPlayer {
     @Test
     public static void testAutoplayer(){
         Board board = new Board();
-        Game game = new Game();
+        Game game = new Game(false);
         AutoPlayer autoPlayer = new AutoPlayer("joueur",game);
         assertNotNull(autoPlayer);
         assertEquals(autoPlayer,new AutoPlayer("joueur",game));
@@ -19,7 +19,7 @@ public class TestAutoPlayer {
     @Test
     public static void testcheckNbRestingFences() {
         Board board = new Board();
-        Game game = new Game();
+        Game game = new Game(false);
         AutoPlayer autoPlayer = new AutoPlayer("joueur",game);
         autoPlayer.setNbFences(20);
         assertEquals(autoPlayer.checkNbRestingFences(),20);

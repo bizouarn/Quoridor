@@ -9,7 +9,7 @@ public class TestHumanPlayer {
     @Test
     public static void testHumanPlayer(){
         Board board = new Board();
-        Game game = new Game();
+        Game game = new Game(false);
         HumanPlayer humanPlayer = new HumanPlayer("joueur",game);
         assertNotNull(humanPlayer);
         assertEquals(humanPlayer,new HumanPlayer("joueur",game));

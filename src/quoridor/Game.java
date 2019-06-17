@@ -17,18 +17,15 @@ public class Game {
 	private Player player1;
 	private Player player2;
 
+	private boolean gui;
 	/**
 	 * Game constructor
 	 * intiliaze the board, the two players and the mode
 	 * The mode is choosen by the players with a scanner
 	 * @author Aymeric Bizouarn
 	 */
-	public Game() {
-		initializeGame();
-		start();
-	}
-
-	public Game(Boolean statut) {
+	public Game(boolean gui) {
+		this.gui = gui;
 		initializeGame();
 	}
 
@@ -186,7 +183,7 @@ public class Game {
             this.start();
         }
         if (choice == 2) {
-            new Game();
+            new Game(this.gui);
         }
         if (choice == 3) {
             System.exit(0);

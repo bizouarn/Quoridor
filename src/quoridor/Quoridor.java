@@ -22,6 +22,8 @@ public class Quoridor {
 	 */
 	private String fileName;
 
+	private Boolean gui = true;
+
 	/**
 	 * Quoridor constructor
 	 * Create an object Quoridor
@@ -38,11 +40,18 @@ public class Quoridor {
 			seizure =scanner.nextInt();
 		}
 		if(seizure == 1){
-			this.game = new Game();
+			this.game = new Game(this.gui);
 		} else if(seizure == 2){
 			this.loadOldGame();
 		}
 		this.launchGame(this.game);
+	}
+	public Quoridor(String fileName,String[] args){
+		for(String string : args){
+			if(string.equals("nogui")){
+				this.gui = false;
+			}
+		}
 	}
 
 	/**

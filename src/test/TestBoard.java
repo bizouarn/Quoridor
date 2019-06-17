@@ -21,7 +21,7 @@ public class TestBoard {
     }
     @Test
     public void testListOfPossibilitiesPawn(){
-        Game game = new Game();
+        Game game = new Game(false);
         Board board = new Board();
         Player player = new AutoPlayer("joueur",game);
         ArrayList<Square> arrayPossibilitiesPawn = board.listOfPossibilitiesPawn(player,game);

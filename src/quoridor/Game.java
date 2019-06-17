@@ -1,7 +1,7 @@
 package quoridor;
 
 // import project
-
+import gui.Gui;
 // import java
 
 import java.util.Scanner;
@@ -18,6 +18,7 @@ public class Game {
 	private Player player2;
 
 	private boolean gui;
+	private Gui guiFrame;
 	/**
 	 * Game constructor
 	 * intiliaze the board, the two players and the mode
@@ -27,6 +28,9 @@ public class Game {
 	public Game(boolean gui) {
 		this.gui = gui;
 		initializeGame();
+		if(gui){
+			this.guiFrame = new Gui(this);
+		}
 	}
 
 	/**
@@ -112,6 +116,7 @@ public class Game {
             playerPlay = 2;
         }
         while (!checkEndOfGame()) {
+        	this.guiFrame.refresh();
             Player playerActual = null;
             if (playerPlay == 1) {
                 playerActual = this.player1;
@@ -126,6 +131,7 @@ public class Game {
                 playerPlay = 1;
             }
         }
+		this.guiFrame.refresh();
     }
 
     /**

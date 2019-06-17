@@ -18,3 +18,4 @@ public class LeftPlayers extends JPanel {
     add(player2);
 
   }
+}

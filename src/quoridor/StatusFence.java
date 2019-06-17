@@ -1,5 +1,7 @@
 package quoridor;
 
+import javax.swing.*;
+
 /**
  * Enumeration containing the StatusFence of the squares, Uses the cardinal points.
  * @author Pierre-Galaad 'P(x)' Naquet, Aymeric Bizouarn

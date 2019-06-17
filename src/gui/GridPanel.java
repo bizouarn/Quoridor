@@ -24,6 +24,7 @@ public class GridPanel extends JPanel {
     for (int i = 0; i < 9; i++) {
       for (int j = 0; j < 9; j++) {
         grid[i][j] = new JButton();
+        grid[i][j].setIcon(this.board.getSquare(i,j).getStatusFence().getImage());
         this.add(grid[i][j]);
       }
     }

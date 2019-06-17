@@ -18,6 +18,8 @@ public class ImagePanel extends JPanel {
     this.y = y;
 
     this.image = this.board.getSquare(i,j).getStatusFence().getImage();
+
+    this.add(image);
   }
 
 }

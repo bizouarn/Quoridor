@@ -42,16 +42,7 @@ public class Gui {
     }
 
     public void refresh(){
-        try {
-            this.jFrame.getContentPane().removeAll();
-        } catch (NullPointerException e){}
-        this.playerPanel1 = new PlayerPanel(this.game.getPlayer1());
-        this.playerPanel2 = new PlayerPanel(this.game.getPlayer2());
-        this.gridPanel = new GridPanel(this.game.getBoard());
-        this.jFrame.add(this.gridPanel, BorderLayout.CENTER);
-        this.jFrame.add(this.playerPanel1, BorderLayout.WEST);
-        this.jFrame.add(this.playerPanel2, BorderLayout.EAST);
-        jFrame.setVisible(true);
+
     }
 
 

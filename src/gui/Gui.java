@@ -1,6 +1,7 @@
 package gui;
 
 import quoridor.Game;
+import quoridor.Player;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,27 +25,33 @@ public class Gui {
     }
 
     public void CreateAndShowGui(){
-        jFrame = new JFrame("Quoridor");
+        this.jFrame = new JFrame("Quoridor");
 
-        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.gridPanel = new GridPanel(game.getBoard());
         this.playerPanel1 = new PlayerPanel(game.getPlayer1());
         this.playerPanel2 = new PlayerPanel(game.getPlayer2());
 
-        jFrame.add(this.gridPanel, BorderLayout.CENTER);
-        jFrame.add(this.playerPanel1, BorderLayout.WEST);
-        jFrame.add(this.playerPanel2, BorderLayout.EAST);
+        this.jFrame.add(this.gridPanel, BorderLayout.CENTER);
+        this.jFrame.add(this.playerPanel1, BorderLayout.WEST);
+        this.jFrame.add(this.playerPanel2, BorderLayout.EAST);
 
-        jFrame.pack();
-        jFrame.setVisible(true);
+        this.jFrame.pack();
+        this.jFrame.setVisible(true);
     }
 
     public void refresh(){
+        try {
+            this.jFrame.getContentPane().removeAll();
+        } catch (NullPointerException e){}
         this.playerPanel1 = new PlayerPanel(this.game.getPlayer1());
         this.playerPanel2 = new PlayerPanel(this.game.getPlayer2());
         this.gridPanel = new GridPanel(this.game.getBoard());
-        this.jFrame.repaint();
+        this.jFrame.add(this.gridPanel, BorderLayout.CENTER);
+        this.jFrame.add(this.playerPanel1, BorderLayout.WEST);
+        this.jFrame.add(this.playerPanel2, BorderLayout.EAST);
+        jFrame.setVisible(true);
     }
 
 

@@ -10,13 +10,13 @@ import java.awt.*;
  */
 public class GridPanel extends JPanel {
 
-  JButton[][] grid;
+  JPanel[][] grid;
   Board board;
 
   public GridPanel(Board board) {
     super(new GridLayout(board.getSIZE(),board.getSIZE()));
     this.board = board;
-     grid = new JButton[board.getSIZE()][board.getSIZE()];
+     grid = new JPanel[board.getSIZE()][board.getSIZE()];
 
     initComponent();
   }
@@ -24,10 +24,16 @@ public class GridPanel extends JPanel {
   public void initComponent() {
     for (int i = 0; i < 9; i++) {
       for (int j = 0; j < 9; j++) {
-        grid[i][j] = new JButton();
-        grid[i][j].setIcon(this.board.getSquare(i,j).getStatusFence().getImage());
+        grid[i][j] = new ImagePanel(this.board, i, j);
         this.add(grid[i][j]);
       }
     }
+  }
+
+  public void refresh() {
+    for (int i = 0; i < 9; i++) {
+      for (int j = 0; j < 9; j++) {
+        grid[i][j] = new ImagePanel(this.board, i, j);
+      }
   }
 }

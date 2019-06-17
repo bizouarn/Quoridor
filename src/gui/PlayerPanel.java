@@ -10,11 +10,24 @@ public class PlayerPanel extends JPanel{
 
     private JLabel name;
 
+    private JLabel fences;
+
     public PlayerPanel (Player player){
         super();
         this.player = player;
         this.name = new JLabel(this.player.getName());
         this.add(this.name);
-        this.setBackground(new Color(128, 142, 159));
+        this.fences = new JLabel("10");
+        initComponent();
+    }
+
+    private initComponent() {
+      this.setLayout(new GridLayout(1, 2));
+      this.add(name);
+      this.add(fences);
+    }
+
+    public void setFences(int fences) {
+      this.fences.setText(fences);
     }
 }

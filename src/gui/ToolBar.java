@@ -18,9 +18,9 @@ public class ToolBar extends JPanel {
   }
 
   private void initComponent() {
-    this.fence = JButton("Fence");
-    this.pawn = JButton("Pawn");
-    this.direction = JButton("Direction");
+    this.fence = new JButton("Fence");
+    this.pawn = new JButton("Pawn");
+    this.direction = new JButton("Direction");
   }
 
 }

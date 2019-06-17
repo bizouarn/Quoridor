@@ -24,8 +24,8 @@ public class GuiListener implements ActionListener {
             for(int j = 0; j<9 ; j++){
                 if(e.getSource()==this.gui.getGridPanel().getGrid()[i][j]){
                     this.x1 = i;
-                    this.x2 = j;
-                    this.y1 = i+1;
+                    this.x2 = i+1;
+                    this.y1 = j;
                     this.y2 = j+1;
                     this.value = true;
                 }

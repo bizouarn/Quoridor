@@ -38,6 +38,7 @@ public class HumanPlayer extends Player {
         while (!validPlay) {
 
             if (this.getGame().getGui()) {
+                System.out.print(this.getGame().getGuiFrame().getGridPanel().getGuiListener().getValue());
                 if(this.getGame().getGuiFrame().getGridPanel().getGuiListener().getValue()){
                     System.out.print("->");
                     GuiListener guiListener = this.getGame().getGuiFrame().getGridPanel().getGuiListener();

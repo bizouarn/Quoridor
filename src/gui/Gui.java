@@ -32,8 +32,7 @@ public class Gui {
         this.jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.jFrame.add(this.gridPanel, BorderLayout.CENTER);
-        this.jFrame.add(this.playerPanel1, BorderLayout.WEST);
-        this.jFrame.add(this.playerPanel2, BorderLayout.WEST);
+        this.jFrame.add(new LeftPlayers(this.game.getPlayer1(),this.game.getPlayer2()), BorderLayout.WEST);
 
         this.jFrame.pack();
         this.jFrame.setVisible(true);

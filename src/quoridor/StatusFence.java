@@ -29,7 +29,7 @@ public enum StatusFence {
 
 	StatusFence(String text, String pathFile) {
 		this.text = text;
-		String str = "./data/images/" + pathFile + ".png";
+		String str = pathFile + ".png";
 		this.image = new ImageIcon(str);
 	}
 

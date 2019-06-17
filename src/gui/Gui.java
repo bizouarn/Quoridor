@@ -35,7 +35,7 @@ public class Gui {
 
         this.jFrame.add(this.gridPanel, BorderLayout.CENTER);
         this.jFrame.add(this.playerPanel1, BorderLayout.WEST);
-        this.jFrame.add(this.playerPanel2, BorderLayout.EAST);
+        this.jFrame.add(this.playerPanel2, BorderLayout.WEST);
 
         this.jFrame.pack();
         this.jFrame.setVisible(true);

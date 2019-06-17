@@ -3,6 +3,7 @@ package gui;
 import quoridor.Player;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class PlayerPanel extends JPanel{
     private Player player;
@@ -14,5 +15,6 @@ public class PlayerPanel extends JPanel{
         this.player = player;
         this.name = new JLabel(this.player.getName());
         this.add(this.name);
+        this.setBackground(new Color(128, 142, 159));
     }
 }

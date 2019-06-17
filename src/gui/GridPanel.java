@@ -29,8 +29,11 @@ public class GridPanel extends JPanel {
         this.add(grid[i][j]);
       }
     }
-
-
   }
+
+  public void refresh() {
+    initComponent();
+  }
+
 
 }

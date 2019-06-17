@@ -14,19 +14,17 @@ public class GridPanel extends JPanel {
   Board board;
 
   public GridPanel(Board board) {
-    this.Board = board;
+    super(new GridLayout(9,9));
+    this.board = board;
 
     initComponent();
   }
 
   public void initComponent() {
-
-    getContentPane().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-    getContentPane().setLayout(new gridLayout(9,9));
     for (int i = 0; i < 9; i++) {
       for (int j = 0; j < 9; j++) {
         grid[i][j] = new JButton();
+        this.add(grid[i][j]);
       }
     }
   }

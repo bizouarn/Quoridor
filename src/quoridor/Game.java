@@ -28,6 +28,10 @@ public class Game {
 		start();
 	}
 
+	public Game(Boolean statut) {
+		initializeGame();
+	}
+
 	/**
 	 * Get the board
 	 * @return the current board

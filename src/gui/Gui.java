@@ -12,6 +12,7 @@ public class Gui {
     private GridPanel gridPanel;
 
     private Game game;
+    private JFrame jFrame;
 
     public Gui(Game game){
         this.game = game;
@@ -23,7 +24,7 @@ public class Gui {
     }
 
     public void CreateAndShowGui(){
-        JFrame jFrame = new JFrame("Quoridor");
+        jFrame = new JFrame("Quoridor");
 
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -40,7 +41,10 @@ public class Gui {
     }
 
     public void refresh(){
-
+        this.playerPanel1 = new PlayerPanel(this.game.getPlayer1());
+        this.playerPanel2 = new PlayerPanel(this.game.getPlayer2());
+        this.gridPanel = new GridPanel(this.game.getBoard());
+        this.jFrame.repaint();
     }
 
 

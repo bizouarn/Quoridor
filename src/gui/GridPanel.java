@@ -16,7 +16,7 @@ public class GridPanel extends JPanel {
   public GridPanel(Board board) {
     super(new GridLayout(board.getSIZE(),board.getSIZE()));
     this.board = board;
-     grid = new JButton[board.getSIZE()][board.getSIZE()]
+     grid = new JButton[board.getSIZE()][board.getSIZE()];
 
     initComponent();
   }
@@ -30,10 +30,4 @@ public class GridPanel extends JPanel {
       }
     }
   }
-
-  public void refresh() {
-    initComponent();
-  }
-
-
 }

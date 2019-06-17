@@ -15,8 +15,4 @@ public class PlayerPanel extends JPanel{
         this.name = new JLabel(this.player.getName());
         this.add(this.name);
     }
-
-    public void refresh(){
-        this.name = new JLabel(this.player.getName());
-    }
 }

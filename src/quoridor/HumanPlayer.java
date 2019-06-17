@@ -38,15 +38,35 @@ public class HumanPlayer extends Player {
         while (!validPlay) {
 
             if (this.getGame().getGui()) {
-                System.out.print(this.getGame().getGuiFrame().getGridPanel().getGuiListener().getValue());
-                if(this.getGame().getGuiFrame().getGridPanel().getGuiListener().getValue()){
-                    System.out.print("->");
-                    GuiListener guiListener = this.getGame().getGuiFrame().getGridPanel().getGuiListener();
+                try {
+                    Thread.sleep(1000);
+                } catch (Exception e){
+                    System.out.println(e);
+                }
+                GuiListener guiListener = this.getGame().getGuiFrame().getGridPanel().getGuiListener();
+                boolean condition = guiListener.getValue();
+                if(condition){
+                    System.out.println("->");
+                    guiListener.setValue(false);
                     int x1 = guiListener.getX1();
                     int x2 = guiListener.getX2();
                     int y1 = guiListener.getY1();
                     int y2 = guiListener.getY2();
-                    guiListener.setValue(false);
+                    System.out.println("click("+x1+","+y1+")");
+                    for (Square sqr : possibilitiesPawn) {
+                        System.out.print(sqr);
+                        if (sqr != null) {
+                            System.out.print("(" + sqr.getX() + ";" + sqr.getY() + ")");
+                        }
+                    }
+                    if(!guiListener.getFence()){
+                        for (Square sqr : possibilitiesPawn) {
+                            if (sqr.getX() == x1 && sqr.getY() == y1) {
+                                playPawn(x1, y1);
+                                validPlay = true;
+                            }
+                        }
+                    }
                 }
             } else {
                 System.out.println("Write : \n1 - For play pawn\n2 - For play fence");

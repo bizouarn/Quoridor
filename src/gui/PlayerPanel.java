@@ -21,13 +21,13 @@ public class PlayerPanel extends JPanel{
         initComponent();
     }
 
-    private initComponent() {
+    private void initComponent() {
       this.setLayout(new GridLayout(2, 1));
       this.add(name);
       this.add(fences);
     }
 
     public void setFences(int fences) {
-      this.fences.setText(fences);
+      this.fences.setText(fences+"");
     }
 }

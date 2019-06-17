@@ -20,11 +20,9 @@ public class GuiListener implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        System.out.println("ok -");
         for(int i = 0 ; i<9 ; i++){
             for(int j = 0; j<9 ; j++){
                 if(e.getSource()==this.gui.getGridPanel().getGrid()[i][j]){
-                    System.out.print("("+i+","+j+")"+this.value);
                     this.x1 = i;
                     this.x2 = j;
                     this.y1 = i+1;
@@ -56,7 +54,7 @@ public class GuiListener implements ActionListener {
     }
 
     public boolean getFence(){
-        return this.getFence();
+        return this.fence;
     }
 
     public boolean getHorizontal(){
@@ -64,6 +62,6 @@ public class GuiListener implements ActionListener {
     }
 
     public void setValue(boolean value){
-        this.horizontal = value;
+        this.value = value;
     }
 }

@@ -17,6 +17,10 @@ public class Gui {
 
     public Gui(Game game){
         this.game = game;
+        this.jFrame = new JFrame("Quoridor");
+        this.gridPanel = new GridPanel(game.getBoard(),this);
+        this.playerPanel1 = new PlayerPanel(game.getPlayer1());
+        this.playerPanel2 = new PlayerPanel(game.getPlayer2());
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 CreateAndShowGui();
@@ -25,13 +29,7 @@ public class Gui {
     }
 
     public void CreateAndShowGui(){
-        this.jFrame = new JFrame("Quoridor");
-
         this.jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        this.gridPanel = new GridPanel(game.getBoard());
-        this.playerPanel1 = new PlayerPanel(game.getPlayer1());
-        this.playerPanel2 = new PlayerPanel(game.getPlayer2());
 
         this.jFrame.add(this.gridPanel, BorderLayout.CENTER);
         this.jFrame.add(this.playerPanel1, BorderLayout.WEST);
@@ -42,8 +40,11 @@ public class Gui {
     }
 
     public void refresh(){
-
+        this.gridPanel.refresh();
+        this.jFrame.repaint();
     }
 
-
+    public GridPanel getGridPanel() {
+        return gridPanel;
+    }
 }

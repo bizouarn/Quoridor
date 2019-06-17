@@ -196,4 +196,7 @@ public class Game {
         }
     }
 
+    public boolean getGui(){
+    	return this.gui;
+	}
 }

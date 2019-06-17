@@ -15,19 +15,23 @@ public class GuiListener implements ActionListener {
     private int y2;
     private Gui gui;
 
-    public GuiListener(Gui gui){
+    public GuiListener(Gui gui) {
         this.gui = gui;
     }
 
     public void actionPerformed(ActionEvent e) {
-        for(int i = 0 ; i<9 ; i++){
-            for(int j = 0; j<9 ; j++){
-                if(e.getSource()==this.gui.getGridPanel().getGrid()[i][j]){
-                    this.x1 = i;
-                    this.x2 = i+1;
-                    this.y1 = j;
-                    this.y2 = j+1;
-                    this.value = true;
+        for (int i = 0; i < 9; i++) {
+            if (e.getSource() == this.gui.getToolBar().getPawn()) {
+
+            } else {
+                for (int j = 0; j < 9; j++) {
+                    if (e.getSource() == this.gui.getGridPanel().getGrid()[i][j]) {
+                        this.x1 = i;
+                        this.x2 = i + 1;
+                        this.y1 = j;
+                        this.y2 = j + 1;
+                        this.value = true;
+                    }
                 }
             }
         }
@@ -49,19 +53,19 @@ public class GuiListener implements ActionListener {
         return y2;
     }
 
-    public boolean getValue(){
+    public boolean getValue() {
         return this.value;
     }
 
-    public boolean getFence(){
+    public boolean getFence() {
         return this.fence;
     }
 
-    public boolean getHorizontal(){
+    public boolean getHorizontal() {
         return this.horizontal;
     }
 
-    public void setValue(boolean value){
+    public void setValue(boolean value) {
         this.value = value;
     }
 }

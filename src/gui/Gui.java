@@ -22,7 +22,7 @@ public class Gui {
         this.gridPanel = new GridPanel(game.getBoard(),this);
         this.playerPanel1 = new PlayerPanel(game.getPlayer1());
         this.playerPanel2 = new PlayerPanel(game.getPlayer2());
-        this.toolBar = new ToolBar();
+        this.toolBar = new ToolBar(this,this.getGridPanel().getGuiListener());
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 CreateAndShowGui();
@@ -48,5 +48,9 @@ public class Gui {
 
     public GridPanel getGridPanel() {
         return gridPanel;
+    }
+
+    public ToolBar getToolBar() {
+        return toolBar;
     }
 }

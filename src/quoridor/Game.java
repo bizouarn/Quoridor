@@ -199,4 +199,8 @@ public class Game {
     public boolean getGui(){
     	return this.gui;
 	}
+
+	public Gui getGuiFrame() {
+		return guiFrame;
+	}
 }

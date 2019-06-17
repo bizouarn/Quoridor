@@ -5,6 +5,9 @@ package quoridor;
 
 // import java
 
+import gui.Gui;
+import gui.GuiListener;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -33,8 +36,17 @@ public class HumanPlayer extends Player {
         Scanner sc = new Scanner(System.in);
         boolean validPlay = false;
         while (!validPlay) {
-            if (false) {
 
+            if (this.getGame().getGui()) {
+                if(this.getGame().getGuiFrame().getGridPanel().getGuiListener().getValue()){
+                    System.out.print("->");
+                    GuiListener guiListener = this.getGame().getGuiFrame().getGridPanel().getGuiListener();
+                    int x1 = guiListener.getX1();
+                    int x2 = guiListener.getX2();
+                    int y1 = guiListener.getY1();
+                    int y2 = guiListener.getY2();
+                    guiListener.setValue(false);
+                }
             } else {
                 System.out.println("Write : \n1 - For play pawn\n2 - For play fence");
                 String choix = sc.nextLine() + "";

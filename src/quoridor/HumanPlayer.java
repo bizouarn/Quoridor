@@ -57,7 +57,6 @@ public class HumanPlayer extends Player {
                     } else {
                         pos = 2;
                     }
-                    System.out.println("pos :"+pos);
                     if(!guiListener.getFence()){
                         for (Square sqr : possibilitiesPawn) {
                             if (sqr.getX() == x1 && sqr.getY() == y1) {
@@ -76,11 +75,9 @@ public class HumanPlayer extends Player {
                             Square[] sqrArray = sb.getSqrArray();
                             if (sqrArray[0].getX() == x1 && sqrArray[0].getY() == y1 && sqrArray[3].getX() == x2 && sqrArray[3].getY() == y2) {
                                 if (pos == 1 && !sb.getHorizontalFence()) {
-                                    playFence(x1, y1, x2, y2, pos);
-                                    validPlay = true;
+                                    validPlay = playFence(x1, y1, x2, y2, pos);
                                 } else if (pos == 2 && !sb.getVerticalFence()) {
-                                    playFence(x1, y1, x2, y2, pos);
-                                    validPlay = true;
+                                    validPlay = playFence(x1, y1, x2, y2, pos);
                                 }
                             }
                         }
@@ -132,11 +129,9 @@ public class HumanPlayer extends Player {
                             Square[] sqrArray = sb.getSqrArray();
                             if (sqrArray[0].getX() == x1 && sqrArray[0].getY() == y1 && sqrArray[3].getX() == x2 && sqrArray[3].getY() == y2) {
                                 if (pos == 1 && !sb.getHorizontalFence()) {
-                                    playFence(x1, y1, x2, y2, pos);
-                                    validPlay = true;
+                                    validPlay = playFence(x1, y1, x2, y2, pos);
                                 } else if (pos == 2 && !sb.getVerticalFence()) {
-                                    playFence(x1, y1, x2, y2, pos);
-                                    validPlay = true;
+                                    validPlay = playFence(x1, y1, x2, y2, pos);
                                 }
                             }
                         }

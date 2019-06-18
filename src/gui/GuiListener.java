@@ -20,18 +20,36 @@ public class GuiListener implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        for (int i = 0; i < 9; i++) {
-            if (e.getSource() == this.gui.getToolBar().getPawn()) {
-
+        if (e.getSource() == this.gui.getToolBar().getPawn()) {
+            this.fence = false;
+            this.gui.getToolBar().getPawn().setEnabled(false);
+            this.gui.getToolBar().getFence().setEnabled(true);
+            this.gui.getToolBar().getDirection().setVisible(false);
+        }
+        if (e.getSource() == this.gui.getToolBar().getDirection()) {
+            if (this.horizontal) {
+                this.horizontal = false;
             } else {
-                for (int j = 0; j < 9; j++) {
-                    if (e.getSource() == this.gui.getGridPanel().getGrid()[i][j]) {
-                        this.x1 = i;
-                        this.x2 = i + 1;
-                        this.y1 = j;
-                        this.y2 = j + 1;
-                        this.value = true;
-                    }
+                this.horizontal = true;
+            }
+            System.out.println("Horisonatal :"+this.horizontal);
+        }
+        if (e.getSource() == this.gui.getToolBar().getFence()) {
+            this.fence = true;
+            this.gui.getToolBar().getPawn().setEnabled(true);
+            this.gui.getToolBar().getFence().setEnabled(false);
+            this.gui.getToolBar().getDirection().setVisible(true);
+            System.out.println("|fence = " + this.fence + "|");
+        }
+
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (e.getSource() == this.gui.getGridPanel().getGrid()[i][j]) {
+                    this.x1 = i;
+                    this.x2 = i + 1;
+                    this.y1 = j;
+                    this.y2 = j + 1;
+                    this.value = true;
                 }
             }
         }

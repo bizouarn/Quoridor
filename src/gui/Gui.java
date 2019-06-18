@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Gui {
+    private GuiListener guiListener = new GuiListener(this);
 
     private PlayerPanel playerPanel1;
     private PlayerPanel playerPanel2;
@@ -18,11 +19,12 @@ public class Gui {
 
     public Gui(Game game){
         this.game = game;
+
         this.jFrame = new JFrame("Quoridor");
         this.gridPanel = new GridPanel(game.getBoard(),this);
         this.playerPanel1 = new PlayerPanel(game.getPlayer1());
         this.playerPanel2 = new PlayerPanel(game.getPlayer2());
-        this.toolBar = new ToolBar(this,this.getGridPanel().getGuiListener());
+        this.toolBar = new ToolBar(this);
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 CreateAndShowGui();
@@ -52,5 +54,9 @@ public class Gui {
 
     public ToolBar getToolBar() {
         return toolBar;
+    }
+
+    public GuiListener getGuiListener() {
+        return guiListener;
     }
 }

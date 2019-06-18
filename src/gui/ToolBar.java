@@ -8,12 +8,10 @@ public class ToolBar extends JPanel {
   private JButton fence;
   private JButton pawn;
   private JButton direction;
-  private GuiListener guiListener;
   private Gui gui;
 
-  public ToolBar(Gui gui,GuiListener guiListener) {
+  public ToolBar(Gui gui) {
     this.gui = gui;
-    this.guiListener = guiListener;
     setLayout(new GridLayout(1,3));
     initComponent();
     add(this.pawn);
@@ -25,9 +23,9 @@ public class ToolBar extends JPanel {
     this.fence = new JButton("Fence");
     this.pawn = new JButton("Pawn");
     this.direction = new JButton("Direction");
-    this.fence.addActionListener(new GuiListener(this.gui));
-    this.pawn.addActionListener(new GuiListener(this.gui));
-    this.direction.addActionListener(new GuiListener(this.gui));
+    this.fence.addActionListener(this.gui.getGuiListener());
+    this.pawn.addActionListener(this.gui.getGuiListener());
+    this.direction.addActionListener(this.gui.getGuiListener());
   }
 
   public JButton getDirection() {

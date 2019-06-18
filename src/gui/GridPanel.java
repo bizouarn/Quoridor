@@ -17,8 +17,6 @@ public class GridPanel extends JPanel {
   private Board board;
   private Gui gui;
 
-  private GuiListener guiListener;
-
   public GridPanel(Board board,Gui gui) {
     super(new GridLayout(board.getSIZE(),board.getSIZE()));
     this.gui = gui;
@@ -26,7 +24,6 @@ public class GridPanel extends JPanel {
     grid = new JButton[board.getSIZE()][board.getSIZE()];
     this.setPreferredSize(new Dimension(565,565));
     this.setBackground(new Color(128, 142, 159));
-    guiListener = new GuiListener(this.gui);
     initComponent();
   }
 
@@ -45,7 +42,7 @@ public class GridPanel extends JPanel {
         grid[i][j] = new JButton(new ImageIcon("./data/images/"+path+square.getStatusFence().getImage()));
         grid[i][j].setBorder(null);
         grid[i][j].setBackground(new Color(102, 114, 131));
-        grid[i][j].addActionListener(this.guiListener);
+        grid[i][j].addActionListener(this.gui.getGuiListener());
         this.add(this.grid[i][j]);
       }
     }
@@ -70,9 +67,5 @@ public class GridPanel extends JPanel {
 
   public JButton[][] getGrid() {
     return grid;
-  }
-
-  public GuiListener getGuiListener() {
-    return guiListener;
   }
 }

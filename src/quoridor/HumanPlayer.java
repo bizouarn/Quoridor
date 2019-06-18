@@ -39,31 +39,49 @@ public class HumanPlayer extends Player {
 
             if (this.getGame().getGui()) {
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(100);
                 } catch (Exception e){
                     System.out.println(e);
                 }
-                GuiListener guiListener = this.getGame().getGuiFrame().getGridPanel().getGuiListener();
+                GuiListener guiListener = this.getGame().getGuiFrame().getGuiListener();
                 boolean condition = guiListener.getValue();
                 if(condition){
-                    System.out.println("->");
                     guiListener.setValue(false);
                     int x1 = guiListener.getX1();
                     int x2 = guiListener.getX2();
                     int y1 = guiListener.getY1();
                     int y2 = guiListener.getY2();
-                    System.out.println("click("+x1+","+y1+")");
-                    for (Square sqr : possibilitiesPawn) {
-                        System.out.print(sqr);
-                        if (sqr != null) {
-                            System.out.print("(" + sqr.getX() + ";" + sqr.getY() + ")");
-                        }
+                    int pos;
+                    if(guiListener.getHorizontal()){
+                        pos = 1;
+                    } else {
+                        pos = 2;
                     }
+                    System.out.println("pos :"+pos);
                     if(!guiListener.getFence()){
                         for (Square sqr : possibilitiesPawn) {
                             if (sqr.getX() == x1 && sqr.getY() == y1) {
                                 playPawn(x1, y1);
                                 validPlay = true;
+                            }
+                        }
+                    } else {
+                        ArrayList<SubBoard> possibilitiesFence = null;
+                        if (pos == 1) {
+                            possibilitiesFence = possibilitiesFenceH;
+                        } else if (pos == 2) {
+                            possibilitiesFence = possibilitiesFenceV;
+                        }
+                        for (SubBoard sb : possibilitiesFence) {
+                            Square[] sqrArray = sb.getSqrArray();
+                            if (sqrArray[0].getX() == x1 && sqrArray[0].getY() == y1 && sqrArray[3].getX() == x2 && sqrArray[3].getY() == y2) {
+                                if (pos == 1 && !sb.getHorizontalFence()) {
+                                    playFence(x1, y1, x2, y2, pos);
+                                    validPlay = true;
+                                } else if (pos == 2 && !sb.getVerticalFence()) {
+                                    playFence(x1, y1, x2, y2, pos);
+                                    validPlay = true;
+                                }
                             }
                         }
                     }

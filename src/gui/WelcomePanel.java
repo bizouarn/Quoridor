@@ -8,4 +8,16 @@ import java.awt.*;
 
 public class WelcomePanel extends JPanel {
 
+  private JButton startButton;
+
+  public WelcomePanel() {
+    initComponent();
+    add(this.startButton);
+    setBackground(null);
+  }
+
+  private void initComponent() {
+    this.startButton = new JButton("Start");
+    this.startButton.setBackground(null);
+  }
 }

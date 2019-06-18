@@ -227,6 +227,12 @@ public class Board {
         } else {
             currSqr = null;
         }
+        ret = listOfPossibilitiesPawn(currSqr);
+        return ret;
+    }
+
+    public ArrayList<Square> listOfPossibilitiesPawn(Square currSqr) {
+        ArrayList<Square> ret = new ArrayList<Square>();
         if (currSqr != null) {
             if (currSqr.getFenceN() == false) {
                 Square currSqr2 = this.getSquare(currSqr.getX() - 1, currSqr.getY());
@@ -307,16 +313,6 @@ public class Board {
         }
         return ret;
     }
-
-    /**
-     *
-     *
-     */
-    public boolean checkExistingPath() {
-        return false;
-    }
-
-
 
     public String toString() {
         String str = "";

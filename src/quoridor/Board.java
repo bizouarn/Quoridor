@@ -231,7 +231,7 @@ public class Board {
             if (currSqr.getFenceN() == false) {
                 Square currSqr2 = this.getSquare(currSqr.getX() - 1, currSqr.getY());
                 if (currSqr2 == null) {
-//                    ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY()));
+                    ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY()));
                 } else if (currSqr2.getStatus() == Status.Player1 || currSqr2.getStatus() == Status.Player2) {
                     if (currSqr2.getFenceN()) {
                         if (!currSqr2.getFenceW()) {
@@ -250,7 +250,7 @@ public class Board {
             if (currSqr.getFenceE() == false) {
                 Square currSqr2 = this.getSquare(currSqr.getX(), currSqr.getY() + 1);
                 if (currSqr2 == null) {
-//                    ret.add(this.getSquare(currSqr.getX(), currSqr.getY() + 1));
+                    ret.add(this.getSquare(currSqr.getX(), currSqr.getY() + 1));
                 } else if (currSqr2.getStatus() == Status.Player1 || currSqr2.getStatus() == Status.Player2) {
                     if (currSqr2.getFenceE()) {
                         if (!currSqr2.getFenceN()) {
@@ -269,7 +269,7 @@ public class Board {
             if (currSqr.getFenceS() == false) {
                 Square currSqr2 = this.getSquare(currSqr.getX() + 1, currSqr.getY());
                 if (currSqr2 == null) {
-//                    ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY()));
+                    ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY()));
                 } else if (currSqr2.getStatus() == Status.Player1 || currSqr2.getStatus() == Status.Player2) {
                     if (currSqr2.getFenceS()) {
                         if (!currSqr2.getFenceW()) {
@@ -288,7 +288,7 @@ public class Board {
             if (currSqr.getFenceW() == false) {
                 Square currSqr2 = this.getSquare(currSqr.getX(), currSqr.getY() - 1);
                 if (currSqr2 == null) {
-//                    ret.add(this.getSquare(currSqr.getX(), currSqr.getY() - 1));
+                    ret.add(this.getSquare(currSqr.getX(), currSqr.getY() - 1));
                 } else if (currSqr2.getStatus() == Status.Player1 || currSqr2.getStatus() == Status.Player2) {
                     if (currSqr2.getFenceW()) {
                         if (!currSqr2.getFenceN()) {

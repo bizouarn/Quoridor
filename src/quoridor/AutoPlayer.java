@@ -21,6 +21,10 @@ public class AutoPlayer extends Player {
 	 *
 	 */
 	public void play() {
+		try {
+			Thread.sleep(1000);
+		} catch (Exception e){}
+
 		ArrayList<Square> possibilitiesPawn = this.getGame().getBoard().listOfPossibilitiesPawn(this, this.getGame());
 		ArrayList<SubBoard> possibilitiesFenceH = this.getGame().getBoard().listOfPossibilitiesFenceHorizontal();
 		ArrayList<SubBoard> possibilitiesFenceV = this.getGame().getBoard().listOfPossibilitiesFenceVertical();
@@ -39,7 +43,7 @@ public class AutoPlayer extends Player {
 					listSquare.add(i + "," + j);
 				}
 			}
-			int tmp2 = this.getGame().recNbMinMove(sqr,player,listSquare,0);
+			int tmp2 = this.getGame().getNbMinMove(sqr,player);
 			if(tmp2 < tmp){
 				tmp = tmp2;
 				res = sqr;

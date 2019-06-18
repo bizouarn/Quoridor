@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
-public class menuGuiListener implements ActionListener {
+/*
+public class MenuGuiListener implements ActionListener {
 
   private MenuGui menuGui;
 
@@ -30,4 +30,4 @@ public class menuGuiListener implements ActionListener {
         this.menuGui.getCL().show(this.menuGui, "credits");
       }
   }
-}
+}*/

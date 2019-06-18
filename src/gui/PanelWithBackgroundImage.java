@@ -6,7 +6,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.imageio.ImageIO;
 import java.io.File;
-import gui.MenuGui;
+import gui.*;
 
 public class PanelWithBackgroundImage extends JPanel {
 

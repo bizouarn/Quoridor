@@ -13,7 +13,7 @@ public class MainMenu extends JPanel {
       private JButton creds;
       private JButton quit;
 
-      public WelcomePanel() {
+      public MainMenu() {
         initComponent();
         setLayout(new GridLayout(4,1));
         add(this.loadGame);

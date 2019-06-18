@@ -6,13 +6,8 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.imageio.ImageIO;
 import java.io.File;
-import gui.PanelWithBackgroundImage;
-import gui.CreditsPanel;
-import gui.MenuGuiListener;
-import gui.creditsPanel;
-import gui.welcomePanel;
-import gui.MainMenu;
-
+import gui.*;
+/*
 public class MenuGui extends JPanel {
 
   CardLayout cl;
@@ -76,4 +71,4 @@ public class MenuGui extends JPanel {
       return this.creditsPanel;
     }
 
-}
+}*/

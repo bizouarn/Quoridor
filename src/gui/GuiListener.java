@@ -32,7 +32,7 @@ public class GuiListener implements ActionListener {
             } else {
                 this.horizontal = true;
             }
-            System.out.println("Horisonatal :"+this.horizontal);
+            System.out.println("Horizonatal :"+this.horizontal);
         }
         if (e.getSource() == this.gui.getToolBar().getFence()) {
             this.fence = true;

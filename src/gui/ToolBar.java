@@ -17,6 +17,7 @@ public class ToolBar extends JPanel {
     add(this.pawn);
     add(this.fence);
     add(this.direction);
+    this.pawn.setEnabled(false);
   }
 
   private void initComponent() {

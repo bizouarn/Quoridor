@@ -11,12 +11,12 @@ public class FrameWithBG {
 
         final BufferedImage bg = ImageIO.read(new File("../data/images/MENU.png"));
 
-        Runnable r = new Runnable() {
+        Runnable run = new Runnable() {
 
             @Override
             public void run() {
-                JPanel c = new PanelWithBackgroundImage(bg);
-                c.setBorder(new EmptyBorder(10, 10, 10, 10));
+                JPanel panel = new PanelWithBackgroundImage(bg);
+                panel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
                 CardLayout cl = new CardLayout();
                 cl.addLayoutComponent(new WelcomePanel(), "welcome");
@@ -26,16 +26,16 @@ public class FrameWithBG {
 
                 show(cl, "welcome");
 
-                JFrame f = new JFrame(c.getClass().getSimpleName());
+                JFrame frame = new JFrame(panel.getClass().getSimpleName());
 
-                f.add(c);
-                f.pack();
-                f.setVisible(true);
+                frame.add(c);
+                frame.pack();
+                frame.setVisible(true);
             }
         };
         // Swing GUIs should be created and updated on the EDT
         // http://docs.oracle.com/javase/tutorial/uiswing/concurrency/initial.html
-        SwingUtilities.invokeLater(r);
+        SwingUtilities.invokeLater(run);
     }
 }
 

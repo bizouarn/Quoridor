@@ -15,7 +15,7 @@ public class CreditsPanel extends JPanel {
   private JLabel descPierr;
   private JLabel descClaud;
 
-  private JButton return;
+  private JButton retour;
 
   public CreditsPanel() {
     initComponent();
@@ -26,18 +26,21 @@ public class CreditsPanel extends JPanel {
     add(this.descAymer);
     add(this.descPierr);
     add(this.descClaud);
-    add(this.return);
+    add(this.retour);
     setBackground(null);
   }
 
   private void initComponent() {
     this.picAymer = new JLabel("Mettre une photo");
-    this.picAymer = new JLabel("Mettre une photo");
-    this.picAymer = new JLabel("Mettre une photo");
+    this.picPierr = new JLabel("Mettre une photo");
+    this.picPierr = new JLabel("Mettre une photo");
     this.descAymer = new JLabel("Mettre une desc");
     this.descPierr = new JLabel("Mettre une desc");
     this.descClaud = new JLabel("Mettre une desc");
-    this.return = new JButton("Retour");
+    this.retour = new JButton("Back");
   }
 
+  public JButton getReturnButton() {
+    return this.retour;
+  }
 }

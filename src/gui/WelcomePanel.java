@@ -20,4 +20,8 @@ public class WelcomePanel extends JPanel {
     this.startButton = new JButton("Start");
     this.startButton.setBackground(null);
   }
+
+  public JButton getStartButton() {
+    return this.startButton;
+  }
 }

@@ -10,13 +10,13 @@ public class ParametersPanel extends JPanel {
 
     private JButton mode2p;
     private JButton mode4p;
-    private JButton return;
+    private JButton retour;
 
-    public WelcomePanel() {
+    public ParametersPanel() {
       initComponent();
       add(this.mode2p);
       add(this.mode4p);
-      add(this.return);
+      add(this.retour);
       setBackground(null);
     }
 
@@ -25,7 +25,7 @@ public class ParametersPanel extends JPanel {
       this.mode2p.setBackground(null);
       this.mode4p = new JButton("4 players");
       this.mode4p.setBackground(null);
-      this.return = new JButton("back");
-      this.return.setBackground(null);
+      this.retour = new JButton("back");
+      this.retour.setBackground(null);
     }
 }

@@ -1,11 +1,25 @@
+package gui;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.imageio.ImageIO;
 import java.io.File;
+import gui.PanelWithBackgroundImage;
+import gui.CreditsPanel;
+import gui.MenuGuiListener;
+import gui.creditsPanel;
+import gui.welcomePanel;
+import gui.MainMenu;
 
-public class FrameWithBG {
+public class MenuGui {
+
+  CardLayout cl;
+  WelcomePanel welcomePanel;
+  MainMenu mainMenu;
+  CreditsPanel creditsPanel;
+  ParametersPanel parametersPanel;
 
     public static void main(String[] args) throws Exception {
 
@@ -18,38 +32,48 @@ public class FrameWithBG {
                 JPanel panel = new PanelWithBackgroundImage(bg);
                 panel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
-                CardLayout cl = new CardLayout();
-                cl.addLayoutComponent(new WelcomePanel(), "welcome");
-                cl.addLayoutComponent(new MainMenu(), "mainemenu");
-                cl.addLayoutComponent(new CreditsPanel(), "credits");
-                cl.addLayoutComponent(new ParametersPanel(), "parameters");
+                this.welcomePanel = new WelcomePanel();
+                this.mainMenu = new MainMenu();
+                this.creditsPanel = new CreditsPanel();
+                //this.parametersPanel = new ParametersPanel();
 
-                show(cl, "welcome");
+                this.cl = new CardLayout();
+                this.cl.addLayoutComponent(this.welcomePanel, "welcome");
+                this.cl.addLayoutComponent(this.mainMenu, "mainmenu");
+                this.cl.addLayoutComponent(this.creditsPanel, "credits");
+                //this.cl.addLayoutComponent(this.parametersPanel, "parameters");
+
+                show(this.cl, "welcome");
 
                 JFrame frame = new JFrame(panel.getClass().getSimpleName());
 
-                frame.add(c);
+                frame.add(panel);
                 frame.pack();
                 frame.setVisible(true);
+
+                MenuGuiListener menuGuiListener = new MenuGuiListener(this);
             }
         };
         // Swing GUIs should be created and updated on the EDT
         // http://docs.oracle.com/javase/tutorial/uiswing/concurrency/initial.html
         SwingUtilities.invokeLater(run);
     }
-}
 
-class PanelWithBackgroundImage extends JPanel {
 
-    Image bg;
-
-    PanelWithBackgroundImage(Image bg) {
-        this.bg = bg;
+    public CardLayout getCL() {
+      return this.cl;
     }
 
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(bg, 0, 0, getWidth(), getHeight(), this);
+    public WelcomePanel getWelcomePanel() {
+      return this.welcomePanel;
     }
+
+    public MainMenu getMainMenu() {
+      return this.mainMenu;
+    }
+
+    public CreditsPanel getCreditsPanel() {
+      return this.creditsPanel;
+    }
+
 }

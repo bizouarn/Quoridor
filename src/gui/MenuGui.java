@@ -7,7 +7,7 @@ import javax.swing.border.EmptyBorder;
 import javax.imageio.ImageIO;
 import java.io.File;
 import gui.*;
-/*
+
 public class MenuGui extends JPanel {
 
   CardLayout cl;
@@ -21,7 +21,10 @@ public class MenuGui extends JPanel {
         final BufferedImage bg = ImageIO.read(new File("../data/images/MENU.png"));
 
         Runnable run = new Runnable() {
-
+            private WelcomePanel welcomePanel;
+            private MainMenu mainMenu;
+            private CreditsPanel creditsPanel;
+            private CardLayout cl;
             @Override
             public void run() {
                 JPanel panel = new PanelWithBackgroundImage(bg);
@@ -38,7 +41,7 @@ public class MenuGui extends JPanel {
                 this.cl.addLayoutComponent(this.creditsPanel, "credits");
                 //this.cl.addLayoutComponent(this.parametersPanel, "parameters");
 
-                show(this.cl, "welcome");
+                cl.show(this.welcomePanel, "welcome");
 
                 JFrame frame = new JFrame(panel.getClass().getSimpleName());
 
@@ -71,4 +74,4 @@ public class MenuGui extends JPanel {
       return this.creditsPanel;
     }
 
-}*/
+}

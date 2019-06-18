@@ -13,7 +13,7 @@ import gui.creditsPanel;
 import gui.welcomePanel;
 import gui.MainMenu;
 
-public class MenuGui {
+public class MenuGui extends JPanel {
 
   CardLayout cl;
   WelcomePanel welcomePanel;

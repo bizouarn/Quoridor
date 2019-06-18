@@ -76,52 +76,60 @@ public abstract class Player {
      * @author Aymeric Bizouarn
      */
     protected boolean playFence(int x1, int y1, int x2,int y2, int pos) {
-        boolean ret = true;
-        ArrayList<SubBoard> possibilitiesFence = null;
-        if(pos == 1){
-            possibilitiesFence = this.getGame().getBoard().listOfPossibilitiesFenceHorizontal();
-        } else if(pos == 2) {
-            possibilitiesFence = this.getGame().getBoard().listOfPossibilitiesFenceVertical();
-        }
-        for(SubBoard sb : possibilitiesFence){
-            Square[] sqrArray= sb.getSqrArray();
-            if(sqrArray[0].getX()==x1 && sqrArray[0].getY()==y1 && sqrArray[3].getX()==x2 && sqrArray[3].getY()==y2){
-                if(pos == 1 && !sb.getHorizontalFence()) {
-                    sb.setHorizontalFence(true);
-                    sqrArray[0].setFenceS(true);
-                    sqrArray[1].setFenceS(true);
-                    sqrArray[2].setFenceN(true);
-                    sqrArray[3].setFenceN(true);
-                } else if(pos == 2 && !sb.getVerticalFence()){
-                    sb.setVerticalFence(true);
-                    sqrArray[0].setFenceE(true);
-                    sqrArray[1].setFenceW(true);
-                    sqrArray[2].setFenceE(true);
-                    sqrArray[3].setFenceW(true);
-                }
-                for(int k = 0;k<sqrArray.length;k++) {
-                    sqrArray[k].refreshStatusFence();
-                }
-                if(!this.game.checkExistingPath()){
-                    ret = false;
-                    if(pos == 1) {
-                     sb.setHorizontalFence(false);
-                     sqrArray[0].setFenceS(false);
-                     sqrArray[1].setFenceS(false);
-                     sqrArray[2].setFenceN(false);
-                     sqrArray[3].setFenceN(false);
-                     } else if(pos == 2){
-                     sb.setVerticalFence(false);
-                     sqrArray[0].setFenceE(false);
-                     sqrArray[1].setFenceW(false);
-                     sqrArray[2].setFenceE(false);
-                     sqrArray[3].setFenceW(false);
-                     }
+        boolean ret;
+        if(this.checkNbRestingFences()>0) {
+            ret = true;
+            ArrayList<SubBoard> possibilitiesFence = null;
+            if (pos == 1) {
+                possibilitiesFence = this.getGame().getBoard().listOfPossibilitiesFenceHorizontal();
+            } else if (pos == 2) {
+                possibilitiesFence = this.getGame().getBoard().listOfPossibilitiesFenceVertical();
+            }
+            for (SubBoard sb : possibilitiesFence) {
+                Square[] sqrArray = sb.getSqrArray();
+                if (sqrArray[0].getX() == x1 && sqrArray[0].getY() == y1 && sqrArray[3].getX() == x2 && sqrArray[3].getY() == y2) {
+                    if (pos == 1 && !sb.getHorizontalFence()) {
+                        sb.setHorizontalFence(true);
+                        sqrArray[0].setFenceS(true);
+                        sqrArray[1].setFenceS(true);
+                        sqrArray[2].setFenceN(true);
+                        sqrArray[3].setFenceN(true);
+                    } else if (pos == 2 && !sb.getVerticalFence()) {
+                        sb.setVerticalFence(true);
+                        sqrArray[0].setFenceE(true);
+                        sqrArray[1].setFenceW(true);
+                        sqrArray[2].setFenceE(true);
+                        sqrArray[3].setFenceW(true);
+                    }
                     for (int k = 0; k < sqrArray.length; k++) {
                         sqrArray[k].refreshStatusFence();
                     }
+                    if (!this.game.checkExistingPath()) {
+                        ret = false;
+                        if (pos == 1) {
+                            sb.setHorizontalFence(false);
+                            sqrArray[0].setFenceS(false);
+                            sqrArray[1].setFenceS(false);
+                            sqrArray[2].setFenceN(false);
+                            sqrArray[3].setFenceN(false);
+                        } else if (pos == 2) {
+                            sb.setVerticalFence(false);
+                            sqrArray[0].setFenceE(false);
+                            sqrArray[1].setFenceW(false);
+                            sqrArray[2].setFenceE(false);
+                            sqrArray[3].setFenceW(false);
+                        }
+                        for (int k = 0; k < sqrArray.length; k++) {
+                            sqrArray[k].refreshStatusFence();
+                        }
+                    }
                 }
             }
+            if (ret == true) {
+                this.setNbFences(this.nbFences - 1);
+            }
+        } else {
+            ret = false;
         }
         return ret;
     }

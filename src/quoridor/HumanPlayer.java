@@ -36,7 +36,6 @@ public class HumanPlayer extends Player {
         Scanner sc = new Scanner(System.in);
         boolean validPlay = false;
         while (!validPlay) {
-
             if (this.getGame().getGui()) {
                 try {
                     Thread.sleep(100);
@@ -53,9 +52,9 @@ public class HumanPlayer extends Player {
                     int y2 = guiListener.getY2();
                     int pos;
                     if(guiListener.getHorizontal()){
-                        pos = 1;
-                    } else {
                         pos = 2;
+                    } else {
+                        pos = 1;
                     }
                     if(!guiListener.getFence()){
                         for (Square sqr : possibilitiesPawn) {

@@ -19,6 +19,7 @@ public class Game {
     private Board board;
     private Player player1;
     private Player player2;
+    private Player playerWhoStart;
 
     private boolean gui;
     private Gui guiFrame;
@@ -111,6 +112,7 @@ public class Game {
         } else {
             ret = this.player2;
         }
+        this.playerWhoStart = this.whoStarts();
         return ret;
     }
 
@@ -120,7 +122,6 @@ public class Game {
      * @author Aymeric Bizouarn
      */
     public void start() {
-        Player playerWhoStart = this.whoStarts();
         int playerPlay = 1; //1 = for player1 play & 2 = for player2
         if (playerWhoStart == this.player1) {
             playerPlay = 1;
@@ -244,15 +245,41 @@ public class Game {
             ret = true;
         } else {
             for (Square sqrP : possibilitiesPawn) {
-                if (ret == false) {
-                    String value = sqrP.getX() + "," + sqrP.getY();
-                    if (listSquare.indexOf(value) != -1) {
-                        ret = recExistingPath(sqrP, player, listSquare);
+                if(sqrP != null) {
+                    if (ret == false) {
+                        String value = sqrP.getX() + "," + sqrP.getY();
+                        if (listSquare.indexOf(value) != -1) {
+                            ret = recExistingPath(sqrP, player, listSquare);
+                        }
                     }
                 }
             }
         }
         return ret;
+    }
+
+    public int recNbMinMove(Square sqr, int player, ArrayList<String> listSquareTmp, int nbMove) {
+        int ret = 0;
+        ArrayList<String> listSquare = listSquareTmp;
+        listSquare.remove(sqr.getX() + "," + sqr.getY());
+        ArrayList<Square> possibilitiesPawn = this.board.listOfPossibilitiesPawn(sqr);
+        if (sqr.getX() == 8 && player == 1) {
+            return nbMove;
+        } else if (sqr.getX() == 0 && player == 2) {
+            return nbMove;
+        } else {
+            int tmpRes = 81;
+            for (Square sqrP : possibilitiesPawn) {
+                String value = sqrP.getX() + "," + sqrP.getY();
+                if (listSquare.indexOf(value) != -1) {
+                    int tmpRes2 = recNbMinMove(sqrP, player, listSquare,nbMove+1);
+                    if(tmpRes2<tmpRes){
+                        tmpRes = tmpRes2;
+                    }
+                }
+            }
+            return tmpRes;
+        }
     }
 
     public boolean getGui() {

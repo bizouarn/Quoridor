@@ -20,4 +20,10 @@ public class LeftPlayers extends JPanel {
     add(this.player1);
     add(this.player2);
   }
+
+  public void refresh(int player1,int player2){
+    this.player1.refresh(player1);
+    this.player2.refresh(player2);
+    this.repaint();
+  }
 }

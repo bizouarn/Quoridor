@@ -1,5 +1,7 @@
 package quoridor;
 
+import java.util.ArrayList;
+
 /**
  * An Extend of Player make for play automatically.
  */
@@ -19,8 +21,31 @@ public class AutoPlayer extends Player {
 	 *
 	 */
 	public void play() {
-		// TODO - implement AutoPlayer.play
-		this.getGame().getBoard().listOfPossibilitiesPawn(this,this.getGame());
+		ArrayList<Square> possibilitiesPawn = this.getGame().getBoard().listOfPossibilitiesPawn(this, this.getGame());
+		ArrayList<SubBoard> possibilitiesFenceH = this.getGame().getBoard().listOfPossibilitiesFenceHorizontal();
+		ArrayList<SubBoard> possibilitiesFenceV = this.getGame().getBoard().listOfPossibilitiesFenceVertical();
+		int player;
+		if(this == this.getGame().getPlayer1()){
+			player = 1;
+		} else {
+			player = 2;
+		}
+		Square res = possibilitiesPawn.get(0);
+		int tmp = 81;
+		for(Square sqr : possibilitiesPawn){
+			ArrayList<String> listSquare = new ArrayList<>();
+			for (int i = 0; i < 9; i++) {
+				for (int j = 0; j < 9; j++) {
+					listSquare.add(i + "," + j);
+				}
+			}
+			int tmp2 = this.getGame().recNbMinMove(sqr,player,listSquare,0);
+			if(tmp2 < tmp){
+				tmp = tmp2;
+				res = sqr;
+			}
+		}
+		playPawn(res.getX(),res.getY());
 	}
 
 	/**

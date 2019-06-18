@@ -11,6 +11,7 @@ public class Gui {
 
     private PlayerPanel playerPanel1;
     private PlayerPanel playerPanel2;
+    private LeftPlayers leftPlayers;
     private ToolBar toolBar;
     private GridPanel gridPanel;
 
@@ -25,6 +26,7 @@ public class Gui {
         this.playerPanel1 = new PlayerPanel(game.getPlayer1());
         this.playerPanel2 = new PlayerPanel(game.getPlayer2());
         this.toolBar = new ToolBar(this);
+        this.leftPlayers = new LeftPlayers(this.game.getPlayer1(),this.game.getPlayer2());
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 CreateAndShowGui();
@@ -36,7 +38,7 @@ public class Gui {
         this.jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.jFrame.add(this.gridPanel, BorderLayout.CENTER);
-        this.jFrame.add(new LeftPlayers(this.game.getPlayer1(),this.game.getPlayer2()), BorderLayout.WEST);
+        this.jFrame.add(this.leftPlayers, BorderLayout.WEST);
         this.jFrame.add(this.toolBar,BorderLayout.SOUTH);
 
         this.jFrame.pack();
@@ -44,6 +46,7 @@ public class Gui {
     }
 
     public void refresh(){
+        this.leftPlayers.refresh(this.game.getPlayer1().checkNbRestingFences(),this.game.getPlayer2().checkNbRestingFences());
         this.gridPanel.refresh();
         this.jFrame.repaint();
     }

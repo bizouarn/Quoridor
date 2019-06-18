@@ -18,12 +18,13 @@ public class ToolBar extends JPanel {
     add(this.fence);
     add(this.direction);
     this.pawn.setEnabled(false);
+    this.direction.setVisible(false);
   }
 
   private void initComponent() {
     this.fence = new JButton("Fence");
     this.pawn = new JButton("Pawn");
-    this.direction = new JButton("Direction");
+    this.direction = new JButton("Direction : \u2014");
     this.fence.addActionListener(this.gui.getGuiListener());
     this.pawn.addActionListener(this.gui.getGuiListener());
     this.direction.addActionListener(this.gui.getGuiListener());

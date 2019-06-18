@@ -27,6 +27,11 @@ public class PlayerPanel extends JPanel{
       this.add(fences);
     }
 
+    public void refresh(int playerInfo){
+        this.fences.setText(playerInfo+"");
+        this.repaint();
+    }
+
     public void setFences(int fences) {
       this.fences.setText(fences+"");
     }

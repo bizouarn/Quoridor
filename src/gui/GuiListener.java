@@ -29,7 +29,7 @@ public class GuiListener implements ActionListener {
         if (e.getSource() == this.gui.getToolBar().getDirection()) {
             if (this.horizontal) {
                 this.horizontal = false;
-                this.gui.getToolBar().getDirection().setText("Direction : --");
+                this.gui.getToolBar().getDirection().setText("Direction : \u2014");
             } else {
                 this.horizontal = true;
                 this.gui.getToolBar().getDirection().setText("Direction : |");

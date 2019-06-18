@@ -29,17 +29,17 @@ public class GuiListener implements ActionListener {
         if (e.getSource() == this.gui.getToolBar().getDirection()) {
             if (this.horizontal) {
                 this.horizontal = false;
+                this.gui.getToolBar().getDirection().setText("Direction : --");
             } else {
                 this.horizontal = true;
+                this.gui.getToolBar().getDirection().setText("Direction : |");
             }
-            System.out.println("Horizonatal :"+this.horizontal);
         }
         if (e.getSource() == this.gui.getToolBar().getFence()) {
             this.fence = true;
             this.gui.getToolBar().getPawn().setEnabled(true);
             this.gui.getToolBar().getFence().setEnabled(false);
             this.gui.getToolBar().getDirection().setVisible(true);
-            System.out.println("|fence = " + this.fence + "|");
         }
 
         for (int i = 0; i < 9; i++) {

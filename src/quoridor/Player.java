@@ -75,7 +75,8 @@ public abstract class Player {
      * The path validity is checked by the checkExistingPath method
      * @author Aymeric Bizouarn
      */
-    protected void playFence(int x1, int y1, int x2,int y2, int pos) {
+    protected boolean playFence(int x1, int y1, int x2,int y2, int pos) {
+        boolean ret = true;
         ArrayList<SubBoard> possibilitiesFence = null;
         if(pos == 1){
             possibilitiesFence = this.getGame().getBoard().listOfPossibilitiesFenceHorizontal();
@@ -101,8 +102,28 @@ public abstract class Player {
                 for(int k = 0;k<sqrArray.length;k++) {
                     sqrArray[k].refreshStatusFence();
                 }
+                if(!this.game.checkExistingPath()){
+                    ret = false;
+                    if(pos == 1) {
+                     sb.setHorizontalFence(false);
+                     sqrArray[0].setFenceS(false);
+                     sqrArray[1].setFenceS(false);
+                     sqrArray[2].setFenceN(false);
+                     sqrArray[3].setFenceN(false);
+                     } else if(pos == 2){
+                     sb.setVerticalFence(false);
+                     sqrArray[0].setFenceE(false);
+                     sqrArray[1].setFenceW(false);
+                     sqrArray[2].setFenceE(false);
+                     sqrArray[3].setFenceW(false);
+                     }
+                    for (int k = 0; k < sqrArray.length; k++) {
+                        sqrArray[k].refreshStatusFence();
+                    }
+                }
             }
         }
+        return ret;
     }
 
     /**

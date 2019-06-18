@@ -6,6 +6,7 @@ import gui.Gui;
 // import java
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -127,7 +128,7 @@ public class Game {
             playerPlay = 2;
         }
         while (!checkEndOfGame()) {
-            System.out.println("rec path :"+checkExistingPath());
+            checkExistingPath();
             this.guiFrame.refresh();
             Player playerActual = null;
             if (playerPlay == 1) {
@@ -209,44 +210,47 @@ public class Game {
     }
 
     public boolean checkExistingPath() {
-        ArrayList<int[]> listSquare = new ArrayList<int[]>();
-        for(int i = 0; i<9 ;i++){
-            for(int j = 0; j<9 ; j++){
-                int[] position = {i,j};
-                listSquare.add(position);
+        boolean ret = false;
+        ArrayList<String> listSquare = new ArrayList<>();
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                listSquare.add(i + "," + j);
             }
         }
         boolean resP1 = false;
-        resP1 = recExistingPath(this.board.getPlayer1Square(), 1, 0,listSquare);
-        boolean resP2 = false;
-        resP2 = recExistingPath(this.board.getPlayer2Square(), 2, 0,listSquare);
-        if(resP1 || resP2){
-            return true;
+        resP1 = recExistingPath(this.board.getPlayer1Square(), 1, listSquare);
+        listSquare = new ArrayList<>();
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                listSquare.add(i + "," + j);
+            }
         }
-        boolean ret = false;
-        return false;
+        boolean resP2 = false;
+        resP2 = recExistingPath(this.board.getPlayer2Square(), 2, listSquare);
+        if (resP1 && resP2) {
+            ret = true;
+        }
+        return ret;
     }
 
-    public boolean recExistingPath(Square sqr, int player, int i,ArrayList<int[]> listSquare) {
-        i++;
+    public boolean recExistingPath(Square sqr, int player, ArrayList<String> listSquareTmp) {
         boolean ret = false;
-        if (i < 81) {
-            listSquare.remove(sqr);
-            System.out.println("index of :"+listSquare.indexOf(sqr));
-            ArrayList<Square> possibilitiesPawn = this.board.listOfPossibilitiesPawn(sqr);
-            if (sqr.getX()==8 && player == 1) {
-                ret = true;
-            } else if (sqr.getX()==0 && player == 2) {
-                ret = true;
-            } else {
-                for (Square sqrP : possibilitiesPawn) {
-                    if(listSquare.indexOf(sqr)!=-1) {
-                        System.out.println("=1=");
-                        ret = recExistingPath(sqrP, player, i,listSquare);
+        ArrayList<String> listSquare = listSquareTmp;
+        listSquare.remove(sqr.getX() + "," + sqr.getY());
+        ArrayList<Square> possibilitiesPawn = this.board.listOfPossibilitiesPawn(sqr);
+        if (sqr.getX() == 8 && player == 1) {
+            ret = true;
+        } else if (sqr.getX() == 0 && player == 2) {
+            ret = true;
+        } else {
+            for (Square sqrP : possibilitiesPawn) {
+                if (ret == false) {
+                    String value = sqrP.getX() + "," + sqrP.getY();
+                    if (listSquare.indexOf(value) != -1) {
+                        ret = recExistingPath(sqrP, player, listSquare);
                     }
                 }
             }
-            System.out.println("rec i :"+i+" ret : "+ret+" sqr :"+sqr.getX()+","+sqr.getY());
         }
         return ret;
     }

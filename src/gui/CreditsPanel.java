@@ -33,7 +33,7 @@ public class CreditsPanel extends JPanel {
   private void initComponent() {
     this.picAymer = new JLabel("Mettre une photo");
     this.picPierr = new JLabel("Mettre une photo");
-    this.picPierr = new JLabel("Mettre une photo");
+    this.picClaud = new JLabel("Mettre une photo");
     this.descAymer = new JLabel("Mettre une desc");
     this.descPierr = new JLabel("Mettre une desc");
     this.descClaud = new JLabel("Mettre une desc");

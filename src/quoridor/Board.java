@@ -308,6 +308,16 @@ public class Board {
         return ret;
     }
 
+    /**
+     *
+     *
+     */
+    public boolean checkExistingPath() {
+
+    }
+
+
+
     public String toString() {
         String str = "";
         for (int i = 0; i < 9; i++) {

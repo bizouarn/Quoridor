@@ -14,6 +14,7 @@ public class LeftPlayers extends JPanel {
   public LeftPlayers(Player player1, Player player2) {
     this.player1 = new PlayerPanel(player1);
     this.player2 = new PlayerPanel(player2);
+    setPreferedSize(200, null);
     setLayout(new GridLayout(2, 1));
     add(this.player1);
     add(this.player2);

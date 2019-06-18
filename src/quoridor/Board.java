@@ -314,6 +314,7 @@ public class Board {
      */
     public boolean checkExistingPath() {
 
+      return false;
     }
 
 

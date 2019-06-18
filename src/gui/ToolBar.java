@@ -16,8 +16,8 @@ public class ToolBar extends JPanel {
     this.guiListener = guiListener;
     setLayout(new GridLayout(1,3));
     initComponent();
-    add(this.fence);
     add(this.pawn);
+    add(this.fence);
     add(this.direction);
   }
 

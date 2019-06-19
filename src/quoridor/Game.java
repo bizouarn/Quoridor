@@ -83,22 +83,33 @@ public class Game {
      * @author Aymeric Bizouarn
      */
     public void initializeGame() {
+        String name1;
+        String name2;
+        if (this.gui == true) {
+          name1 = popUpEndInputPlayer1();
+          name2 = popUpEndInputPlayer2();
+        }
+        else {
+          Scanner scanner = new Scanner(System.in);
+          System.out.println("Name Player 1 : ");
+          String name1 = scanner.nextLine();
+          System.out.println("Name Player 2 : ");
+          String name2 = scanner.nextLine();
+        }
+
+        if (name1 == "auto") {
+            this.player1 = new AutoPlayer(name1, this);
+        } else {
+            this.player1 = new HumanPlayer(name1, this);
+        }
+
+        if (name2 == "auto") {
+            this.player2 = new AutoPlayer(name2, this);
+        } else {
+            this.player2 = new HumanPlayer(name2, this);
+        }
+        
         this.board = new Board();
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Name Player 1 : ");
-        String name = scanner.nextLine();
-        if (name.contains("auto")) {
-            this.player1 = new AutoPlayer(name, this);
-        } else {
-            this.player1 = new HumanPlayer(name, this);
-        }
-        System.out.println("Name Player 2 : ");
-        name = scanner.nextLine();
-        if (name.contains("auto")) {
-            this.player2 = new AutoPlayer(name, this);
-        } else {
-            this.player2 = new HumanPlayer(name, this);
-        }
     }
 
     /**

@@ -10,9 +10,9 @@ public class WelcomePanel extends JPanel {
 
   private JButton startButton;
 
-  private MenuGui menuGui;
-  public WelcomePanel(MenuGui menuGui) {
-    this.menuGui = menuGui;
+  private MenuGuiListener menuGuiListener;
+  public WelcomePanel(MenuGuiListener menuGuiListener) {
+    this.menuGuiListener = menuGuiListener;
     initComponent();
     add(this.startButton);
     setBackground(null);
@@ -20,7 +20,7 @@ public class WelcomePanel extends JPanel {
 
   private void initComponent() {
     this.startButton = new JButton("Start");
-    this.startButton.addActionListener(new MenuGuiListener(this.menuGui));
+    this.startButton.addActionListener(this.menuGuiListener);
     this.startButton.setBackground(null);
   }
 

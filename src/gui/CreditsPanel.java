@@ -16,8 +16,10 @@ public class CreditsPanel extends JPanel {
   private JLabel descClaud;
 
   private JButton retour;
+  private MenuGuiListener menuGuiListener;
 
-  public CreditsPanel() {
+  public CreditsPanel(MenuGuiListener menuGuiListener) {
+    this.menuGuiListener = menuGuiListener;
     initComponent();
     setLayout(new GridLayout(3,2));
     add(this.picAymer);
@@ -38,6 +40,7 @@ public class CreditsPanel extends JPanel {
     this.descPierr = new JLabel("Mettre une desc");
     this.descClaud = new JLabel("Mettre une desc");
     this.retour = new JButton("Back");
+    this.retour.addActionListener(this.menuGuiListener);
   }
 
   public JButton getReturnButton() {

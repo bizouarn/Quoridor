@@ -1,10 +1,12 @@
 package quoridor;
 
 // project import
+import gui.MenuGui;
 import quoridor.Game;
 import utilitary.RWFile;
 
 // java import
+import java.awt.*;
 import java.util.Scanner;
 
 /**
@@ -20,7 +22,7 @@ public class Quoridor {
 	/**
 	 * The save file name.
 	 */
-	private String fileName;
+	private final String fileName = "./data/save/SavedGame.bin";
 
 	private Boolean gui = true;
 
@@ -28,43 +30,34 @@ public class Quoridor {
 	 * Quoridor constructor
 	 * Create an object Quoridor
 	 * Serve as a platform to load and launch games
-	 * @param fileName path to the file where the current game will be saved in
 	 * @author Aymeric Bizouarn , Pierre-Galaad 'P(x)' Naquet
 	 */
-	public Quoridor(String fileName) {
-		this.fileName = fileName;
-		Scanner scanner = new Scanner(System.in);
-		int choice = -1;
-		while (choice > 2 || choice < 1){
-			System.out.println("Write : \n1 - For new game\n2 - For load old game");
-			choice = scanner.nextInt();
-		}
-		if(choice == 1){
-			this.game = new Game(this.gui);
-		} else if(choice == 2){
-			this.loadOldGame();
-		}
-		this.launchGame(this.game);
+	public Quoridor() {
+		new MenuGui();
 	}
-	public Quoridor(String fileName,String[] args){
+	public Quoridor(String[] args){
+		this.gui = true;
 		for(String string : args){
 			if(string.equals("nogui")){
 				this.gui = false;
 			}
 		}
-		this.fileName = fileName;
-		Scanner scanner = new Scanner(System.in);
-		int choice = -1;
-		while (choice > 2 || choice < 1){
-			System.out.println("Write : \n1 - For new game\n2 - For load old game");
-			choice = scanner.nextInt();
+		if(!this.gui) {
+			Scanner scanner = new Scanner(System.in);
+			int choice = -1;
+			while (choice > 2 || choice < 1) {
+				System.out.println("Write : \n1 - For new game\n2 - For load old game");
+				choice = scanner.nextInt();
+			}
+			if (choice == 1) {
+				this.game = new Game(this.gui);
+			} else if (choice == 2) {
+				this.loadOldGame();
+			}
+			this.launchGame(this.game);
+		} else {
+			new MenuGui();
 		}
-		if(choice == 1){
-			this.game = new Game(this.gui);
-		} else if(choice == 2){
-			this.loadOldGame();
-		}
-		this.launchGame(this.game);
 	}
 
 	/**

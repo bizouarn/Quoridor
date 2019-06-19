@@ -14,6 +14,8 @@ import quoridor.Quoridor;
 
 public class MenuGui {
 
+    private MenuGuiListener menuGuiListener = new MenuGuiListener(this);
+
     ParametersPanel parametersPanel;
 
     private WelcomePanel welcomePanel;
@@ -43,9 +45,9 @@ public class MenuGui {
         this.panel = new PanelWithBackgroundImage(bg);
         this.panel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
-        this.welcomePanel = new WelcomePanel(this);
-        this.mainMenu = new MainMenu();
-        this.creditsPanel = new CreditsPanel();
+        this.welcomePanel = new WelcomePanel(this.menuGuiListener);
+        this.mainMenu = new MainMenu(this.menuGuiListener);
+        this.creditsPanel = new CreditsPanel(this.menuGuiListener);
         //this.parametersPanel = new ParametersPanel();
 
         this.panel.add(this.welcomePanel);

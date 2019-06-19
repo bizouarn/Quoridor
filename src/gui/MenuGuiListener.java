@@ -29,7 +29,9 @@ public class MenuGuiListener implements ActionListener {
             gui.getGame().startLoaded();
         }
         if (e.getSource() == this.menuGui.getMainMenu().getNewGame()) {
-            new Game(true);
+            Game game = new Game(true);
+            //game.start();
+
         }
         if (e.getSource() == this.menuGui.getMainMenu().getCreds()) {
             this.menuGui.show("credits");

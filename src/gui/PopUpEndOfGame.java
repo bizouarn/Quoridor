@@ -14,18 +14,19 @@ public class PopUpEndOfGame extends JPanel {
         options,
         options[0]);
 
+    int ret = 0;
 
     if (choice == JOptionPane.YES_OPTION) {
-      return 1;
+      ret = 1;
     }
 
     if (choice == JOptionPane.NO_OPTION) {
-      return 2;
+      ret = 2;
     }
 
     if (choice == JOptionPane.CANCEL_OPTION) {
-      System.exit(0);
+      ret = 3;
     }
   }
-  return 2;
+  return ret;
 }

@@ -29,19 +29,19 @@ public class Quoridor {
 	 * Create an object Quoridor
 	 * Serve as a platform to load and launch games
 	 * @param fileName path to the file where the current game will be saved in
-	 * @author Aymeric Bizouarn
+	 * @author Aymeric Bizouarn , Pierre-Galaad 'P(x)' Naquet
 	 */
 	public Quoridor(String fileName) {
 		this.fileName = fileName;
 		Scanner scanner = new Scanner(System.in);
-		int seizure = -1;
-		while (seizure>2 || seizure<1){
+		int choice = -1;
+		while (choice > 2 || chocie < 1){
 			System.out.println("Write : \n1 - For new game\n2 - For load old game");
-			seizure =scanner.nextInt();
+			choice = scanner.nextInt();
 		}
-		if(seizure == 1){
+		if(choice == 1){
 			this.game = new Game(this.gui);
-		} else if(seizure == 2){
+		} else if(choice == 2){
 			this.loadOldGame();
 		}
 		this.launchGame(this.game);
@@ -54,14 +54,14 @@ public class Quoridor {
 		}
 		this.fileName = fileName;
 		Scanner scanner = new Scanner(System.in);
-		int seizure = -1;
-		while (seizure>2 || seizure<1){
+		int choice = -1;
+		while (choice > 2 || choice < 1){
 			System.out.println("Write : \n1 - For new game\n2 - For load old game");
-			seizure =scanner.nextInt();
+			choice = scanner.nextInt();
 		}
-		if(seizure == 1){
+		if(choice == 1){
 			this.game = new Game(this.gui);
-		} else if(seizure == 2){
+		} else if(choice == 2){
 			this.loadOldGame();
 		}
 		this.launchGame(this.game);
@@ -76,13 +76,14 @@ public class Quoridor {
 		return this.game;
 	}
 
+
 	/**
-	 * @return The previously saved game
-	 * @author Aymeric Bizouarn
+	 * @return the previously saved game
+	 * @author Aymeric Bizouarn , Pierre-Galaad 'P(x)' Naquet
 	 */
 	public Game loadOldGame() {
-		Game game = RWFile.readFile(this.fileName);
-		return game;
+		Game savedGame = RWFile.readFile(this.fileName);
+		return savedGame;
 	}
 
 	/**

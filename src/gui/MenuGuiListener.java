@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import quoridor.Quoridor;
 
 public class MenuGuiListener implements ActionListener {
 
@@ -21,10 +22,10 @@ public class MenuGuiListener implements ActionListener {
         this.menuGui.getCL().show(this.menuGui.getPanel(), "mainMenu");
       }
       if (e.getSource() == this.menuGui.getMainMenu().getLoadGame()) {
-        System.out.println("I am vewy sowwy, I still need to be progwammed, (((（´・ω・；`）)))");
+        System.out.println("I am vewy sowwy, I still need to be pwogwammed, (((（´・ω・；`）)))");
       }
       if (e.getSource() == this.menuGui.getMainMenu().getNewGame()) {
-        System.out.println("I am vewy sowwy, I still need to be progwammed, (((（´・ω・；`）)))");
+        System.out.println("I am vewy sowwy, I still need to be pwogwammed, (((（´・ω・；`）)))");
       }
       if (e.getSource() == this.menuGui.getMainMenu().getCreds()) {
         this.menuGui.getCL().show(this.menuGui.getPanel(), "credits");

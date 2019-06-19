@@ -23,6 +23,8 @@ public class Game {
     private Player player2;
     private Player playerWhoStart;
 
+    private Player playerActual;
+
     private boolean gui;
     private Gui guiFrame;
 
@@ -108,7 +110,7 @@ public class Game {
         } else {
             this.player2 = new HumanPlayer(name2, this);
         }
-        
+
         this.board = new Board();
     }
 
@@ -141,20 +143,20 @@ public class Game {
         } else if (playerWhoStart == this.player2) {
             playerPlay = 2;
         }
-        Player playerActual = null;
+        this.playerActual = null;
         while (!checkEndOfGame()) {
             checkExistingPath();
             if (this.gui == true) {
                 this.guiFrame.refresh();
             }
             if (playerPlay == 1) {
-                playerActual = this.player1;
+                this.playerActual = this.player1;
             } else if (playerPlay == 2) {
-                playerActual = this.player2;
+                this.playerActual = this.player2;
             }
             System.out.println(this.board);
-            System.out.println(playerActual.getName() + " : ");
-            playerActual.play();
+            System.out.println(this.playerActual.getName() + " : ");
+            this.playerActual.play();
             playerPlay++;
             if (playerPlay > 2) {
                 playerPlay = 1;
@@ -319,6 +321,18 @@ public class Game {
     }
 
     public Gui getGuiFrame() {
-        return guiFrame;
+        return this.guiFrame;
     }
+
+    public Player getPlayerActual() {
+      return this.playerActual;
+    }
+
+    /**
+     * Save the current Game
+     * @author Pierre-Galaad 'P(x)' Naquet
+     */
+     public void saveGame() {
+       writeFile("./data/save/SavedGame.bin", this);
+     }
 }

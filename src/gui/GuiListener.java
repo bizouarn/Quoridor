@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import quoridor.Game;
 
 public class GuiListener implements ActionListener {
     private boolean value = false;
@@ -40,6 +41,10 @@ public class GuiListener implements ActionListener {
             this.gui.getToolBar().getPawn().setEnabled(true);
             this.gui.getToolBar().getFence().setEnabled(false);
             this.gui.getToolBar().getDirection().setVisible(true);
+        }
+
+        if (e.getSource() == this.gui.getToolBar().getSave()) {
+          //this.gui.getGame().saveGame();
         }
 
         for (int i = 0; i < 9; i++) {

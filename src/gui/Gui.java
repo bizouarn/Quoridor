@@ -62,4 +62,12 @@ public class Gui {
     public GuiListener getGuiListener() {
         return guiListener;
     }
+
+    public Game getGame() {
+      return this.game;
+    }
+
+    public void setGame() {
+
+    }
 }

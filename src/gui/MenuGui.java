@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import gui.*;
+import quoridor.Quoridor;
 
 public class MenuGui{
 
@@ -22,7 +23,11 @@ public class MenuGui{
     private JPanel panel;
     private JFrame jFrame;
 
-    public MenuGui() {
+    private Gui gui;
+
+    public MenuGui(Quoridor quoridor) {
+      this.quoridor = quoridor;
+
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 CreateAndShowMenuGui();
@@ -85,6 +90,10 @@ public class MenuGui{
     }
 
     public JPanel getPanel() {
-        return panel;
+        return this.panel;
+    }
+
+    public Quoridor getQuoridor() {
+      return this.quoridor;
     }
 }

@@ -1,6 +1,8 @@
+package gui;
+
 import javax.swing.JOptionPane;
 
-public class Test {
+public class PopUpEndInputPlayer {
 
   public String popUpPlayer1() {
     String m = JOptionPane.showInputDialog("Type player 1 name, use 'auto' to have a bot");

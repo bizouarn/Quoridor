@@ -12,7 +12,7 @@ import java.io.IOException;
 import gui.*;
 import quoridor.Quoridor;
 
-public class MenuGui{
+public class MenuGui {
 
     ParametersPanel parametersPanel;
 
@@ -25,8 +25,7 @@ public class MenuGui{
 
     private Gui gui;
 
-    public MenuGui(Quoridor quoridor) {
-      this.quoridor = quoridor;
+    public MenuGui() {
 
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -39,11 +38,12 @@ public class MenuGui{
         BufferedImage bg = null;
         try {
             bg = ImageIO.read(new File("./data/images/MENU.png"));
-        } catch (IOException e) {}
+        } catch (IOException e) {
+        }
         this.panel = new PanelWithBackgroundImage(bg);
         this.panel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
-        this.welcomePanel = new WelcomePanel();
+        this.welcomePanel = new WelcomePanel(this);
         this.mainMenu = new MainMenu();
         this.creditsPanel = new CreditsPanel();
         //this.parametersPanel = new ParametersPanel();
@@ -60,15 +60,15 @@ public class MenuGui{
         this.jFrame.setVisible(true);
     }
 
-    public void show(String panel){
+    public void show(String panel) {
         this.mainMenu.setVisible(false);
         this.welcomePanel.setVisible(false);
         this.creditsPanel.setVisible(false);
-        if(panel.equals("menu")){
+        if (panel.equals("menu")) {
             this.mainMenu.setVisible(true);
-        } else if(panel.equals("welcome")){
+        } else if (panel.equals("welcome")) {
             this.welcomePanel.setVisible(true);
-        } else if(panel.equals("credits")){
+        } else if (panel.equals("credits")) {
             this.creditsPanel.setVisible(true);
         }
     }
@@ -88,9 +88,5 @@ public class MenuGui{
 
     public JPanel getPanel() {
         return this.panel;
-    }
-
-    public Quoridor getQuoridor() {
-      return this.quoridor;
     }
 }

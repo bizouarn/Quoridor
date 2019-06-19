@@ -4,6 +4,8 @@ package quoridor;
 
 import gui.Gui;
 import gui.PopUpEndOfGame;
+import gui.PopUpInputPlayer;
+import utilitary.RWFile;
 // import java
 
 import javax.swing.*;
@@ -88,15 +90,15 @@ public class Game {
         String name1;
         String name2;
         if (this.gui == true) {
-          name1 = popUpEndInputPlayer1();
-          name2 = popUpEndInputPlayer2();
+          name1 = PopUpInputPlayer.popUpPlayer1();
+          name2 = PopUpInputPlayer.popUpPlayer2();
         }
         else {
           Scanner scanner = new Scanner(System.in);
           System.out.println("Name Player 1 : ");
-          String name1 = scanner.nextLine();
+          name1 = scanner.nextLine();
           System.out.println("Name Player 2 : ");
-          String name2 = scanner.nextLine();
+          name2 = scanner.nextLine();
         }
 
         if (name1 == "auto") {
@@ -166,7 +168,7 @@ public class Game {
     }
 
     public void startLoaded() {
-      int playerPlay;
+      int playerPlay = 0;
       if (this.playerActual == this.player1) {
         playerPlay = 1;
       }
@@ -362,6 +364,6 @@ public class Game {
      * @author Pierre-Galaad 'P(x)' Naquet
      */
      public void saveGame() {
-       writeFile("./data/save/SavedGame.bin", this);
+       RWFile.writeFile("./data/save/SavedGame.bin", this);
      }
 }

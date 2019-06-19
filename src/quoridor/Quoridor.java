@@ -79,7 +79,7 @@ public class Quoridor {
 
 	/**
 	 * @return the previously saved game
-	 * @author Aymeric Bizouarn , Pierre-Galaad 'P(x)' Naquet
+	 * @author Aymeric Bizouarn
 	 */
 	public Game loadOldGame() {
 		Game savedGame = RWFile.readFile(this.fileName);

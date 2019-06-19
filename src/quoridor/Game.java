@@ -165,6 +165,35 @@ public class Game {
         endOfGame(playerActual);
     }
 
+    public void startLoaded() {
+      int playerPlay;
+      if (this.playerActual == this.player1) {
+        playerPlay = 1;
+      }
+      if (this.playerActual == this.player2) {
+        playerPlay = 2;
+      }
+      while (!checkEndOfGame()) {
+          checkExistingPath();
+          if (this.gui == true) {
+              this.guiFrame.refresh();
+          }
+          if (playerPlay == 1) {
+              this.playerActual = this.player1;
+          } else if (playerPlay == 2) {
+              this.playerActual = this.player2;
+          }
+          System.out.println(this.board);
+          System.out.println(this.playerActual.getName() + " : ");
+          this.playerActual.play();
+          playerPlay++;
+          if (playerPlay > 2) {
+              playerPlay = 1;
+          }
+      }
+      endOfGame(playerActual);
+    }
+
     /**
      * Check if the game was finish.
      *

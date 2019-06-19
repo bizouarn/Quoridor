@@ -73,9 +73,6 @@ public class MenuGui{
         }
     }
 
-    public CardLayout getCL() {
-        return this.cl;
-    }
 
     public WelcomePanel getWelcomePanel() {
         return this.welcomePanel;

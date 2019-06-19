@@ -4,7 +4,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
 import quoridor.Quoridor;
+import quoridor.Game;
+
 
 public class MenuGuiListener implements ActionListener {
 
@@ -16,19 +19,20 @@ public class MenuGuiListener implements ActionListener {
 
   public void actionPerformed(ActionEvent e) {
       if (e.getSource() == this.menuGui.getWelcomePanel().getStartButton()) {
-        this.menuGui.getCL().show(this.menuGui.getPanel(), "mainMenu");
+        this.menuGui.show(this.menuGui.getMainMenu());
       }
       if (e.getSource() == this.menuGui.getCreditsPanel().getReturnButton()) {
-        this.menuGui.getCL().show(this.menuGui.getPanel(), "mainMenu");
+        this.menuGui.show(this.menuGui.getMainMenu());
       }
       if (e.getSource() == this.menuGui.getMainMenu().getLoadGame()) {
-        System.out.println("I am vewy sowwy, I still need to be pwogwammed, (((（´・ω・；`）)))");
+        this.menuGui.setGui(new Gui(loadOldGame()));
+        this.menuGui.getGui().startLoaded();
       }
       if (e.getSource() == this.menuGui.getMainMenu().getNewGame()) {
-        System.out.println("I am vewy sowwy, I still need to be pwogwammed, (((（´・ω・；`）)))");
+        this.menuGui.setGui(new Gui(new Game(true)));
       }
       if (e.getSource() == this.menuGui.getMainMenu().getCreds()) {
-        this.menuGui.getCL().show(this.menuGui.getPanel(), "credits");
+        this.menuGui.show(this.menuGui.getCreditsPanel());
       }
   }
 }

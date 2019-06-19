@@ -241,10 +241,10 @@ public class Board {
                 } else if (currSqr2.getStatus() == Status.Player1 || currSqr2.getStatus() == Status.Player2) {
                     if (currSqr2.getFenceN()) {
                         if (!currSqr2.getFenceW()) {
-                            ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY() - 1));
+                            ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY() - 1));
                         }
                         if (!currSqr2.getFenceE()) {
-                            ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY() + 1));
+                            ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY() + 1));
                         }
                     } else {
                         ret.add(this.getSquare(currSqr.getX() - 2, currSqr.getY()));

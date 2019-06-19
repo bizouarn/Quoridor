@@ -130,7 +130,9 @@ public class Game {
         }
         while (!checkEndOfGame()) {
             checkExistingPath();
-            this.guiFrame.refresh();
+            if (this.gui == true) {
+                this.guiFrame.refresh();
+            }
             Player playerActual = null;
             if (playerPlay == 1) {
                 playerActual = this.player1;
@@ -218,15 +220,15 @@ public class Game {
                 listSquare.add(i + "," + j);
             }
         }
-        int resP1 = getNbMinMove(this.board.getPlayer1Square(),1);
+        boolean resP1 = recExistingPath(this.board.getPlayer1Square(),2,listSquare);
         listSquare = new ArrayList<>();
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 listSquare.add(i + "," + j);
             }
         }
-        int resP2 = getNbMinMove(this.board.getPlayer2Square(),2);
-        if (resP1 < 82 && resP2 < 82) {
+        boolean resP2 = recExistingPath(this.board.getPlayer2Square(), 2,listSquare);
+        if (resP1 && resP2) {
             ret = true;
         }
         return ret;
@@ -243,7 +245,7 @@ public class Game {
             ret = true;
         } else {
             for (Square sqrP : possibilitiesPawn) {
-                if(sqrP != null) {
+                if (sqrP != null) {
                     if (ret == false) {
                         String value = sqrP.getX() + "," + sqrP.getY();
                         if (listSquare.indexOf(value) != -1) {
@@ -256,43 +258,39 @@ public class Game {
         return ret;
     }
 
-    public int getNbMinMove(Square sqr,int player){
+    public int getNbMinMove(Square sqr, int player) {
         ArrayList<Integer> nbMove = new ArrayList<>();
         ArrayList<String> listSquare = new ArrayList<>();
-        recNbMinMove(sqr,player,listSquare,nbMove,1);
+        recNbMinMove(sqr, player, listSquare, nbMove, 1);
         int ret = 82;
-        System.out.println(nbMove);
-        for(Integer val : nbMove){
-            if(val<ret){
+        for (Integer val : nbMove) {
+            if (val < ret) {
                 ret = val;
             }
         }
-        System.out.println("Sqr :("+sqr.getX()+","+sqr.getY()+")"+ret);
         return ret;
     }
 
-    public void recNbMinMove(Square sqr, int player, ArrayList<String> listSquare, ArrayList<Integer> nbMove,int deepMove) {
+    private void recNbMinMove(Square sqr, int player, ArrayList<String> listSquare, ArrayList<Integer> nbMove, int deepMove) {
         ArrayList<String> listSquareTmp = new ArrayList<>(listSquare);
         ArrayList<Square> possibilitiesPawn = this.board.listOfPossibilitiesPawn(sqr);
         if (sqr.getX() == 8 && player == 1) {
             nbMove.add(deepMove);
-            System.out.println(listSquare);
         } else if (sqr.getX() == 0 && player == 2) {
             nbMove.add(deepMove);
-            System.out.println(listSquare);
         } else {
             int max = 82;
             for (Square sqrP : possibilitiesPawn) {
                 String value = sqrP.getX() + "," + sqrP.getY();
                 int min = 82;
-                for(Integer val : nbMove){
-                    if(val < min){
+                for (Integer val : nbMove) {
+                    if (val < min) {
                         min = val;
                     }
                 }
-                if (listSquareTmp.indexOf(value) == -1 && deepMove<min) {
+                if (listSquareTmp.indexOf(value) == -1 && deepMove < min) {
                     listSquareTmp.add(value);
-                    recNbMinMove(sqrP, player, listSquareTmp,nbMove,deepMove+1);
+                    recNbMinMove(sqrP, player, listSquareTmp, nbMove, deepMove + 1);
                 }
             }
         }

@@ -28,6 +28,9 @@ public class AutoPlayer extends Player {
 		ArrayList<Square> possibilitiesPawn = this.getGame().getBoard().listOfPossibilitiesPawn(this, this.getGame());
 		ArrayList<SubBoard> possibilitiesFenceH = this.getGame().getBoard().listOfPossibilitiesFenceHorizontal();
 		ArrayList<SubBoard> possibilitiesFenceV = this.getGame().getBoard().listOfPossibilitiesFenceVertical();
+		for(Square sqr : possibilitiesPawn){
+			System.out.println("("+sqr.getX()+","+sqr.getY()+")");
+		}
 		int player;
 		if(this == this.getGame().getPlayer1()){
 			player = 1;

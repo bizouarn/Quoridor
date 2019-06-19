@@ -20,6 +20,7 @@ public class MenuGui{
     private CreditsPanel creditsPanel;
     private CardLayout cl;
     private JPanel panel;
+    private JFrame jFrame;
 
     public MenuGui() {
         SwingUtilities.invokeLater(new Runnable() {
@@ -42,20 +43,29 @@ public class MenuGui{
         this.creditsPanel = new CreditsPanel();
         //this.parametersPanel = new ParametersPanel();
 
-        this.panel.add(this.welcomePanel,"welcome");
-        this.panel.add(this.mainMenu,"mainmenu");
-        this.panel.add(this.creditsPanel,"credits");
-        this.panel.setLayout(new CardLayout());
+        this.panel.add(this.welcomePanel);
+        this.panel.add(this.mainMenu);
+        this.panel.add(this.creditsPanel);
 
-        this.cl= (CardLayout)panel.getLayout();
-        cl.show(panel, "welcome");
+        this.show("welcome");
 
-        JFrame frame = new JFrame(this.panel.getClass().getSimpleName());
-        frame.add(this.panel);
-        frame.pack();
-        frame.setVisible(true);
+        this.jFrame = new JFrame(this.panel.getClass().getSimpleName());
+        this.jFrame.add(this.panel);
+        this.jFrame.pack();
+        this.jFrame.setVisible(true);
+    }
 
-        MenuGuiListener menuGuiListener = new MenuGuiListener(this);
+    public void show(String panel){
+        this.mainMenu.setVisible(false);
+        this.welcomePanel.setVisible(false);
+        this.creditsPanel.setVisible(false);
+        if(panel.equals("menu")){
+            this.mainMenu.setVisible(true);
+        } else if(panel.equals("welcome")){
+            this.welcomePanel.setVisible(true);
+        } else if(panel.equals("credits")){
+            this.creditsPanel.setVisible(true);
+        }
     }
 
     public CardLayout getCL() {

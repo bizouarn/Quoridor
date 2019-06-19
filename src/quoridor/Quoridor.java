@@ -52,6 +52,19 @@ public class Quoridor {
 				this.gui = false;
 			}
 		}
+		this.fileName = fileName;
+		Scanner scanner = new Scanner(System.in);
+		int seizure = -1;
+		while (seizure>2 || seizure<1){
+			System.out.println("Write : \n1 - For new game\n2 - For load old game");
+			seizure =scanner.nextInt();
+		}
+		if(seizure == 1){
+			this.game = new Game(this.gui);
+		} else if(seizure == 2){
+			this.loadOldGame();
+		}
+		this.launchGame(this.game);
 	}
 
 	/**

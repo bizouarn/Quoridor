@@ -67,7 +67,7 @@ public class Gui {
       return this.game;
     }
 
-    public void setGame() {
-
+    public JFrame getjFrame() {
+        return this.jFrame;
     }
 }

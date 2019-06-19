@@ -95,13 +95,13 @@ public class Game {
           name2 = scanner.nextLine();
         }
 
-        if (name1 == "auto") {
+        if (name1.equals("auto")) {
             this.player1 = new AutoPlayer(name1, this);
         } else {
             this.player1 = new HumanPlayer(name1, this);
         }
 
-        if (name2 == "auto") {
+        if (name2.equals("auto")) {
             this.player2 = new AutoPlayer(name2, this);
         } else {
             this.player2 = new HumanPlayer(name2, this);

@@ -27,4 +27,5 @@ public class PopUpEndOfGame extends JPanel {
       System.exit(0);
     }
   }
+  return 2;
 }

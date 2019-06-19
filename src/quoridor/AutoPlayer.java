@@ -21,10 +21,6 @@ public class AutoPlayer extends Player {
 	 *
 	 */
 	public void play() {
-		try {
-			Thread.sleep(1000);
-		} catch (Exception e){}
-
 		ArrayList<Square> possibilitiesPawn = this.getGame().getBoard().listOfPossibilitiesPawn(this, this.getGame());
 		ArrayList<SubBoard> possibilitiesFenceH = this.getGame().getBoard().listOfPossibilitiesFenceHorizontal();
 		ArrayList<SubBoard> possibilitiesFenceV = this.getGame().getBoard().listOfPossibilitiesFenceVertical();

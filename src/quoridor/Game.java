@@ -3,8 +3,10 @@ package quoridor;
 // import project
 
 import gui.Gui;
+import gui.PopUpEndOfGame;
 // import java
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -128,12 +130,12 @@ public class Game {
         } else if (playerWhoStart == this.player2) {
             playerPlay = 2;
         }
+        Player playerActual = null;
         while (!checkEndOfGame()) {
             checkExistingPath();
             if (this.gui == true) {
                 this.guiFrame.refresh();
             }
-            Player playerActual = null;
             if (playerPlay == 1) {
                 playerActual = this.player1;
             } else if (playerPlay == 2) {
@@ -147,7 +149,7 @@ public class Game {
                 playerPlay = 1;
             }
         }
-        this.guiFrame.refresh();
+        endOfGame(playerActual);
     }
 
     /**
@@ -178,25 +180,29 @@ public class Game {
         Scanner scan;
         boolean bool = false;
 
-        System.out.println("The player : " + player.getName() + "has won !");
-        System.out.println();
-        System.out.println("What do you want to do ?");
-        System.out.println("1 - Rematch");
-        System.out.println("2 - Change Players");
-        System.out.println("3 - Leave the program");
-
         int choice = -1;
-        while (!bool) {
-            try {
-                scan = new Scanner(System.in);
-                choice = scan.nextInt();
-                if (choice > 0 && choice < 4) {
-                    bool = true;
-                } else {
-                    System.out.println("Please, select a valid option");
+        if(this.gui = true) {
+            choice = PopUpEndOfGame.popUpEndOfGame();
+        } else {
+            System.out.println("The player : " + player.getName() + "has won !");
+            System.out.println();
+            System.out.println("What do you want to do ?");
+            System.out.println("1 - Rematch");
+            System.out.println("2 - Change Players");
+            System.out.println("3 - Leave the program");
+
+            while (!bool) {
+                try {
+                    scan = new Scanner(System.in);
+                    choice = scan.nextInt();
+                    if (choice > 0 && choice < 4) {
+                        bool = true;
+                    } else {
+                        System.out.println("Please, select a valid option");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Invalid Input !");
                 }
-            } catch (Exception e) {
-                System.out.println("Invalid Input !");
             }
         }
 
@@ -205,7 +211,8 @@ public class Game {
             this.start();
         }
         if (choice == 2) {
-            new Game(this.gui);
+            Game game = new Game(this.gui);
+            game.start();
         }
         if (choice == 3) {
             System.exit(0);

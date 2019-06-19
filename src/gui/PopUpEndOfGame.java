@@ -1,9 +1,11 @@
+package gui;
+
 import java.awt.*;
 import javax.swing.*;
 
 public class PopUpEndOfGame extends JPanel {
 
-  public int popUpEndOfGame() throws IllegalStateException {
+  public static int popUpEndOfGame() throws IllegalStateException {
     Object[] options = { "New Game", "Main Menu", "Leave" };
     int choice = JOptionPane.showOptionDialog(null,
         "[Name player] Has won !",
@@ -27,6 +29,6 @@ public class PopUpEndOfGame extends JPanel {
     if (choice == JOptionPane.CANCEL_OPTION) {
       ret = 3;
     }
+      return ret;
   }
-  return ret;
 }

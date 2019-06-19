@@ -32,9 +32,8 @@ public class Game {
 
     /**
      * Game constructor
-     * intiliaze the board, the two players and the mode
-     * The mode is choosen by the players with a scanner
-     *
+     * Launch either a swing game or a terminal one
+     * @param gui true if the game has to be launched in the swing version, false otherwise
      * @author Aymeric Bizouarn
      */
     public Game(boolean gui) {
@@ -47,7 +46,6 @@ public class Game {
 
     /**
      * Get the board
-     *
      * @return the current board
      */
     public Board getBoard() {
@@ -56,7 +54,6 @@ public class Game {
 
     /**
      * Get the player1
-     *
      * @return the player1
      */
     public Player getPlayer1() {
@@ -65,7 +62,6 @@ public class Game {
 
     /**
      * Get the player2
-     *
      * @return the player2
      */
     public Player getPlayer2() {
@@ -74,7 +70,6 @@ public class Game {
 
     /**
      * Set the Game Board.
-     *
      * @param board the desired board to play the game with.
      */
     public void setBoard(Board board) {
@@ -83,8 +78,7 @@ public class Game {
 
     /**
      * Initialize the game by creating a new board and by asking for players name.
-     *
-     * @author Aymeric Bizouarn
+     * @author Aymeric Bizouarn , Pierre-Galaad 'P(x)' Naquet
      */
     public void initializeGame() {
         String name1;
@@ -118,8 +112,8 @@ public class Game {
 
     /**
      * Choose randomly which player plays first
-     *
      * @return the starting player
+
      */
     public Player whoStarts() {
         int random = (int) (Math.random() * 100);
@@ -129,13 +123,11 @@ public class Game {
         } else {
             ret = this.player2;
         }
-        this.playerWhoStart = this.whoStarts();
         return ret;
     }
 
     /**
-     * Launch the game with the attributes as parameters.
-     *
+     * Launch the game and select the starting player with the attributes as parameters.
      * @author Aymeric Bizouarn
      */
     public void start() {
@@ -167,6 +159,10 @@ public class Game {
         endOfGame(playerActual);
     }
 
+    /**
+     * Launch the game with the attributes as parameters and gives the hand to the currentplayer.
+     * @author Pierre-Galaad 'P(x)' Naquet
+     */
     public void startLoaded() {
       int playerPlay = 0;
       if (this.playerActual == this.player1) {
@@ -197,9 +193,8 @@ public class Game {
     }
 
     /**
-     * Check if the game was finish.
-     *
-     * @return True if the game was finish.
+     * Check if the game has ended
+     * @return True if the game has ended, false otherwise
      * @author Aymeric Bizouarn
      */
     public boolean checkEndOfGame() {
@@ -216,7 +211,6 @@ public class Game {
 
     /**
      * End the game and launch the results procedure
-     *
      * @author Pierre-Galaad 'P(x)' Naquet
      */
     public void endOfGame(Player player) {
@@ -263,6 +257,11 @@ public class Game {
         }
     }
 
+    /**
+     * Checks if there is an existing path between the end and the player
+     * @return True if a path exists, false otherwise
+     * @author Aymeric Bizouarn
+     */
     public boolean checkExistingPath() {
         boolean ret = false;
         ArrayList<String> listSquare = new ArrayList<>();
@@ -285,6 +284,14 @@ public class Game {
         return ret;
     }
 
+    /**
+     * Recursive methods checking the existing path.
+     * @param sqr the current square
+     * @param player the current player
+     * @param listSquareTmp the current list of the path
+     * @return True if there is an existing path, false otherwise
+     * @author Aymeric Bizouarn
+     */
     public boolean recExistingPath(Square sqr, int player, ArrayList<String> listSquareTmp) {
         boolean ret = false;
         ArrayList<String> listSquare = listSquareTmp;
@@ -309,6 +316,13 @@ public class Game {
         return ret;
     }
 
+    /**
+     * get the path with the fewest tiles to the opposite side of the board
+     * @param sqr the current square
+     * @param player the current player
+     * @return the number of tiles until the opposite sude of the board
+     * @author Aymeric Bizouarn
+     */
     public int getNbMinMove(Square sqr, int player) {
         ArrayList<Integer> nbMove = new ArrayList<>();
         ArrayList<String> listSquare = new ArrayList<>();
@@ -322,6 +336,15 @@ public class Game {
         return ret;
     }
 
+    /**
+     * get the path with the fewest tiles to the opposite side of the board
+     * @param sqr the current square
+     * @param player the current player
+     * @param listSquare
+     * @param nbMove
+     * @param deepMove
+     * @author Aymeric Bizouarn
+     */
     private void recNbMinMove(Square sqr, int player, ArrayList<String> listSquare, ArrayList<Integer> nbMove, int deepMove) {
         ArrayList<String> listSquareTmp = new ArrayList<>(listSquare);
         ArrayList<Square> possibilitiesPawn = this.board.listOfPossibilitiesPawn(sqr);
@@ -347,14 +370,26 @@ public class Game {
         }
     }
 
+    /**
+     * Return the gui
+     * @return the gui
+     */
     public boolean getGui() {
         return this.gui;
     }
 
+    /**
+     * Return the guiFrame
+     * @return the guiFrame
+     */
     public Gui getGuiFrame() {
         return this.guiFrame;
     }
 
+    /**
+     * Return the actualPlayer
+     * @return the actualPlayer
+     */
     public Player getPlayerActual() {
       return this.playerActual;
     }

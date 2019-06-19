@@ -4,12 +4,13 @@ import java.util.ArrayList;
 
 /**
  * An Extend of Player make for play automatically.
+ * @author Aymeric Bizouarn , Pierre-Galaad 'P(x)' Naquet
  */
 public class AutoPlayer extends Player {
     /**
      * AutoPlayer constructor
-     *
      * @param name The player name.
+     * @param game the current game
      */
     public AutoPlayer(String name, Game game) {
         super(name, game);
@@ -19,6 +20,7 @@ public class AutoPlayer extends Player {
      * AI for the AutoPlayer
      * Choose between playFence and playPawn
      * Only one level of difficulty for now
+     * @author Aymeric Bizouarn
      */
     public void play() {
         int p1 = this.getGame().getNbMinMove(this.getGame().getBoard().getPlayer1Square(), 1);
@@ -70,6 +72,10 @@ public class AutoPlayer extends Player {
         }
     }
 
+    /**
+     * Method permitting the autoplayer to play a fence
+     * @author Aymeric Bizouarn
+     */
     private boolean autoPlayFence() {
         boolean ret = false;
         if (!ret) {
@@ -84,6 +90,10 @@ public class AutoPlayer extends Player {
         return ret;
     }
 
+    /**
+     * Method permitting the autoplayer to move its pawn
+     * @author Aymeric Bizouarn
+     */
     private void autoPlayPawn() {
         ArrayList<Square> possibilitiesPawn = this.getGame().getBoard().listOfPossibilitiesPawn(this, this.getGame());
         int player;
@@ -110,6 +120,13 @@ public class AutoPlayer extends Player {
         playPawn(res.getX(), res.getY());
     }
 
+    /**
+     * method permitting to check if the player is currently or not in the subBoard
+     * @param subBoard the subBoard currently checked
+     * @param player the number of the player
+     * @return true if the player is in the subBoard, false otherwise
+     * @author Aymeric Bizouarn
+     */
     private boolean playerInSubBoard(SubBoard subBoard, int player) {
         boolean ret = false;
         Square sqrPlayer = null;
@@ -126,6 +143,15 @@ public class AutoPlayer extends Player {
         return ret;
     }
 
+    /**
+     * Calculates all the fences placement possibles during this turn and return minimal number of movement for each.
+     * @param sb The subBoard of the fence
+     * @param pos
+     * @param playerSqr
+     * @param player
+     * @return
+     * @author Aymeric Bizouarn
+     */
     private int MinMovePlayFence(SubBoard sb, int pos, Square playerSqr, int player) {
         int ret = 82;
         Square square1;
@@ -159,6 +185,10 @@ public class AutoPlayer extends Player {
         return ret;
     }
 
+    /**
+     * 
+     * @author Aymeric Bizouarn
+     */
     private Object[] getPlayFence(int pos) {
         SubBoard ret = null;
         Game game = (Game) ((Object) (this.getGame()));

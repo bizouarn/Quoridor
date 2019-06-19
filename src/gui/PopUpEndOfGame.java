@@ -3,24 +3,28 @@ import javax.swing.*;
 
 public class PopUpEndOfGame extends JPanel {
 
-  public PopUpEndOfGame() {
-
-    Object[] options = {"New Game",
-                        "Main Menu",
-                        "Quit"};
-    int n = JOptionPane.showOptionDialog(this,
-        "[ajouter un player] won !",
-        "Game has ended",
+  public int popUpEndOfGame() throws IllegalStateException {
+    Object[] options = { "New Game", "Main Menu", "Leave" };
+    int choice = JOptionPane.showOptionDialog(null,
+        "[Name player] Has won !",
+        "Game has ended !",
         JOptionPane.YES_NO_CANCEL_OPTION,
         JOptionPane.QUESTION_MESSAGE,
         null,
         options,
-        options[2]);
+        options[0]);
 
+
+    if (choice == JOptionPane.YES_OPTION) {
+      return 1;
+    }
+
+    if (choice == JOptionPane.NO_OPTION) {
+      return 2;
+    }
+
+    if (choice == JOptionPane.CANCEL_OPTION) {
+      System.exit(0);
+    }
   }
-
-  public static void main(String[] args) {
-    new PopUpEndOfGame();
-  }
-
 }

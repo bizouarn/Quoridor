@@ -35,7 +35,7 @@ public class Quoridor {
 		this.fileName = fileName;
 		Scanner scanner = new Scanner(System.in);
 		int choice = -1;
-		while (choice > 2 || chocie < 1){
+		while (choice > 2 || choice < 1){
 			System.out.println("Write : \n1 - For new game\n2 - For load old game");
 			choice = scanner.nextInt();
 		}
@@ -81,8 +81,8 @@ public class Quoridor {
 	 * @return the previously saved game
 	 * @author Aymeric Bizouarn
 	 */
-	public Game loadOldGame() {
-		Game savedGame = RWFile.readFile(this.fileName);
+	public static Game loadOldGame() {
+		Game savedGame = RWFile.readFile("./data/save/SavedGame.bin");
 		return savedGame;
 	}
 

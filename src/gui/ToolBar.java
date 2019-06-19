@@ -28,7 +28,7 @@ public class ToolBar extends JPanel {
     this.fence = new JButton("Fence");
     this.pawn = new JButton("Pawn");
     this.direction = new JButton("Direction : \u2014");
-    this.save = new addActionListener(this.gui.getGuiListener());
+    this.save.addActionListener(this.gui.getGuiListener());
     this.fence.addActionListener(this.gui.getGuiListener());
     this.pawn.addActionListener(this.gui.getGuiListener());
     this.direction.addActionListener(this.gui.getGuiListener());

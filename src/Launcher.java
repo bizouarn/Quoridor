@@ -19,7 +19,7 @@ public class Launcher {
 	 * @param args   
 	 */
 	public static void main(String[] args) {
-		new Quoridor("./save.bin",args);
+		new Quoridor("./data/save/SavedGame.bin",args);
 	}
 
 }

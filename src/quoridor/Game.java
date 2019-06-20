@@ -61,8 +61,8 @@ public class Game implements java.io.Serializable {
      * @author Aymeric Bizouarn
      */
     public Game(Game game, boolean gui) {
+        this.gui = gui;
         try {
-            RWFile.writeFile("./data/save/SavedGame.bin", this);
             FileReader fw = new FileReader(new File("./data/save/Player.bin"));
             Scanner sc = new Scanner(fw);
             String name1 = sc.nextLine();
@@ -81,15 +81,15 @@ public class Game implements java.io.Serializable {
             }
             this.playerPlay = Integer.parseInt(sc.nextLine());
             fw.close();
-            this.board = game.getBoard();
-            if (gui) {
-                this.guiFrame = new Gui(this);
-                this.guiFrame.getjFrame().setVisible(true);
-            }
-            startLoaded();
         } catch (Exception e) {
-            System.out.println(e);
+            //System.out.println(e);
         }
+        this.board = game.getBoard();
+        if (gui) {
+            this.guiFrame = new Gui(this);
+            this.guiFrame.getjFrame().setVisible(true);
+        }
+        startLoaded();
     }
 
     /**
@@ -221,26 +221,19 @@ public class Game implements java.io.Serializable {
      * @author Pierre-Galaad Naquet
      */
     public void startLoaded() {
-        int playerPlay = 0;
-        if (this.playerActual == this.player1) {
-            playerPlay = 1;
-        }
-        if (this.playerActual == this.player2) {
-            playerPlay = 2;
-        }
         while (!checkEndOfGame()) {
             checkExistingPath();
             if (this.gui) {
                 this.guiFrame.refresh();
             }
-            if (playerPlay == 1) {
-                this.playerActual = this.player1;
-            } else if (playerPlay == 2) {
-                this.playerActual = this.player2;
-            }
             System.out.println(this.board);
-            System.out.println(this.playerActual.getName() + " : ");
-            this.playerActual.play();
+            if (playerPlay == 1) {
+                System.out.println(player1.getName()+" :");
+                this.player1.play();
+            } else if (playerPlay == 2) {
+                System.out.println(player2.getName()+" :");
+                this.player2.play();
+            }
             playerPlay++;
             if (playerPlay > 2) {
                 playerPlay = 1;

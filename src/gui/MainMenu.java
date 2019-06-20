@@ -32,7 +32,8 @@ public class MainMenu extends JPanel {
         add(this.newGame);
         add(this.creds);
         add(this.quit);
-        setBackground(null);
+        this.setPreferredSize(new Dimension(300,200));
+        setBackground(new Color(0,0,0,0));
     }
 
     /**
@@ -41,16 +42,13 @@ public class MainMenu extends JPanel {
      */
     private void initComponent() {
         this.loadGame = new JButton("Load Game");
-        this.loadGame.setBackground(null);
         this.loadGame.addActionListener(this.menuGuiListener);
         this.newGame = new JButton("New Game");
-        this.newGame.setBackground(null);
         this.newGame.addActionListener(this.menuGuiListener);
         this.creds = new JButton("Credits");
-        this.creds.setBackground(null);
         this.creds.addActionListener(this.menuGuiListener);
         this.quit = new JButton("Leave");
-        this.quit.setBackground(null);
+        this.quit.addActionListener(this.menuGuiListener);
     }
 
     /**

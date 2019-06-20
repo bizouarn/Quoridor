@@ -31,15 +31,16 @@ public class CreditsPanel extends JPanel {
   public CreditsPanel(MenuGuiListener menuGuiListener) {
     this.menuGuiListener = menuGuiListener;
     initComponent();
-    setLayout(new GridLayout(3,2));
+    setLayout(new GridLayout(4,2));
     add(this.picAymer);
-    add(this.picPierr);
-    add(this.picClaud);
     add(this.descAymer);
+    add(this.picPierr);
     add(this.descPierr);
+    add(this.picClaud);
     add(this.descClaud);
     add(this.retour);
-    setBackground(null);
+    this.setPreferredSize(new Dimension(300,200));
+    setBackground(new Color(0,0,0,0));
   }
 
   /**

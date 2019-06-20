@@ -23,7 +23,8 @@ public class WelcomePanel extends JPanel {
     this.menuGuiListener = menuGuiListener;
     initComponent();
     add(this.startButton);
-    setBackground(null);
+    this.setPreferredSize(new Dimension(300,200));
+    setBackground(new Color(0,0,0,0));
   }
 
   /**
@@ -33,7 +34,6 @@ public class WelcomePanel extends JPanel {
   private void initComponent() {
     this.startButton = new JButton("Start");
     this.startButton.addActionListener(this.menuGuiListener);
-    this.startButton.setBackground(null);
   }
 
   /**

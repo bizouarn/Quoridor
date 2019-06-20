@@ -19,6 +19,8 @@ public class CreditsPanel extends JPanel {
   private JLabel descPierr;
   private JLabel descClaud;
 
+  private Font font;
+
   private JButton retour;
   private MenuGuiListener menuGuiListener;
 
@@ -30,13 +32,14 @@ public class CreditsPanel extends JPanel {
    */
   public CreditsPanel(MenuGuiListener menuGuiListener) {
     this.menuGuiListener = menuGuiListener;
+    initFont();
     initComponent();
-    setLayout(new GridLayout(4,2));
+    setLayout(new GridLayout(3,3));
     add(this.picAymer);
-    add(this.descAymer);
     add(this.picPierr);
-    add(this.descPierr);
     add(this.picClaud);
+    add(this.descAymer);
+    add(this.descPierr);
     add(this.descClaud);
     add(this.retour);
     this.setPreferredSize(new Dimension(300,200));
@@ -44,16 +47,24 @@ public class CreditsPanel extends JPanel {
   }
 
   /**
+   * Initialize the font
+   * @author Pierre-Galaad Naquet
+   */
+   public void initFont() {
+     this.font = new Font("SansSerif", Font.PLAIN, 14);
+   }
+
+  /**
    * Initialize all the components of the JPanel
    * @author Pierre-Galaad Naquet
    */
   private void initComponent() {
-    this.picAymer = new JLabel("Mettre une photo");
-    this.picPierr = new JLabel("Mettre une photo");
-    this.picClaud = new JLabel("Mettre une photo");
-    this.descAymer = new JLabel("Mettre une desc");
-    this.descPierr = new JLabel("Mettre une desc");
-    this.descClaud = new JLabel("Mettre une desc");
+    this.picAymer = new JLabel(new ImageIcon("./data/images/portraits/hamster.jpg"));
+    this.picPierr = new JLabel(new ImageIcon("./data/images/portraits/slug.jpg"));
+    this.picClaud = new JLabel(new ImageIcon("./data/images/portraits/lapin.jpg"));
+    this.descAymer = new JLabel("Programer\n\nFrench student in the UIT of Vannes in IT.");
+    this.descPierr = new JLabel("Programer\n\nFrench student in the UIT of Vannes in IT.");
+    this.descClaud = new JLabel("Designer\n\nCanadian student in the ArtCenter college, Pasadena California, USA");
     this.retour = new JButton("Back");
     this.retour.addActionListener(this.menuGuiListener);
   }

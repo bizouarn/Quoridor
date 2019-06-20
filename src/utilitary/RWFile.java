@@ -1,9 +1,11 @@
 package utilitary;
 
 import quoridor.Game;
-import quoridor.Quoridor;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  * @author Aymeric Bizouarn

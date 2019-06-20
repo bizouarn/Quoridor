@@ -82,14 +82,11 @@ public class AutoPlayer extends Player {
      */
     private boolean autoPlayFence() {
         boolean ret = false;
-        if (!ret) {
-            int pos = 2;
-            Object[] playFence = getPlayFence(pos);
-            SubBoard sb = (SubBoard) playFence[0];
-            pos = (int) playFence[1];
-            if (sb != null) {
-                ret = playFence(sb.getSqrArray()[0].getX(), sb.getSqrArray()[0].getY(), sb.getSqrArray()[3].getX(), sb.getSqrArray()[3].getY(), pos);
-            }
+        Object[] playFence = getPlayFence();
+        SubBoard sb = (SubBoard) playFence[0];
+        int pos = (int) playFence[1];
+        if (sb != null) {
+            ret = playFence(sb.getSqrArray()[0].getX(), sb.getSqrArray()[0].getY(), sb.getSqrArray()[3].getX(), sb.getSqrArray()[3].getY(), pos);
         }
         return ret;
     }
@@ -110,12 +107,6 @@ public class AutoPlayer extends Player {
         Square res = possibilitiesPawn.get(0);
         int tmp = 81;
         for (Square sqr : possibilitiesPawn) {
-            ArrayList<String> listSquare = new ArrayList<>();
-            for (int i = 0; i < 9; i++) {
-                for (int j = 0; j < 9; j++) {
-                    listSquare.add(i + "," + j);
-                }
-            }
             int tmp2 = this.getGame().getNbMinMove(sqr, player);
             if (tmp2 < tmp) {
                 tmp = tmp2;
@@ -141,68 +132,30 @@ public class AutoPlayer extends Player {
         } else if (player == 2) {
             sqrPlayer = this.getGame().getBoard().getPlayer2Square();
         }
-        for (Square sqr : subBoard.getSqrArray()) {
-            if (sqr.getX() == sqrPlayer.getX() && sqr.getY() == sqrPlayer.getY()) {
-                ret = true;
+        if (sqrPlayer != null) {
+            for (Square sqr : subBoard.getSqrArray()) {
+                if (sqr.getX() == sqrPlayer.getX() && sqr.getY() == sqrPlayer.getY()) {
+                    ret = true;
+                }
             }
         }
         return ret;
     }
 
     /**
-     * Calculates all the fences placement possibles during this turn and return minimal number of movement for each.
-     *
-     * @param sb        The subBoard of the fence
-     * @param pos
-     * @param playerSqr
-     * @param player
-     * @return
+     * Get the fences placement possibles during this turn and return minimal number of movement for each.
      * @author Aymeric Bizouarn
+     * @return The SubBoard of the fence and his position in Object[2]={SubBoard,fence}
      */
-    private int MinMovePlayFence(SubBoard sb, int pos, Square playerSqr, int player) {
-        int ret = 82;
-        Square square1;
-        if (pos == 1) {
-            sb.setHorizontalFence(true);
-            sb.getSqrArray()[0].setFenceS(true);
-            sb.getSqrArray()[1].setFenceS(true);
-            sb.getSqrArray()[2].setFenceN(true);
-            sb.getSqrArray()[3].setFenceN(true);
-        } else if (pos == 2) {
-            sb.setVerticalFence(true);
-            sb.getSqrArray()[0].setFenceE(true);
-            sb.getSqrArray()[1].setFenceW(true);
-            sb.getSqrArray()[2].setFenceE(true);
-            sb.getSqrArray()[3].setFenceW(true);
-        }
-        ret = this.getGame().getNbMinMove(playerSqr, player);
-        if (pos == 1) {
-            sb.setHorizontalFence(false);
-            sb.getSqrArray()[0].setFenceS(false);
-            sb.getSqrArray()[1].setFenceS(false);
-            sb.getSqrArray()[2].setFenceN(false);
-            sb.getSqrArray()[3].setFenceN(false);
-        } else if (pos == 2) {
-            sb.setVerticalFence(false);
-            sb.getSqrArray()[0].setFenceE(false);
-            sb.getSqrArray()[1].setFenceW(false);
-            sb.getSqrArray()[2].setFenceE(false);
-            sb.getSqrArray()[3].setFenceW(false);
-        }
-        return ret;
-    }
-
-    /**
-     * @author Aymeric Bizouarn
-     */
-    private Object[] getPlayFence(int pos) {
+    private Object[] getPlayFence() {
+        int pos = 2;
         SubBoard ret = null;
-        Game game = (Game) ((Object) (this.getGame()));
+        Game game = this.getGame();
         Board board = game.getBoard();
         ArrayList<SubBoard> possibilitiesFenceH = board.listOfPossibilitiesFenceHorizontal();
         ArrayList<SubBoard> possibilitiesFenceV = board.listOfPossibilitiesFenceVertical();
         int player;
-        Square playerSqr = null;
+        Square playerSqr;
         if (this == game.getPlayer1()) {
             player = 2;
             playerSqr = game.getBoard().getPlayer2Square();

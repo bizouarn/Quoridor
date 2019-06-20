@@ -1,8 +1,5 @@
 package gui;
 
-import gui.PlayerPanel;
-import quoridor.*;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -32,7 +29,7 @@ public class MainMenu extends JPanel {
         add(this.newGame);
         add(this.creds);
         add(this.quit);
-        this.setPreferredSize(new Dimension(300,200));
+        this.setPreferredSize(new Dimension(300, 200));
         setBackground(new Color(0,0,0,0));
     }
 

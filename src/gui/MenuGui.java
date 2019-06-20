@@ -1,16 +1,12 @@
 package gui;
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-
-import gui.*;
-import quoridor.Quoridor;
 
 /**
  * Frame for the menus
@@ -56,7 +52,7 @@ public class MenuGui {
         }
         this.panel = new PanelWithBackgroundImage(bg);
         this.panel.setBorder(new EmptyBorder(100, 75, 100, 75));
-        this.panel.setPreferredSize(new Dimension(700,450));
+        this.panel.setPreferredSize(new Dimension(700, 450));
 
         this.welcomePanel = new WelcomePanel(this.menuGuiListener);
         this.mainMenu = new MainMenu(this.menuGuiListener);

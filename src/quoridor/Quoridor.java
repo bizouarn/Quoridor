@@ -3,12 +3,11 @@ package quoridor;
 // project import
 
 import gui.MenuGui;
-import quoridor.Game;
 import utilitary.RWFile;
 
-// java import
-import java.awt.*;
 import java.util.Scanner;
+
+// java import
 
 /**
  * Permits to launch a session from which can be launch and saved games
@@ -78,18 +77,8 @@ public class Quoridor {
      */
     public static Game loadOldGame() {
         Game savedGame = RWFile.readFile("./data/save/SavedGame.bin");
-        savedGame = new Game(savedGame,false);
+        savedGame = new Game(savedGame, false);
         return savedGame;
-    }
-
-    /**
-     * Launch the chosen game
-     *
-     * @param game the desired game to launch
-     * @author Aymeric Bizouarn
-     */
-    public void launchGame(Game game) {
-        this.game.start();
     }
 
     /**
@@ -99,7 +88,7 @@ public class Quoridor {
      * @author Aymeric Bizouarn
      */
     public void saveGame(Game game) {
-        RWFile.writeFile(this.fileName, this.game);
+        RWFile.writeFile(this.fileName, game);
     }
 
     /**
@@ -107,16 +96,16 @@ public class Quoridor {
      *
      * @author Aymeric Bizouarn
      */
-    public void choice() {
+    private void choice() {
         Scanner scanner = new Scanner(System.in);
-        String choice ="";
-        while (!choice.equals("1")&&!choice.equals("2")&&!choice.equals("3")) {
+        String choice = "";
+        while (!choice.equals("1") && !choice.equals("2") && !choice.equals("3")) {
             System.out.println("Write : \n1 - For new game\n2 - For load old game");
             choice = scanner.nextLine();
         }
         if (choice.equals("1")) {
             this.game = new Game(false);
-            this.launchGame(this.game);
+            this.game.start();
         } else if (choice.equals("2")) {
             this.game = loadOldGame();
 

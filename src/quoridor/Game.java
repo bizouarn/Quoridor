@@ -6,16 +6,15 @@ import gui.Gui;
 import gui.PopUpEndOfGame;
 import gui.PopUpInputPlayer;
 import utilitary.RWFile;
-// import java
 
-import javax.swing.*;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
+
+// import java
 
 /**
  * This class contains the methods to initialize the game
@@ -28,7 +27,6 @@ public class Game implements java.io.Serializable {
     private Player player1;
     private Player player2;
 
-    private Player playerWhoStart;
     private Player playerActual;
     private int playerPlay;
 
@@ -47,7 +45,7 @@ public class Game implements java.io.Serializable {
         if (gui) {
             initializeGame();
             this.guiFrame = new Gui(this);
-        } else if (!gui) {
+        } else {
             initializeGame();
         }
     }
@@ -69,15 +67,15 @@ public class Game implements java.io.Serializable {
             int fence1 = Integer.parseInt(sc.nextLine());
             String name2 = sc.nextLine();
             int fence2 = Integer.parseInt(sc.nextLine());
-            if(name1.equals("auto1")){
-                this.player1 = new AutoPlayer(name1,this);
+            if (name1.equals("auto1")) {
+                this.player1 = new AutoPlayer(name1, this);
             } else {
-                this.player1 = new HumanPlayer(name1,this);
+                this.player1 = new HumanPlayer(name1, this);
             }
-            if(name2.equals("auto2")){
-                this.player2 = new AutoPlayer(name2,this);
+            if (name2.equals("auto2")) {
+                this.player2 = new AutoPlayer(name2, this);
             } else {
-                this.player2 = new HumanPlayer(name2,this);
+                this.player2 = new HumanPlayer(name2, this);
             }
             this.player1.setNbFences(fence1);
             this.player2.setNbFences(fence2);
@@ -135,7 +133,7 @@ public class Game implements java.io.Serializable {
      *
      * @author Aymeric Bizouarn , Pierre-Galaad Naquet
      */
-    public void initializeGame() {
+    private void initializeGame() {
         String name1;
         String name2;
         if (this.gui) {
@@ -185,8 +183,9 @@ public class Game implements java.io.Serializable {
      *
      * @author Aymeric Bizouarn
      */
-    public void start() {
+    void start() {
         playerPlay = 1; //1 = for player1 play & 2 = for player2
+        Player playerWhoStart = whoStarts();
         if (playerWhoStart == this.player1) {
             playerPlay = 1;
         } else if (playerWhoStart == this.player2) {
@@ -196,7 +195,7 @@ public class Game implements java.io.Serializable {
     }
 
     /**
-     * Launch the game with the attributes as parameters and gives the hand to the currentplayer.
+     * Launch the game with the attributes as parameters and gives the hand to the current player.
      *
      * @author Pierre-Galaad Naquet
      */
@@ -232,7 +231,7 @@ public class Game implements java.io.Serializable {
      * @return True if the game has ended, false otherwise
      * @author Aymeric Bizouarn
      */
-    public boolean checkEndOfGame() {
+    private boolean checkEndOfGame() {
         boolean ret = false;
         if (this.board.getPlayer1Square() != null && this.board.getPlayer2Square() != null) {
             if (this.board.getPlayer1Square().getX() == 8) {
@@ -249,7 +248,7 @@ public class Game implements java.io.Serializable {
      *
      * @author Pierre-Galaad Naquet
      */
-    public void endOfGame(Player player) {
+    private void endOfGame(Player player) {
 
         Scanner scan;
         boolean bool = false;
@@ -258,15 +257,12 @@ public class Game implements java.io.Serializable {
         if (this.gui) {
             choice = PopUpEndOfGame.popUpEndOfGame(player);
             if (choice == 1) {
-                try {
-                    this.getPlayer1().setNbFences(10);
-                    this.getPlayer2().setNbFences(10);
-                    this.board = new Board();
-                    this.guiFrame = new Gui(this);
-                    this.start();
-                } catch (Exception e) {
-
-                }
+                this.guiFrame.getjFrame().dispose();
+                this.getPlayer1().setNbFences(10);
+                this.getPlayer2().setNbFences(10);
+                this.board = new Board();
+                this.guiFrame = new Gui(this);
+                this.start();
             }
             if (choice == 2) {
                 try {
@@ -274,8 +270,8 @@ public class Game implements java.io.Serializable {
                     FileWriter fw = new FileWriter(new File("./data/new.bin"), false);
                     fw.write("menu");
                     fw.close();
-                } catch (Exception e) {
-
+                } catch (IOException e) {
+                    System.out.println(e);
                 }
             }
             if (choice == 3) {
@@ -325,7 +321,7 @@ public class Game implements java.io.Serializable {
      * @return True if a path exists, false otherwise
      * @author Aymeric Bizouarn
      */
-    public boolean checkExistingPath() {
+    boolean checkExistingPath() {
         boolean ret = false;
         ArrayList<String> listSquare = new ArrayList<>();
         for (int i = 0; i < 9; i++) {
@@ -356,7 +352,7 @@ public class Game implements java.io.Serializable {
      * @return True if there is an existing path, false otherwise
      * @author Aymeric Bizouarn
      */
-    public boolean recExistingPath(Square sqr, int player, ArrayList<String> listSquareTmp) {
+    private boolean recExistingPath(Square sqr, int player, ArrayList<String> listSquareTmp) {
         boolean ret = false;
         ArrayList<String> listSquare = listSquareTmp;
         listSquare.remove(sqr.getX() + "," + sqr.getY());
@@ -368,7 +364,7 @@ public class Game implements java.io.Serializable {
         } else {
             for (Square sqrP : possibilitiesPawn) {
                 if (sqrP != null) {
-                    if (ret == false) {
+                    if (!ret) {
                         String value = sqrP.getX() + "," + sqrP.getY();
                         if (listSquare.indexOf(value) != -1) {
                             ret = recExistingPath(sqrP, player, listSquare);
@@ -385,10 +381,10 @@ public class Game implements java.io.Serializable {
      *
      * @param sqr    the current square
      * @param player the current player
-     * @return the number of tiles until the opposite sude of the board
+     * @return the number of tiles until the opposite side of the board
      * @author Aymeric Bizouarn
      */
-    public int getNbMinMove(Square sqr, int player) {
+    int getNbMinMove(Square sqr, int player) {
         ArrayList<Integer> nbMove = new ArrayList<>();
         ArrayList<String> listSquare = new ArrayList<>();
         recNbMinMove(sqr, player, listSquare, nbMove, 1);
@@ -406,9 +402,9 @@ public class Game implements java.io.Serializable {
      *
      * @param sqr        the current square
      * @param player     the current player
-     * @param listSquare
-     * @param nbMove
-     * @param deepMove
+     * @param listSquare The List of Square that have been passed.
+     * @param nbMove    The number of move. (the recursive deeper.)
+     * @param deepMove  The move result.
      * @author Aymeric Bizouarn
      */
     private void recNbMinMove(Square sqr, int player, ArrayList<String> listSquare, ArrayList<Integer> nbMove, int deepMove) {
@@ -419,7 +415,6 @@ public class Game implements java.io.Serializable {
         } else if (sqr.getX() == 0 && player == 2) {
             nbMove.add(deepMove);
         } else {
-            int max = 82;
             for (Square sqrP : possibilitiesPawn) {
                 String value = sqrP.getX() + "," + sqrP.getY();
                 int min = 82;
@@ -478,8 +473,8 @@ public class Game implements java.io.Serializable {
             fw.write(this.player2.checkNbRestingFences() + "\n");
             fw.write(playerPlay + "\n");
             fw.close();
-        } catch (Exception e) {
-
+        } catch (IOException e) {
+            System.out.println(e);
         }
         System.exit(1);
     }

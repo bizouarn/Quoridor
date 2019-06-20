@@ -1,23 +1,20 @@
 package gui;
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import javax.imageio.ImageIO;
-import java.io.File;
-import gui.*;
+import java.awt.*;
 
 /**
  * Creating the background image for the JFrame menuGui
+ *
  * @author Aymeric Bizouarn , Pierre-Galaad Naquet
  */
 public class PanelWithBackgroundImage extends JPanel {
 
-    Image bg;
+    private Image bg;
 
     /**
      * Panel constructor
+     *
      * @param bg pathFile to the desired image
      * @author Pierre-Galaad Naquet
      */
@@ -27,6 +24,7 @@ public class PanelWithBackgroundImage extends JPanel {
 
     /**
      * Paint the component on the JFrame
+     *
      * @param g Graphics data
      * @author Pierre-Galaad Naquet
      */

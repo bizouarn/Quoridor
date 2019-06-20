@@ -1,14 +1,14 @@
 package test;
 
-import org.junit.*;
-import quoridor.*;
+import org.junit.Test;
+import quoridor.Square;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 public class TestSquare {
     @Test
-    public static void TestSquare(){
-        Square square = new Square(0,0);
+    public static void TestSquare() {
+        Square square = new Square(0, 0);
         assertNotNull(square);
     }
 }

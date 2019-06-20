@@ -1,18 +1,19 @@
 package test;
 
-import org.junit.*;
-import quoridor.*;
+import org.junit.Test;
+import quoridor.Game;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 public class TestGame {
     @Test
-    public static void testGame(){
+    public static void testGame() {
         Game game = new Game(false);
         assertNotNull(game);
     }
+
     @Test
-    public static void testWhoStarts(){
+    public static void testWhoStarts() {
         Game game = new Game(false);
         assertNotNull(game.whoStarts());
     }

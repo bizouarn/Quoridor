@@ -128,8 +128,8 @@ public class GuiListener implements ActionListener, MouseListener, java.io.Seria
         } else {
             int x = -1;
             int y = -1;
-            for (int i = 0; i < 8; i++) {
-                for (int j = 0; j < 8; j++) {
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 9; j++) {
                     if (gui.getGridPanel().getGrid()[i][j] == button) {
                         x = i;
                         y = j;

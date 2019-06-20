@@ -14,6 +14,7 @@ import quoridor.Quoridor;
 
 /**
  * Frame for the menus
+ *
  * @author Aymeric Bizouarn , Pierre-Galaad Naquet
  */
 public class MenuGui {
@@ -31,10 +32,10 @@ public class MenuGui {
 
     /**
      * MenuGui constructor
+     *
      * @author Aymeric Bizouarn
      */
     public MenuGui() {
-
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 CreateAndShowMenuGui();
@@ -44,6 +45,7 @@ public class MenuGui {
 
     /**
      * Initialize the MenuGui
+     *
      * @author Aymeric Bizouarn , Pierre-Galaad Naquet
      */
     public void CreateAndShowMenuGui() {
@@ -74,6 +76,7 @@ public class MenuGui {
 
     /**
      * Show the desired panel
+     *
      * @author Aymeric Bizouarn
      */
     public void show(String panel) {
@@ -91,6 +94,7 @@ public class MenuGui {
 
     /**
      * Get the welcomePanel
+     *
      * @return the welcomePanel
      */
     public WelcomePanel getWelcomePanel() {
@@ -99,6 +103,7 @@ public class MenuGui {
 
     /**
      * Get the mainMenu
+     *
      * @return the mainMenu
      */
     public MainMenu getMainMenu() {
@@ -107,6 +112,7 @@ public class MenuGui {
 
     /**
      * Get the creditsPanel
+     *
      * @return the creditsPanel
      */
     public CreditsPanel getCreditsPanel() {
@@ -115,6 +121,7 @@ public class MenuGui {
 
     /**
      * Get the panel
+     *
      * @return the panel
      */
     public JPanel getPanel() {
@@ -123,6 +130,7 @@ public class MenuGui {
 
     /**
      * Get the frame
+     *
      * @return the frame
      */
     public JFrame getjFrame() {

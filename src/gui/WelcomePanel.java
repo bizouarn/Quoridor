@@ -34,7 +34,8 @@ public class WelcomePanel extends JPanel {
    * @author Pierre-Galaad Naquet
    */
   private void initComponent() {
-    this.startButton = new JButton("Start");
+    this.startButton = new JButton();
+    this.startButton.setText("Start");
     this.startButton.addActionListener(this.menuGuiListener);
   }
 

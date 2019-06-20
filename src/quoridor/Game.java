@@ -186,12 +186,21 @@ public class Game implements java.io.Serializable {
      * @author Aymeric Bizouarn
      */
     public void start() {
-        int playerPlay = 1; //1 = for player1 play & 2 = for player2
+        playerPlay = 1; //1 = for player1 play & 2 = for player2
         if (playerWhoStart == this.player1) {
             playerPlay = 1;
         } else if (playerWhoStart == this.player2) {
             playerPlay = 2;
         }
+        startLoaded();
+    }
+
+    /**
+     * Launch the game with the attributes as parameters and gives the hand to the currentplayer.
+     *
+     * @author Pierre-Galaad Naquet
+     */
+    private void startLoaded() {
         this.playerActual = null;
         while (!checkEndOfGame()) {
             checkExistingPath();
@@ -213,33 +222,6 @@ public class Game implements java.io.Serializable {
         }
         if (this.gui) {
             this.guiFrame.refresh();
-        }
-        endOfGame(playerActual);
-    }
-
-    /**
-     * Launch the game with the attributes as parameters and gives the hand to the currentplayer.
-     *
-     * @author Pierre-Galaad Naquet
-     */
-    private void startLoaded() {
-        while (!checkEndOfGame()) {
-            checkExistingPath();
-            if (this.gui) {
-                this.guiFrame.refresh();
-            }
-            System.out.println(this.board);
-            if (playerPlay == 1) {
-                System.out.println(player1.getName()+" :");
-                this.player1.play();
-            } else if (playerPlay == 2) {
-                System.out.println(player2.getName()+" :");
-                this.player2.play();
-            }
-            playerPlay++;
-            if (playerPlay > 2) {
-                playerPlay = 1;
-            }
         }
         endOfGame(playerActual);
     }
@@ -287,6 +269,7 @@ public class Game implements java.io.Serializable {
             }
             if (choice == 2) {
                 try {
+                    guiFrame.getjFrame().dispose();
                     FileWriter fw = new FileWriter(new File("./data/new.bin"), false);
                     fw.write("menu");
                     fw.close();

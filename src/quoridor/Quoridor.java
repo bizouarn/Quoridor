@@ -55,7 +55,7 @@ public class Quoridor {
             game.start();
         } else if (this.gui == 3) {
             Game game = RWFile.readFile(this.fileName);
-            new Game(game,true);
+            new Game(game, true);
         } else {
             new MenuGui();
         }
@@ -78,7 +78,7 @@ public class Quoridor {
      */
     public static Game loadOldGame() {
         Game savedGame = RWFile.readFile("./data/save/SavedGame.bin");
-        savedGame.getGuiFrame().getjFrame().setVisible(true);
+        savedGame = new Game(savedGame,false);
         return savedGame;
     }
 
@@ -109,17 +109,18 @@ public class Quoridor {
      */
     public void choice() {
         Scanner scanner = new Scanner(System.in);
-        int choice = -1;
-        while (choice > 2 || choice < 1) {
+        String choice ="";
+        while (!choice.equals("1")&&!choice.equals("2")&&!choice.equals("3")) {
             System.out.println("Write : \n1 - For new game\n2 - For load old game");
-            choice = scanner.nextInt();
+            choice = scanner.nextLine();
         }
-        if (choice == 1) {
+        if (choice.equals("1")) {
             this.game = new Game(false);
-        } else if (choice == 2) {
-            this.loadOldGame();
+            this.launchGame(this.game);
+        } else if (choice.equals("2")) {
+            this.game = loadOldGame();
+
         }
-        this.launchGame(this.game);
     }
 
 }

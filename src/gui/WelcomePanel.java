@@ -20,8 +20,10 @@ public class WelcomePanel extends JPanel {
    * @author Pierre-Galaad Naquet
    */
   public WelcomePanel(MenuGuiListener menuGuiListener) {
+    super(new GridLayout(3,1));
     this.menuGuiListener = menuGuiListener;
     initComponent();
+    add(new JLabel());
     add(this.startButton);
     this.setPreferredSize(new Dimension(300,200));
     setBackground(new Color(0,0,0,0));

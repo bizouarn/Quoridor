@@ -1,14 +1,17 @@
 package gui;
 
+import quoridor.Player;
+
 import java.awt.*;
+import java.lang.management.PlatformLoggingMXBean;
 import javax.swing.*;
 
 public class PopUpEndOfGame extends JPanel {
 
-  public static int popUpEndOfGame() throws IllegalStateException {
+  public static int popUpEndOfGame(Player player) throws IllegalStateException {
     Object[] options = { "New Game", "Main Menu", "Leave" };
     int choice = JOptionPane.showOptionDialog(null,
-        "[Name player] Has won !",
+        " "+player.getName()+" Has won !",
         "Game has ended !",
         JOptionPane.YES_NO_CANCEL_OPTION,
         JOptionPane.QUESTION_MESSAGE,

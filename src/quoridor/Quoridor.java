@@ -41,31 +41,14 @@ public class Quoridor {
             if (string.equals("nogui")) {
                 this.gui = 1;
             }
-            if (string.equals("Game")) {
+            if (string.equals("gui")) {
                 this.gui = 2;
-            }
-            if (string.equals("noGuiGame")) {
-                this.gui = 3;
             }
         }
         if (this.gui == 1) {
-            Scanner scanner = new Scanner(System.in);
-            int choice = -1;
-            while (choice > 2 || choice < 1) {
-                System.out.println("Write : \n1 - For new game\n2 - For load old game");
-                choice = scanner.nextInt();
-            }
-            if (choice == 1) {
-                this.game = new Game(false);
-            } else if (choice == 2) {
-                this.loadOldGame();
-            }
-            this.launchGame(this.game);
+           choice();
         } else if (this.gui == 2) {
             Game game = new Game(true);
-            game.start();
-        } else if (this.gui == 3) {
-            Game game = new Game(false);
             game.start();
         } else {
             new MenuGui();
@@ -90,6 +73,7 @@ public class Quoridor {
      */
     public static Game loadOldGame() {
         Game savedGame = RWFile.readFile("./data/save/SavedGame.bin");
+        savedGame.getGuiFrame().getjFrame().setVisible(true);
         return savedGame;
     }
 
@@ -111,6 +95,21 @@ public class Quoridor {
      */
     public void saveGame(Game game) {
         RWFile.writeFile(this.fileName, this.game);
+    }
+
+    public void choice(){
+        Scanner scanner = new Scanner(System.in);
+        int choice = -1;
+        while (choice > 2 || choice < 1) {
+            System.out.println("Write : \n1 - For new game\n2 - For load old game");
+            choice = scanner.nextInt();
+        }
+        if (choice == 1) {
+            this.game = new Game(false);
+        } else if (choice == 2) {
+            this.loadOldGame();
+        }
+        this.launchGame(this.game);
     }
 
 }

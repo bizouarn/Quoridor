@@ -9,6 +9,9 @@ import utilitary.RWFile;
 // import java
 
 import javax.swing.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -18,13 +21,13 @@ import java.util.Scanner;
  *
  * @author Aymeric Bizouarn , Pierre-Galaad 'P(x)' Naquet
  */
-public class Game {
+public class Game implements java.io.Serializable {
 
     private Board board;
     private Player player1;
     private Player player2;
-    private Player playerWhoStart;
 
+    private Player playerWhoStart;
     private Player playerActual;
 
     private boolean gui;
@@ -33,19 +36,23 @@ public class Game {
     /**
      * Game constructor
      * Launch either a swing game or a terminal one
+     *
      * @param gui true if the game has to be launched in the swing version, false otherwise
      * @author Aymeric Bizouarn
      */
     public Game(boolean gui) {
         this.gui = gui;
-        initializeGame();
         if (gui) {
+            initializeGame();
             this.guiFrame = new Gui(this);
+        } else if (!gui) {
+            initializeGame();
         }
     }
 
     /**
      * Get the board
+     *
      * @return the current board
      */
     public Board getBoard() {
@@ -54,6 +61,7 @@ public class Game {
 
     /**
      * Get the player1
+     *
      * @return the player1
      */
     public Player getPlayer1() {
@@ -62,6 +70,7 @@ public class Game {
 
     /**
      * Get the player2
+     *
      * @return the player2
      */
     public Player getPlayer2() {
@@ -70,6 +79,7 @@ public class Game {
 
     /**
      * Set the Game Board.
+     *
      * @param board the desired board to play the game with.
      */
     public void setBoard(Board board) {
@@ -78,31 +88,31 @@ public class Game {
 
     /**
      * Initialize the game by creating a new board and by asking for players name.
+     *
      * @author Aymeric Bizouarn , Pierre-Galaad 'P(x)' Naquet
      */
     public void initializeGame() {
         String name1;
         String name2;
-        if (this.gui == true) {
-          name1 = PopUpInputPlayer.popUpPlayer1();
-          name2 = PopUpInputPlayer.popUpPlayer2();
-        }
-        else {
-          Scanner scanner = new Scanner(System.in);
-          System.out.println("Name Player 1 : ");
-          name1 = scanner.nextLine();
-          System.out.println("Name Player 2 : ");
-          name2 = scanner.nextLine();
+        if (this.gui) {
+            name1 = PopUpInputPlayer.popUpPlayer1();
+            name2 = PopUpInputPlayer.popUpPlayer2();
+        } else {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Name Player 1 : ");
+            name1 = scanner.nextLine();
+            System.out.println("Name Player 2 : ");
+            name2 = scanner.nextLine();
         }
 
         if (name1.equals("auto")) {
-            this.player1 = new AutoPlayer(name1, this);
+            this.player1 = new AutoPlayer(name1+"1", this);
         } else {
             this.player1 = new HumanPlayer(name1, this);
         }
 
         if (name2.equals("auto")) {
-            this.player2 = new AutoPlayer(name2, this);
+            this.player2 = new AutoPlayer(name2+"2", this);
         } else {
             this.player2 = new HumanPlayer(name2, this);
         }
@@ -112,8 +122,8 @@ public class Game {
 
     /**
      * Choose randomly which player plays first
+     *
      * @return the starting player
-
      */
     public Player whoStarts() {
         int random = (int) (Math.random() * 100);
@@ -128,6 +138,7 @@ public class Game {
 
     /**
      * Launch the game and select the starting player with the attributes as parameters.
+     *
      * @author Aymeric Bizouarn
      */
     public void start() {
@@ -140,7 +151,44 @@ public class Game {
         this.playerActual = null;
         while (!checkEndOfGame()) {
             checkExistingPath();
-            if (this.gui == true) {
+            if (this.gui) {
+                this.guiFrame.refresh();
+            }
+            if (playerPlay == 1) {
+                this.playerActual = this.player1;
+            } else if (playerPlay == 2) {
+                this.playerActual = this.player2;
+            }
+            System.out.println(this.board);
+            System.out.println(this.playerActual.getName() + " : ");
+            this.playerActual.play();
+            playerPlay++;
+            if (playerPlay > 2) {
+                playerPlay = 1;
+            }
+        }
+        if (this.gui) {
+            this.guiFrame.refresh();
+        }
+        endOfGame(playerActual);
+    }
+
+    /**
+     * Launch the game with the attributes as parameters and gives the hand to the currentplayer.
+     *
+     * @author Pierre-Galaad 'P(x)' Naquet
+     */
+    public void startLoaded() {
+        int playerPlay = 0;
+        if (this.playerActual == this.player1) {
+            playerPlay = 1;
+        }
+        if (this.playerActual == this.player2) {
+            playerPlay = 2;
+        }
+        while (!checkEndOfGame()) {
+            checkExistingPath();
+            if (this.gui) {
                 this.guiFrame.refresh();
             }
             if (playerPlay == 1) {
@@ -160,40 +208,8 @@ public class Game {
     }
 
     /**
-     * Launch the game with the attributes as parameters and gives the hand to the currentplayer.
-     * @author Pierre-Galaad 'P(x)' Naquet
-     */
-    public void startLoaded() {
-      int playerPlay = 0;
-      if (this.playerActual == this.player1) {
-        playerPlay = 1;
-      }
-      if (this.playerActual == this.player2) {
-        playerPlay = 2;
-      }
-      while (!checkEndOfGame()) {
-          checkExistingPath();
-          if (this.gui == true) {
-              this.guiFrame.refresh();
-          }
-          if (playerPlay == 1) {
-              this.playerActual = this.player1;
-          } else if (playerPlay == 2) {
-              this.playerActual = this.player2;
-          }
-          System.out.println(this.board);
-          System.out.println(this.playerActual.getName() + " : ");
-          this.playerActual.play();
-          playerPlay++;
-          if (playerPlay > 2) {
-              playerPlay = 1;
-          }
-      }
-      endOfGame(playerActual);
-    }
-
-    /**
      * Check if the game has ended
+     *
      * @return True if the game has ended, false otherwise
      * @author Aymeric Bizouarn
      */
@@ -211,6 +227,7 @@ public class Game {
 
     /**
      * End the game and launch the results procedure
+     *
      * @author Pierre-Galaad 'P(x)' Naquet
      */
     public void endOfGame(Player player) {
@@ -219,13 +236,36 @@ public class Game {
         boolean bool = false;
 
         int choice = -1;
-        if(this.gui = true) {
-            choice = PopUpEndOfGame.popUpEndOfGame();
+        if (this.gui) {
+            choice = PopUpEndOfGame.popUpEndOfGame(player);
+            if (choice == 1) {
+                try {
+                    FileWriter fw = new FileWriter(new File("./data/new.bin"), false);
+                    fw.write("gui");
+                    fw.close();
+                    this.getGuiFrame().getjFrame().dispose();
+                }
+                catch (Exception e){
+
+                }
+            }
+            if (choice == 2) {
+                try {
+                    FileWriter fw = new FileWriter(new File("./data/new.bin"), false);
+                    fw.write("menu");
+                    fw.close();
+                } catch (Exception e){
+
+                }
+            }
+            if (choice == 3) {
+                System.exit(0);
+            }
         } else {
-            System.out.println("The player : " + player.getName() + "has won !");
+            System.out.println("The player : " + playerActual.getName() + " has won !");
             System.out.println();
             System.out.println("What do you want to do ?");
-            System.out.println("1 - Rematch");
+            System.out.println("1 - New Game");
             System.out.println("2 - Change Players");
             System.out.println("3 - Leave the program");
 
@@ -241,24 +281,24 @@ public class Game {
                 } catch (Exception e) {
                     System.out.println("Invalid Input !");
                 }
+                if (choice == 1) {
+                    this.board = new Board();
+                    this.start();
+                }
+                if (choice == 2) {
+                    Game game = new Game(this.gui);
+                    game.start();
+                }
+                if (choice == 3) {
+                    System.exit(0);
+                }
             }
-        }
-
-        if (choice == 1) {
-            this.board = new Board();
-            this.start();
-        }
-        if (choice == 2) {
-            Game game = new Game(this.gui);
-            game.start();
-        }
-        if (choice == 3) {
-            System.exit(0);
         }
     }
 
     /**
      * Checks if there is an existing path between the end and the player
+     *
      * @return True if a path exists, false otherwise
      * @author Aymeric Bizouarn
      */
@@ -270,14 +310,14 @@ public class Game {
                 listSquare.add(i + "," + j);
             }
         }
-        boolean resP1 = recExistingPath(this.board.getPlayer1Square(),2,listSquare);
+        boolean resP1 = recExistingPath(this.board.getPlayer1Square(), 2, listSquare);
         listSquare = new ArrayList<>();
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 listSquare.add(i + "," + j);
             }
         }
-        boolean resP2 = recExistingPath(this.board.getPlayer2Square(), 2,listSquare);
+        boolean resP2 = recExistingPath(this.board.getPlayer2Square(), 2, listSquare);
         if (resP1 && resP2) {
             ret = true;
         }
@@ -286,8 +326,9 @@ public class Game {
 
     /**
      * Recursive methods checking the existing path.
-     * @param sqr the current square
-     * @param player the current player
+     *
+     * @param sqr           the current square
+     * @param player        the current player
      * @param listSquareTmp the current list of the path
      * @return True if there is an existing path, false otherwise
      * @author Aymeric Bizouarn
@@ -318,7 +359,8 @@ public class Game {
 
     /**
      * get the path with the fewest tiles to the opposite side of the board
-     * @param sqr the current square
+     *
+     * @param sqr    the current square
      * @param player the current player
      * @return the number of tiles until the opposite sude of the board
      * @author Aymeric Bizouarn
@@ -338,8 +380,9 @@ public class Game {
 
     /**
      * get the path with the fewest tiles to the opposite side of the board
-     * @param sqr the current square
-     * @param player the current player
+     *
+     * @param sqr        the current square
+     * @param player     the current player
      * @param listSquare
      * @param nbMove
      * @param deepMove
@@ -372,6 +415,7 @@ public class Game {
 
     /**
      * Return the gui
+     *
      * @return the gui
      */
     public boolean getGui() {
@@ -380,6 +424,7 @@ public class Game {
 
     /**
      * Return the guiFrame
+     *
      * @return the guiFrame
      */
     public Gui getGuiFrame() {
@@ -388,17 +433,20 @@ public class Game {
 
     /**
      * Return the actualPlayer
+     *
      * @return the actualPlayer
      */
     public Player getPlayerActual() {
-      return this.playerActual;
+        return this.playerActual;
     }
 
     /**
      * Save the current Game
+     *
      * @author Pierre-Galaad 'P(x)' Naquet
      */
-     public void saveGame() {
-       RWFile.writeFile("./data/save/SavedGame.bin", this);
-     }
+    public void saveGame() {
+        RWFile.writeFile("./data/save/SavedGame.bin", this);
+        System.exit(1);
+    }
 }

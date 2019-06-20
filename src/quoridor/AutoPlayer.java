@@ -42,7 +42,7 @@ public class AutoPlayer extends Player {
                 Square sqr = this.getGame().getBoard().getSquare(0,4);
                 for(SubBoard sb : possibilitiesFenceH){
                     if(this.getGame().getBoard().getSubBoard(0,4)==sb) {
-                        if(ret==false) {
+                        if(ret =false) {
                             System.out.println("|" + this.checkNbRestingFences());
                             ret = playFence(sqr.getX(), sqr.getY(), sqr.getX() + 1, sqr.getY() + 1, 1);
                             System.out.println("|" + this.checkNbRestingFences() + ret);
@@ -75,7 +75,7 @@ public class AutoPlayer extends Player {
     }
 
     /**
-     * Method permitting the autoplayer to play a fence
+     * Method permitting the auto player to play a fence
      * @author Aymeric Bizouarn
      */
     private boolean autoPlayFence() {
@@ -93,7 +93,7 @@ public class AutoPlayer extends Player {
     }
 
     /**
-     * Method permitting the autoplayer to move its pawn
+     * Method permitting the auto player to move its pawn
      * @author Aymeric Bizouarn
      */
     private void autoPlayPawn() {

@@ -91,4 +91,8 @@ public class MenuGui {
     public JPanel getPanel() {
         return this.panel;
     }
+
+    public JFrame getjFrame() {
+        return this.jFrame;
+    }
 }

@@ -6,7 +6,7 @@ import quoridor.Player;
 import javax.swing.*;
 import java.awt.*;
 
-public class Gui {
+public class Gui implements java.io.Serializable{
     private GuiListener guiListener = new GuiListener(this);
 
     private PlayerPanel playerPanel1;

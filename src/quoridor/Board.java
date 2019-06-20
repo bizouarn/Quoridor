@@ -14,7 +14,7 @@ import java.util.ArrayList;
  *
  * @author Pierre-Galaad 'P(x)' Naquet, Aymeric Bizouarn
  */
-public class Board {
+public class Board implements java.io.Serializable {
 
     private final int SIZE = 9;
     private ArrayList<Square> grid;
@@ -22,7 +22,7 @@ public class Board {
 
     /**
      * Board constructor
-     * intiliaze a 81 squares board (9*9)
+     * initialize a 81 squares board (9*9)
      * Initialize walls and positionates players on their starting positions
      *
      * @author Pierre-Galaad 'P(x)' Naquet

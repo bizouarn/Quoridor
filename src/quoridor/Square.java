@@ -10,7 +10,7 @@ import quoridor.Status;
 * Tile of the board. Contains its coordinates, if there is a player on it, and the fences around it.
 * @author Pierre-Galaad 'P(x)' Naquet, Aymeric Bizouarn
 */
-public class Square {
+public class Square implements java.io.Serializable {
 
 	private int x;
 	private int y;

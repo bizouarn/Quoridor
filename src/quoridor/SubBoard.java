@@ -11,14 +11,14 @@ import quoridor.Square;
  * Each square may be in up to four subBoard.
  * @author Pierre-Galaad 'P(x)' Naquet, Aymeric Bizouarn
  */
-public class SubBoard {
+public class SubBoard implements java.io.Serializable{
 
-  Square SQR1; //upper left
-  Square SQR2; //upper right
-  Square SQR3; //lower left
-  Square SQR4; //lower right
+  private Square SQR1; //upper left
+  private Square SQR2; //upper right
+  private Square SQR3; //lower left
+  private Square SQR4; //lower right
 
-  Square[] sqrArray = new Square[4];
+  private Square[] sqrArray = new Square[4];
 
   int X;
   int Y;

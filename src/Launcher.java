@@ -4,6 +4,7 @@
 
 import quoridor.*;
 
+import javax.swing.*;
 import javax.xml.stream.StreamFilter;
 import java.io.*;
 import java.util.Scanner;
@@ -23,6 +24,12 @@ public class Launcher {
      * @param args optional arguments
      */
     public static void main(String[] args) {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
         new Launcher();
     }
 

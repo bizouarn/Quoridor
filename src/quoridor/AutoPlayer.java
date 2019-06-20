@@ -4,11 +4,13 @@ import java.util.ArrayList;
 
 /**
  * An Extend of Player make for play automatically.
+ *
  * @author Aymeric Bizouarn , Pierre-Galaad Naquet
  */
 public class AutoPlayer extends Player {
     /**
      * AutoPlayer constructor
+     *
      * @param name The player name.
      * @param game the current game
      */
@@ -20,6 +22,7 @@ public class AutoPlayer extends Player {
      * AI for the AutoPlayer
      * Choose between playFence and playPawn
      * Only one level of difficulty for now
+     *
      * @author Aymeric Bizouarn
      */
     public void play() {
@@ -35,27 +38,25 @@ public class AutoPlayer extends Player {
                 contition = false;
             }
         }
-        boolean ret =false;
+        boolean ret = false;
         if (this == this.getGame().getPlayer1()) {
             if (this.getGame().getBoard().getPlayer1Square().getX() == 1 && this.getGame().getBoard().getPlayer1Square().getY() == 4) {
                 ArrayList<SubBoard> possibilitiesFenceH = this.getGame().getBoard().listOfPossibilitiesFenceHorizontal();
-                Square sqr = this.getGame().getBoard().getSquare(0,4);
-                for(SubBoard sb : possibilitiesFenceH){
-                    if(this.getGame().getBoard().getSubBoard(0,4)==sb) {
-                        if(ret =false) {
-                            System.out.println("|" + this.checkNbRestingFences());
-                            ret = playFence(sqr.getX(), sqr.getY(), sqr.getX() + 1, sqr.getY() + 1, 1);
-                            System.out.println("|" + this.checkNbRestingFences() + ret);
-                        }
+                Square sqr = this.getGame().getBoard().getSquare(0, 4);
+                for (SubBoard sb : possibilitiesFenceH) {
+                    if (this.getGame().getBoard().getSubBoard(0, 4) == sb) {
+                        System.out.println("|" + this.checkNbRestingFences());
+                        ret = playFence(sqr.getX(), sqr.getY(), sqr.getX() + 1, sqr.getY() + 1, 1);
+                        System.out.println("|" + this.checkNbRestingFences() + ret);
                     }
                 }
             }
         } else if (this == this.getGame().getPlayer2()) {
             if (this.getGame().getBoard().getPlayer2Square().getX() == 7 && this.getGame().getBoard().getPlayer2Square().getY() == 4) {
                 ArrayList<SubBoard> possibilitiesFenceH = this.getGame().getBoard().listOfPossibilitiesFenceHorizontal();
-                Square sqr = this.getGame().getBoard().getSquare(7,4);
-                for(SubBoard sb : possibilitiesFenceH){
-                    if(this.getGame().getBoard().getSubBoard(7,4)==sb) {
+                Square sqr = this.getGame().getBoard().getSquare(7, 4);
+                for (SubBoard sb : possibilitiesFenceH) {
+                    if (this.getGame().getBoard().getSubBoard(7, 4) == sb) {
                         System.out.println("|" + this.checkNbRestingFences());
                         ret = playFence(sqr.getX(), sqr.getY(), sqr.getX() + 1, sqr.getY() + 1, 1);
                         System.out.println("|" + this.checkNbRestingFences() + ret);
@@ -63,7 +64,7 @@ public class AutoPlayer extends Player {
                 }
             }
         }
-        if(!ret) {
+        if (!ret) {
             if (contition) {
                 autoPlayPawn();
             } else {
@@ -76,6 +77,7 @@ public class AutoPlayer extends Player {
 
     /**
      * Method permitting the auto player to play a fence
+     *
      * @author Aymeric Bizouarn
      */
     private boolean autoPlayFence() {
@@ -94,6 +96,7 @@ public class AutoPlayer extends Player {
 
     /**
      * Method permitting the auto player to move its pawn
+     *
      * @author Aymeric Bizouarn
      */
     private void autoPlayPawn() {
@@ -124,8 +127,9 @@ public class AutoPlayer extends Player {
 
     /**
      * method permitting to check if the player is currently or not in the subBoard
+     *
      * @param subBoard the subBoard currently checked
-     * @param player the number of the player
+     * @param player   the number of the player
      * @return true if the player is in the subBoard, false otherwise
      * @author Aymeric Bizouarn
      */
@@ -147,7 +151,8 @@ public class AutoPlayer extends Player {
 
     /**
      * Calculates all the fences placement possibles during this turn and return minimal number of movement for each.
-     * @param sb The subBoard of the fence
+     *
+     * @param sb        The subBoard of the fence
      * @param pos
      * @param playerSqr
      * @param player
@@ -188,7 +193,6 @@ public class AutoPlayer extends Player {
     }
 
     /**
-     *
      * @author Aymeric Bizouarn
      */
     private Object[] getPlayFence(int pos) {

@@ -51,6 +51,10 @@ public class Launcher {
                     String[] args2 = {};
                     new Quoridor(args2);
                 }
+                if (string.equals("load")) {
+                    String[] args2 = {"load"};
+                    new Quoridor(args2);
+                }
             }
             catch (FileNotFoundException e){
                 try {

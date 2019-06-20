@@ -54,7 +54,8 @@ public class Quoridor {
             Game game = new Game(true);
             game.start();
         } else if (this.gui == 3) {
-            Game game = new Game(RWFile.readFile(this.fileName),true);
+            Game game = RWFile.readFile(this.fileName);
+            new Game(game,true);
         } else {
             new MenuGui();
         }

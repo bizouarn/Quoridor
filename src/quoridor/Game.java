@@ -11,6 +11,7 @@ import utilitary.RWFile;
 import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +30,7 @@ public class Game implements java.io.Serializable {
 
     private Player playerWhoStart;
     private Player playerActual;
+    private int playerPlay;
 
     private boolean gui;
     private Gui guiFrame;
@@ -54,18 +56,40 @@ public class Game implements java.io.Serializable {
      * Game constructor
      * Launch either a swing game or a terminal one
      *
-     * @param gui true if the game has to be launched in the swing version, false otherwise
+     * @param game The game you would load.
+     * @param gui  true if the game has to be launched in the swing version, false otherwise
      * @author Aymeric Bizouarn
      */
-    public Game(Game game,boolean gui) {
+    public Game(Game game, boolean gui) {
         try {
+            RWFile.writeFile("./data/save/SavedGame.bin", this);
+            FileReader fw = new FileReader(new File("./data/save/Player.bin"));
+            Scanner sc = new Scanner(fw);
+            String name1 = sc.nextLine();
+            int fence1 = Integer.parseInt(sc.nextLine());
+            String name2 = sc.nextLine();
+            int fence2 = Integer.parseInt(sc.nextLine());
+            if(name1.equals(name1)){
+                this.player1 = new AutoPlayer(name1,this);
+            } else {
+                this.player1 = new HumanPlayer(name1,this);
+            }
+            if(name1.equals(name2)){
+                this.player2 = new AutoPlayer(name1,this);
+            } else {
+                this.player2 = new HumanPlayer(name1,this);
+            }
+            this.playerPlay = Integer.parseInt(sc.nextLine());
+            fw.close();
             this.board = game.getBoard();
-
             if (gui) {
                 this.guiFrame = new Gui(this);
                 this.guiFrame.getjFrame().setVisible(true);
             }
-        } catch (Exception e){}
+            startLoaded();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**
@@ -124,13 +148,13 @@ public class Game implements java.io.Serializable {
         }
 
         if (name1.equals("auto")) {
-            this.player1 = new AutoPlayer(name1+"1", this);
+            this.player1 = new AutoPlayer(name1 + "1", this);
         } else {
             this.player1 = new HumanPlayer(name1, this);
         }
 
         if (name2.equals("auto")) {
-            this.player2 = new AutoPlayer(name2+"2", this);
+            this.player2 = new AutoPlayer(name2 + "2", this);
         } else {
             this.player2 = new HumanPlayer(name2, this);
         }
@@ -262,8 +286,7 @@ public class Game implements java.io.Serializable {
                     fw.write("gui");
                     fw.close();
                     this.getGuiFrame().getjFrame().dispose();
-                }
-                catch (Exception e){
+                } catch (Exception e) {
 
                 }
             }
@@ -272,7 +295,7 @@ public class Game implements java.io.Serializable {
                     FileWriter fw = new FileWriter(new File("./data/new.bin"), false);
                     fw.write("menu");
                     fw.close();
-                } catch (Exception e){
+                } catch (Exception e) {
 
                 }
             }
@@ -464,7 +487,18 @@ public class Game implements java.io.Serializable {
      * @author Pierre-Galaad Naquet
      */
     public void saveGame() {
-        RWFile.writeFile("./data/save/SavedGame.bin", this);
+        try {
+            RWFile.writeFile("./data/save/SavedGame.bin", this);
+            FileWriter fw = new FileWriter(new File("./data/save/Player.bin"), false);
+            fw.write(this.player1.getName() + "\n");
+            fw.write(this.player1.checkNbRestingFences() + "\n");
+            fw.write(this.player2.getName() + "\n");
+            fw.write(this.player2.checkNbRestingFences() + "\n");
+            fw.write(playerPlay + "\n");
+            fw.close();
+        } catch (Exception e) {
+
+        }
         System.exit(1);
     }
 }

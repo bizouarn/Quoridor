@@ -104,6 +104,15 @@ public class Game implements java.io.Serializable {
     }
 
     /**
+     * Set the Game Board.
+     *
+     * @param board the desired board to play the game with.
+     */
+    public void setBoard(Board board) {
+        this.board = board;
+    }
+
+    /**
      * Get the player1
      *
      * @return the player1
@@ -119,15 +128,6 @@ public class Game implements java.io.Serializable {
      */
     public Player getPlayer2() {
         return this.player2;
-    }
-
-    /**
-     * Set the Game Board.
-     *
-     * @param board the desired board to play the game with.
-     */
-    public void setBoard(Board board) {
-        this.board = board;
     }
 
     /**
@@ -259,10 +259,11 @@ public class Game implements java.io.Serializable {
             choice = PopUpEndOfGame.popUpEndOfGame(player);
             if (choice == 1) {
                 try {
-                    FileWriter fw = new FileWriter(new File("./data/new.bin"), false);
-                    fw.write("gui");
-                    fw.close();
-                    this.getGuiFrame().getjFrame().dispose();
+                    this.getPlayer1().setNbFences(10);
+                    this.getPlayer2().setNbFences(10);
+                    this.board = new Board();
+                    this.guiFrame = new Gui(this);
+                    this.start();
                 } catch (Exception e) {
 
                 }
@@ -302,6 +303,8 @@ public class Game implements java.io.Serializable {
                     System.out.println("Invalid Input !");
                 }
                 if (choice == 1) {
+                    this.getPlayer1().setNbFences(10);
+                    this.getPlayer2().setNbFences(10);
                     this.board = new Board();
                     this.start();
                 }

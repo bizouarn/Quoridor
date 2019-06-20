@@ -8,7 +8,7 @@ import quoridor.Status;
 
 /**
 * Tile of the board. Contains its coordinates, if there is a player on it, and the fences around it.
-* @author Pierre-Galaad 'P(x)' Naquet, Aymeric Bizouarn
+* @author Pierre-Galaad Naquet, Aymeric Bizouarn
 */
 public class Square implements java.io.Serializable {
 
@@ -30,7 +30,7 @@ public class Square implements java.io.Serializable {
 	 * Square constructor
 	 * Square object which is a square on the board.
 	 * It knows its coordinates, if there is a player or not and if their is fences around him
-	 * @author Pierre-Galaad 'P(x)' Naquet
+	 * @author Pierre-Galaad Naquet
 	 */
 	public Square(int x, int y) {
 		this.x = x;
@@ -57,7 +57,7 @@ public class Square implements java.io.Serializable {
 
 	/**
 	 * refreshes the fence status
-	 * @author Pierre-Galaad 'P(x)' Naquet
+	 * @author Pierre-Galaad Naquet
 	 */
 	public void refreshStatusFence() {
 		if ((this.fenceN == false) && (this.fenceS == false) && (this.fenceW == false) && (this.fenceE == false)) {

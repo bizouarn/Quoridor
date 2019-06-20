@@ -6,6 +6,10 @@ import quoridor.Player;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The main game frame, this frame contains the board
+ * @author Aymeric Bizouarn , Pierre-Galaad Naquet
+ */
 public class Gui implements java.io.Serializable{
     private GuiListener guiListener = new GuiListener(this);
 
@@ -18,6 +22,12 @@ public class Gui implements java.io.Serializable{
     private Game game;
     private JFrame jFrame;
 
+
+    /**
+     * Gui (Main game frame) constructor
+     * @param game The current Game
+     * @author Aymeric Bizouarn
+     */
     public Gui(Game game){
         this.game = game;
 
@@ -34,7 +44,11 @@ public class Gui implements java.io.Serializable{
         });
     }
 
-    public void CreateAndShowGui(){
+    /**
+     * set the BorderLayout
+     * @author Aymeric Bizouarn
+     */
+    private void CreateAndShowGui(){
         this.jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.jFrame.add(this.gridPanel, BorderLayout.CENTER);
@@ -45,28 +59,52 @@ public class Gui implements java.io.Serializable{
         this.jFrame.setVisible(true);
     }
 
+    /**
+     * refresh the whole gui
+     * @author Aymeric Bizouarn
+     */
     public void refresh(){
         this.leftPlayers.refresh(this.game.getPlayer1().checkNbRestingFences(),this.game.getPlayer2().checkNbRestingFences());
         this.gridPanel.refresh();
         this.jFrame.repaint();
     }
 
+    /**
+     * Return the current grid panel
+     * @return the current grid panel
+     */
     public GridPanel getGridPanel() {
-        return gridPanel;
+        return this.gridPanel;
     }
 
+    /**
+     * Return the gui's toolBar
+     * @return the toolBar
+     */
     public ToolBar getToolBar() {
-        return toolBar;
+        return this.toolBar;
     }
 
+    /**
+     * Return the gui's guiListener
+     * @return the guiListener
+     */
     public GuiListener getGuiListener() {
-        return guiListener;
+        return this.guiListener;
     }
 
+    /**
+     * Return the current Game
+     * @return the current Game
+     */
     public Game getGame() {
       return this.game;
     }
 
+    /**
+     * Return the current frame
+     * @return the current frame
+     */
     public JFrame getjFrame() {
         return this.jFrame;
     }

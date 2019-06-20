@@ -4,7 +4,7 @@ import javax.swing.*;
 
 /**
  * Enumeration containing the StatusFence of the squares, Uses the cardinal points.
- * @author Pierre-Galaad 'P(x)' Naquet, Aymeric Bizouarn
+ * @author Pierre-Galaad Naquet, Aymeric Bizouarn
  */
 public enum StatusFence {
 	NONE("   ", "NONE"),
@@ -37,7 +37,7 @@ public enum StatusFence {
 	 * StatusFence constructor
 	 * @param text the terminal representation
 	 * @param pathFile the part permitting to get the image | Used to find the file in the data : ./data/images/[pathFile].png
-	 * @author Pierre-Galaad 'P(x)' Naquet
+	 * @author Pierre-Galaad Naquet
 	 */
 	StatusFence(String text, String pathFile) {
 		this.text = text;

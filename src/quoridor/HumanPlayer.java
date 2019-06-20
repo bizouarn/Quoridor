@@ -11,12 +11,14 @@ import gui.GuiListener;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
+/**
+ * Classes invoked when it is a human player turn
+ * @author Aymeric Bizouarn , Pierre-Galaad Naquet
+ */
 public class HumanPlayer extends Player {
 
     /**
      * HumanPlayer constructor
-     *
      * @param name The player name.
      * @author Aymeric Bizouarn
      */
@@ -26,7 +28,6 @@ public class HumanPlayer extends Player {
 
     /**
      * Let the player choose between if he wants to play a fence or moves its pawn
-     *
      * @author Aymeric Bizouarn
      */
     public void play() {

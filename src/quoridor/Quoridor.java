@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 /**
  * Permits to launch a session from which can be launch and saved games
- * @author Aymeric Bizouarn , Pierre-Galaad 'P(x)' Naquet
+ * @author Aymeric Bizouarn , Pierre-Galaad Naquet
  */
 public class Quoridor {
 
@@ -31,7 +31,7 @@ public class Quoridor {
      * Quoridor constructor
      * Create an object Quoridor
      * Serve as a platform to load and launch games
-     * @author Aymeric Bizouarn , Pierre-Galaad 'P(x)' Naquet
+     * @author Aymeric Bizouarn , Pierre-Galaad Naquet
      */
     public Quoridor(String[] args) {
         this.gui = 0;

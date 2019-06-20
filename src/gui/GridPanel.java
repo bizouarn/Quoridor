@@ -8,8 +8,8 @@ import javax.swing.border.Border;
 import java.awt.*;
 
 /**
- * Center panel of the graphical representation. Contains the board and permits the player to play
- * @author Pierre-Galaad 'P(x)' Naquet , Aymeric Bizouarn
+ * Main panel of the graphical representation. Contains the board and permits the players to play
+ * @author Pierre-Galaad Naquet , Aymeric Bizouarn
  */
 public class GridPanel extends JPanel {
 
@@ -17,6 +17,12 @@ public class GridPanel extends JPanel {
   private Board board;
   private Gui gui;
 
+  /**
+   * GridPanel constructor
+   * @param board game Board
+   * @param gui The main frame
+   * @author Aymeric Bizouarn
+   */
   public GridPanel(Board board,Gui gui) {
     super(new GridLayout(board.getSIZE(),board.getSIZE()));
     this.gui = gui;
@@ -27,7 +33,11 @@ public class GridPanel extends JPanel {
     initComponent();
   }
 
-  public void initComponent() {
+  /**
+   * Initialize the components of the JPanel
+   * @author Aymeric Bizouarn
+   */
+  private void initComponent() {
     for (int i = 0; i < 9; i++) {
       for (int j = 0; j < 9; j++) {
         Square square = this.board.getSquare(i,j);
@@ -48,6 +58,10 @@ public class GridPanel extends JPanel {
     }
   }
 
+  /**
+   * Refreshes the representation of the board
+   * @author Aymeric Bizouarn
+   */
   public void refresh(){
     for (int i = 0; i < 9; i++) {
       for (int j = 0; j < 9; j++) {
@@ -65,6 +79,10 @@ public class GridPanel extends JPanel {
     }
   }
 
+  /**
+   * Return all the JButtons of the the grid
+   * @return the array of array of JButtons
+   */
   public JButton[][] getGrid() {
     return grid;
   }

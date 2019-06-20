@@ -12,7 +12,6 @@ import java.util.Scanner;
 
 /**
  * Permits to launch a session from which can be launch and saved games
- *
  * @author Aymeric Bizouarn , Pierre-Galaad 'P(x)' Naquet
  */
 public class Quoridor {
@@ -32,7 +31,6 @@ public class Quoridor {
      * Quoridor constructor
      * Create an object Quoridor
      * Serve as a platform to load and launch games
-     *
      * @author Aymeric Bizouarn , Pierre-Galaad 'P(x)' Naquet
      */
     public Quoridor(String[] args) {
@@ -58,9 +56,7 @@ public class Quoridor {
 
     /**
      * Get Quoridor Game.
-     *
      * @return the Game of the current Quoridor.
-     * @author Aymeric Bizouarn
      */
     public Game getGame() {
         return this.game;
@@ -79,7 +75,6 @@ public class Quoridor {
 
     /**
      * Launch the chosen game
-     *
      * @param game the desired game to launch
      * @author Aymeric Bizouarn
      */
@@ -89,7 +84,6 @@ public class Quoridor {
 
     /**
      * Save the desired game into the saving file of the current Quoridor object
-     *
      * @param game The desired game to save
      * @author Aymeric Bizouarn
      */
@@ -97,6 +91,10 @@ public class Quoridor {
         RWFile.writeFile(this.fileName, this.game);
     }
 
+    /**
+     * In terminal mode permits to choose to create a new game, or to load the old one
+     * @author Aymeric Bizouarn
+     */
     public void choice(){
         Scanner scanner = new Scanner(System.in);
         int choice = -1;

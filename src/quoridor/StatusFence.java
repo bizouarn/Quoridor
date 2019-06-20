@@ -24,9 +24,21 @@ public enum StatusFence {
 	NEW("NEW", "NEW"),
 	NESW("NESW", "NESW");
 
+	/**
+	 * The written representation of the square's fences status
+	 */
 	private String text;
+	/**
+	 * The graphical representation for the GUI
+	 */
 	private ImageIcon image;
 
+	/**
+	 * StatusFence constructor
+	 * @param text the terminal representation
+	 * @param pathFile the part permitting to get the image | Used to find the file in the data : ./data/images/[pathFile].png
+	 * @author Pierre-Galaad 'P(x)' Naquet
+	 */
 	StatusFence(String text, String pathFile) {
 		this.text = text;
 		String str = pathFile + ".png";

@@ -50,7 +50,7 @@ public class SubBoard implements java.io.Serializable{
 
   /**
    * Set the SubBoard verticalFence.
-   * @param bool True if the fence is set, false if it is pulled off .
+   * @param bool true if the fence is set, false if it is pulled off .
    */
   public void setVerticalFence(boolean bool) {
     this.verticalFence = bool;
@@ -58,28 +58,48 @@ public class SubBoard implements java.io.Serializable{
 
   /**
    * Set the SubBoard horizontalFence.
-   * @param bool True if the fence is set, false if it is pulled off .
+   * @param bool true if the fence is set, false if it is pulled off .
    */
   public void setHorizontalFence(boolean bool) {
     this.horizontalFence = bool;
   }
 
+  /**
+   * return the SubBoard verticalFence status.
+   * @return true if there is a vertical fence in this subBoard (2 units length), false otherwise
+   */
   public boolean getVerticalFence() {
     return this.verticalFence;
   }
 
+  /**
+   * return the SubBoard horizontalFence status.
+   * @return true if there is an horizontal fence in this subBoard (2 units length), false otherwise
+   */
   public boolean getHorizontalFence() {
     return this.horizontalFence;
   }
 
+  /**
+   * return the SubBoard's square
+   * @return the array of squares contained in the subBoard
+   */
   public Square[] getSqrArray() {
     return this.sqrArray;
   }
 
+  /**
+   * return the  coordinates
+   * @return the  value
+   */
   public int getX() {
     return this.X;
   }
 
+  /**
+   * return the Y coordinates
+   * @return the Y value
+   */
   public int getY() {
     return this.Y;
   }

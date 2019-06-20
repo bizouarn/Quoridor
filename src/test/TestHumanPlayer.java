@@ -10,8 +10,8 @@ import static org.junit.Assert.*;
 public class TestHumanPlayer {
     @Test
     public static void testHumanPlayer() {
-        Board board = new Board();
-        Game game = new Game(false);
+        Board board = new Board(2);
+        Game game = new Game(false,2);
         HumanPlayer humanPlayer = new HumanPlayer("joueur", game);
         assertNotNull(humanPlayer);
         assertEquals(humanPlayer, new HumanPlayer("joueur", game));

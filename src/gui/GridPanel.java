@@ -2,6 +2,7 @@ package gui;
 
 import quoridor.Board;
 import quoridor.Square;
+import quoridor.Status;
 
 import javax.swing.*;
 import java.awt.*;
@@ -43,14 +44,13 @@ public class GridPanel extends JPanel {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 Square square = this.board.getSquare(i, j);
-                String path = square.getStatus().toString();
-                if (path.equals("P1")) {
-                    path = "P1/";
-                } else if (path.equals("P2")) {
-                    path = "P2/";
+                String path;
+                if(square.getStatus()!= Status.NONE) {
+                    path = square.getStatus() + "/";
                 } else {
-                    path = "";
+                    path ="";
                 }
+                System.out.println("./data/images/" + path + square.getStatusFence().getImage());
                 grid[i][j] = new JButton(new ImageIcon("./data/images/" + path + square.getStatusFence().getImage()));
                 grid[i][j].setBorder(null);
                 grid[i][j].setBackground(new Color(102, 114, 131));
@@ -71,12 +71,10 @@ public class GridPanel extends JPanel {
             for (int j = 0; j < 9; j++) {
                 Square square = this.board.getSquare(i, j);
                 String path = square.getStatus().toString();
-                if (path.equals("P1")) {
-                    path = "P1/";
-                } else if (path.equals("P2")) {
-                    path = "P2/";
+                if(square.getStatus()!= Status.NONE) {
+                    path = square.getStatus() + "/";
                 } else {
-                    path = "";
+                    path ="";
                 }
                 grid[i][j].setIcon(new ImageIcon("./data/images/" + path + square.getStatusFence().getImage()));
             }

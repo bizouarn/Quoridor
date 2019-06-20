@@ -149,13 +149,27 @@ public abstract class Player implements java.io.Serializable {
      *
      * @author Aymeric Bizouarn
      */
-    void playPawn(int x, int y) {
-        if (this.getGame().getPlayer1() == this) {
-            this.getGame().getBoard().getPlayer1Square().setStatus(Status.NONE);
-            this.getGame().getBoard().getSquare(x, y).setStatus(Status.Player1);
-        } else if (this.getGame().getPlayer2() == this) {
-            this.getGame().getBoard().getPlayer2Square().setStatus(Status.NONE);
-            this.getGame().getBoard().getSquare(x, y).setStatus(Status.Player2);
+    boolean playPawn(int x, int y) {
+        boolean ret = false;
+        if(this.getGame().getBoard().getSquare(x, y).getStatus()==Status.NONE) {
+            if (this.getGame().getPlayer1() == this) {
+                this.getGame().getBoard().getPlayer1Square().setStatus(Status.NONE);
+                this.getGame().getBoard().getSquare(x, y).setStatus(Status.Player1);
+                ret = true;
+            } else if (this.getGame().getPlayer2() == this) {
+                this.getGame().getBoard().getPlayer2Square().setStatus(Status.NONE);
+                this.getGame().getBoard().getSquare(x, y).setStatus(Status.Player2);
+                ret = true;
+            } else if (this.getGame().getPlayer3() == this) {
+                this.getGame().getBoard().getPlayer3Square().setStatus(Status.NONE);
+                this.getGame().getBoard().getSquare(x, y).setStatus(Status.Player3);
+                ret = true;
+            } else if (this.getGame().getPlayer4() == this) {
+                this.getGame().getBoard().getPlayer4Square().setStatus(Status.NONE);
+                this.getGame().getBoard().getSquare(x, y).setStatus(Status.Player4);
+                ret = true;
+            }
         }
+        return ret;
     }
 }

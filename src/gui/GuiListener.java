@@ -143,6 +143,10 @@ public class GuiListener implements ActionListener, MouseListener, java.io.Seria
                 squares = gui.getGame().getBoard().listOfPossibilitiesPawn(gui.getGame().getPlayer1(), gui.getGame());
             } else if (gui.getGame().getPlayerPlay() == 2) {
                 squares = gui.getGame().getBoard().listOfPossibilitiesPawn(gui.getGame().getPlayer2(), gui.getGame());
+            } else if (gui.getGame().getPlayerPlay() == 3) {
+                squares = gui.getGame().getBoard().listOfPossibilitiesPawn(gui.getGame().getPlayer4(), gui.getGame());
+            } else if (gui.getGame().getPlayerPlay() == 4) {
+                squares = gui.getGame().getBoard().listOfPossibilitiesPawn(gui.getGame().getPlayer4(), gui.getGame());
             }
             Color color = red;
             for (Square sqr : squares) {

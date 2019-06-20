@@ -19,6 +19,8 @@ public class Board implements java.io.Serializable {
     private ArrayList<Square> grid;
     private ArrayList<SubBoard> subBoards = new ArrayList<>();
 
+    private int nbPlayer;
+
     /**
      * Board constructor
      * initialize a 81 squares board (9*9)
@@ -26,7 +28,8 @@ public class Board implements java.io.Serializable {
      *
      * @author Pierre-Galaad Naquet
      */
-    public Board() {
+    public Board(int nbPlayer) {
+        this.nbPlayer = nbPlayer;
         initializeBoard();
         initializePlayers();
         initializeSubBoards();
@@ -64,6 +67,26 @@ public class Board implements java.io.Serializable {
         Square ret = null;
         for (Square sqr : this.grid) {
             if (sqr.getStatus() == Status.Player2) {
+                ret = sqr;
+            }
+        }
+        return ret;
+    }
+
+    public Square getPlayer3Square() {
+        Square ret = null;
+        for (Square sqr : this.grid) {
+            if (sqr.getStatus() == Status.Player3) {
+                ret = sqr;
+            }
+        }
+        return ret;
+    }
+
+    public Square getPlayer4Square() {
+        Square ret = null;
+        for (Square sqr : this.grid) {
+            if (sqr.getStatus() == Status.Player4) {
                 ret = sqr;
             }
         }
@@ -142,6 +165,14 @@ public class Board implements java.io.Serializable {
             if ((sqr.getX() == 8) && (sqr.getY() == 4)) {
                 sqr.setStatus(Status.Player2);
             }
+            if (nbPlayer == 4) {
+                if ((sqr.getX() == 4) && (sqr.getY() == 0)) {
+                    sqr.setStatus(Status.Player3);
+                }
+                if ((sqr.getX() == 4) && (sqr.getY() == 8)) {
+                    sqr.setStatus(Status.Player4);
+                }
+            }
         }
     }
 
@@ -217,14 +248,18 @@ public class Board implements java.io.Serializable {
      * @author Pierre-Galaad Naquet, Aymeric Bizouarn
      */
     public ArrayList<Square> listOfPossibilitiesPawn(Player player, Game game) {
-        Square currSqr;
+        Square currSqr = null;
         ArrayList<Square> ret;
         if (player == game.getPlayer1()) {
             currSqr = getPlayer1Square();
         } else if (player == game.getPlayer2()) {
             currSqr = getPlayer2Square();
-        } else {
-            currSqr = null;
+        } else if (nbPlayer == 4) {
+            if (player == game.getPlayer3()) {
+                currSqr = getPlayer3Square();
+            } else if (player == game.getPlayer4()) {
+                currSqr = getPlayer4Square();
+            }
         }
         ret = listOfPossibilitiesPawn(currSqr);
         return ret;

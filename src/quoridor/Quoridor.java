@@ -5,6 +5,7 @@ package quoridor;
 import gui.MenuGui;
 import utilitary.RWFile;
 
+import javax.swing.*;
 import java.util.Scanner;
 
 // java import
@@ -17,14 +18,13 @@ import java.util.Scanner;
 public class Quoridor {
 
     /**
-     * The Game.
-     */
-    private Game game;
-    /**
      * The save file name.
      */
     private final String fileName = "./data/save/SavedGame.bin";
-
+    /**
+     * The Game.
+     */
+    private Game game;
     private int gui;
 
     /**
@@ -50,7 +50,22 @@ public class Quoridor {
         if (this.gui == 1) {
             choice();
         } else if (this.gui == 2) {
-            Game game = new Game(true);
+            Object[] options = {"2 Player", "4 Player"};
+            int choice = JOptionPane.showOptionDialog(null,
+                    " Player number ? ",
+                    " Player number ? ",
+                    JOptionPane.YES_NO_CANCEL_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
+            int nbPlayer;
+            if (choice == JOptionPane.YES_OPTION) {
+                nbPlayer = 2;
+            } else {
+                nbPlayer = 4;
+            }
+            Game game = new Game(true, nbPlayer);
             game.start();
         } else if (this.gui == 3) {
             Game game = RWFile.readFile(this.fileName);
@@ -62,16 +77,6 @@ public class Quoridor {
     }
 
     /**
-     * Get Quoridor Game.
-     *
-     * @return the Game of the current Quoridor.
-     */
-    public Game getGame() {
-        return this.game;
-    }
-
-
-    /**
      * @return the previously saved game
      * @author Aymeric Bizouarn
      */
@@ -79,6 +84,15 @@ public class Quoridor {
         Game savedGame = RWFile.readFile("./data/save/SavedGame.bin");
         savedGame = new Game(savedGame, false);
         return savedGame;
+    }
+
+    /**
+     * Get Quoridor Game.
+     *
+     * @return the Game of the current Quoridor.
+     */
+    public Game getGame() {
+        return this.game;
     }
 
     /**
@@ -104,8 +118,18 @@ public class Quoridor {
             choice = scanner.nextLine();
         }
         if (choice.equals("1")) {
-            this.game = new Game(false);
-            this.game.start();
+            choice = "";
+            while (!choice.equals("1") && !choice.equals("2")) {
+                System.out.println("Write : \n1 - 2 Player \n2 - 4 Player");
+                choice = scanner.nextLine();
+                if (choice.equals("1")) {
+                    this.game = new Game(false, 2);
+                    this.game.start();
+                } else if (choice.equals("2")) {
+                    this.game = new Game(false, 4);
+                    this.game.start();
+                }
+            }
         } else if (choice.equals("2")) {
             this.game = loadOldGame();
 

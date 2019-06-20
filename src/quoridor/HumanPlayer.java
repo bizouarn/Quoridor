@@ -62,8 +62,7 @@ public class HumanPlayer extends Player {
                     if (!guiListener.getFence()) {
                         for (Square sqr : possibilitiesPawn) {
                             if (sqr.getX() == x1 && sqr.getY() == y1) {
-                                playPawn(x1, y1);
-                                validPlay = true;
+                                validPlay = playPawn(x1, y1);
                             }
                         }
                     } else {
@@ -102,8 +101,7 @@ public class HumanPlayer extends Player {
                         int y = Integer.parseInt(sc.nextLine());
                         for (Square sqr : possibilitiesPawn) {
                             if (sqr.getX() == x && sqr.getY() == y) {
-                                playPawn(x, y);
-                                validPlay = true;
+                                validPlay = playPawn(x, y);
                             }
                         }
                     } catch (Exception e) {

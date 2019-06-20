@@ -141,9 +141,9 @@ public class Square implements java.io.Serializable {
     }
 
     /**
-     * Get the status of the northen fence of the square
+     * Get the status of the north fence of the square
      *
-     * @return The square's northen fence status.
+     * @return The square's north fence status.
      */
     public boolean getFenceN() {
         return this.fenceN;

@@ -13,8 +13,6 @@ import java.awt.*;
 public class Gui implements java.io.Serializable {
     private GuiListener guiListener = new GuiListener(this);
 
-    private PlayerPanel playerPanel1;
-    private PlayerPanel playerPanel2;
     private LeftPlayers leftPlayers;
     private ToolBar toolBar;
     private GridPanel gridPanel;
@@ -34,10 +32,12 @@ public class Gui implements java.io.Serializable {
 
         this.jFrame = new JFrame("Quoridor");
         this.gridPanel = new GridPanel(game.getBoard(), this);
-        this.playerPanel1 = new PlayerPanel(game.getPlayer1());
-        this.playerPanel2 = new PlayerPanel(game.getPlayer2());
+        if(this.getGame().getNbPlayer()==2){
+            this.leftPlayers = new LeftPlayers(this.game.getPlayer1(), this.game.getPlayer2());
+        } else {
+            this.leftPlayers = new LeftPlayers(this.game.getPlayer1(), this.game.getPlayer2(),this.getGame().getPlayer3(),this.getGame().getPlayer4());
+        }
         this.toolBar = new ToolBar(this);
-        this.leftPlayers = new LeftPlayers(this.game.getPlayer1(), this.game.getPlayer2());
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 CreateAndShowGui();
@@ -67,7 +67,11 @@ public class Gui implements java.io.Serializable {
      * @author Aymeric Bizouarn
      */
     public void refresh() {
-        this.leftPlayers.refresh(this.game.getPlayer1().checkNbRestingFences(), this.game.getPlayer2().checkNbRestingFences());
+        if(this.getGame().getNbPlayer()==2) {
+            this.leftPlayers.refresh(this.game.getPlayer1().checkNbRestingFences(), this.game.getPlayer2().checkNbRestingFences());
+        } else {
+            this.leftPlayers.refresh(this.game.getPlayer1().checkNbRestingFences(), this.game.getPlayer2().checkNbRestingFences(),this.game.getPlayer3().checkNbRestingFences(), this.game.getPlayer4().checkNbRestingFences());
+        }
         this.gridPanel.refresh();
         this.jFrame.repaint();
     }

@@ -28,6 +28,8 @@ public class AutoPlayer extends Player {
     public void play() {
         int p1 = this.getGame().getNbMinMove(this.getGame().getBoard().getPlayer1Square(), 1);
         int p2 = this.getGame().getNbMinMove(this.getGame().getBoard().getPlayer2Square(), 2);
+        int p3 = this.getGame().getNbMinMove(this.getGame().getBoard().getPlayer1Square(), 3);
+        int p4 = this.getGame().getNbMinMove(this.getGame().getBoard().getPlayer2Square(), 4);
         boolean contition = true;
         if (this == this.getGame().getPlayer1()) {
             if (p2 < p1) {
@@ -45,9 +47,7 @@ public class AutoPlayer extends Player {
                 Square sqr = this.getGame().getBoard().getSquare(0, 4);
                 for (SubBoard sb : possibilitiesFenceH) {
                     if (this.getGame().getBoard().getSubBoard(0, 4) == sb) {
-                        System.out.println("|" + this.checkNbRestingFences());
                         ret = playFence(sqr.getX(), sqr.getY(), sqr.getX() + 1, sqr.getY() + 1, 1);
-                        System.out.println("|" + this.checkNbRestingFences() + ret);
                     }
                 }
             }
@@ -57,19 +57,22 @@ public class AutoPlayer extends Player {
                 Square sqr = this.getGame().getBoard().getSquare(7, 4);
                 for (SubBoard sb : possibilitiesFenceH) {
                     if (this.getGame().getBoard().getSubBoard(7, 4) == sb) {
-                        System.out.println("|" + this.checkNbRestingFences());
                         ret = playFence(sqr.getX(), sqr.getY(), sqr.getX() + 1, sqr.getY() + 1, 1);
-                        System.out.println("|" + this.checkNbRestingFences() + ret);
                     }
                 }
             }
         }
         if (!ret) {
-            if (contition) {
-                autoPlayPawn();
-            } else {
-                if (!autoPlayFence()) {
-                    autoPlayPawn();
+            boolean validGame = false;
+            while (!validGame) {
+                if (contition) {
+                    validGame = autoPlayPawn();
+                } else {
+                    boolean playFence = autoPlayFence();
+                    validGame = playFence;
+                    if (!playFence) {
+                        validGame=autoPlayPawn();
+                    }
                 }
             }
         }
@@ -96,13 +99,17 @@ public class AutoPlayer extends Player {
      *
      * @author Aymeric Bizouarn
      */
-    private void autoPlayPawn() {
+    private boolean autoPlayPawn() {
         ArrayList<Square> possibilitiesPawn = this.getGame().getBoard().listOfPossibilitiesPawn(this, this.getGame());
         int player;
         if (this == this.getGame().getPlayer1()) {
             player = 1;
-        } else {
+        } else if(this == this.getGame().getPlayer2()){
             player = 2;
+        } else if(this == this.getGame().getPlayer3()){
+            player = 3;
+        } else {
+            player = 4;
         }
         Square res = possibilitiesPawn.get(0);
         int tmp = 81;
@@ -113,7 +120,12 @@ public class AutoPlayer extends Player {
                 res = sqr;
             }
         }
-        playPawn(res.getX(), res.getY());
+        boolean ret = playPawn(res.getX(), res.getY());
+        if(!ret){
+            int random = (int)((Double)Math.random()*possibilitiesPawn.size());
+            playPawn(possibilitiesPawn.get(random).getX(),possibilitiesPawn.get(random).getY());
+        }
+        return ret;
     }
 
     /**
@@ -187,7 +199,6 @@ public class AutoPlayer extends Player {
         }
         for (SubBoard sb : possibilitiesFenceV) {
             if (playerInSubBoard(sb, player)) {
-                System.out.println("(" + sb.getX() + "," + sb.getY() + ")");
                 sb.setVerticalFence(true);
                 Square[] sqrArray = sb.getSqrArray();
                 sqrArray[0].setFenceE(true);
@@ -195,7 +206,6 @@ public class AutoPlayer extends Player {
                 sqrArray[2].setFenceE(true);
                 sqrArray[3].setFenceW(true);
                 int tmpVal = game.getNbMinMove(playerSqr, player);
-                System.out.println("val :" + tmpVal);
                 if (tmpVal > max) {
                     max = tmpVal;
                     pos = 2;
@@ -208,9 +218,7 @@ public class AutoPlayer extends Player {
                 sqrArray[3].setFenceW(false);
             }
         }
-        System.out.println(">" + game.getNbMinMove(playerSqr, player));
         if (max == game.getNbMinMove(playerSqr, player)) {
-            System.out.println("null");
             ret = null;
         }
         Object[] res = {ret, pos};

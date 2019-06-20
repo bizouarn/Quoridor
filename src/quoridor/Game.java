@@ -74,11 +74,13 @@ public class Game implements java.io.Serializable {
             } else {
                 this.player1 = new HumanPlayer(name1,this);
             }
-            if(name1.equals("auto2")){
-                this.player2 = new AutoPlayer(name1,this);
+            if(name2.equals("auto2")){
+                this.player2 = new AutoPlayer(name2,this);
             } else {
-                this.player2 = new HumanPlayer(name1,this);
+                this.player2 = new HumanPlayer(name2,this);
             }
+            this.player1.setNbFences(fence1);
+            this.player2.setNbFences(fence2);
             this.playerPlay = Integer.parseInt(sc.nextLine());
             fw.close();
         } catch (Exception e) {
@@ -220,7 +222,7 @@ public class Game implements java.io.Serializable {
      *
      * @author Pierre-Galaad Naquet
      */
-    public void startLoaded() {
+    private void startLoaded() {
         while (!checkEndOfGame()) {
             checkExistingPath();
             if (this.gui) {

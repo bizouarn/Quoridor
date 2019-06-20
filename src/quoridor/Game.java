@@ -69,12 +69,12 @@ public class Game implements java.io.Serializable {
             int fence1 = Integer.parseInt(sc.nextLine());
             String name2 = sc.nextLine();
             int fence2 = Integer.parseInt(sc.nextLine());
-            if(name1.equals(name1)){
+            if(name1.equals("auto1")){
                 this.player1 = new AutoPlayer(name1,this);
             } else {
                 this.player1 = new HumanPlayer(name1,this);
             }
-            if(name1.equals(name2)){
+            if(name1.equals("auto2")){
                 this.player2 = new AutoPlayer(name1,this);
             } else {
                 this.player2 = new HumanPlayer(name1,this);

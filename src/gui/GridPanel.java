@@ -53,6 +53,7 @@ public class GridPanel extends JPanel {
         grid[i][j].setBorder(null);
         grid[i][j].setBackground(new Color(102, 114, 131));
         grid[i][j].addActionListener(this.gui.getGuiListener());
+        grid[i][j].addMouseListener(this.gui.getGuiListener());
         this.add(this.grid[i][j]);
       }
     }

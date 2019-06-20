@@ -27,7 +27,7 @@ public class PopUpEndOfGame extends JPanel {
         options,
         options[0]);
 
-    int ret = 0;
+    int ret = 3;
 
     if (choice == JOptionPane.YES_OPTION) {
       ret = 1;

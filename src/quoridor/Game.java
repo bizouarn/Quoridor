@@ -496,4 +496,8 @@ public class Game implements java.io.Serializable {
         }
         System.exit(1);
     }
+
+    public int getPlayerPlay() {
+        return playerPlay;
+    }
 }

@@ -12,7 +12,7 @@ import quoridor.Game;
  * Listener for the game Frame (Gui)
  * @author Aymeric Bizouarn , Pierre-Galaad Naquet
  */
-public class GuiListener implements ActionListener , FocusListener , java.io.Serializable{
+public class GuiListener implements ActionListener, java.io.Serializable{
     private boolean value = false;
     private boolean fence = false;
     private boolean horizontal = false;

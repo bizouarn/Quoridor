@@ -51,7 +51,6 @@ public class MainMenu extends JPanel {
         this.creds.addActionListener(this.menuGuiListener);
         this.quit = new JButton("Leave");
         this.quit.setBackground(null);
-        this.loadGame.addActionListener(this.menuGuiListener);
     }
 
     /**

@@ -51,6 +51,24 @@ public class Game implements java.io.Serializable {
     }
 
     /**
+     * Game constructor
+     * Launch either a swing game or a terminal one
+     *
+     * @param gui true if the game has to be launched in the swing version, false otherwise
+     * @author Aymeric Bizouarn
+     */
+    public Game(Game game,boolean gui) {
+        try {
+            this.board = game.getBoard();
+
+            if (gui) {
+                this.guiFrame = new Gui(this);
+                this.guiFrame.getjFrame().setVisible(true);
+            }
+        } catch (Exception e){}
+    }
+
+    /**
      * Get the board
      *
      * @return the current board

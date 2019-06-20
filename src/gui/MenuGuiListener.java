@@ -36,8 +36,14 @@ public class MenuGuiListener implements ActionListener {
             this.menuGui.show("menu");
         }
         if (e.getSource() == this.menuGui.getMainMenu().getLoadGame()) {
-            Gui gui = new Gui(Quoridor.loadOldGame());
-            gui.getGame().startLoaded();
+            this.menuGui.getjFrame().dispose();
+            try {
+                FileWriter fw = new FileWriter(new File("./data/new.bin"), false);
+                fw.write("load");
+                fw.close();
+            } catch (Exception exc){
+
+            }
         }
         if (e.getSource() == this.menuGui.getMainMenu().getNewGame()) {
             //Game game = new Game(2);

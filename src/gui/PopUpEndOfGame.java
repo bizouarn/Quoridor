@@ -6,8 +6,16 @@ import java.awt.*;
 import java.lang.management.PlatformLoggingMXBean;
 import javax.swing.*;
 
+/**
+ * Pop up invoked when the game end
+ * @author Aymeric Bizouarn , Pierre-Galaad Naquet
+ */
 public class PopUpEndOfGame extends JPanel {
 
+  /**
+   * popUpEndOfGame constructor
+   * @author Pierre-Galaad Naquet
+   */
   public static int popUpEndOfGame(Player player) throws IllegalStateException {
     Object[] options = { "New Game", "Main Menu", "Leave" };
     int choice = JOptionPane.showOptionDialog(null,

@@ -3,6 +3,10 @@ package gui;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Bottom of the Gui Frame, contains actions buttons
+ * @author Aymeric Bizouarn , Pierre-Galaad Naquet
+ */
 public class ToolBar extends JPanel {
 
   private JButton fence;
@@ -11,6 +15,11 @@ public class ToolBar extends JPanel {
   private JButton save;
   private Gui gui;
 
+  /**
+   * ToolBar constructor
+   * @param gui The current Gui
+   * @author Pierre-Galaad Naquet
+   */
   public ToolBar(Gui gui) {
     this.gui = gui;
     setLayout(new GridLayout(1,3));
@@ -23,6 +32,10 @@ public class ToolBar extends JPanel {
     this.direction.setVisible(false);
   }
 
+  /**
+   * Initialize the panel components
+   * @author Pierre-Galaad Naquet
+   */
   private void initComponent() {
     this.save = new JButton("Save Game");
     this.fence = new JButton("Fence");
@@ -34,18 +47,34 @@ public class ToolBar extends JPanel {
     this.direction.addActionListener(this.gui.getGuiListener());
   }
 
+  /**
+   * get the JButton save
+   * @return the JButton save
+   */
   public JButton getSave() {
     return this.save;
   }
 
+  /**
+   * get the JButton Direction
+   * @return the JButton Direction
+   */
   public JButton getDirection() {
     return this.direction;
   }
 
+  /**
+   * get the JButton fence
+   * @return the JButton fence
+   */
   public JButton getFence() {
     return this.fence;
   }
 
+  /**
+   * get the JButton Pawn
+   * @return the JButton Pawn
+   */
   public JButton getPawn() {
     return this.pawn;
   }

@@ -52,7 +52,7 @@ public class PlayerPanel extends JPanel {
     }
 
     /**
-     * Refresj the panel
+     * Refreshes the panel
      * @param playerInfo the number of fences left
      * @author Aymeric Bizouarn
      */
@@ -62,9 +62,8 @@ public class PlayerPanel extends JPanel {
     }
 
     /**
-     *
-     *
-     *
+     * Set the number of fences for this player
+     * @param fences number of fences desired
      * @author Aymeric Bizouarn
      */
     public void setFences(int fences) {

@@ -14,21 +14,22 @@ import java.util.Scanner;
 /**
  * Game launcher of Quoridor
  * Contains the main method of the project
- *
- * @author
+ * @author Aymeric Bizouarn , Pierre-Galaad Naquet
  */
-
 public class Launcher {
 
     /**
      * Project's main method
-     *
-     * @param args
+     * @param args optional arguments
      */
     public static void main(String[] args) {
         new Launcher();
     }
 
+    /**
+     * Launcher constructor
+     * @author Aymeric Bizouarn
+     */
     public Launcher() {
         String[] args = {};
         new Quoridor(args);

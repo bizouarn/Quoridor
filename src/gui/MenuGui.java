@@ -55,7 +55,8 @@ public class MenuGui {
         } catch (IOException e) {
         }
         this.panel = new PanelWithBackgroundImage(bg);
-        this.panel.setBorder(new EmptyBorder(25, 75, 25, 75));
+        this.panel.setBorder(new EmptyBorder(100, 75, 100, 75));
+        this.panel.setPreferredSize(new Dimension(700,450));
 
         this.welcomePanel = new WelcomePanel(this.menuGuiListener);
         this.mainMenu = new MainMenu(this.menuGuiListener);

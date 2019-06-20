@@ -282,6 +282,7 @@ public class Game implements java.io.Serializable {
             }
         } else {
             System.out.println("The player : " + playerActual.getName() + " has won !");
+            System.out.println(this.board);
             System.out.println();
             System.out.println("What do you want to do ?");
             System.out.println("1 - New Game");

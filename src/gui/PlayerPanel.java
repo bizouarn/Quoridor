@@ -57,6 +57,18 @@ public class PlayerPanel extends JPanel {
      * @author Aymeric Bizouarn
      */
     public void refresh(int playerInfo) {
+        Color green = new Color(12, 99, 34);
+        Color red = new Color(255, 53, 34);
+        if(this.player.getGame().getPlayerPlay()==1 && this.player==this.player.getGame().getPlayer1()){
+            this.panel.setBorder(BorderFactory.createLineBorder(green,5,true));
+        } else {
+            this.panel.setBorder(BorderFactory.createLineBorder(red,5,true));
+        }
+        if(this.player.getGame().getPlayerPlay()==2 && this.player==this.player.getGame().getPlayer2()){
+            this.panel.setBorder(BorderFactory.createLineBorder(green,5,true));
+        } else {
+            this.panel.setBorder(BorderFactory.createLineBorder(red,5,true));
+        }
         setFences(playerInfo);
         this.repaint();
     }

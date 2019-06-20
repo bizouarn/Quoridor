@@ -7,15 +7,27 @@ import java.io.FileWriter;
 
 import quoridor.Quoridor;
 
-
+/**
+ * Listener for the menuGui
+ * @author Aymeric Bizouarn , Pierre-Galaad Naquet
+ */
 public class MenuGuiListener implements ActionListener {
 
     private MenuGui menuGui;
 
+    /**
+     * MenuGuiListener constructor
+     * @author Piere-Galaad Naquet
+     */
     public MenuGuiListener(MenuGui menuGui) {
         this.menuGui = menuGui;
     }
 
+    /**
+     * invoked when there is an event on the menuGui
+     * @param e an action on the frame
+     * @author Pierre-Galaad Naquet
+     */
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.menuGui.getWelcomePanel().getStartButton()) {
             this.menuGui.show("menu");

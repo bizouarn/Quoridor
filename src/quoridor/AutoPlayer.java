@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * An Extend of Player make for play automatically.
- * @author Aymeric Bizouarn , Pierre-Galaad 'P(x)' Naquet
+ * @author Aymeric Bizouarn , Pierre-Galaad Naquet
  */
 public class AutoPlayer extends Player {
     /**
@@ -188,7 +188,7 @@ public class AutoPlayer extends Player {
     }
 
     /**
-     * 
+     *
      * @author Aymeric Bizouarn
      */
     private Object[] getPlayFence(int pos) {

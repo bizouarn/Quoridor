@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * Class for the initializing of the board.
  * Contains the grid and calls the GUI package to show the game
  *
- * @author Pierre-Galaad 'P(x)' Naquet, Aymeric Bizouarn
+ * @author Pierre-Galaad Naquet, Aymeric Bizouarn
  */
 public class Board implements java.io.Serializable {
 
@@ -25,7 +25,7 @@ public class Board implements java.io.Serializable {
      * initialize a 81 squares board (9*9)
      * Initialize walls and positionates players on their starting positions
      *
-     * @author Pierre-Galaad 'P(x)' Naquet
+     * @author Pierre-Galaad Naquet
      */
     public Board() {
         initializeBoard();
@@ -86,7 +86,7 @@ public class Board implements java.io.Serializable {
      * intiliaze a 81 squares board (9*9)
      * Initialize walls and statuses
      *
-     * @author Pierre-Galaad 'P(x)' Naquet
+     * @author Pierre-Galaad Naquet
      */
     public void initializeBoard() {
         this.grid = new ArrayList<Square>();
@@ -106,7 +106,7 @@ public class Board implements java.io.Serializable {
      * SubBoards Initializer
      * intiliaze every subBoard of the board
      *
-     * @author Pierre-Galaad 'P(x)' Naquet
+     * @author Pierre-Galaad Naquet
      */
     public void initializeSubBoards() {
         Square[] sqrArray = new Square[4];
@@ -133,7 +133,7 @@ public class Board implements java.io.Serializable {
      * Board Initializer
      * Initialize players' pawns on the Board
      *
-     * @author Pierre-Galaad 'P(x)' Naquet
+     * @author Pierre-Galaad Naquet
      */
     public void initializePlayers() {
         for (Square sqr : this.grid) {
@@ -151,7 +151,7 @@ public class Board implements java.io.Serializable {
      * Find and return all the SubBoards containing a playable vertical fence this turn.
      *
      * @return The arayList containing SubBoards
-     * @author Pierre-Galaad 'P(x)' Naquet
+     * @author Pierre-Galaad Naquet
      */
     public ArrayList<SubBoard> listOfPossibilitiesFenceVertical() {
         ArrayList<SubBoard> ret = new ArrayList<SubBoard>();
@@ -182,7 +182,7 @@ public class Board implements java.io.Serializable {
      * Find and return all the SubBoards containing a playable horizontal fence this turn.
      *
      * @return The arayList containing SubBoards
-     * @author Pierre-Galaad 'P(x)' Naquet
+     * @author Pierre-Galaad Naquet
      */
     public ArrayList<SubBoard> listOfPossibilitiesFenceHorizontal() {
         ArrayList<SubBoard> ret = new ArrayList<SubBoard>();
@@ -215,7 +215,7 @@ public class Board implements java.io.Serializable {
      * @param player current turn player
      * @param game   current game played
      * @return The ArrayList containing all the possibilities
-     * @author Pierre-Galaad 'P(x)' Naquet, Aymeric Bizouarn
+     * @author Pierre-Galaad Naquet, Aymeric Bizouarn
      */
     public ArrayList<Square> listOfPossibilitiesPawn(Player player, Game game) {
         Square currSqr;

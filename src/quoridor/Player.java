@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Make the player object for make action in the game.
- * @author Pierre-Galaad 'P(x)' Naquet, Aymeric Bizouarn
+ * @author Pierre-Galaad Naquet, Aymeric Bizouarn
  */
 public abstract class Player implements java.io.Serializable {
     /**

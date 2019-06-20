@@ -6,6 +6,10 @@ import quoridor.*;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Credits panel containing the info about the creators of this app.
+ * @author Aymeric Bizouarn , Pierre-Galaad Naquet
+ */
 public class CreditsPanel extends JPanel {
 
   private JLabel picAymer;
@@ -18,6 +22,12 @@ public class CreditsPanel extends JPanel {
   private JButton retour;
   private MenuGuiListener menuGuiListener;
 
+
+  /**
+   * JPanel constructor
+   * @param menuGuiListener The listeners of this panel
+   * @author Pierre-Galaad Naquet
+   */
   public CreditsPanel(MenuGuiListener menuGuiListener) {
     this.menuGuiListener = menuGuiListener;
     initComponent();
@@ -32,6 +42,10 @@ public class CreditsPanel extends JPanel {
     setBackground(null);
   }
 
+  /**
+   * Initialize all the components of the JPanel
+   * @author Pierre-Galaad Naquet
+   */
   private void initComponent() {
     this.picAymer = new JLabel("Mettre une photo");
     this.picPierr = new JLabel("Mettre une photo");
@@ -43,6 +57,10 @@ public class CreditsPanel extends JPanel {
     this.retour.addActionListener(this.menuGuiListener);
   }
 
+  /**
+   * Return the retour Button
+   * @return the JButton retour.
+   */
   public JButton getReturnButton() {
     return this.retour;
   }

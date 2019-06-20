@@ -19,7 +19,7 @@ import java.util.Scanner;
 /**
  * This class contains the methods to initialize the game
  *
- * @author Aymeric Bizouarn , Pierre-Galaad 'P(x)' Naquet
+ * @author Aymeric Bizouarn , Pierre-Galaad Naquet
  */
 public class Game implements java.io.Serializable {
 
@@ -89,7 +89,7 @@ public class Game implements java.io.Serializable {
     /**
      * Initialize the game by creating a new board and by asking for players name.
      *
-     * @author Aymeric Bizouarn , Pierre-Galaad 'P(x)' Naquet
+     * @author Aymeric Bizouarn , Pierre-Galaad Naquet
      */
     public void initializeGame() {
         String name1;
@@ -176,7 +176,7 @@ public class Game implements java.io.Serializable {
     /**
      * Launch the game with the attributes as parameters and gives the hand to the currentplayer.
      *
-     * @author Pierre-Galaad 'P(x)' Naquet
+     * @author Pierre-Galaad Naquet
      */
     public void startLoaded() {
         int playerPlay = 0;
@@ -228,7 +228,7 @@ public class Game implements java.io.Serializable {
     /**
      * End the game and launch the results procedure
      *
-     * @author Pierre-Galaad 'P(x)' Naquet
+     * @author Pierre-Galaad Naquet
      */
     public void endOfGame(Player player) {
 
@@ -443,7 +443,7 @@ public class Game implements java.io.Serializable {
     /**
      * Save the current Game
      *
-     * @author Pierre-Galaad 'P(x)' Naquet
+     * @author Pierre-Galaad Naquet
      */
     public void saveGame() {
         RWFile.writeFile("./data/save/SavedGame.bin", this);

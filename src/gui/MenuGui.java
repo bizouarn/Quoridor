@@ -12,11 +12,13 @@ import java.io.IOException;
 import gui.*;
 import quoridor.Quoridor;
 
+/**
+ * Frame for the menus
+ * @author Aymeric Bizouarn , Pierre-Galaad Naquet
+ */
 public class MenuGui {
 
     private MenuGuiListener menuGuiListener = new MenuGuiListener(this);
-
-    ParametersPanel parametersPanel;
 
     private WelcomePanel welcomePanel;
     private MainMenu mainMenu;
@@ -27,6 +29,10 @@ public class MenuGui {
 
     private Gui gui;
 
+    /**
+     * MenuGui constructor
+     * @author Aymeric Bizouarn
+     */
     public MenuGui() {
 
         SwingUtilities.invokeLater(new Runnable() {
@@ -36,6 +42,10 @@ public class MenuGui {
         });
     }
 
+    /**
+     * Initialize the MenuGui
+     * @author Aymeric Bizouarn , Pierre-Galaad Naquet
+     */
     public void CreateAndShowMenuGui() {
         BufferedImage bg = null;
         try {
@@ -62,6 +72,10 @@ public class MenuGui {
         this.jFrame.setVisible(true);
     }
 
+    /**
+     * Show the desired panel
+     * @author Aymeric Bizouarn
+     */
     public void show(String panel) {
         this.mainMenu.setVisible(false);
         this.welcomePanel.setVisible(false);
@@ -75,23 +89,42 @@ public class MenuGui {
         }
     }
 
-
+    /**
+     * Get the welcomePanel
+     * @return the welcomePanel
+     */
     public WelcomePanel getWelcomePanel() {
         return this.welcomePanel;
     }
 
+    /**
+     * Get the mainMenu
+     * @return the mainMenu
+     */
     public MainMenu getMainMenu() {
         return this.mainMenu;
     }
 
+    /**
+     * Get the creditsPanel
+     * @return the creditsPanel
+     */
     public CreditsPanel getCreditsPanel() {
         return this.creditsPanel;
     }
 
+    /**
+     * Get the panel
+     * @return the panel
+     */
     public JPanel getPanel() {
         return this.panel;
     }
 
+    /**
+     * Get the frame
+     * @return the frame
+     */
     public JFrame getjFrame() {
         return this.jFrame;
     }

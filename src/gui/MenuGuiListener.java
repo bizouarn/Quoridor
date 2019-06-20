@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileWriter;
 
@@ -11,7 +12,7 @@ import quoridor.Quoridor;
  * Listener for the menuGui
  * @author Aymeric Bizouarn , Pierre-Galaad Naquet
  */
-public class MenuGuiListener implements ActionListener {
+public class MenuGuiListener implements ActionListener{
 
     private MenuGui menuGui;
 
@@ -46,7 +47,6 @@ public class MenuGuiListener implements ActionListener {
             }
         }
         if (e.getSource() == this.menuGui.getMainMenu().getNewGame()) {
-            //Game game = new Game(2);
             this.menuGui.getjFrame().dispose();
             try {
                 FileWriter fw = new FileWriter(new File("./data/new.bin"), false);
@@ -58,6 +58,9 @@ public class MenuGuiListener implements ActionListener {
         }
         if (e.getSource() == this.menuGui.getMainMenu().getCreds()) {
             this.menuGui.show("credits");
+        }
+        if(e.getSource() == this.menuGui.getMainMenu().getQuit()){
+            System.exit(0);
         }
     }
 }

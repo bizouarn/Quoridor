@@ -37,7 +37,7 @@ public class ToolBar extends JPanel {
    * @author Pierre-Galaad Naquet
    */
   private void initComponent() {
-    this.save = new JButton("Save Game");
+    this.save = new JButton("Save game & quit");
     this.fence = new JButton("Fence");
     this.pawn = new JButton("Pawn");
     this.direction = new JButton("Direction : \u2014");

@@ -84,7 +84,7 @@ public class HumanPlayer extends Player {
                     }
                 }
             } else {
-                System.out.println("Write : \n1 - For play pawn\n2 - For play fence");
+                System.out.println("Write : \n1 - For play pawn\n2 - For play fence\n3 - For save game & quit");
                 String choix = sc.nextLine() + "";
                 if (choix.equals("1")) {
                     for (Square sqr : possibilitiesPawn) {
@@ -138,9 +138,10 @@ public class HumanPlayer extends Player {
                     } catch (Exception e) {
                         System.out.println("Invalid input !");
                     }
+                } else if(choix.equals("3")){
+                    this.getGame().saveGame();
                 }
             }
         }
     }
-
 }

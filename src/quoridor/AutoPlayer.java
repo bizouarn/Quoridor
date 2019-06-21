@@ -102,7 +102,8 @@ public class AutoPlayer extends Player {
             sqrPlayer = this.getGame().getBoard().getPlayer1Square();
         } else if (player == 2) {
             sqrPlayer = this.getGame().getBoard().getPlayer2Square();
-        } if (player == 3) {
+        }
+        if (player == 3) {
             sqrPlayer = this.getGame().getBoard().getPlayer3Square();
         } else if (player == 4) {
             sqrPlayer = this.getGame().getBoard().getPlayer4Square();
@@ -132,15 +133,33 @@ public class AutoPlayer extends Player {
         ArrayList<SubBoard> possibilitiesFenceV = board.listOfPossibilitiesFenceVertical();
         int player;
         Square playerSqr;
-        if (this == game.getPlayer1()) {
-            player = 2;
-            playerSqr = game.getBoard().getPlayer2Square();
+        int minMovePlayer = 82;
+        if (this.getGame().getNbPlayer() == 2) {
+            if (this == game.getPlayer1()) {
+                player = 2;
+                playerSqr = game.getBoard().getPlayer2Square();
+            } else {
+                player = 1;
+                playerSqr = game.getBoard().getPlayer1Square();
+            }
+            minMovePlayer = game.getNbMinMove(playerSqr, player);
         } else {
-            player = 1;
-            playerSqr = game.getBoard().getPlayer1Square();
+            if (this == game.getPlayer1()) {
+                player = 2;
+                playerSqr = game.getBoard().getPlayer2Square();
+            } else if (this == game.getPlayer2()) {
+                player = 1;
+                playerSqr = game.getBoard().getPlayer1Square();
+            } else if (this == game.getPlayer3()) {
+                player = 4;
+                playerSqr = game.getBoard().getPlayer4Square();
+            } else {
+                player = 3;
+                playerSqr = game.getBoard().getPlayer3Square();
+            }
+            minMovePlayer = game.getNbMinMove(playerSqr, player);
         }
         int max = 0;
-        int minMovePlayer = game.getNbMinMove(playerSqr, player);
         for (SubBoard sb : possibilitiesFenceH) {
             if (playerInSubBoard(sb, player)) {
                 sb.setHorizontalFence(true);

@@ -170,15 +170,35 @@ public class Game implements java.io.Serializable {
             }
         } else {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Name Player 1 : ");
-            name1 = scanner.nextLine();
-            System.out.println("Name Player 2 : ");
-            name2 = scanner.nextLine();
+            String choice ="";
+            while (name1.length()<2) {
+                System.out.println("Name Player 1 : ");
+                name1 = scanner.nextLine();
+                if(name1.length()<2){
+                    System.out.println("Invalid input : The size of the name has minimum 2 characters");
+                }
+            }
+            while (name2.length()<2) {
+                System.out.println("Name Player 2 : ");
+                name2 = scanner.nextLine();
+                if(name2.length()<2){
+                    System.out.println("Invalid input : The size of the name has minimum 2 characters");
+                }
+            }
             if (this.nbPlayer == 4) {
-                System.out.println("Name Player 3 : ");
-                name3 = scanner.nextLine();
-                System.out.println("Name Player 4 : ");
-                name4 = scanner.nextLine();
+                while (name3.length()<2) {
+                    System.out.println("Name Player 1 : ");
+                    name3 = scanner.nextLine();
+                    if(name3.length()<2){
+                        System.out.println("Invalid input : The size of the name has minimum 2 characters");
+                    }
+                }while (name4.length()<2) {
+                    System.out.println("Name Player 1 : ");
+                    name4 = scanner.nextLine();
+                    if(name4.length()<2){
+                        System.out.println("Invalid input : The size of the name has minimum 2 characters");
+                    }
+                }
             }
         }
 
@@ -387,6 +407,17 @@ public class Game implements java.io.Serializable {
                     this.start();
                 }
                 if (choice == 2) {
+                    Scanner scanner = new Scanner(System.in);
+                    String choiceS = "";
+                    while (!(choiceS.equals("1")||choiceS.equals("2"))){
+                        System.out.println("Write : \n1 - 2 Player \n2 - 4 Player");
+                        choiceS = scanner.nextLine();
+                        if (choiceS.equals("1")) {
+                            this.nbPlayer = 2;
+                        } else if (choiceS.equals("2")) {
+                            this.nbPlayer = 4;
+                        }
+                    }
                     Game game = new Game(this.gui, this.nbPlayer);
                     game.start();
                 }
@@ -473,6 +504,7 @@ public class Game implements java.io.Serializable {
      * @return the number of tiles until the opposite side of the board
      * @author Aymeric Bizouarn
      */
+    /*
     int getNbMinMove(Square sqr, int player) {
         ArrayList<Integer> nbMove = new ArrayList<>();
         ArrayList<String> listSquare = new ArrayList<>();
@@ -484,7 +516,7 @@ public class Game implements java.io.Serializable {
             }
         }
         return ret;
-    }
+    }*/
 
     /**
      * get the path with the fewest tiles to the opposite side of the board

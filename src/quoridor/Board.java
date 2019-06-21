@@ -272,7 +272,7 @@ public class Board implements java.io.Serializable {
                 Square currSqr2 = this.getSquare(currSqr.getX() - 1, currSqr.getY());
                 if (currSqr2 == null) {
                     ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY()));
-                } else if (currSqr2.getStatus() == Status.Player1 || currSqr2.getStatus() == Status.Player2) {
+                } else if (currSqr2.getStatus() != Status.NONE) {
                     if (currSqr2.getFenceN()) {
                         if (!currSqr2.getFenceW()) {
                             ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY() - 1));
@@ -291,7 +291,7 @@ public class Board implements java.io.Serializable {
                 Square currSqr2 = this.getSquare(currSqr.getX() + 1, currSqr.getY());
                 if (currSqr2 == null) {
                     ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY()));
-                } else if (currSqr2.getStatus() == Status.Player1 || currSqr2.getStatus() == Status.Player2) {
+                } else if (currSqr2.getStatus() != Status.NONE) {
                     if (currSqr2.getFenceS()) {
                         if (!currSqr2.getFenceW()) {
                             ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY() - 1));
@@ -310,7 +310,7 @@ public class Board implements java.io.Serializable {
                 Square currSqr2 = this.getSquare(currSqr.getX(), currSqr.getY() + 1);
                 if (currSqr2 == null) {
                     ret.add(this.getSquare(currSqr.getX(), currSqr.getY() + 1));
-                } else if (currSqr2.getStatus() == Status.Player1 || currSqr2.getStatus() == Status.Player2) {
+                } else if (currSqr2.getStatus() != Status.NONE) {
                     if (currSqr2.getFenceE()) {
                         if (!currSqr2.getFenceN()) {
                             ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY() + 1));
@@ -329,7 +329,7 @@ public class Board implements java.io.Serializable {
                 Square currSqr2 = this.getSquare(currSqr.getX(), currSqr.getY() - 1);
                 if (currSqr2 == null) {
                     ret.add(this.getSquare(currSqr.getX(), currSqr.getY() - 1));
-                } else if (currSqr2.getStatus() == Status.Player1 || currSqr2.getStatus() == Status.Player2) {
+                } else if (currSqr2.getStatus() != Status.NONE) {
                     if (currSqr2.getFenceW()) {
                         if (!currSqr2.getFenceN()) {
                             ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY() - 1));

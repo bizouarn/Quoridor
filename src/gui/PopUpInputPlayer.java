@@ -16,7 +16,10 @@ public class PopUpInputPlayer {
      * @author Pierre-Galaad Naquet
      */
     public static String popUpPlayer(int player) {
-        String m = JOptionPane.showInputDialog("Type player "+player+" name, use 'auto' to have a bot");
+        String m="";
+        while (m.length()<2) {
+            m = JOptionPane.showInputDialog("Type player " + player + " name, use 'auto' to have a bot. the name must be longer than 2 characters.");
+        }
         return m;
     }
 

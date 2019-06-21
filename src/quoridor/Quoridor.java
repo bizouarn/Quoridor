@@ -119,7 +119,7 @@ public class Quoridor {
         }
         if (choice.equals("1")) {
             choice = "";
-            while (!choice.equals("1") && !choice.equals("2")) {
+            while (!(choice.equals("1") || choice.equals("2"))) {
                 System.out.println("Write : \n1 - 2 Player \n2 - 4 Player");
                 choice = scanner.nextLine();
                 if (choice.equals("1")) {

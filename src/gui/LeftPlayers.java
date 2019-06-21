@@ -12,9 +12,21 @@ import java.awt.*;
  */
 public class LeftPlayers extends JPanel {
 
+    /**
+     * The player1's panel
+     */
     private PlayerPanel player1;
+    /**
+     * The player2's panel
+     */
     private PlayerPanel player2;
+    /**
+     * The player3's panel
+     */
     private PlayerPanel player3;
+    /**
+     * The player4's panel
+     */
     private PlayerPanel player4;
 
     /**

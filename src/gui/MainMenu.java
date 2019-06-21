@@ -11,12 +11,30 @@ import java.awt.*;
  */
 public class MainMenu extends JPanel {
 
+    /**
+     * The listeners of the panel
+     */
     private MenuGuiListener menuGuiListener;
 
+    /**
+     * JButton used to load a previous game
+     */
     private JButton loadGame;
+    /**
+     * JButton used to launch a new Game
+     */
     private JButton newGame;
+    /**
+     * JButton used to go to the rules page
+     */
     private JButton rules;
+    /**
+     * JButton used to go to the credits
+     */
     private JButton creds;
+    /**
+     * JButton used to quit the application
+     */
     private JButton quit;
 
     /**

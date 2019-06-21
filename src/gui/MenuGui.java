@@ -17,16 +17,43 @@ import java.io.IOException;
  */
 public class MenuGui {
 
+    /**
+     * The listener used for the page
+     */
     private MenuGuiListener menuGuiListener = new MenuGuiListener(this);
 
+    /**
+     * WelcomePanel panel
+     */
     private WelcomePanel welcomePanel;
+    /**
+     * MainMenu panel
+     */
     private MainMenu mainMenu;
+    /**
+     * CreditsPanel panel
+     */
     private CreditsPanel creditsPanel;
+    /**
+     * RulesPanel panel
+     */
     private RulesPanel rulesPanel;
+    /**
+     * CardLayout containing the panels
+     */
     private CardLayout cl;
+    /**
+     * Main panel
+     */
     private JPanel panel;
+    /**
+     * Main Frame
+     */
     private JFrame jFrame;
 
+    /**
+     * Game gui, used to launch the Gui
+     */
     private Gui gui;
 
     /**

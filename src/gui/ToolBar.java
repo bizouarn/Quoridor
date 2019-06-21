@@ -10,10 +10,25 @@ import java.awt.*;
  */
 public class ToolBar extends JPanel {
 
+    /**
+     * JButton used to activate the fence positioning
+     */
     private JButton fence;
+    /**
+     * JButton used to activate the pawn action
+     */
     private JButton pawn;
+    /**
+     * JButton used to swap the direction of the fence
+     */
     private JButton direction;
+    /**
+     * JButton used to save and quit the game
+     */
     private JButton save;
+    /**
+     * Current Gui
+     */
     private Gui gui;
 
     /**

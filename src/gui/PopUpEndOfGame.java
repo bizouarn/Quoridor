@@ -19,8 +19,8 @@ public class PopUpEndOfGame extends JPanel {
     public static int popUpEndOfGame(Player player) throws IllegalStateException {
         Object[] options = {"New Game", "Main Menu", "Leave"};
         int choice = JOptionPane.showOptionDialog(null,
-                " " + player.getName() + " Has won !",
-                "Game has ended !",
+                " " + player.getName() + " has won !",
+                "Game has ended",
                 JOptionPane.YES_NO_CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
                 null,

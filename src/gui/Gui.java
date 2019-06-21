@@ -12,13 +12,33 @@ import java.awt.*;
  * @author Aymeric Bizouarn , Pierre-Galaad Naquet
  */
 public class Gui implements java.io.Serializable {
+
+    /**
+     * Current GuiListener
+     */
     private GuiListener guiListener = new GuiListener(this);
 
+    /**
+     * panel aggregation on the left of the Gui
+     */
     private LeftPlayers leftPlayers;
+    /**
+     * ToolBar of the Gui, located at the bottom
+     */
     private ToolBar toolBar;
+    /**
+     * GridPanel containing the board
+     */
     private GridPanel gridPanel;
 
+    /**
+     * The current Game
+     */
     private Game game;
+    
+    /**
+     * The current JFrame
+     */
     private JFrame jFrame;
 
 

@@ -504,7 +504,7 @@ public class Game implements java.io.Serializable {
      * @return the number of tiles until the opposite side of the board
      * @author Aymeric Bizouarn
      */
-    /*
+
     int getNbMinMove(Square sqr, int player) {
         ArrayList<Integer> nbMove = new ArrayList<>();
         ArrayList<String> listSquare = new ArrayList<>();
@@ -516,7 +516,7 @@ public class Game implements java.io.Serializable {
             }
         }
         return ret;
-    }*/
+    }
 
     /**
      * get the path with the fewest tiles to the opposite side of the board

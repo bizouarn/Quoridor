@@ -12,11 +12,26 @@ import java.awt.*;
  */
 public class PlayerPanel extends JPanel {
 
+    /**
+     * The current player represented
+     */
     private Player player;
 
+    /**
+     * JLabel showing the name
+     */
     private JLabel name;
+    /**
+     * aggregation of fences showing how many are left
+     */
     private JLabel[] fences;
+    /**
+     * Panel containing the JLabel fences
+     */
     private JPanel fencePanel;
+    /**
+     * Main panel
+     */
     private JPanel panel;
 
     /**

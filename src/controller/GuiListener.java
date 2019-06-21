@@ -18,13 +18,37 @@ import java.util.ArrayList;
  * @author Aymeric Bizouarn , Pierre-Galaad Naquet
  */
 public class GuiListener implements ActionListener, MouseListener, java.io.Serializable {
+    /**
+     * Check if the action has been performed
+     */
     private boolean value = false;
+    /**
+     * Used to check fences
+     */
     private boolean fence = false;
+    /**
+     * Check to use fences in some methods
+     */
     private boolean horizontal = false;
+    /**
+     * Coordinate x of the square moused over
+     */
     private int x1;
+    /**
+     * Coordinate x of the square in the opposite corner of the subBoard
+     */
     private int x2;
+    /**
+     * Coordinate y if the square moused over
+     */
     private int y1;
+    /**
+     * Coordinate y of the square in the oppositer corner of the subBoard
+     */
     private int y2;
+    /**
+     * Current gui
+     */
     private Gui gui;
 
     /**

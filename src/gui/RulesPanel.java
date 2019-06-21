@@ -12,9 +12,18 @@ import java.awt.*;
  */
 public class RulesPanel extends JPanel {
 
+    /**
+     * JLabel containing the rules image
+     */
     private JLabel rulesPanel;
 
+    /**
+     * Button used to go back to main menu
+     */
     private JButton retour;
+    /**
+     * Current listener
+     */
     private MenuGuiListener menuGuiListener;
 
 

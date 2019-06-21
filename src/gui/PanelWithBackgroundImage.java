@@ -10,6 +10,9 @@ import java.awt.*;
  */
 public class PanelWithBackgroundImage extends JPanel {
 
+    /**
+     * background image
+     */
     private Image bg;
 
     /**

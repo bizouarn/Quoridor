@@ -14,6 +14,9 @@ import java.io.FileWriter;
  */
 public class MenuGuiListener implements ActionListener {
 
+    /**
+     * Current menuGui
+     */
     private MenuGui menuGui;
 
     /**

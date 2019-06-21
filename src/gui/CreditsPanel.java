@@ -12,9 +12,18 @@ import java.awt.*;
  */
 public class CreditsPanel extends JPanel {
 
+    /**
+     * JLabel containing the image of credits
+     */
     private JLabel creditsPanel;
 
+    /**
+     * Return button
+     */
     private JButton retour;
+    /**
+     * Current menuGuiListener
+     */
     private MenuGuiListener menuGuiListener;
 
 

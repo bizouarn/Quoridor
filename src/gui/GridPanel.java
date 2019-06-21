@@ -14,8 +14,17 @@ import java.awt.*;
  */
 public class GridPanel extends JPanel {
 
+    /**
+     * The whole board made of JButtons
+     */
     private JButton[][] grid;
+    /**
+     * The current board
+     */
     private Board board;
+    /**
+     * The Gui in which the GridPanel is contained
+     */
     private Gui gui;
 
     /**

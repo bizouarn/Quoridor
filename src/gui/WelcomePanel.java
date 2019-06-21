@@ -12,7 +12,13 @@ import java.awt.*;
  */
 public class WelcomePanel extends JPanel {
 
+    /**
+     * JButton used to go to the mainMenu
+     */
     private JButton startButton;
+    /**
+     * Current listener
+     */
     private MenuGuiListener menuGuiListener;
 
     /**

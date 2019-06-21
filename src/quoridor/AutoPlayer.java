@@ -26,54 +26,13 @@ public class AutoPlayer extends Player {
      * @author Aymeric Bizouarn
      */
     public void play() {
-        int p1 = this.getGame().getNbMinMove(this.getGame().getBoard().getPlayer1Square(), 1);
-        int p2 = this.getGame().getNbMinMove(this.getGame().getBoard().getPlayer2Square(), 2);
-        int p3 = this.getGame().getNbMinMove(this.getGame().getBoard().getPlayer1Square(), 3);
-        int p4 = this.getGame().getNbMinMove(this.getGame().getBoard().getPlayer2Square(), 4);
-        boolean contition = true;
-        if (this == this.getGame().getPlayer1()) {
-            if (p2 < p1) {
-                contition = false;
-            }
-        } else {
-            if (p1 < p2) {
-                contition = false;
-            }
-        }
-        boolean ret = false;
-        if (this == this.getGame().getPlayer1()) {
-            if (this.getGame().getBoard().getPlayer1Square().getX() == 1 && this.getGame().getBoard().getPlayer1Square().getY() == 4) {
-                ArrayList<SubBoard> possibilitiesFenceH = this.getGame().getBoard().listOfPossibilitiesFenceHorizontal();
-                Square sqr = this.getGame().getBoard().getSquare(0, 4);
-                for (SubBoard sb : possibilitiesFenceH) {
-                    if (this.getGame().getBoard().getSubBoard(0, 4) == sb) {
-                        ret = playFence(sqr.getX(), sqr.getY(), sqr.getX() + 1, sqr.getY() + 1, 1);
-                    }
-                }
-            }
-        } else if (this == this.getGame().getPlayer2()) {
-            if (this.getGame().getBoard().getPlayer2Square().getX() == 7 && this.getGame().getBoard().getPlayer2Square().getY() == 4) {
-                ArrayList<SubBoard> possibilitiesFenceH = this.getGame().getBoard().listOfPossibilitiesFenceHorizontal();
-                Square sqr = this.getGame().getBoard().getSquare(7, 4);
-                for (SubBoard sb : possibilitiesFenceH) {
-                    if (this.getGame().getBoard().getSubBoard(7, 4) == sb) {
-                        ret = playFence(sqr.getX(), sqr.getY(), sqr.getX() + 1, sqr.getY() + 1, 1);
-                    }
-                }
-            }
-        }
-        if (!ret) {
-            boolean validGame = false;
-            while (!validGame) {
-                if (contition) {
-                    validGame = autoPlayPawn();
-                } else {
-                    boolean playFence = autoPlayFence();
-                    validGame = playFence;
-                    if (!playFence) {
-                        validGame=autoPlayPawn();
-                    }
-                }
+
+        boolean validGame = false;
+        while (!validGame) {
+            boolean playFence = autoPlayFence();
+            validGame = playFence;
+            if (!playFence) {
+                validGame = autoPlayPawn();
             }
         }
     }
@@ -104,9 +63,9 @@ public class AutoPlayer extends Player {
         int player;
         if (this == this.getGame().getPlayer1()) {
             player = 1;
-        } else if(this == this.getGame().getPlayer2()){
+        } else if (this == this.getGame().getPlayer2()) {
             player = 2;
-        } else if(this == this.getGame().getPlayer3()){
+        } else if (this == this.getGame().getPlayer3()) {
             player = 3;
         } else {
             player = 4;
@@ -121,9 +80,9 @@ public class AutoPlayer extends Player {
             }
         }
         boolean ret = playPawn(res.getX(), res.getY());
-        if(!ret){
-            int random = (int)((Double)Math.random()*possibilitiesPawn.size());
-            playPawn(possibilitiesPawn.get(random).getX(),possibilitiesPawn.get(random).getY());
+        if (!ret) {
+            int random = (int) ((Double) Math.random() * possibilitiesPawn.size());
+            playPawn(possibilitiesPawn.get(random).getX(), possibilitiesPawn.get(random).getY());
         }
         return ret;
     }
@@ -143,6 +102,10 @@ public class AutoPlayer extends Player {
             sqrPlayer = this.getGame().getBoard().getPlayer1Square();
         } else if (player == 2) {
             sqrPlayer = this.getGame().getBoard().getPlayer2Square();
+        } if (player == 3) {
+            sqrPlayer = this.getGame().getBoard().getPlayer3Square();
+        } else if (player == 4) {
+            sqrPlayer = this.getGame().getBoard().getPlayer4Square();
         }
         if (sqrPlayer != null) {
             for (Square sqr : subBoard.getSqrArray()) {
@@ -156,8 +119,9 @@ public class AutoPlayer extends Player {
 
     /**
      * Get the fences placement possibles during this turn and return minimal number of movement for each.
-     * @author Aymeric Bizouarn
+     *
      * @return The SubBoard of the fence and his position in Object[2]={SubBoard,fence}
+     * @author Aymeric Bizouarn
      */
     private Object[] getPlayFence() {
         int pos = 2;
@@ -176,19 +140,22 @@ public class AutoPlayer extends Player {
             playerSqr = game.getBoard().getPlayer1Square();
         }
         int max = 0;
+        int minMovePlayer = game.getNbMinMove(playerSqr, player);
         for (SubBoard sb : possibilitiesFenceH) {
             if (playerInSubBoard(sb, player)) {
-                int tmpVal = game.getNbMinMove(playerSqr, player);
                 sb.setHorizontalFence(true);
                 Square[] sqrArray = sb.getSqrArray();
                 sqrArray[0].setFenceS(true);
                 sqrArray[1].setFenceS(true);
                 sqrArray[2].setFenceN(true);
                 sqrArray[3].setFenceN(true);
-                if (tmpVal > max) {
-                    max = tmpVal;
-                    pos = 1;
-                    ret = sb;
+                int tmpVal = game.getNbMinMove(playerSqr, player);
+                if (tmpVal > minMovePlayer) {
+                    if (tmpVal > max) {
+                        max = tmpVal;
+                        pos = 1;
+                        ret = sb;
+                    }
                 }
                 sb.setHorizontalFence(false);
                 sqrArray[0].setFenceS(false);

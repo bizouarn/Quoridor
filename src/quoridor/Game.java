@@ -446,62 +446,19 @@ public class Game implements java.io.Serializable {
      */
     boolean checkExistingPath() {
         boolean ret = false;
-        ArrayList<String> listSquare = new ArrayList<>();
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                listSquare.add(i + "," + j);
-            }
-        }
-        boolean resP1 = recExistingPath(this.board.getPlayer1Square(), 1, new ArrayList<>(listSquare));
-        boolean resP2 = recExistingPath(this.board.getPlayer2Square(), 2, new ArrayList<>(listSquare));
+        int resP1 = getNbMinMove(this.board.getPlayer1Square(), 1);
+        int resP2 = getNbMinMove(this.board.getPlayer2Square(), 2);
         if (nbPlayer == 2) {
-            if (resP1 && resP2) {
+            if (resP1<81 && resP2<81) {
                 ret = true;
             }
         } else {
-            boolean resP3 = recExistingPath(this.board.getPlayer3Square(), 3, new ArrayList<>(listSquare));
-            boolean resP4 = recExistingPath(this.board.getPlayer4Square(), 4, new ArrayList<>(listSquare));
-            System.out.print(resP4);
-            if (resP1 && resP2 && resP3 && resP4) {
+            int resP3 = getNbMinMove(this.board.getPlayer3Square(), 3);
+            int resP4 = getNbMinMove(this.board.getPlayer4Square(), 4);
+            if (resP1<81 && resP2<81 && resP3<81 && resP4<81) {
                 ret = true;
             }
-        }
-        return ret;
-    }
-
-    /**
-     * Recursive methods checking the existing path.
-     *
-     * @param sqr           the current square
-     * @param player        the current player
-     * @param listSquareTmp the current list of the path
-     * @return True if there is an existing path, false otherwise
-     * @author Aymeric Bizouarn
-     */
-    private boolean recExistingPath(Square sqr, int player, ArrayList<String> listSquareTmp) {
-        boolean ret = false;
-        ArrayList<String> listSquare = new ArrayList<>(listSquareTmp);
-        listSquare.remove(sqr.getX() + "," + sqr.getY());
-        ArrayList<Square> possibilitiesPawn = this.board.listOfPossibilitiesPawn(sqr);
-        if (sqr.getX() == 8 && player == 1) {
-            ret = true;
-        } else if (sqr.getX() == 0 && player == 2) {
-            ret = true;
-        } else if (sqr.getY() == 8 && player == 3) {
-            ret = true;
-        } else if (sqr.getY() == 0 && player == 4) {
-            ret = true;
-        } else {
-            for (Square sqrP : possibilitiesPawn) {
-                if (sqrP != null) {
-                    if (!ret) {
-                        String value = sqrP.getX() + "," + sqrP.getY();
-                        if (listSquare.indexOf(value) != -1) {
-                            ret = recExistingPath(sqrP, player, listSquare);
-                        }
-                    }
-                }
-            }
+            System.out.print("check :"+resP1+","+resP2+","+resP3+","+resP4+","+ret);
         }
         return ret;
     }

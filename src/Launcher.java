@@ -30,14 +30,6 @@ public class Launcher {
             System.out.println(e);
         }
         new Quoridor(args);
-        new Launcher();
-    }
-
-    /**
-     * Launcher constructor
-     * @author Aymeric Bizouarn
-     */
-    public Launcher() {
         while (true) {
             try {
                 Thread.sleep(100);
@@ -70,7 +62,6 @@ public class Launcher {
                 }
             }
             catch (Exception e) {
-                System.out.println(e);
             }
 
         }

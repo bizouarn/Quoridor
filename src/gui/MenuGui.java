@@ -97,6 +97,7 @@ public class MenuGui {
         this.show("welcome");
 
         this.jFrame = new JFrame("Quoridor : Menu");
+        this.jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.jFrame.add(this.panel);
         this.jFrame.pack();
         this.jFrame.setVisible(true);

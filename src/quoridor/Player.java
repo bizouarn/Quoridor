@@ -40,42 +40,6 @@ public abstract class Player implements java.io.Serializable {
     public abstract void play();
 
     /**
-     * Return the player name.
-     *
-     * @return The player name.
-     */
-    public String getName() {
-        return this.name;
-    }
-
-    /**
-     * Return number of player fence remaining.
-     *
-     * @return the number of fences left playable by the player
-     */
-    public int checkNbRestingFences() {
-        return this.nbFences;
-    }
-
-    /**
-     * Set Player nbFences.
-     *
-     * @param nbFences The player nbFences.
-     */
-    public void setNbFences(int nbFences) {
-        this.nbFences = nbFences;
-    }
-
-    /**
-     * Return the game run actually.
-     *
-     * @return The game.
-     */
-    public Game getGame() {
-        return game;
-    }
-
-    /**
      * Places a fence on the desired emplacement
      * The overlapping validity is checked by the square object by fenceStatus
      * The path validity is checked by the checkExistingPath method
@@ -151,7 +115,7 @@ public abstract class Player implements java.io.Serializable {
      */
     boolean playPawn(int x, int y) {
         boolean ret = false;
-        if(this.getGame().getBoard().getSquare(x, y).getStatus()==Status.NONE) {
+        if (this.getGame().getBoard().getSquare(x, y).getStatus() == Status.NONE) {
             if (this.getGame().getPlayer1() == this) {
                 this.getGame().getBoard().getPlayer1Square().setStatus(Status.NONE);
                 this.getGame().getBoard().getSquare(x, y).setStatus(Status.Player1);
@@ -171,5 +135,41 @@ public abstract class Player implements java.io.Serializable {
             }
         }
         return ret;
+    }
+
+    /**
+     * Return the player name.
+     *
+     * @return The player name.
+     */
+    public String getName() {
+        return this.name;
+    }
+
+    /**
+     * Return number of player fence remaining.
+     *
+     * @return the number of fences left playable by the player
+     */
+    public int checkNbRestingFences() {
+        return this.nbFences;
+    }
+
+    /**
+     * Set Player nbFences.
+     *
+     * @param nbFences The player nbFences.
+     */
+    public void setNbFences(int nbFences) {
+        this.nbFences = nbFences;
+    }
+
+    /**
+     * Return the game run actually.
+     *
+     * @return The game.
+     */
+    public Game getGame() {
+        return game;
     }
 }

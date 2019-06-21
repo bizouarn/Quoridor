@@ -43,7 +43,7 @@ public class HumanPlayer extends Player {
                 try {
                     Thread.sleep(100);
                 } catch (Exception e) {
-                    System.out.println(e);
+                    System.err.println("Humman player (play()): " + e);
                 }
                 GuiListener guiListener = this.getGame().getGuiFrame().getGuiListener();
                 boolean condition = guiListener.getValue();

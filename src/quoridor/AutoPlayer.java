@@ -12,7 +12,7 @@ public class AutoPlayer extends Player {
      * AutoPlayer constructor
      *
      * @param name The player name.
-     * @param game the current game
+     * @param game the current game.
      */
     public AutoPlayer(String name, Game game) {
         super(name, game);
@@ -81,7 +81,7 @@ public class AutoPlayer extends Player {
         }
         boolean ret = playPawn(res.getX(), res.getY());
         if (!ret) {
-            int random = (int) ((Double) Math.random() * possibilitiesPawn.size());
+            int random = (int) (Math.random() * possibilitiesPawn.size());
             playPawn(possibilitiesPawn.get(random).getX(), possibilitiesPawn.get(random).getY());
         }
         return ret;
@@ -133,7 +133,7 @@ public class AutoPlayer extends Player {
         ArrayList<SubBoard> possibilitiesFenceV = board.listOfPossibilitiesFenceVertical();
         int player;
         Square playerSqr;
-        int minMovePlayer = 82;
+        int minMovePlayer;
         if (this.getGame().getNbPlayer() == 2) {
             if (this == game.getPlayer1()) {
                 player = 2;

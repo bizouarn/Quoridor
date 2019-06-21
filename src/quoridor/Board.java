@@ -1,7 +1,6 @@
 package quoridor;
 
 import java.util.ArrayList;
-import quoridor.TerminalPrinting;
 
 /**
  * Class for the initializing of the board.
@@ -25,7 +24,7 @@ public class Board implements java.io.Serializable {
      */
     private ArrayList<SubBoard> subBoards = new ArrayList<>();
     /**
-     *  Number of player in the game
+     * Number of player in the game
      */
     private int nbPlayer;
 
@@ -43,77 +42,9 @@ public class Board implements java.io.Serializable {
         initializeSubBoards();
     }
 
-    public Square getSquare(int x, int y) {
-        Square ret = null;
-        for (Square sqr : this.grid) {
-            if ((sqr.getX() == x) && (sqr.getY() == y)) {
-                ret = sqr;
-            }
-        }
-        return ret;
-    }
-
-    public int getSIZE() {
-        return this.SIZE;
-    }
-
-    public ArrayList<Square> getGrid() {
-        return this.grid;
-    }
-
-    public Square getPlayer1Square() {
-        Square ret = null;
-        for (Square sqr : this.grid) {
-            if (sqr.getStatus() == Status.Player1) {
-                ret = sqr;
-            }
-        }
-        return ret;
-    }
-
-    public Square getPlayer2Square() {
-        Square ret = null;
-        for (Square sqr : this.grid) {
-            if (sqr.getStatus() == Status.Player2) {
-                ret = sqr;
-            }
-        }
-        return ret;
-    }
-
-    public Square getPlayer3Square() {
-        Square ret = null;
-        for (Square sqr : this.grid) {
-            if (sqr.getStatus() == Status.Player3) {
-                ret = sqr;
-            }
-        }
-        return ret;
-    }
-
-    public Square getPlayer4Square() {
-        Square ret = null;
-        for (Square sqr : this.grid) {
-            if (sqr.getStatus() == Status.Player4) {
-                ret = sqr;
-            }
-        }
-        return ret;
-    }
-
-    public SubBoard getSubBoard(int x, int y) {
-        SubBoard ret = null;
-        for (SubBoard subBoard : this.subBoards) {
-            if ((subBoard.getX() == x) && (subBoard.getY() == y)) {
-                ret = subBoard;
-            }
-        }
-        return ret;
-    }
-
     /**
      * Board Initializer
-     * intiliaze a 81 squares board (9*9)
+     * initialise a 81 squares board (9*9)
      * Initialize walls and statuses
      *
      * @author Pierre-Galaad Naquet
@@ -138,8 +69,7 @@ public class Board implements java.io.Serializable {
      *
      * @author Pierre-Galaad Naquet
      */
-    public void initializeSubBoards() {
-        Square[] sqrArray = new Square[4];
+    private void initializeSubBoards() {
         Square sqr1;
         Square sqr2;
         Square sqr3;
@@ -150,10 +80,6 @@ public class Board implements java.io.Serializable {
                 sqr2 = this.getSquare(x, y + 1);
                 sqr3 = this.getSquare(x + 1, y);
                 sqr4 = this.getSquare(x + 1, y + 1);
-                sqrArray[0] = sqr1;
-                sqrArray[1] = sqr2;
-                sqrArray[2] = sqr3;
-                sqrArray[3] = sqr4;
                 this.subBoards.add(new SubBoard(sqr1, sqr2, sqr3, sqr4));
             }
         }
@@ -192,7 +118,7 @@ public class Board implements java.io.Serializable {
      * @author Pierre-Galaad Naquet
      */
     public ArrayList<SubBoard> listOfPossibilitiesFenceVertical() {
-        ArrayList<SubBoard> ret = new ArrayList<SubBoard>();
+        ArrayList<SubBoard> ret = new ArrayList<>();
         boolean bool;
         for (SubBoard subBoard : subBoards) {
             bool = true;
@@ -223,7 +149,7 @@ public class Board implements java.io.Serializable {
      * @author Pierre-Galaad Naquet
      */
     public ArrayList<SubBoard> listOfPossibilitiesFenceHorizontal() {
-        ArrayList<SubBoard> ret = new ArrayList<SubBoard>();
+        ArrayList<SubBoard> ret = new ArrayList<>();
         boolean bool;
         for (SubBoard subBoard : subBoards) {
             bool = true;
@@ -248,7 +174,7 @@ public class Board implements java.io.Serializable {
     }
 
     /**
-     * When called return an array list of square containing all of pawns deplacement possibilities.
+     * When called return an array list of square containing all of pawns move possibilities.
      *
      * @param player current turn player
      * @param game   current game played
@@ -273,6 +199,12 @@ public class Board implements java.io.Serializable {
         return ret;
     }
 
+    /**
+     * When called return an array list of square containing all of pawns move possibilities.
+     *
+     * @return The ArrayList containing all the possibilities
+     * @author Pierre-Galaad Naquet, Aymeric Bizouarn
+     */
     public ArrayList<Square> listOfPossibilitiesPawn(Square currSqr) {
         ArrayList<Square> ret = new ArrayList<Square>();
         if (currSqr != null) {
@@ -356,6 +288,112 @@ public class Board implements java.io.Serializable {
         return ret;
     }
 
+    /**
+     * Get Square in the board.
+     *
+     * @param x The x square position.
+     * @param y The y square position.
+     * @return The Square in the board.
+     */
+    public Square getSquare(int x, int y) {
+        Square ret = null;
+        for (Square sqr : this.grid) {
+            if ((sqr.getX() == x) && (sqr.getY() == y)) {
+                ret = sqr;
+            }
+        }
+        return ret;
+    }
+
+    /**
+     * Return The board size.
+     *
+     * @return The board size.
+     */
+    public int getSIZE() {
+        return this.SIZE;
+    }
+
+    /**
+     * Get player 1 square.
+     *
+     * @return The player 1 square.
+     */
+    public Square getPlayer1Square() {
+        Square ret = null;
+        for (Square sqr : this.grid) {
+            if (sqr.getStatus() == Status.Player1) {
+                ret = sqr;
+            }
+        }
+        return ret;
+    }
+
+    /**
+     * Get player 2 square.
+     *
+     * @return The player 2 square.
+     */
+    public Square getPlayer2Square() {
+        Square ret = null;
+        for (Square sqr : this.grid) {
+            if (sqr.getStatus() == Status.Player2) {
+                ret = sqr;
+            }
+        }
+        return ret;
+    }
+
+    /**
+     * Get player 3 square.
+     *
+     * @return The player 3 square.
+     */
+    public Square getPlayer3Square() {
+        Square ret = null;
+        for (Square sqr : this.grid) {
+            if (sqr.getStatus() == Status.Player3) {
+                ret = sqr;
+            }
+        }
+        return ret;
+    }
+
+    /**
+     * Get player 4 square.
+     *
+     * @return The player 4 square.
+     */
+    public Square getPlayer4Square() {
+        Square ret = null;
+        for (Square sqr : this.grid) {
+            if (sqr.getStatus() == Status.Player4) {
+                ret = sqr;
+            }
+        }
+        return ret;
+    }
+
+    /**
+     * Get subBoard in the board.
+     * @param x The x subBoard position.
+     * @param y The y suBoard position.
+     * @return The subBoard.
+     */
+    public SubBoard getSubBoard(int x, int y) {
+        SubBoard ret = null;
+        for (SubBoard subBoard : this.subBoards) {
+            if ((subBoard.getX() == x) && (subBoard.getY() == y)) {
+                ret = subBoard;
+            }
+        }
+        return ret;
+    }
+
+    /**
+     * Get Board into a String
+     * @return The board into a String.
+     */
     public String toString() {
         String str = TerminalPrinting.printBoard(this);
         return str;

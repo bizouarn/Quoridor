@@ -21,7 +21,6 @@ public class Quoridor {
      * The Game.
      */
     private Game game;
-    private int gui;
 
     /**
      * Quoridor constructor
@@ -31,21 +30,21 @@ public class Quoridor {
      * @author Aymeric Bizouarn , Pierre-Galaad Naquet
      */
     public Quoridor(String[] args) {
-        this.gui = 0;
+        int gui = 0;
         for (String string : args) {
             if (string.equals("nogui")) {
-                this.gui = 1;
+                gui = 1;
             }
             if (string.equals("gui")) {
-                this.gui = 2;
+                gui = 2;
             }
             if (string.equals("load")) {
-                this.gui = 3;
+                gui = 3;
             }
         }
-        if (this.gui == 1) {
+        if (gui == 1) {
             choice();
-        } else if (this.gui == 2) {
+        } else if (gui == 2) {
             Object[] options = {"2 Player", "4 Player"};
             int choice = JOptionPane.showOptionDialog(null,
                     " Player number ? ",
@@ -63,7 +62,7 @@ public class Quoridor {
             }
             Game game = new Game(true, nbPlayer);
             game.start();
-        } else if (this.gui == 3) {
+        } else if (gui == 3) {
             Game game = RWFile.readFile(this.fileName);
             new Game(game, true);
         } else {
@@ -80,15 +79,6 @@ public class Quoridor {
         Game savedGame = RWFile.readFile("./data/save/SavedGame.bin");
         savedGame = new Game(savedGame, false);
         return savedGame;
-    }
-
-    /**
-     * Get Quoridor Game.
-     *
-     * @return the Game of the current Quoridor.
-     */
-    public Game getGame() {
-        return this.game;
     }
 
     /**
@@ -130,6 +120,15 @@ public class Quoridor {
             this.game = loadOldGame();
 
         }
+    }
+
+    /**
+     * Get Quoridor Game.
+     *
+     * @return the Game of the current Quoridor.
+     */
+    public Game getGame() {
+        return this.game;
     }
 
 }

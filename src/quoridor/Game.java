@@ -20,8 +20,8 @@ import java.util.Scanner;
 public class Game implements java.io.Serializable {
 
     /**
-    * The game board
-    */
+     * The game board
+     */
     private Board board;
     /**
      * The player 1
@@ -160,24 +160,6 @@ public class Game implements java.io.Serializable {
     }
 
     /**
-     * Get the player1
-     *
-     * @return the player1
-     */
-    public Player getPlayer1() {
-        return this.player1;
-    }
-
-    /**
-     * Get the player2
-     *
-     * @return the player2
-     */
-    public Player getPlayer2() {
-        return this.player2;
-    }
-
-    /**
      * Initialize the game by creating a new board and by asking for players name.
      *
      * @author Aymeric Bizouarn , Pierre-Galaad Naquet
@@ -196,7 +178,6 @@ public class Game implements java.io.Serializable {
             }
         } else {
             Scanner scanner = new Scanner(System.in);
-            String choice = "";
             while (name1.length() < 2) {
                 System.out.println("Name Player 1 : ");
                 name1 = scanner.nextLine();
@@ -396,7 +377,7 @@ public class Game implements java.io.Serializable {
                     fw.write("menu");
                     fw.close();
                 } catch (IOException e) {
-                    System.out.println(e);
+                    System.err.println("Game (End of game) :" + e);
                 }
             }
             if (choice == 3) {
@@ -497,7 +478,7 @@ public class Game implements java.io.Serializable {
      */
     private boolean recExistingPath(Square sqr, int player, ArrayList<String> listSquareTmp) {
         boolean ret = false;
-        ArrayList<String> listSquare = listSquareTmp;
+        ArrayList<String> listSquare = new ArrayList<>(listSquareTmp);
         listSquare.remove(sqr.getX() + "," + sqr.getY());
         ArrayList<Square> possibilitiesPawn = this.board.listOfPossibilitiesPawn(sqr);
         if (sqr.getX() == 8 && player == 1) {
@@ -536,7 +517,6 @@ public class Game implements java.io.Serializable {
         ArrayList<Object[]> squaresPossible = new ArrayList<>();
         Object[] value = {sqr, 0};
         squaresPossible.add(value);
-        value = new Object[2];
         for (int i = 0; i < possibilite.size(); i++) {
             Square square = possibilite.get(i);
             Object[] value2 = {square, 1};
@@ -562,7 +542,6 @@ public class Game implements java.io.Serializable {
                 }
             }
         }
-        Square res = null;
         int min = 82;
         int tmp = min;
         for (Object[] valuePrint : squaresPossible) {
@@ -578,37 +557,9 @@ public class Game implements java.io.Serializable {
             }
             if (tmp < min) {
                 min = tmp;
-                res = (Square) valuePrint[0];
             }
         }
         return min;
-    }
-
-    /**
-     * Return the gui
-     *
-     * @return the gui
-     */
-    public boolean getGui() {
-        return this.gui;
-    }
-
-    /**
-     * Return the guiFrame
-     *
-     * @return the guiFrame
-     */
-    public Gui getGuiFrame() {
-        return this.guiFrame;
-    }
-
-    /**
-     * Return the actualPlayer
-     *
-     * @return the actualPlayer
-     */
-    public Player getPlayerActual() {
-        return this.playerActual;
     }
 
     /**
@@ -639,18 +590,74 @@ public class Game implements java.io.Serializable {
         System.exit(1);
     }
 
+    /**
+     * Return the gui
+     *
+     * @return the gui
+     */
+    public boolean getGui() {
+        return this.gui;
+    }
+
+    /**
+     * Return the guiFrame
+     *
+     * @return the guiFrame
+     */
+    public Gui getGuiFrame() {
+        return this.guiFrame;
+    }
+
+    /**
+     * Return the actualPlayer
+     *
+     * @return the actualPlayer
+     */
     public int getPlayerPlay() {
         return playerPlay;
     }
 
+    /**
+     * Get the player1
+     *
+     * @return the player1
+     */
+    public Player getPlayer1() {
+        return this.player1;
+    }
+
+    /**
+     * Get the player2
+     *
+     * @return the player2
+     */
+    public Player getPlayer2() {
+        return this.player2;
+    }
+
+    /**
+     * Return the player3
+     *
+     * @return the player3
+     */
     public Player getPlayer3() {
         return this.player3;
     }
 
+    /**
+     * Return the player4
+     *
+     * @return the player4
+     */
     public Player getPlayer4() {
         return this.player4;
     }
 
+    /**
+     * Return the player number.
+     *
+     * @return the player number.
+     */
     public int getNbPlayer() {
         return this.nbPlayer;
     }

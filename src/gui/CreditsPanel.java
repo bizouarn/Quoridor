@@ -12,8 +12,8 @@ public class CreditsPanel extends JPanel {
 
     private JLabel creditsPanel;
 
-  private JButton retour;
-  private MenuGuiListener menuGuiListener;
+    private JButton retour;
+    private MenuGuiListener menuGuiListener;
 
 
     /**
@@ -31,15 +31,17 @@ public class CreditsPanel extends JPanel {
         setBackground(new Color(0, 0, 0, 0));
     }
 
-  /**
-   * Initialize all the components of the JPanel
-   * @author Pierre-Galaad Naquet
-   */
-  private void initComponent() {
-    this.creditsPanel = new JLabel(new ImageIcon("./data/images/CREDITS.png"));
-    this.retour = new JButton("Back");
-    this.retour.addActionListener(this.menuGuiListener);
-  }
+    /**
+     * Initialize all the components of the JPanel
+     *
+     * @author Pierre-Galaad Naquet
+     */
+    private void initComponent() {
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon("./data/images/CREDITS.png").getImage().getScaledInstance(500, 300, Image.SCALE_SMOOTH));
+        this.creditsPanel = new JLabel(imageIcon);
+        this.retour = new JButton("Back");
+        this.retour.addActionListener(this.menuGuiListener);
+    }
 
     /**
      * Return the retour Button

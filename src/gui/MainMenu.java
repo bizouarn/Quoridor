@@ -83,4 +83,12 @@ public class MainMenu extends JPanel {
     public JButton getQuit() {
         return this.quit;
     }
+
+    /**
+     * Get the button Rules
+     * @return the JButton Rules
+     */
+    public JButton getRules() {
+        return rules;
+    }
 }

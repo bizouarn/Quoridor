@@ -1,6 +1,7 @@
 package gui;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 /**
@@ -22,9 +23,14 @@ public class WelcomePanel extends JPanel {
         super(new GridLayout(3, 1));
         this.menuGuiListener = menuGuiListener;
         initComponent();
-        add(new JLabel());
-        add(this.startButton);
-        this.setPreferredSize(new Dimension(300, 200));
+
+        add(new JLabel(new ImageIcon("./data/images/Quoridor.png")));
+        JPanel panel = new JPanel(new GridLayout());
+        panel.setBackground(null);
+        panel.setBorder(BorderFactory.createMatteBorder(30,125,30,125,new Color(0,0,0,0)));
+        panel.add(this.startButton);
+        add(panel);
+
         setBackground(new Color(0, 0, 0, 0));
     }
 

@@ -12,8 +12,8 @@ public class RulesPanel extends JPanel {
 
     private JLabel rulesPanel;
 
-  private JButton retour;
-  private MenuGuiListener menuGuiListener;
+    private JButton retour;
+    private MenuGuiListener menuGuiListener;
 
 
     /**
@@ -25,22 +25,24 @@ public class RulesPanel extends JPanel {
     public RulesPanel(MenuGuiListener menuGuiListener) {
         this.menuGuiListener = menuGuiListener;
         initComponent();
-        setLayout(new GridLayout(1, 2));
+        setLayout(new FlowLayout());
         add(this.rulesPanel);
         add(this.retour);
-        this.setPreferredSize(new Dimension(300, 200));
         setBackground(new Color(0, 0, 0, 0));
     }
 
-  /**
-   * Initialize all the components of the JPanel
-   * @author Pierre-Galaad Naquet
-   */
-  private void initComponent() {
-    this.rulesPanel = new JLabel(new ImageIcon("./data/images/RULES.jpg"));
-    this.retour = new JButton("Back");
-    this.retour.addActionListener(this.menuGuiListener);
-  }
+    /**
+     * Initialize all the components of the JPanel
+     *
+     * @author Pierre-Galaad Naquet
+     */
+    private void initComponent() {
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon("./data/images/RULES.png").getImage().getScaledInstance(500, 300, Image.SCALE_SMOOTH));
+        this.rulesPanel = new JLabel();
+        this.rulesPanel.setIcon(imageIcon);
+        this.retour = new JButton("Back");
+        this.retour.addActionListener(this.menuGuiListener);
+    }
 
     /**
      * Return the retour Button

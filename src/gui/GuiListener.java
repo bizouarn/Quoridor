@@ -102,7 +102,7 @@ public class GuiListener implements ActionListener, MouseListener, java.io.Seria
             }
             if (x != -1 && y != -1) {
                 if (this.horizontal) {
-                    ArrayList<SubBoard> subBoards = gui.getGame().getBoard().listOfPossibilitiesFenceHorizontal();
+                    ArrayList<SubBoard> subBoards = gui.getGame().getBoard().listOfPossibilitiesFenceVertical();
                     Color color = red;
                     for (SubBoard sb : subBoards) {
                         if (sb.getX() == x && sb.getY() == y) {
@@ -114,7 +114,7 @@ public class GuiListener implements ActionListener, MouseListener, java.io.Seria
                     gui.getGridPanel().getGrid()[x + 1][y].setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, color));
                     gui.getGridPanel().getGrid()[x + 1][y + 1].setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, color));
                 } else {
-                    ArrayList<SubBoard> subBoards = gui.getGame().getBoard().listOfPossibilitiesFenceVertical();
+                    ArrayList<SubBoard> subBoards = gui.getGame().getBoard().listOfPossibilitiesFenceHorizontal();
                     Color color = red;
                     for (SubBoard sb : subBoards) {
                         if (sb.getX() == x && sb.getY() == y) {

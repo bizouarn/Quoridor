@@ -67,10 +67,11 @@ public class MenuGui {
 
         this.show("welcome");
 
-        this.jFrame = new JFrame(this.panel.getClass().getSimpleName());
+        this.jFrame = new JFrame("Quoridor : Menu");
         this.jFrame.add(this.panel);
         this.jFrame.pack();
         this.jFrame.setVisible(true);
+        this.jFrame.setLocationRelativeTo(null);
     }
 
     /**

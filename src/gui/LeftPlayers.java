@@ -28,6 +28,8 @@ public class LeftPlayers extends JPanel {
         super(new GridLayout(2,1));
         this.player1 = new PlayerPanel(player1);
         this.player2 = new PlayerPanel(player2);
+        this.player1.getPanel().setBackground(new Color(159, 210, 154));
+        this.player2.getPanel().setBackground(new Color(236, 153, 122));
         this.setPreferredSize(new Dimension(200, 400));
         add(this.player1);
         add(this.player2);
@@ -38,6 +40,10 @@ public class LeftPlayers extends JPanel {
         this.player2 = new PlayerPanel(player2);
         this.player3 = new PlayerPanel(player3);
         this.player4 = new PlayerPanel(player4);
+        this.player1.getPanel().setBackground(new Color(159, 210, 154));
+        this.player2.getPanel().setBackground(new Color(236, 153, 122));
+        this.player3.getPanel().setBackground(new Color(206, 218, 225));
+        this.player4.getPanel().setBackground(new Color(232, 236, 151));
         this.setPreferredSize(new Dimension(200, 400));
         add(this.player1);
         add(this.player2);

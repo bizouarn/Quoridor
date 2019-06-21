@@ -29,8 +29,7 @@ public class PlayerPanel extends JPanel {
         super();
         this.player = player;
         this.panel = new JPanel(new GridLayout(2, 1));
-        this.setBorder(BorderFactory.createEmptyBorder(10, 10, 0, 10));
-        this.panel.setBorder(BorderFactory.createLineBorder(new Color(55, 62, 73), 5, true));
+        this.panel.setBorder(BorderFactory.createLineBorder(new Color(55, 62, 73), 2 ));
         this.add(panel);
         initComponent();
     }
@@ -44,8 +43,9 @@ public class PlayerPanel extends JPanel {
         this.name = new JLabel(this.player.getName(), SwingConstants.CENTER);
         this.fences = new JLabel[10];
         this.fencePanel = new JPanel(new FlowLayout());
-        this.fencePanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 15, 0));
-        this.setLayout(new GridLayout(2, 1));
+        this.fencePanel.setBorder(BorderFactory.createEmptyBorder(15, 0, 15, 0));
+        this.fencePanel.setBackground(new Color(255, 255, 198));
+        this.setLayout(new GridLayout(1, 1));
         this.panel.add(this.name);
         this.panel.add(this.fencePanel);
         for (int i = 0; i < this.fences.length; i++) {
@@ -63,23 +63,23 @@ public class PlayerPanel extends JPanel {
      */
     void refresh(int playerInfo) {
         Color green = new Color(12, 99, 34);
-        Color red = new Color(255, 53, 34);
-        this.panel.setBorder(BorderFactory.createLineBorder(red, 5, true));
+        Color red = new Color(55, 62, 73);
+        this.panel.setBorder(BorderFactory.createLineBorder(red, 2));
         if( this.player == this.player.getGame().getPlayer1()){
             if (this.player.getGame().getPlayerPlay() == 1) {
-                this.panel.setBorder(BorderFactory.createLineBorder(green, 5, true));
+                this.panel.setBorder(BorderFactory.createLineBorder(green, 4));
             }
         } else if(this.player == this.player.getGame().getPlayer2()){
             if (this.player.getGame().getPlayerPlay() == 2) {
-                this.panel.setBorder(BorderFactory.createLineBorder(green, 5, true));
+                this.panel.setBorder(BorderFactory.createLineBorder(green, 4));
             }
         } else if(this.player == this.player.getGame().getPlayer3()){
             if (this.player.getGame().getPlayerPlay() == 3) {
-                this.panel.setBorder(BorderFactory.createLineBorder(green, 5, true));
+                this.panel.setBorder(BorderFactory.createLineBorder(green, 4));
             }
         } else if(this.player == this.player.getGame().getPlayer4()){
             if (this.player.getGame().getPlayerPlay() == 4) {
-                this.panel.setBorder(BorderFactory.createLineBorder(green, 5, true));
+                this.panel.setBorder(BorderFactory.createLineBorder(green, 4));
             }
         }
         setFences(playerInfo);
@@ -99,5 +99,13 @@ public class PlayerPanel extends JPanel {
                 this.fences[i].setVisible(true);
             }
         }
+    }
+
+    /**
+     * Get Player Panel.
+     * @return The player panel.
+     */
+    public JPanel getPanel() {
+        return this.panel;
     }
 }

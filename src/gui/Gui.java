@@ -30,7 +30,7 @@ public class Gui implements java.io.Serializable {
     public Gui(Game game) {
         this.game = game;
 
-        this.jFrame = new JFrame("Quoridor");
+        this.jFrame = new JFrame("Quoridor : Game");
         this.gridPanel = new GridPanel(game.getBoard(), this);
         if(this.getGame().getNbPlayer()==2){
             this.leftPlayers = new LeftPlayers(this.game.getPlayer1(), this.game.getPlayer2());
@@ -59,6 +59,7 @@ public class Gui implements java.io.Serializable {
 
         this.jFrame.pack();
         this.jFrame.setVisible(true);
+        this.jFrame.setLocationRelativeTo(null);
     }
 
     /**

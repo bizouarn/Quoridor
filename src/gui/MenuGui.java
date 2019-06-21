@@ -20,6 +20,7 @@ public class MenuGui {
     private WelcomePanel welcomePanel;
     private MainMenu mainMenu;
     private CreditsPanel creditsPanel;
+    private RulesPanel rulesPanel;
     private CardLayout cl;
     private JPanel panel;
     private JFrame jFrame;
@@ -57,11 +58,12 @@ public class MenuGui {
         this.welcomePanel = new WelcomePanel(this.menuGuiListener);
         this.mainMenu = new MainMenu(this.menuGuiListener);
         this.creditsPanel = new CreditsPanel(this.menuGuiListener);
-        //this.parametersPanel = new ParametersPanel();
+        this.rulesPanel = new RulesPanel(this.menuGuiListener);
 
         this.panel.add(this.welcomePanel);
         this.panel.add(this.mainMenu);
         this.panel.add(this.creditsPanel);
+        this.panel.add(this.rulesPanel);
 
         this.show("welcome");
 
@@ -74,19 +76,23 @@ public class MenuGui {
     /**
      * Show the desired panel
      *
-     * @author Aymeric Bizouarn
+     * @author Aymeric Bizouarn , Pierre-Galaad Naquet
      */
     public void show(String panel) {
         this.mainMenu.setVisible(false);
         this.welcomePanel.setVisible(false);
         this.creditsPanel.setVisible(false);
+        this.rulesPanel.setVisible(false);
         if (panel.equals("menu")) {
             this.mainMenu.setVisible(true);
         } else if (panel.equals("welcome")) {
             this.welcomePanel.setVisible(true);
         } else if (panel.equals("credits")) {
             this.creditsPanel.setVisible(true);
+        } else if (panel.equals("rules")) {
+          this.rulesPanel.setVisible(true);
         }
+
     }
 
     /**
@@ -114,6 +120,15 @@ public class MenuGui {
      */
     public CreditsPanel getCreditsPanel() {
         return this.creditsPanel;
+    }
+
+    /**
+     * Get the rulesPanel
+     *
+     * @return the creditsPanel
+     */
+    public CreditsPanel getRulesPanel() {
+        return this.rulesPanel;
     }
 
     /**

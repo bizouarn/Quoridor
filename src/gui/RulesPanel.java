@@ -8,7 +8,7 @@ import java.awt.*;
  *
  * @author Aymeric Bizouarn , Pierre-Galaad Naquet
  */
-public class CreditsPanel extends JPanel {
+public class RulesPanel extends JPanel {
 
     private JLabel rulesPanel;
 
@@ -37,7 +37,7 @@ public class CreditsPanel extends JPanel {
    * @author Pierre-Galaad Naquet
    */
   private void initComponent() {
-    this.rulesPanel = new JLabel(new ImageIcon("./data/images/CREDITS.jpg"));
+    this.rulesPanel = new JLabel(new ImageIcon("./data/images/RULES.jpg"));
     this.retour = new JButton("Back");
     this.retour.addActionListener(this.menuGuiListener);
   }

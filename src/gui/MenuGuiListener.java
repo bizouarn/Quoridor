@@ -33,10 +33,13 @@ public class MenuGuiListener implements ActionListener {
         if (e.getSource() == this.menuGui.getWelcomePanel().getStartButton()) {
             this.menuGui.show("menu");
         }
-        if (e.getSource() == this.menuGui.getCreditsPanel().getReturnButton()) {
+        else if (e.getSource() == this.menuGui.getCreditsPanel().getReturnButton()) {
             this.menuGui.show("menu");
         }
-        if (e.getSource() == this.menuGui.getMainMenu().getLoadGame()) {
+        else if (e.getSource() == this.menuGui.getRulesPanel().getReturnButton()) {
+            this.menuGui.show("menu");
+        }
+        else if (e.getSource() == this.menuGui.getMainMenu().getLoadGame()) {
             this.menuGui.getjFrame().dispose();
             try {
                 FileWriter fw = new FileWriter(new File("./data/new.bin"), false);
@@ -46,7 +49,7 @@ public class MenuGuiListener implements ActionListener {
                 System.out.println(e);
             }
         }
-        if (e.getSource() == this.menuGui.getMainMenu().getNewGame()) {
+        else if (e.getSource() == this.menuGui.getMainMenu().getNewGame()) {
             this.menuGui.getjFrame().dispose();
             try {
                 FileWriter fw = new FileWriter(new File("./data/new.bin"), false);
@@ -56,10 +59,13 @@ public class MenuGuiListener implements ActionListener {
                 System.out.println(e);
             }
         }
-        if (e.getSource() == this.menuGui.getMainMenu().getCreds()) {
+        else if (e.getSource() == this.menuGui.getMainMenu().getCreds()) {
             this.menuGui.show("credits");
         }
-        if (e.getSource() == this.menuGui.getMainMenu().getQuit()) {
+        else if (e.getSource() == this.menuGui.getMainMenu().getRules()) {
+            this.menuGui.show("rules");
+        }
+        else if (e.getSource() == this.menuGui.getMainMenu().getQuit()) {
             System.exit(0);
         }
     }

@@ -30,6 +30,7 @@ public class Launcher {
         catch (Exception e){
             System.out.println(e);
         }
+        new Quoridor(args);
         new Launcher();
     }
 
@@ -38,8 +39,6 @@ public class Launcher {
      * @author Aymeric Bizouarn
      */
     public Launcher() {
-        String[] args = {};
-        new Quoridor(args);
         while (true) {
             try {
                 Thread.sleep(100);

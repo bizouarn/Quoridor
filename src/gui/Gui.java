@@ -1,20 +1,18 @@
 package gui;
 
 import quoridor.Game;
-import quoridor.Player;
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
  * The main game frame, this frame contains the board
+ *
  * @author Aymeric Bizouarn , Pierre-Galaad Naquet
  */
-public class Gui implements java.io.Serializable{
+public class Gui implements java.io.Serializable {
     private GuiListener guiListener = new GuiListener(this);
 
-    private PlayerPanel playerPanel1;
-    private PlayerPanel playerPanel2;
     private LeftPlayers leftPlayers;
     private ToolBar toolBar;
     private GridPanel gridPanel;
@@ -25,18 +23,21 @@ public class Gui implements java.io.Serializable{
 
     /**
      * Gui (Main game frame) constructor
+     *
      * @param game The current Game
      * @author Aymeric Bizouarn
      */
-    public Gui(Game game){
+    public Gui(Game game) {
         this.game = game;
 
         this.jFrame = new JFrame("Quoridor");
-        this.gridPanel = new GridPanel(game.getBoard(),this);
-        this.playerPanel1 = new PlayerPanel(game.getPlayer1());
-        this.playerPanel2 = new PlayerPanel(game.getPlayer2());
+        this.gridPanel = new GridPanel(game.getBoard(), this);
+        if(this.getGame().getNbPlayer()==2){
+            this.leftPlayers = new LeftPlayers(this.game.getPlayer1(), this.game.getPlayer2());
+        } else {
+            this.leftPlayers = new LeftPlayers(this.game.getPlayer1(), this.game.getPlayer2(),this.getGame().getPlayer3(),this.getGame().getPlayer4());
+        }
         this.toolBar = new ToolBar(this);
-        this.leftPlayers = new LeftPlayers(this.game.getPlayer1(),this.game.getPlayer2());
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 CreateAndShowGui();
@@ -46,14 +47,15 @@ public class Gui implements java.io.Serializable{
 
     /**
      * set the BorderLayout
+     *
      * @author Aymeric Bizouarn
      */
-    private void CreateAndShowGui(){
+    private void CreateAndShowGui() {
         this.jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.jFrame.add(this.gridPanel, BorderLayout.CENTER);
         this.jFrame.add(this.leftPlayers, BorderLayout.WEST);
-        this.jFrame.add(this.toolBar,BorderLayout.SOUTH);
+        this.jFrame.add(this.toolBar, BorderLayout.SOUTH);
 
         this.jFrame.pack();
         this.jFrame.setVisible(true);
@@ -61,16 +63,22 @@ public class Gui implements java.io.Serializable{
 
     /**
      * refresh the whole gui
+     *
      * @author Aymeric Bizouarn
      */
-    public void refresh(){
-        this.leftPlayers.refresh(this.game.getPlayer1().checkNbRestingFences(),this.game.getPlayer2().checkNbRestingFences());
+    public void refresh() {
+        if(this.getGame().getNbPlayer()==2) {
+            this.leftPlayers.refresh(this.game.getPlayer1().checkNbRestingFences(), this.game.getPlayer2().checkNbRestingFences());
+        } else {
+            this.leftPlayers.refresh(this.game.getPlayer1().checkNbRestingFences(), this.game.getPlayer2().checkNbRestingFences(),this.game.getPlayer3().checkNbRestingFences(), this.game.getPlayer4().checkNbRestingFences());
+        }
         this.gridPanel.refresh();
         this.jFrame.repaint();
     }
 
     /**
      * Return the current grid panel
+     *
      * @return the current grid panel
      */
     public GridPanel getGridPanel() {
@@ -79,6 +87,7 @@ public class Gui implements java.io.Serializable{
 
     /**
      * Return the gui's toolBar
+     *
      * @return the toolBar
      */
     public ToolBar getToolBar() {
@@ -87,6 +96,7 @@ public class Gui implements java.io.Serializable{
 
     /**
      * Return the gui's guiListener
+     *
      * @return the guiListener
      */
     public GuiListener getGuiListener() {
@@ -95,14 +105,16 @@ public class Gui implements java.io.Serializable{
 
     /**
      * Return the current Game
+     *
      * @return the current Game
      */
     public Game getGame() {
-      return this.game;
+        return this.game;
     }
 
     /**
      * Return the current frame
+     *
      * @return the current frame
      */
     public JFrame getjFrame() {

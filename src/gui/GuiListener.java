@@ -1,13 +1,15 @@
 package gui;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.ArrayList;
-
-import quoridor.Game;
 import quoridor.Square;
 import quoridor.SubBoard;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 /**
  * Listener for the game Frame (Gui)
@@ -141,6 +143,10 @@ public class GuiListener implements ActionListener, MouseListener, java.io.Seria
                 squares = gui.getGame().getBoard().listOfPossibilitiesPawn(gui.getGame().getPlayer1(), gui.getGame());
             } else if (gui.getGame().getPlayerPlay() == 2) {
                 squares = gui.getGame().getBoard().listOfPossibilitiesPawn(gui.getGame().getPlayer2(), gui.getGame());
+            } else if (gui.getGame().getPlayerPlay() == 3) {
+                squares = gui.getGame().getBoard().listOfPossibilitiesPawn(gui.getGame().getPlayer4(), gui.getGame());
+            } else if (gui.getGame().getPlayerPlay() == 4) {
+                squares = gui.getGame().getBoard().listOfPossibilitiesPawn(gui.getGame().getPlayer4(), gui.getGame());
             }
             Color color = red;
             for (Square sqr : squares) {
@@ -230,6 +236,15 @@ public class GuiListener implements ActionListener, MouseListener, java.io.Seria
     }
 
     /**
+     * set the value (boolean)
+     *
+     * @param value the desired value
+     */
+    public void setValue(boolean value) {
+        this.value = value;
+    }
+
+    /**
      * return fence
      *
      * @return true if there is a a fence, false otherwise
@@ -245,14 +260,5 @@ public class GuiListener implements ActionListener, MouseListener, java.io.Seria
      */
     public boolean getHorizontal() {
         return this.horizontal;
-    }
-
-    /**
-     * set the value (boolean)
-     *
-     * @param value the desired value
-     */
-    public void setValue(boolean value) {
-        this.value = value;
     }
 }

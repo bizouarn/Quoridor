@@ -2,11 +2,10 @@ package quoridor;
 
 // import project
 
-import quoridor.Square;
-//import GUI.MainGUI;
-
-// import java
 import java.util.ArrayList;
+
+//import GUI.MainGUI;
+// import java
 
 /**
  * Class for the initializing of the board.
@@ -18,16 +17,19 @@ public class Board implements java.io.Serializable {
 
     private final int SIZE = 9;
     private ArrayList<Square> grid;
-    private ArrayList<SubBoard> subBoards = new ArrayList<SubBoard>();
+    private ArrayList<SubBoard> subBoards = new ArrayList<>();
+
+    private int nbPlayer;
 
     /**
      * Board constructor
      * initialize a 81 squares board (9*9)
-     * Initialize walls and positionates players on their starting positions
+     * Initialize walls and position his players on their starting positions
      *
      * @author Pierre-Galaad Naquet
      */
-    public Board() {
+    public Board(int nbPlayer) {
+        this.nbPlayer = nbPlayer;
         initializeBoard();
         initializePlayers();
         initializeSubBoards();
@@ -71,6 +73,26 @@ public class Board implements java.io.Serializable {
         return ret;
     }
 
+    public Square getPlayer3Square() {
+        Square ret = null;
+        for (Square sqr : this.grid) {
+            if (sqr.getStatus() == Status.Player3) {
+                ret = sqr;
+            }
+        }
+        return ret;
+    }
+
+    public Square getPlayer4Square() {
+        Square ret = null;
+        for (Square sqr : this.grid) {
+            if (sqr.getStatus() == Status.Player4) {
+                ret = sqr;
+            }
+        }
+        return ret;
+    }
+
     public SubBoard getSubBoard(int x, int y) {
         SubBoard ret = null;
         for (SubBoard subBoard : this.subBoards) {
@@ -88,8 +110,8 @@ public class Board implements java.io.Serializable {
      *
      * @author Pierre-Galaad Naquet
      */
-    public void initializeBoard() {
-        this.grid = new ArrayList<Square>();
+    private void initializeBoard() {
+        this.grid = new ArrayList<>();
         for (int x = 0; x < 9; x++) {
             for (int y = 0; y < 9; y++) {
                 Square sqr = new Square(x, y);
@@ -135,13 +157,21 @@ public class Board implements java.io.Serializable {
      *
      * @author Pierre-Galaad Naquet
      */
-    public void initializePlayers() {
+    private void initializePlayers() {
         for (Square sqr : this.grid) {
             if ((sqr.getX() == 0) && (sqr.getY() == 4)) {
                 sqr.setStatus(Status.Player1);
             }
             if ((sqr.getX() == 8) && (sqr.getY() == 4)) {
                 sqr.setStatus(Status.Player2);
+            }
+            if (nbPlayer == 4) {
+                if ((sqr.getX() == 4) && (sqr.getY() == 0)) {
+                    sqr.setStatus(Status.Player3);
+                }
+                if ((sqr.getX() == 4) && (sqr.getY() == 8)) {
+                    sqr.setStatus(Status.Player4);
+                }
             }
         }
     }
@@ -158,20 +188,20 @@ public class Board implements java.io.Serializable {
         boolean bool;
         for (SubBoard subBoard : subBoards) {
             bool = true;
-            if ((subBoard.getHorizontalFence() == true) || (subBoard.getVerticalFence() == true)) {
+            if (subBoard.getHorizontalFence() || subBoard.getVerticalFence()) {
                 bool = false;
             }
             if (getSubBoard(subBoard.getX() + 1, subBoard.getY()) != null) {
-                if (getSubBoard(subBoard.getX() + 1, subBoard.getY()).getVerticalFence() == true) {
+                if (getSubBoard(subBoard.getX() + 1, subBoard.getY()).getVerticalFence()) {
                     bool = false;
                 }
             }
             if (getSubBoard(subBoard.getX() - 1, subBoard.getY()) != null) {
-                if (getSubBoard(subBoard.getX() - 1, subBoard.getY()).getVerticalFence() == true) {
+                if (getSubBoard(subBoard.getX() - 1, subBoard.getY()).getVerticalFence()) {
                     bool = false;
                 }
             }
-            if (bool == true) {
+            if (bool) {
                 ret.add(subBoard);
             }
         }
@@ -189,20 +219,20 @@ public class Board implements java.io.Serializable {
         boolean bool;
         for (SubBoard subBoard : subBoards) {
             bool = true;
-            if ((subBoard.getVerticalFence() == true) || (subBoard.getHorizontalFence() == true)) {
+            if (subBoard.getHorizontalFence() || subBoard.getVerticalFence()) {
                 bool = false;
             }
             if (getSubBoard(subBoard.getX(), subBoard.getY() + 1) != null) {
-                if (getSubBoard(subBoard.getX(), subBoard.getY() + 1).getHorizontalFence() == true) {
+                if (getSubBoard(subBoard.getX(), subBoard.getY() + 1).getHorizontalFence()) {
                     bool = false;
                 }
             }
             if (getSubBoard(subBoard.getX(), subBoard.getY() - 1) != null) {
-                if (getSubBoard(subBoard.getX(), subBoard.getY() - 1).getHorizontalFence() == true) {
+                if (getSubBoard(subBoard.getX(), subBoard.getY() - 1).getHorizontalFence()) {
                     bool = false;
                 }
             }
-            if (bool == true) {
+            if (bool) {
                 ret.add(subBoard);
             }
         }
@@ -218,14 +248,18 @@ public class Board implements java.io.Serializable {
      * @author Pierre-Galaad Naquet, Aymeric Bizouarn
      */
     public ArrayList<Square> listOfPossibilitiesPawn(Player player, Game game) {
-        Square currSqr;
-        ArrayList<Square> ret = new ArrayList<Square>();
+        Square currSqr = null;
+        ArrayList<Square> ret;
         if (player == game.getPlayer1()) {
             currSqr = getPlayer1Square();
         } else if (player == game.getPlayer2()) {
             currSqr = getPlayer2Square();
-        } else {
-            currSqr = null;
+        } else if (nbPlayer == 4) {
+            if (player == game.getPlayer3()) {
+                currSqr = getPlayer3Square();
+            } else if (player == game.getPlayer4()) {
+                currSqr = getPlayer4Square();
+            }
         }
         ret = listOfPossibilitiesPawn(currSqr);
         return ret;
@@ -234,7 +268,7 @@ public class Board implements java.io.Serializable {
     public ArrayList<Square> listOfPossibilitiesPawn(Square currSqr) {
         ArrayList<Square> ret = new ArrayList<Square>();
         if (currSqr != null) {
-            if (currSqr.getFenceN() == false) {
+            if (!currSqr.getFenceN()) {
                 Square currSqr2 = this.getSquare(currSqr.getX() - 1, currSqr.getY());
                 if (currSqr2 == null) {
                     ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY()));
@@ -253,7 +287,7 @@ public class Board implements java.io.Serializable {
                     ret.add(this.getSquare(currSqr.getX() - 1, currSqr.getY()));
                 }
             }
-            if (currSqr.getFenceS() == false) {
+            if (!currSqr.getFenceS()) {
                 Square currSqr2 = this.getSquare(currSqr.getX() + 1, currSqr.getY());
                 if (currSqr2 == null) {
                     ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY()));
@@ -272,7 +306,7 @@ public class Board implements java.io.Serializable {
                     ret.add(this.getSquare(currSqr.getX() + 1, currSqr.getY()));
                 }
             }
-            if (currSqr.getFenceE() == false) {
+            if (!currSqr.getFenceE()) {
                 Square currSqr2 = this.getSquare(currSqr.getX(), currSqr.getY() + 1);
                 if (currSqr2 == null) {
                     ret.add(this.getSquare(currSqr.getX(), currSqr.getY() + 1));
@@ -291,7 +325,7 @@ public class Board implements java.io.Serializable {
                     ret.add(this.getSquare(currSqr.getX(), currSqr.getY() + 1));
                 }
             }
-            if (currSqr.getFenceW() == false) {
+            if (!currSqr.getFenceW()) {
                 Square currSqr2 = this.getSquare(currSqr.getX(), currSqr.getY() - 1);
                 if (currSqr2 == null) {
                     ret.add(this.getSquare(currSqr.getX(), currSqr.getY() - 1));

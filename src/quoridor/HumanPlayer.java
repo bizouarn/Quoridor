@@ -5,7 +5,6 @@ package quoridor;
 
 // import java
 
-import gui.Gui;
 import gui.GuiListener;
 
 import java.util.ArrayList;
@@ -13,12 +12,14 @@ import java.util.Scanner;
 
 /**
  * Classes invoked when it is a human player turn
+ *
  * @author Aymeric Bizouarn , Pierre-Galaad Naquet
  */
 public class HumanPlayer extends Player {
 
     /**
      * HumanPlayer constructor
+     *
      * @param name The player name.
      * @author Aymeric Bizouarn
      */
@@ -28,6 +29,7 @@ public class HumanPlayer extends Player {
 
     /**
      * Let the player choose between if he wants to play a fence or moves its pawn
+     *
      * @author Aymeric Bizouarn
      */
     public void play() {
@@ -40,28 +42,27 @@ public class HumanPlayer extends Player {
             if (this.getGame().getGui()) {
                 try {
                     Thread.sleep(100);
-                } catch (Exception e){
+                } catch (Exception e) {
                     System.out.println(e);
                 }
                 GuiListener guiListener = this.getGame().getGuiFrame().getGuiListener();
                 boolean condition = guiListener.getValue();
-                if(condition){
+                if (condition) {
                     guiListener.setValue(false);
                     int x1 = guiListener.getX1();
                     int x2 = guiListener.getX2();
                     int y1 = guiListener.getY1();
                     int y2 = guiListener.getY2();
                     int pos;
-                    if(guiListener.getHorizontal()){
+                    if (guiListener.getHorizontal()) {
                         pos = 2;
                     } else {
                         pos = 1;
                     }
-                    if(!guiListener.getFence()){
+                    if (!guiListener.getFence()) {
                         for (Square sqr : possibilitiesPawn) {
                             if (sqr.getX() == x1 && sqr.getY() == y1) {
-                                playPawn(x1, y1);
-                                validPlay = true;
+                                validPlay = playPawn(x1, y1);
                             }
                         }
                     } else {
@@ -100,8 +101,7 @@ public class HumanPlayer extends Player {
                         int y = Integer.parseInt(sc.nextLine());
                         for (Square sqr : possibilitiesPawn) {
                             if (sqr.getX() == x && sqr.getY() == y) {
-                                playPawn(x, y);
-                                validPlay = true;
+                                validPlay = playPawn(x, y);
                             }
                         }
                     } catch (Exception e) {
@@ -138,7 +138,7 @@ public class HumanPlayer extends Player {
                     } catch (Exception e) {
                         System.out.println("Invalid input !");
                     }
-                } else if(choix.equals("3")){
+                } else if (choix.equals("3")) {
                     this.getGame().saveGame();
                 }
             }

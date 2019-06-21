@@ -2,22 +2,21 @@ package gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileWriter;
 
-import quoridor.Quoridor;
-
 /**
  * Listener for the menuGui
+ *
  * @author Aymeric Bizouarn , Pierre-Galaad Naquet
  */
-public class MenuGuiListener implements ActionListener{
+public class MenuGuiListener implements ActionListener {
 
     private MenuGui menuGui;
 
     /**
      * MenuGuiListener constructor
+     *
      * @author Piere-Galaad Naquet
      */
     public MenuGuiListener(MenuGui menuGui) {
@@ -26,6 +25,7 @@ public class MenuGuiListener implements ActionListener{
 
     /**
      * invoked when there is an event on the menuGui
+     *
      * @param e an action on the frame
      * @author Pierre-Galaad Naquet
      */
@@ -42,8 +42,8 @@ public class MenuGuiListener implements ActionListener{
                 FileWriter fw = new FileWriter(new File("./data/new.bin"), false);
                 fw.write("load");
                 fw.close();
-            } catch (Exception exc){
-
+            } catch (Exception exc) {
+                System.out.println(e);
             }
         }
         if (e.getSource() == this.menuGui.getMainMenu().getNewGame()) {
@@ -52,14 +52,14 @@ public class MenuGuiListener implements ActionListener{
                 FileWriter fw = new FileWriter(new File("./data/new.bin"), false);
                 fw.write("gui");
                 fw.close();
-            } catch (Exception exc){
-
+            } catch (Exception exc) {
+                System.out.println(e);
             }
         }
         if (e.getSource() == this.menuGui.getMainMenu().getCreds()) {
             this.menuGui.show("credits");
         }
-        if(e.getSource() == this.menuGui.getMainMenu().getQuit()){
+        if (e.getSource() == this.menuGui.getMainMenu().getQuit()) {
             System.exit(0);
         }
     }

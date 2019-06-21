@@ -1,31 +1,34 @@
 package test;
 
-import org.junit.*;
+import org.junit.Test;
 import quoridor.*;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 public class TestBoard {
     @Test
     public void testBoard() {
-        Board board = new Board();
+        Board board = new Board(2);
         assertNotNull(board);
     }
+
     @Test
-    public void testListOfPossibilitiesFence(){
-        Board board = new Board();
+    public void testListOfPossibilitiesFence() {
+        Board board = new Board(2);
         //ArrayList<Square> arrayPossibilitiesFence = board.listOfPossibilitiesFence();
         //assertNotNull(arrayPossibilitiesFence);
     }
+
     @Test
-    public void testListOfPossibilitiesPawn(){
-        Game game = new Game(false);
-        Board board = new Board();
-        Player player = new AutoPlayer("joueur",game);
-        ArrayList<Square> arrayPossibilitiesPawn = board.listOfPossibilitiesPawn(player,game);
+    public void testListOfPossibilitiesPawn() {
+        Game game = new Game(false,2);
+        Board board = new Board(2);
+        Player player = new AutoPlayer("joueur", game);
+        ArrayList<Square> arrayPossibilitiesPawn = board.listOfPossibilitiesPawn(player, game);
         assertNotNull(arrayPossibilitiesPawn);
-        assertNull(board.listOfPossibilitiesPawn(null,null));
+        assertNull(board.listOfPossibilitiesPawn(null, null));
     }
 }

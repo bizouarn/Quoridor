@@ -11,10 +11,22 @@ import quoridor.TerminalPrinting;
  */
 public class Board implements java.io.Serializable {
 
+    /**
+     * Size of the side of the square
+     */
     private final int SIZE = 9;
-    private ArrayList<Square> grid;
-    private ArrayList<SubBoard> subBoards = new ArrayList<>();
 
+    /**
+     * The aggregation of squares
+     */
+    private ArrayList<Square> grid;
+    /**
+     * The aggregation of subBoard
+     */
+    private ArrayList<SubBoard> subBoards = new ArrayList<>();
+    /**
+     *  Number of player in the game
+     */
     private int nbPlayer;
 
     /**

@@ -1,7 +1,5 @@
 package quoridor;
 
-// import project
-
 import gui.Gui;
 import gui.PopUpEndOfGame;
 import gui.PopUpInputPlayer;
@@ -14,8 +12,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// import java
-
 /**
  * This class contains the methods to initialize the game
  *
@@ -23,17 +19,47 @@ import java.util.Scanner;
  */
 public class Game implements java.io.Serializable {
 
+    /**
+    * The game board
+    */
     private Board board;
+    /**
+     * The player 1
+     */
     private Player player1;
+    /**
+     * The player 2
+     */
     private Player player2;
+    /**
+     * The player 3 (used only in 4 players game mode)
+     */
     private Player player3;
+    /**
+     * The player 4 (used only in 4 players game mode)
+     */
     private Player player4;
 
+    /**
+     * Player which is currently playing
+     */
     private Player playerActual;
+    /**
+     * Number of the player playing
+     */
     private int playerPlay;
+    /**
+     * Number of player in the game (either 2 or 4)
+     */
     private int nbPlayer;
 
+    /**
+     * True if the gui is used
+     */
     private boolean gui;
+    /**
+     * The gui used
+     */
     private Gui guiFrame;
 
     /**

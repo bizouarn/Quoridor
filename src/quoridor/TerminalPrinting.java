@@ -1,9 +1,20 @@
 package quoridor;
 
+/**
+ * Class containing the method permiting to print the board in the terminal
+ * @author Aymeric Bizouarn , Pierre-Galaad Naquet
+ */
 public class TerminalPrinting {
 
+    /**
+     * The current board
+     */
     private Board board;
 
+    /**
+     * Invoked to print th board in terminal mode
+     * @author Pierre-Galaad Naquet
+     */
     public static String printBoard(Board board) {
 
         String ret = "";

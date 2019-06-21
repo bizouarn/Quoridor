@@ -3,7 +3,7 @@ package quoridor;
 import java.util.ArrayList;
 
 /**
- * An Extend of Player make for play automatically.
+ * Class extending Player, invoked to create a bot
  *
  * @author Aymeric Bizouarn , Pierre-Galaad Naquet
  */

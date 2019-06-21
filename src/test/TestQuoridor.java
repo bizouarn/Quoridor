@@ -1,23 +1,36 @@
 package test;
 
+import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
 import quoridor.Quoridor;
 
-import static org.junit.Assert.assertNotNull;
-
+/**
+ * Run test for class Quoridor
+ */
 public class TestQuoridor {
-    @Test
-    public static void testQuoridor() {
-        Quoridor quoridor = new Quoridor(null);
-        assertNotNull(quoridor);
-        quoridor = new Quoridor(null);
-        assertNotNull(quoridor);
+    private Quoridor quoridor;
+
+    /**
+     * Run test
+     *
+     * @param args optional arguments
+     */
+    public static void main(String[] args) {
+        Result result = JUnitCore.runClasses(TestQuoridor.class);
+
+        for (Failure failure : result.getFailures()) {
+            System.out.println(failure.toString());
+        }
+
+        System.out.println(result.wasSuccessful());
     }
 
     @Test
-    public static void testLoadOldGameAndTestSaveGame() {
-        Quoridor quoridor = new Quoridor(null);
-        quoridor.saveGame(quoridor.getGame());
-        assertNotNull(Quoridor.loadOldGame());
+    public void testQuoridor() {
+        Quoridor quoridor = new Quoridor();
+        Assert.assertNotNull(quoridor);
     }
 }

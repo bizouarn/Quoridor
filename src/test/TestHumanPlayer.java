@@ -1,21 +1,42 @@
 package test;
 
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
-import quoridor.Board;
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
 import quoridor.Game;
 import quoridor.HumanPlayer;
 
-import static org.junit.Assert.*;
-
+/**
+ * Run test for class HumanPlayer
+ */
 public class TestHumanPlayer {
+    private HumanPlayer humanPlayer;
+
+    /**
+     * Run test
+     *
+     * @param args optional arguments
+     */
+    public static void main(String[] args) {
+        Result result = JUnitCore.runClasses(TestHumanPlayer.class);
+
+        for (Failure failure : result.getFailures()) {
+            System.out.println(failure.toString());
+        }
+
+        System.out.println(result.wasSuccessful());
+    }
+
+    @Before
+    public void init() {
+        this.humanPlayer = new HumanPlayer("test", new Game());
+    }
+
     @Test
-    public static void testHumanPlayer() {
-        Board board = new Board(2);
-        Game game = new Game(false,2);
-        HumanPlayer humanPlayer = new HumanPlayer("joueur", game);
-        assertNotNull(humanPlayer);
-        assertEquals(humanPlayer, new HumanPlayer("joueur", game));
-        humanPlayer = new HumanPlayer(null, null);
-        assertNull(humanPlayer);
+    public void testHumanPlayer() {
+        Assert.assertNotNull(humanPlayer);
     }
 }

@@ -63,10 +63,26 @@ public class Game implements java.io.Serializable {
     private Gui guiFrame;
 
     /**
+     * Game constructor (Just use in test)
+     * Launch either a swing game or a terminal one
+     *
+     * @author Aymeric Bizouarn
+     */
+    public Game() {
+        this.nbPlayer = 0;
+        this.gui = false;
+        this.player1 = new AutoPlayer("test",this);
+        this.player1 = new HumanPlayer("test",this);
+        initializeGame();
+        this.nbPlayer = 2;
+        this.board = new Board(2);
+    }
+
+    /**
      * Game constructor
      * Launch either a swing game or a terminal one
      *
-     * @param gui true if the game has to be launched in the swing version, false otherwise
+     * @param gui      true if the game has to be launched in the swing version, false otherwise
      * @param nbPlayer The number of player in the game.
      * @author Aymeric Bizouarn
      */
@@ -179,18 +195,20 @@ public class Game implements java.io.Serializable {
             }
         } else {
             Scanner scanner = new Scanner(System.in);
-            while (name1.length() < 2) {
-                System.out.println("Name Player 1 : ");
-                name1 = scanner.nextLine();
-                if (name1.length() < 2) {
-                    System.out.println("Invalid input : The size of the name has minimum 2 characters");
+            if(nbPlayer==2) {
+                while (name1.length() < 2) {
+                    System.out.println("Name Player 1 : ");
+                    name1 = scanner.nextLine();
+                    if (name1.length() < 2) {
+                        System.out.println("Invalid input : The size of the name has minimum 2 characters");
+                    }
                 }
-            }
-            while (name2.length() < 2) {
-                System.out.println("Name Player 2 : ");
-                name2 = scanner.nextLine();
-                if (name2.length() < 2) {
-                    System.out.println("Invalid input : The size of the name has minimum 2 characters");
+                while (name2.length() < 2) {
+                    System.out.println("Name Player 2 : ");
+                    name2 = scanner.nextLine();
+                    if (name2.length() < 2) {
+                        System.out.println("Invalid input : The size of the name has minimum 2 characters");
+                    }
                 }
             }
             if (this.nbPlayer == 4) {
@@ -444,21 +462,21 @@ public class Game implements java.io.Serializable {
      * @return True if a path exists, false otherwise
      * @author Aymeric Bizouarn
      */
-    boolean checkExistingPath() {
+    public boolean checkExistingPath() {
         boolean ret = false;
         int resP1 = getNbMinMove(this.board.getPlayer1Square(), 1);
         int resP2 = getNbMinMove(this.board.getPlayer2Square(), 2);
         if (nbPlayer == 2) {
-            if (resP1<81 && resP2<81) {
+            if (resP1 < 81 && resP2 < 81) {
                 ret = true;
             }
         } else {
             int resP3 = getNbMinMove(this.board.getPlayer3Square(), 3);
             int resP4 = getNbMinMove(this.board.getPlayer4Square(), 4);
-            if (resP1<81 && resP2<81 && resP3<81 && resP4<81) {
+            if (resP1 < 81 && resP2 < 81 && resP3 < 81 && resP4 < 81) {
                 ret = true;
             }
-            System.out.print("check :"+resP1+","+resP2+","+resP3+","+resP4+","+ret);
+            System.out.print("check :" + resP1 + "," + resP2 + "," + resP3 + "," + resP4 + "," + ret);
         }
         return ret;
     }
@@ -471,7 +489,7 @@ public class Game implements java.io.Serializable {
      * @return the number of tiles until the opposite side of the board
      * @author Aymeric Bizouarn
      */
-    int getNbMinMove(Square sqr, int player) {
+    public int getNbMinMove(Square sqr, int player) {
         ArrayList<Square> possibilite = this.board.listOfPossibilitiesPawn(sqr);
         ArrayList<Object[]> squaresPossible = new ArrayList<>();
         Object[] value = {sqr, 0};

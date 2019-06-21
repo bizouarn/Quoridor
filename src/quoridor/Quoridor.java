@@ -23,6 +23,15 @@ public class Quoridor {
     private Game game;
 
     /**
+     * Quoridor constructor for Junit test
+     * Create an object Quoridor
+     * Serve as a platform to load and launch games
+     */
+    public Quoridor() {
+
+    }
+
+    /**
      * Quoridor constructor
      * Create an object Quoridor
      * Serve as a platform to load and launch games

@@ -6,15 +6,14 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
-import quoridor.AutoPlayer;
-import quoridor.Game;
+import quoridor.Square;
+import quoridor.SubBoard;
 
 /**
- * Run test for class AutoPlayer
+ * Run test for class subBoard
  */
-public class TestAutoPlayer {
-    private Game game;
-    private AutoPlayer autoPlayer;
+public class TestSubBoard {
+    private SubBoard subBoard;
 
     /**
      * Run test
@@ -22,7 +21,7 @@ public class TestAutoPlayer {
      * @param args optional arguments
      */
     public static void main(String[] args) {
-        Result result = JUnitCore.runClasses(TestAutoPlayer.class);
+        Result result = JUnitCore.runClasses(TestSubBoard.class);
 
         for (Failure failure : result.getFailures()) {
             System.out.println(failure.toString());
@@ -33,17 +32,18 @@ public class TestAutoPlayer {
 
     @Before
     public void init() {
-        this.game = new Game();
-        this.autoPlayer = new AutoPlayer("test", game);
+        this.subBoard = new SubBoard(new Square(0, 0), new Square(0, 1), new Square(1, 0), new Square(1, 1));
     }
 
     @Test
-    public void testAutoPlayer() {
-        Assert.assertNotNull(autoPlayer);
+    public void testSubBoard() {
+        Assert.assertNotNull(subBoard);
     }
 
     @Test
-    public void testPlay() {
-        autoPlayer.play();
+    public void testGetSqrArray() {
+        Square[] squares = subBoard.getSqrArray();
+        Assert.assertNotNull(squares);
+        Assert.assertEquals(squares.length, 4);
     }
 }

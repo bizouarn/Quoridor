@@ -54,7 +54,7 @@ public abstract class Player implements java.io.Serializable {
      * @return true if the auto player has placed a fence.
      * @author Aymeric Bizouarn
      */
-    boolean playFence(int x1, int y1, int x2, int y2, int pos) {
+    public boolean playFence(int x1, int y1, int x2, int y2, int pos) {
         boolean ret;
         if (this.checkNbRestingFences() > 0) {
             ret = true;
@@ -124,7 +124,7 @@ public abstract class Player implements java.io.Serializable {
      * @return true if the auto player has move pawn.
      * @author Aymeric Bizouarn
      */
-    boolean playPawn(int x, int y) {
+    public boolean playPawn(int x, int y) {
         boolean ret = false;
         if (this.getGame().getBoard().getSquare(x, y).getStatus() == Status.NONE) {
             if (this.getGame().getPlayer1() == this) {

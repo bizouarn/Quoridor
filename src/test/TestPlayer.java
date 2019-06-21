@@ -6,13 +6,15 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
+import quoridor.AutoPlayer;
 import quoridor.Game;
+import quoridor.Player;
 
 /**
- * Run test for class Game
+ * Run test for class player
  */
-public class TestGame {
-    private Game game;
+public class TestPlayer {
+    private Player player;
 
     /**
      * Run test
@@ -20,7 +22,7 @@ public class TestGame {
      * @param args optional arguments
      */
     public static void main(String[] args) {
-        Result result = JUnitCore.runClasses(TestGame.class);
+        Result result = JUnitCore.runClasses(TestPlayer.class);
 
         for (Failure failure : result.getFailures()) {
             System.out.println(failure.toString());
@@ -31,27 +33,24 @@ public class TestGame {
 
     @Before
     public void init() {
-        this.game = new Game();
+        this.player = new AutoPlayer("test", new Game());
     }
 
     @Test
-    public void testGame() {
-        Assert.assertNotNull(game);
+    public void testPlayer() {
+        Assert.assertNotNull(player);
+        Assert.assertEquals(player.getName(), "test");
+        Assert.assertEquals(player.checkNbRestingFences(), 10);
     }
 
     @Test
-    public void testWhoStarts() {
-        Assert.assertNotNull(game.whoStarts());
+    public void testPlayFence() {
+        player.playFence(0, 0, 1, 1, 1);
+        player.playFence(1, 1, 2, 2, 2);
     }
 
     @Test
-    public void testExistingPath() {
-        Assert.assertTrue(game.checkExistingPath());
-    }
-
-    @Test
-    public void testGetMinMove() {
-        int value = game.getNbMinMove(game.getBoard().getPlayer1Square(), 1);
-        Assert.assertEquals(value, 8);
+    public void testPlayPawn() {
+        player.playPawn(1, 4);
     }
 }

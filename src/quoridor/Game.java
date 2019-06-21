@@ -508,107 +508,54 @@ public class Game implements java.io.Serializable {
     int getNbMinMove(Square sqr, int player) {
         ArrayList<Square> possibilite = this.board.listOfPossibilitiesPawn(sqr);
         ArrayList<Object[]> squaresPossible = new ArrayList<>();
-        Object[] value = {sqr,0};
+        Object[] value = {sqr, 0};
         squaresPossible.add(value);
         value = new Object[2];
-        for(int i =0;i<possibilite.size();i++){
+        for (int i = 0; i < possibilite.size(); i++) {
             Square square = possibilite.get(i);
-            Object[] value2 = {square,1};
+            Object[] value2 = {square, 1};
             squaresPossible.add(value2);
-            System.out.println("("+square.getX()+","+square.getY()+") :"+1);
         }
-        for(int k=2 ; k<=81 ; k++){
-            for (int j=0;j<squaresPossible.size();j++) {
+        for (int k = 2; k <= 80; k++) {
+            for (int j = 0; j < squaresPossible.size(); j++) {
                 possibilite = new ArrayList<>(this.board.listOfPossibilitiesPawn((Square) squaresPossible.get(j)[0]));
-                for(int i =0;i<possibilite.size();i++){
+                ArrayList<Object[]> squaresPossible2 = new ArrayList<>(squaresPossible);
+                for (int i = 0; i < possibilite.size(); i++) {
                     boolean condition = true;
                     Square square = possibilite.get(i);
-                    ArrayList<Object[]> squaresPossible2 = new ArrayList<>(squaresPossible);
-                    for (int l=0;l<squaresPossible2.size();l++) {
-                        Square oldSquare = (Square)squaresPossible2.get(l)[0];
-                        if(square.getX()==oldSquare.getX()&&square.getY()==oldSquare.getY()){
+                    for (int l = 0; l < squaresPossible2.size(); l++) {
+                        Square oldSquare = (Square) squaresPossible2.get(l)[0];
+                        if (square.getX() == oldSquare.getX() && square.getY() == oldSquare.getY()) {
                             condition = false;
                         }
                     }
-                    if(condition){
-                        Object[] value2 = {square,j};
-                        System.out.println("("+square.getX()+","+square.getY()+") :"+k+","+j);
+                    if (condition) {
+                        Object[] value2 = {square, ((int) squaresPossible.get(j)[1] + 1)};
                         squaresPossible.add(value2);
                     }
                 }
             }
         }
-        System.out.println("possibilite:");
-        for(Square square:possibilite){
-            System.out.println("("+square.getX()+","+square.getY()+")");
-        }
-        System.out.println("disktrar:");
-        for(Object[] valuePrint:squaresPossible){
-            Square square =(Square) valuePrint[0];
-            System.out.println("("+square.getX()+","+square.getY()+") : "+(int)(valuePrint[1]));
-        }
-        ArrayList<Integer> nbMove = new ArrayList<>();
-        ArrayList<String> listSquare = new ArrayList<>();
-        recNbMinMove(sqr, player, listSquare, nbMove, 1);
-        int ret = 82;
-        for (Integer val : nbMove) {
-            if (val < ret) {
-                ret = val;
+        Square res = null;
+        int min = 82;
+        int tmp = min;
+        for (Object[] valuePrint : squaresPossible) {
+            Square square = (Square) valuePrint[0];
+            if (square.getX() == 8 && player == 1) {
+                tmp = (int) valuePrint[1];
+            } else if (square.getX() == 0 && player == 2) {
+                tmp = (int) valuePrint[1];
+            } else if (square.getY() == 8 && player == 3) {
+                tmp = (int) valuePrint[1];
+            } else if (square.getY() == 0 && player == 4) {
+                tmp = (int) valuePrint[1];
+            }
+            if (tmp < min) {
+                min = tmp;
+                res = (Square) valuePrint[0];
             }
         }
-        return ret;
-    }
-
-    /*
-    int getNbMinMove(Square sqr, int player) {
-        ArrayList<Integer> nbMove = new ArrayList<>();
-        ArrayList<String> listSquare = new ArrayList<>();
-        recNbMinMove(sqr, player, listSquare, nbMove, 1);
-        int ret = 82;
-        for (Integer val : nbMove) {
-            if (val < ret) {
-                ret = val;
-            }
-        }
-        return ret;
-    }*/
-
-    /**
-     * get the path with the fewest tiles to the opposite side of the board
-     *
-     * @param sqr        the current square
-     * @param player     the current player
-     * @param listSquare The List of Square that have been passed.
-     * @param nbMove     The number of move. (the recursive deeper.)
-     * @param deepMove   The move result.
-     * @author Aymeric Bizouarn
-     */
-    private void recNbMinMove(Square sqr, int player, ArrayList<String> listSquare, ArrayList<Integer> nbMove, int deepMove) {
-        ArrayList<String> listSquareTmp = new ArrayList<>(listSquare);
-        ArrayList<Square> possibilitiesPawn = this.board.listOfPossibilitiesPawn(sqr);
-        if (sqr.getX() == 8 && player == 1) {
-            nbMove.add(deepMove);
-        } else if (sqr.getX() == 0 && player == 2) {
-            nbMove.add(deepMove);
-        } else if (sqr.getY() == 8 && player == 3) {
-            nbMove.add(deepMove);
-        } else if (sqr.getY() == 0 && player == 4) {
-            nbMove.add(deepMove);
-        } else {
-            for (Square sqrP : possibilitiesPawn) {
-                String value = sqrP.getX() + "," + sqrP.getY();
-                int min = 82;
-                for (Integer val : nbMove) {
-                    if (val < min) {
-                        min = val;
-                    }
-                }
-                if (listSquareTmp.indexOf(value) == -1 && deepMove < min) {
-                    listSquareTmp.add(value);
-                    recNbMinMove(sqrP, player, listSquareTmp, nbMove, deepMove + 1);
-                }
-            }
-        }
+        return min;
     }
 
     /**

@@ -29,7 +29,6 @@ public class CreditsPanel extends JPanel {
      */
     public CreditsPanel(MenuGuiListener menuGuiListener) {
         this.menuGuiListener = menuGuiListener;
-        initFont();
         initComponent();
         setLayout(new GridLayout(3, 3));
         add(this.picAymer);

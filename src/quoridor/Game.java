@@ -1,7 +1,5 @@
 package quoridor;
 
-// import project
-
 import gui.Gui;
 import gui.PopUpEndOfGame;
 import gui.PopUpInputPlayer;
@@ -13,8 +11,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-// import java
 
 /**
  * This class contains the methods to initialize the game

@@ -1,5 +1,6 @@
 package gui;
 
+import controller.GuiListener;
 import quoridor.Game;
 
 import javax.swing.*;

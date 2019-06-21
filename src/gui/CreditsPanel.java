@@ -1,5 +1,7 @@
 package gui;
 
+import controller.MenuGuiListener;
+
 import javax.swing.*;
 import java.awt.*;
 

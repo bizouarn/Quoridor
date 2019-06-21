@@ -1,4 +1,6 @@
-package gui;
+package controller;
+
+import gui.MenuGui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

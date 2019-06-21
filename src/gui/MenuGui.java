@@ -1,5 +1,7 @@
 package gui;
 
+import controller.MenuGuiListener;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

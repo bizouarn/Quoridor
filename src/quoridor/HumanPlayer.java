@@ -5,7 +5,7 @@ package quoridor;
 
 // import java
 
-import gui.GuiListener;
+import controller.GuiListener;
 
 import java.util.ArrayList;
 import java.util.Scanner;

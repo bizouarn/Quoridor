@@ -1,5 +1,6 @@
-package gui;
+package controller;
 
+import gui.Gui;
 import quoridor.Square;
 import quoridor.SubBoard;
 

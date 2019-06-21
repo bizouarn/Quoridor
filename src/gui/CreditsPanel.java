@@ -25,10 +25,9 @@ public class CreditsPanel extends JPanel {
     public CreditsPanel(MenuGuiListener menuGuiListener) {
         this.menuGuiListener = menuGuiListener;
         initComponent();
-        setLayout(new GridLayout(1, 2));
+        setLayout(new FlowLayout());
         add(this.rulesPanel);
         add(this.retour);
-        this.setPreferredSize(new Dimension(300, 200));
         setBackground(new Color(0, 0, 0, 0));
     }
 
@@ -37,7 +36,7 @@ public class CreditsPanel extends JPanel {
    * @author Pierre-Galaad Naquet
    */
   private void initComponent() {
-    this.rulesPanel = new JLabel(new ImageIcon("./data/images/CREDITS.jpg"));
+    this.rulesPanel = new JLabel(new ImageIcon("./data/images/CREDITS.png"));
     this.retour = new JButton("Back");
     this.retour.addActionListener(this.menuGuiListener);
   }

@@ -170,32 +170,33 @@ public class Game implements java.io.Serializable {
             }
         } else {
             Scanner scanner = new Scanner(System.in);
-            String choice ="";
-            while (name1.length()<2) {
+            String choice = "";
+            while (name1.length() < 2) {
                 System.out.println("Name Player 1 : ");
                 name1 = scanner.nextLine();
-                if(name1.length()<2){
+                if (name1.length() < 2) {
                     System.out.println("Invalid input : The size of the name has minimum 2 characters");
                 }
             }
-            while (name2.length()<2) {
+            while (name2.length() < 2) {
                 System.out.println("Name Player 2 : ");
                 name2 = scanner.nextLine();
-                if(name2.length()<2){
+                if (name2.length() < 2) {
                     System.out.println("Invalid input : The size of the name has minimum 2 characters");
                 }
             }
             if (this.nbPlayer == 4) {
-                while (name3.length()<2) {
+                while (name3.length() < 2) {
                     System.out.println("Name Player 1 : ");
                     name3 = scanner.nextLine();
-                    if(name3.length()<2){
+                    if (name3.length() < 2) {
                         System.out.println("Invalid input : The size of the name has minimum 2 characters");
                     }
-                }while (name4.length()<2) {
+                }
+                while (name4.length() < 2) {
                     System.out.println("Name Player 1 : ");
                     name4 = scanner.nextLine();
-                    if(name4.length()<2){
+                    if (name4.length() < 2) {
                         System.out.println("Invalid input : The size of the name has minimum 2 characters");
                     }
                 }
@@ -409,7 +410,7 @@ public class Game implements java.io.Serializable {
                 if (choice == 2) {
                     Scanner scanner = new Scanner(System.in);
                     String choiceS = "";
-                    while (!(choiceS.equals("1")||choiceS.equals("2"))){
+                    while (!(choiceS.equals("1") || choiceS.equals("2"))) {
                         System.out.println("Write : \n1 - 2 Player \n2 - 4 Player");
                         choiceS = scanner.nextLine();
                         if (choiceS.equals("1")) {
@@ -504,8 +505,48 @@ public class Game implements java.io.Serializable {
      * @return the number of tiles until the opposite side of the board
      * @author Aymeric Bizouarn
      */
-
     int getNbMinMove(Square sqr, int player) {
+        ArrayList<Square> possibilite = this.board.listOfPossibilitiesPawn(sqr);
+        ArrayList<Object[]> squaresPossible = new ArrayList<>();
+        Object[] value = {sqr,0};
+        squaresPossible.add(value);
+        value = new Object[2];
+        for(int i =0;i<possibilite.size();i++){
+            Square square = possibilite.get(i);
+            Object[] value2 = {square,1};
+            squaresPossible.add(value2);
+            System.out.println("("+square.getX()+","+square.getY()+") :"+1);
+        }
+        for(int k=2 ; k<=81 ; k++){
+            for (int j=0;j<squaresPossible.size();j++) {
+                possibilite = new ArrayList<>(this.board.listOfPossibilitiesPawn((Square) squaresPossible.get(j)[0]));
+                for(int i =0;i<possibilite.size();i++){
+                    boolean condition = true;
+                    Square square = possibilite.get(i);
+                    ArrayList<Object[]> squaresPossible2 = new ArrayList<>(squaresPossible);
+                    for (int l=0;l<squaresPossible2.size();l++) {
+                        Square oldSquare = (Square)squaresPossible2.get(l)[0];
+                        if(square.getX()==oldSquare.getX()&&square.getY()==oldSquare.getY()){
+                            condition = false;
+                        }
+                    }
+                    if(condition){
+                        Object[] value2 = {square,j};
+                        System.out.println("("+square.getX()+","+square.getY()+") :"+k+","+j);
+                        squaresPossible.add(value2);
+                    }
+                }
+            }
+        }
+        System.out.println("possibilite:");
+        for(Square square:possibilite){
+            System.out.println("("+square.getX()+","+square.getY()+")");
+        }
+        System.out.println("disktrar:");
+        for(Object[] valuePrint:squaresPossible){
+            Square square =(Square) valuePrint[0];
+            System.out.println("("+square.getX()+","+square.getY()+") : "+(int)(valuePrint[1]));
+        }
         ArrayList<Integer> nbMove = new ArrayList<>();
         ArrayList<String> listSquare = new ArrayList<>();
         recNbMinMove(sqr, player, listSquare, nbMove, 1);
@@ -517,6 +558,20 @@ public class Game implements java.io.Serializable {
         }
         return ret;
     }
+
+    /*
+    int getNbMinMove(Square sqr, int player) {
+        ArrayList<Integer> nbMove = new ArrayList<>();
+        ArrayList<String> listSquare = new ArrayList<>();
+        recNbMinMove(sqr, player, listSquare, nbMove, 1);
+        int ret = 82;
+        for (Integer val : nbMove) {
+            if (val < ret) {
+                ret = val;
+            }
+        }
+        return ret;
+    }*/
 
     /**
      * get the path with the fewest tiles to the opposite side of the board

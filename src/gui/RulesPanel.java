@@ -22,7 +22,7 @@ public class RulesPanel extends JPanel {
      * @param menuGuiListener The listeners of this panel
      * @author Pierre-Galaad Naquet
      */
-    public CreditsPanel(MenuGuiListener menuGuiListener) {
+    public RulesPanel(MenuGuiListener menuGuiListener) {
         this.menuGuiListener = menuGuiListener;
         initComponent();
         setLayout(new GridLayout(1, 2));

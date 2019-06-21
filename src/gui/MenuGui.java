@@ -127,7 +127,7 @@ public class MenuGui {
      *
      * @return the creditsPanel
      */
-    public CreditsPanel getRulesPanel() {
+    public RulesPanel getRulesPanel() {
         return this.rulesPanel;
     }
 

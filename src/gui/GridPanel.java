@@ -50,7 +50,6 @@ public class GridPanel extends JPanel {
                 } else {
                     path ="";
                 }
-                System.out.println("./data/images/" + path + square.getStatusFence().getImage());
                 grid[i][j] = new JButton(new ImageIcon("./data/images/" + path + square.getStatusFence().getImage()));
                 grid[i][j].setBorder(null);
                 grid[i][j].setBackground(new Color(102, 114, 131));

@@ -62,7 +62,7 @@ public class MenuGuiListener implements ActionListener {
         else if (e.getSource() == this.menuGui.getMainMenu().getCreds()) {
             this.menuGui.show("credits");
         }
-        else if (e.getSource() == this.menuGui.getMainMenu().getRules()) {
+        else if (e.getSource() == this.menuGui.getRulesPanel()) {
             this.menuGui.show("rules");
         }
         else if (e.getSource() == this.menuGui.getMainMenu().getQuit()) {

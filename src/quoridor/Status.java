@@ -5,7 +5,7 @@ package quoridor;
  * @author Pierre-Galaad Naquet, Aymeric Bizouarn
  */
 public enum Status {
-	NONE("--"),
+	NONE("<>"),
 	Player1("P1"),
 	Player2("P2"),
 	Player3("P3"),

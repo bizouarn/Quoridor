@@ -345,7 +345,7 @@ public class Board implements java.io.Serializable {
     }
 
     public String toString() {
-        String str = printBoard(this);
+        String str = TerminalPrinting.printBoard(this);
         return str;
     }
 

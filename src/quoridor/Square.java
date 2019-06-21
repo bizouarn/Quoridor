@@ -1,8 +1,5 @@
 package quoridor;
 
-// import Project
-//import java
-
 /**
  * Tile of the board. Contains its coordinates, if there is a player on it, and the fences around it.
  *
@@ -10,17 +7,40 @@ package quoridor;
  */
 public class Square implements java.io.Serializable {
 
+    /**
+     * coordinate x
+     */
     private int x;
+    /**
+     * coordinate y
+     */
     private int y;
 
-    private Status status; // if it contains player 1 / player 2 or none
+    /**
+     * Status of the square. If it contains player 1 / player 2 or none
+     */
+    private Status status;
 
-    private StatusFence statusFence; // gets it from the enumeration statusFence
+    /**
+     * Fence status. Gets it from from the enumeration StatusFence
+     */
+    private StatusFence statusFence; //
 
-    // true if there is a fence, false otherwise
+    /**
+     * true if there is a fence, false otherwise
+     */
     private boolean fenceN;
+    /**
+     * true if there is a fence, false otherwise
+     */
     private boolean fenceE;
+    /**
+     * true if there is a fence, false otherwise
+     */
     private boolean fenceS;
+    /**
+     * true if there is a fence, false otherwise
+     */
     private boolean fenceW;
 
 

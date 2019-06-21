@@ -2,6 +2,9 @@ package quoridor;
 
 public class TerminalPrinting {
 
+    /**
+     * The current board
+     */
     private Board board;
 
     public static String printBoard(Board board) {

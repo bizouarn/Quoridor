@@ -1,14 +1,10 @@
 package quoridor;
 
-// project import
-
 import gui.MenuGui;
 import utilitary.RWFile;
 
 import javax.swing.*;
 import java.util.Scanner;
-
-// java import
 
 /**
  * Permits to launch a session from which can be launch and saved games

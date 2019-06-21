@@ -12,10 +12,25 @@ package quoridor;
  */
 public class SubBoard implements java.io.Serializable {
 
+    /**
+     * coordinate X
+     */
     private int X;
+    /**
+     * coordinate y
+     */
     private int Y;
+    /**
+     * True if there is a vertical fence, false otherwise
+     */
     private boolean verticalFence;
+    /**
+     * True if there is an horizontal fence, false otherwise
+     */
     private boolean horizontalFence;
+    /**
+     * aggregation of the four square contained in the subBoard
+     */
     private Square[] sqrArray = new Square[4];
 
     /**

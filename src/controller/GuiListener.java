@@ -54,6 +54,7 @@ public class GuiListener implements ActionListener, MouseListener, java.io.Seria
     /**
      * GuiListener constructor
      *
+     * @param gui The current gui.
      * @author Aymeric Bizouarn
      */
     public GuiListener(Gui gui) {

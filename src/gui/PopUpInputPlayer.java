@@ -13,6 +13,7 @@ public class PopUpInputPlayer {
      * Creates a JOptionPane and ask for the player 1 name
      *
      * @return the name of the player
+     * @param player The current player.
      * @author Pierre-Galaad Naquet
      */
     public static String popUpPlayer(int player) {

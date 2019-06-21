@@ -1,7 +1,7 @@
 package test;
 
-import org.junit.Test;
 import quoridor.*;
+import org.junit.Test;
 
 import java.util.ArrayList;
 

@@ -22,6 +22,7 @@ public class MenuGuiListener implements ActionListener {
     /**
      * MenuGuiListener constructor
      *
+     * @param menuGui The current menuGui
      * @author Piere-Galaad Naquet
      */
     public MenuGuiListener(MenuGui menuGui) {

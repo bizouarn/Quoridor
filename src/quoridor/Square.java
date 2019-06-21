@@ -49,6 +49,8 @@ public class Square implements java.io.Serializable {
      * Square object which is a square on the board.
      * It knows its coordinates, if there is a player or not and if their is fences around him
      *
+     * @param x The current square X coordinate.
+     * @param y The current square Y coordinate.
      * @author Pierre-Galaad Naquet
      */
     public Square(int x, int y) {

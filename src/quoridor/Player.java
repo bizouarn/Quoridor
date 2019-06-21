@@ -26,6 +26,8 @@ public abstract class Player implements java.io.Serializable {
      * it cans either be human or bot
      * it has a dedidcated pawn and a number of fences left.
      *
+     * @param game The current game.
+     * @param name The current player name.
      * @author Aymeric Bizouarn
      */
     public Player(String name, Game game) {
@@ -44,6 +46,12 @@ public abstract class Player implements java.io.Serializable {
      * The overlapping validity is checked by the square object by fenceStatus
      * The path validity is checked by the checkExistingPath method
      *
+     * @param pos The fence orientation.
+     * @param x1  The X coordinate of the upper-left square
+     * @param x2  The X coordinate of the bottom-right square
+     * @param y1  The Y coordinate of the upper-left square
+     * @param y2  The Y coordinate of the bottom-right square
+     * @return true if the auto player has placed a fence.
      * @author Aymeric Bizouarn
      */
     boolean playFence(int x1, int y1, int x2, int y2, int pos) {
@@ -111,6 +119,9 @@ public abstract class Player implements java.io.Serializable {
      * Moves the pawns to the desired direction.
      * The validity is checked by the current square fenceStatus
      *
+     * @param x The X coordinate of pawn.
+     * @param y The Y coordinate of pawn
+     * @return true if the auto player has move pawn.
      * @author Aymeric Bizouarn
      */
     boolean playPawn(int x, int y) {

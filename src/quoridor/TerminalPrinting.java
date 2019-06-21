@@ -10,6 +10,8 @@ public class TerminalPrinting {
     /**
      * Invoked to print th board in terminal mode
      *
+     * @param board The current board.
+     * @return The board into a string.
      * @author Pierre-Galaad Naquet
      */
     public static String printBoard(Board board) {

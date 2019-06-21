@@ -21,6 +21,7 @@ public class HumanPlayer extends Player {
      * HumanPlayer constructor
      *
      * @param name The player name.
+     * @param game The current game.
      * @author Aymeric Bizouarn
      */
     public HumanPlayer(String name, Game game) {

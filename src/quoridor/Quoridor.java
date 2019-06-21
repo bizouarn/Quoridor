@@ -27,6 +27,7 @@ public class Quoridor {
      * Create an object Quoridor
      * Serve as a platform to load and launch games
      *
+     * @param args The optional arguments.
      * @author Aymeric Bizouarn , Pierre-Galaad Naquet
      */
     public Quoridor(String[] args) {

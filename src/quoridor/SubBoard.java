@@ -39,6 +39,10 @@ public class SubBoard implements java.io.Serializable {
      * and get coordinates (X, Y) which are the upper left square's one.
      * It also containes the fences status.
      *
+     * @param sqr1 The subBoard square 1.
+     * @param sqr2 The subBoard square 2.
+     * @param sqr3 The subBoard square 3.
+     * @param sqr4 The subBoard square 4.
      * @author Pierre-Galaad Naquet
      */
     public SubBoard(Square sqr1, Square sqr2, Square sqr3, Square sqr4) {

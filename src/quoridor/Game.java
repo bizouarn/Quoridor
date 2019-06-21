@@ -67,6 +67,7 @@ public class Game implements java.io.Serializable {
      * Launch either a swing game or a terminal one
      *
      * @param gui true if the game has to be launched in the swing version, false otherwise
+     * @param nbPlayer The number of player in the game.
      * @author Aymeric Bizouarn
      */
     public Game(boolean gui, int nbPlayer) {
@@ -348,6 +349,7 @@ public class Game implements java.io.Serializable {
     /**
      * End the game and launch the results procedure
      *
+     * @param player The player who win.
      * @author Pierre-Galaad Naquet
      */
     private void endOfGame(Player player) {

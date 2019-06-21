@@ -24,6 +24,7 @@ public class WelcomePanel extends JPanel {
     /**
      * WelcomePanel constructor
      *
+     * @param menuGuiListener The current menu gui listener.
      * @author Pierre-Galaad Naquet
      */
     public WelcomePanel(MenuGuiListener menuGuiListener) {

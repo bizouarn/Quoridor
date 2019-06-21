@@ -14,6 +14,8 @@ public class PopUpEndOfGame extends JPanel {
     /**
      * popUpEndOfGame constructor
      *
+     * @param player The player who win.
+     * @return The choice.
      * @author Pierre-Galaad Naquet
      */
     public static int popUpEndOfGame(Player player) throws IllegalStateException {

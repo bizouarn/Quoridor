@@ -40,6 +40,7 @@ public class AutoPlayer extends Player {
     /**
      * Method permitting the auto player to play a fence
      *
+     * @return true if the auto player has placed a fence.
      * @author Aymeric Bizouarn
      */
     private boolean autoPlayFence() {
@@ -56,6 +57,7 @@ public class AutoPlayer extends Player {
     /**
      * Method permitting the auto player to move its pawn
      *
+     * @return true if the auto player has move pawn.
      * @author Aymeric Bizouarn
      */
     private boolean autoPlayPawn() {

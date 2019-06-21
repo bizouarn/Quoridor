@@ -33,6 +33,7 @@ public class Board implements java.io.Serializable {
      * initialize a 81 squares board (9*9)
      * Initialize walls and position his players on their starting positions
      *
+     * @param nbPlayer The number of player in the game
      * @author Pierre-Galaad Naquet
      */
     public Board(int nbPlayer) {
@@ -65,7 +66,7 @@ public class Board implements java.io.Serializable {
 
     /**
      * SubBoards Initializer
-     * intiliaze every subBoard of the board
+     * initialize every subBoard of the board
      *
      * @author Pierre-Galaad Naquet
      */
@@ -202,6 +203,7 @@ public class Board implements java.io.Serializable {
     /**
      * When called return an array list of square containing all of pawns move possibilities.
      *
+     * @param currSqr The square tested
      * @return The ArrayList containing all the possibilities
      * @author Pierre-Galaad Naquet, Aymeric Bizouarn
      */

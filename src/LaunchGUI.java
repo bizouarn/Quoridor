@@ -1,9 +1,4 @@
-import gui.*;
-import quoridor.Game;
 import quoridor.Quoridor;
-
-import javax.swing.*;
-import java.awt.*;
 
 /**
  * Graphical launcher

@@ -106,6 +106,7 @@ public class MenuGui {
     /**
      * Show the desired panel
      *
+     * @param panel The current panel.
      * @author Aymeric Bizouarn , Pierre-Galaad Naquet
      */
     public void show(String panel) {

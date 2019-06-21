@@ -1,4 +1,3 @@
-import gui.MenuGui;
 import quoridor.Quoridor;
 
 /**

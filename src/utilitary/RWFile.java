@@ -16,6 +16,7 @@ public class RWFile {
      * Read Quoridor object into a file.
      *
      * @param fileName The file name.
+     * @return The file path
      * @author Aymeric Bizouarn
      */
     public static Game readFile(String fileName) {
@@ -33,6 +34,7 @@ public class RWFile {
      * Write Quoridor object into a file.
      *
      * @param fileName The file name.
+     * @param game The current game.
      * @author Aymeric Bizouarn
      */
     public static void writeFile(String fileName, Game game) {

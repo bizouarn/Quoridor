@@ -2,10 +2,9 @@
 
 // Import project
 
-import quoridor.*;
+import quoridor.Quoridor;
 
 import javax.swing.*;
-import javax.xml.stream.StreamFilter;
 import java.io.*;
 import java.util.Scanner;
 

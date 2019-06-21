@@ -17,10 +17,8 @@ public class CreditsPanel extends JPanel {
     private JLabel descPierr;
     private JLabel descClaud;
 
-    private Font font;
-
-    private JButton retour;
-    private MenuGuiListener menuGuiListener;
+  private JButton retour;
+  private MenuGuiListener menuGuiListener;
 
 
     /**
@@ -45,30 +43,20 @@ public class CreditsPanel extends JPanel {
         setBackground(new Color(0, 0, 0, 0));
     }
 
-    /**
-     * Initialize the font
-     *
-     * @author Pierre-Galaad Naquet
-     */
-    public void initFont() {
-        this.font = new Font("SansSerif", Font.PLAIN, 14);
-    }
-
-    /**
-     * Initialize all the components of the JPanel
-     *
-     * @author Pierre-Galaad Naquet
-     */
-    private void initComponent() {
-        this.picAymer = new JLabel(new ImageIcon("./data/images/portraits/hamster.jpg"));
-        this.picPierr = new JLabel(new ImageIcon("./data/images/portraits/slug.jpg"));
-        this.picClaud = new JLabel(new ImageIcon("./data/images/portraits/lapin.jpg"));
-        this.descAymer = new JLabel("Programer\n\nFrench student in the UIT of Vannes in IT.");
-        this.descPierr = new JLabel("Programer\n\nFrench student in the UIT of Vannes in IT.");
-        this.descClaud = new JLabel("Designer\n\nCanadian student in the ArtCenter college, Pasadena California, USA");
-        this.retour = new JButton("Back");
-        this.retour.addActionListener(this.menuGuiListener);
-    }
+  /**
+   * Initialize all the components of the JPanel
+   * @author Pierre-Galaad Naquet
+   */
+  private void initComponent() {
+    this.picAymer = new JLabel(new ImageIcon("./data/images/portraits/hamster.jpg"));
+    this.picPierr = new JLabel(new ImageIcon("./data/images/portraits/slug.jpg"));
+    this.picClaud = new JLabel(new ImageIcon("./data/images/portraits/lapin.jpg"));
+    this.descAymer = new JLabel("Programer\n\nFrench student in the UIT of Vannes in IT.");
+    this.descPierr = new JLabel("Programer\n\nFrench student in the UIT of Vannes in IT.");
+    this.descClaud = new JLabel("Designer\n\nCanadian student in the ArtCenter college, Pasadena California, USA");
+    this.retour = new JButton("Back");
+    this.retour.addActionListener(this.menuGuiListener);
+  }
 
     /**
      * Return the retour Button

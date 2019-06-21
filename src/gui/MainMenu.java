@@ -13,6 +13,7 @@ public class MainMenu extends JPanel {
 
     private JButton loadGame;
     private JButton newGame;
+    private JButton rules;
     private JButton creds;
     private JButton quit;
 
@@ -24,9 +25,10 @@ public class MainMenu extends JPanel {
     public MainMenu(MenuGuiListener menuGuiListener) {
         this.menuGuiListener = menuGuiListener;
         initComponent();
-        setLayout(new GridLayout(4, 1));
+        setLayout(new GridLayout(5, 1));
         add(this.loadGame);
         add(this.newGame);
+        add(this.rules);
         add(this.creds);
         add(this.quit);
         this.setPreferredSize(new Dimension(300, 200));
@@ -44,6 +46,8 @@ public class MainMenu extends JPanel {
         this.newGame.addActionListener(this.menuGuiListener);
         this.creds = new JButton("Credits");
         this.creds.addActionListener(this.menuGuiListener);
+        this.rules = new JButton("Rules");
+        this.rules.addActionListener(this.menuGuiListener);
         this.quit = new JButton("Leave");
         this.quit.addActionListener(this.menuGuiListener);
     }

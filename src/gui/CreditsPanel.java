@@ -10,7 +10,7 @@ import java.awt.*;
  */
 public class CreditsPanel extends JPanel {
 
-    private JLabel rulesPanel;
+    private JLabel creditsPanel;
 
   private JButton retour;
   private MenuGuiListener menuGuiListener;
@@ -26,7 +26,7 @@ public class CreditsPanel extends JPanel {
         this.menuGuiListener = menuGuiListener;
         initComponent();
         setLayout(new FlowLayout());
-        add(this.rulesPanel);
+        add(this.creditsPanel);
         add(this.retour);
         setBackground(new Color(0, 0, 0, 0));
     }
@@ -36,7 +36,7 @@ public class CreditsPanel extends JPanel {
    * @author Pierre-Galaad Naquet
    */
   private void initComponent() {
-    this.rulesPanel = new JLabel(new ImageIcon("./data/images/CREDITS.png"));
+    this.creditsPanel = new JLabel(new ImageIcon("./data/images/CREDITS.png"));
     this.retour = new JButton("Back");
     this.retour.addActionListener(this.menuGuiListener);
   }

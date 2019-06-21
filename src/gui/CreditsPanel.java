@@ -19,8 +19,6 @@ public class CreditsPanel extends JPanel {
   private JLabel descPierr;
   private JLabel descClaud;
 
-  private Font font;
-
   private JButton retour;
   private MenuGuiListener menuGuiListener;
 
@@ -45,14 +43,6 @@ public class CreditsPanel extends JPanel {
     this.setPreferredSize(new Dimension(300,200));
     setBackground(new Color(0,0,0,0));
   }
-
-  /**
-   * Initialize the font
-   * @author Pierre-Galaad Naquet
-   */
-   public void initFont() {
-     this.font = new Font("SansSerif", Font.PLAIN, 14);
-   }
 
   /**
    * Initialize all the components of the JPanel

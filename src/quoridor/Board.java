@@ -1,11 +1,7 @@
 package quoridor;
 
-// import project
-
 import java.util.ArrayList;
-
-//import GUI.MainGUI;
-// import java
+import quoridor.TerminalPrinting;
 
 /**
  * Class for the initializing of the board.
@@ -349,13 +345,7 @@ public class Board implements java.io.Serializable {
     }
 
     public String toString() {
-        String str = "";
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                str += getSquare(i, j).getStatusFence() + "|" + getSquare(i, j).getStatus() + "|" + "\t";
-            }
-            str += "\n";
-        }
+        String str = printBoard(this);
         return str;
     }
 

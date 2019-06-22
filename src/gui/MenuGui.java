@@ -100,6 +100,7 @@ public class MenuGui {
         this.jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.jFrame.add(this.panel);
         this.jFrame.pack();
+        this.jFrame.setResizable(false);
         this.jFrame.setVisible(true);
         this.jFrame.setLocationRelativeTo(null);
     }

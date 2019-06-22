@@ -35,7 +35,7 @@ public class Gui implements java.io.Serializable {
      * The current Game
      */
     private Game game;
-    
+
     /**
      * The current JFrame
      */
@@ -52,6 +52,7 @@ public class Gui implements java.io.Serializable {
         this.game = game;
 
         this.jFrame = new JFrame("Quoridor : Game");
+        this.jFrame.setResizable(false);
         this.gridPanel = new GridPanel(game.getBoard(), this);
         if(this.getGame().getNbPlayer()==2){
             this.leftPlayers = new LeftPlayers(this.game.getPlayer1(), this.game.getPlayer2());

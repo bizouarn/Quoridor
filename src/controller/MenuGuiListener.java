@@ -51,9 +51,7 @@ public class MenuGuiListener implements ActionListener {
                 FileWriter fw = new FileWriter(new File("./data/new.bin"), false);
                 fw.write("load");
                 fw.close();
-            } catch (Exception exc) {
-                System.out.println(e);
-            }
+            } catch (Exception exc) { }
         }
         else if (e.getSource() == this.menuGui.getMainMenu().getNewGame()) {
             try {

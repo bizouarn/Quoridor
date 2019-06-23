@@ -250,6 +250,12 @@ public class Game implements java.io.Serializable {
             } else {
                 this.player4 = new HumanPlayer(name4, this);
             }
+            if (nbPlayer == 4) {
+                this.player1.setNbFences(5);
+                this.player2.setNbFences(5);
+                this.player3.setNbFences(5);
+                this.player4.setNbFences(5);
+            }
         }
 
         this.board = new Board(this.nbPlayer);
@@ -378,11 +384,14 @@ public class Game implements java.io.Serializable {
             choice = PopUpEndOfGame.popUpEndOfGame(player);
             if (choice == 1) {
                 this.guiFrame.getjFrame().dispose();
-                this.getPlayer1().setNbFences(10);
-                this.getPlayer2().setNbFences(10);
                 if (this.nbPlayer == 4) {
-                    this.getPlayer3().setNbFences(10);
-                    this.getPlayer4().setNbFences(10);
+                    this.getPlayer1().setNbFences(10);
+                    this.getPlayer2().setNbFences(10);
+                } else if (this.nbPlayer == 4) {
+                    this.getPlayer1().setNbFences(5);
+                    this.getPlayer2().setNbFences(5);
+                    this.getPlayer3().setNbFences(5);
+                    this.getPlayer4().setNbFences(5);
                 }
                 this.board = new Board(this.nbPlayer);
                 this.guiFrame = new Gui(this);

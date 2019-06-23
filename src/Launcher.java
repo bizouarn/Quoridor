@@ -23,6 +23,14 @@ public class Launcher {
      * @param args optional arguments
      */
     public static void main(String[] args) {
+        System.out.println("=======================================================================================================\n" +
+                " .88888.                              oo       dP                  \n" +
+                "d8'   `8b                                      88                  \n" +
+                "88     88  dP    dP .d8888b. 88d888b. dP .d888b88 .d8888b. 88d888b.\n" +
+                "88  db 88  88    88 88'  `88 88'  `88 88 88'  `88 88'  `88 88'  `88\n" +
+                "Y8.  Y88P  88.  .88 88.  .88 88       88 88.  .88 88.  .88 88      \n" +
+                " `8888PY8b `88888P' `88888P' dP       dP `88888P8 `88888P' dP      \n" +
+                "=======================================================================================================`");
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }
@@ -63,7 +71,6 @@ public class Launcher {
             }
             catch (Exception e) {
             }
-
         }
     }
 

@@ -109,9 +109,26 @@ public class Quoridor {
     private void choice() {
         Scanner scanner = new Scanner(System.in);
         String choice = "";
-        while (!choice.equals("1") && !choice.equals("2") && !choice.equals("3")) {
-            System.out.println("Write : \n1 - For new game\n2 - For load old game");
+        while (!choice.equals("1") && !choice.equals("2")) {
+            System.out.println("Write : \n1 - For new game\n2 - For load old game\n3 - For credits\n4 - For rules");
             choice = scanner.nextLine();
+            if (choice.equals("3")) {
+                System.out.println("=======================================================================================================\n" +
+                        "Programmer :\n" +
+                        "- Aymeric Bizouarn -> Student at UIT of Vannes in the IT, focus on the AI, playing input, and GUI.\n" +
+                        "- Pierre-Galaad Naquat -> Student at UIT of Vannes in the IT, focused on the board, usability, documentation and GUI.\n" +
+                        "Designer :\n" +
+                        "- Shung ching 'Claudia' Fung -> Canadian student at the ArtCenter College,(Pasadena, California USA). Designed the visual of the whole playing board.\n" +
+                        "=======================================================================================================");
+            } else if (choice.equals("4")) {
+                System.out.println("=======================================================================================================\n" +
+                        "Rules :\n" +
+                        "Prupose of the game -> To be the first to reach the line opposite to one's base line.\n" +
+                        "Rules for two players -> Each player places his pawn in the center of his base line and gets 10 fences. A draw will determine who starts first.\n" +
+                        "Rules for four player -> Each player is given 5 fences an it is forbidden to jump more than one pawn othewise the rules are the same.\n" +
+                        "End of game -> The firs player who reaches one of 9 squares opposite his bes line is the winner.\n" +
+                        "=======================================================================================================");
+            }
         }
         if (choice.equals("1")) {
             choice = "";

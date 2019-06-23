@@ -71,8 +71,8 @@ public class Game implements java.io.Serializable {
     public Game() {
         this.nbPlayer = 0;
         this.gui = false;
-        this.player1 = new AutoPlayer("test",this);
-        this.player1 = new HumanPlayer("test",this);
+        this.player1 = new AutoPlayer("test", this);
+        this.player1 = new HumanPlayer("test", this);
         initializeGame();
         this.nbPlayer = 2;
         this.board = new Board(2);
@@ -195,32 +195,30 @@ public class Game implements java.io.Serializable {
             }
         } else {
             Scanner scanner = new Scanner(System.in);
-            if(nbPlayer==2) {
-                while (name1.length() < 2) {
-                    System.out.println("Name Player 1 : ");
-                    name1 = scanner.nextLine();
-                    if (name1.length() < 2) {
-                        System.out.println("Invalid input : The size of the name has minimum 2 characters");
-                    }
+            while (name1.length() < 2) {
+                System.out.println("Name Player 1 : use 'auto' to have a bot.\nThe name must be longer than 2 characters");
+                name1 = scanner.nextLine();
+                if (name1.length() < 2) {
+                    System.out.println("Invalid input : The size of the name has minimum 2 characters");
                 }
-                while (name2.length() < 2) {
-                    System.out.println("Name Player 2 : ");
-                    name2 = scanner.nextLine();
-                    if (name2.length() < 2) {
-                        System.out.println("Invalid input : The size of the name has minimum 2 characters");
-                    }
+            }
+            while (name2.length() < 2) {
+                System.out.println("Name Player 2 : use 'auto' to have a bot.\nThe name must be longer than 2 characters");
+                name2 = scanner.nextLine();
+                if (name2.length() < 2) {
+                    System.out.println("Invalid input : The size of the name has minimum 2 characters");
                 }
             }
             if (this.nbPlayer == 4) {
                 while (name3.length() < 2) {
-                    System.out.println("Name Player 1 : ");
+                    System.out.println("Name Player 3 : use 'auto' to have a bot.\nThe name must be longer than 2 characters");
                     name3 = scanner.nextLine();
                     if (name3.length() < 2) {
                         System.out.println("Invalid input : The size of the name has minimum 2 characters");
                     }
                 }
                 while (name4.length() < 2) {
-                    System.out.println("Name Player 1 : ");
+                    System.out.println("Name Player 4 : use 'auto' to have a bot.\nThe name must be longer than 2 characters");
                     name4 = scanner.nextLine();
                     if (name4.length() < 2) {
                         System.out.println("Invalid input : The size of the name has minimum 2 characters");
@@ -476,7 +474,6 @@ public class Game implements java.io.Serializable {
             if (resP1 < 81 && resP2 < 81 && resP3 < 81 && resP4 < 81) {
                 ret = true;
             }
-            System.out.print("check :" + resP1 + "," + resP2 + "," + resP3 + "," + resP4 + "," + ret);
         }
         return ret;
     }

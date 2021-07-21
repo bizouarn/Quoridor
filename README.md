@@ -11,4 +11,4 @@ Linux users :
 ./run_script.sh
 ```
 
-By [@PxRazhor](https://github.com/PxRazhor) and [@Cayril](https://github.com/Cayril)
+By [@PxRazhor](https://github.com/PxRazhor) and [@bizouarn](https://github.com/bizouarn)
